@@ -1,0 +1,68 @@
+---
+import { useTranslations, type Locale } from '../i18n/ui';
+
+interface Props {
+  lang: Locale;
+  /** The homepage shows section links; a guide page has no #features to jump to. */
+  variant?: 'home' | 'page';
+}
+
+const { lang, variant = 'page' } = Astro.props;
+const t = useTranslations(lang);
+const home = lang === 'gu' ? '/gu' : '/';
+
+// The language switch is a pair of real links, not a script that rewrites the page. That is the
+// whole point of the move to build-time i18n: a crawler follows a link, it does not click a
+// toggle, so this is what makes the Gujarati edition indexable at all.
+//
+// Only the homepage exists in both languages today, so the switch is shown only there — a
+// switch that silently kept you on the same English page would be a worse lie than no switch.
+const showLangSwitch = variant === 'home';
+---
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href={home} aria-label="ST Tracker home">
+    <img src="/icons/icon.svg" alt="" width="30" height="30" decoding="async" />
+    <span><b>ST Tracker</b><small><Fragment set:html={t.brandSub} /></small></span>
+  </a>
+  <nav class="bar-nav" aria-label="Sections">
+    {variant === 'home' ? (
+      <>
+        <a href="#features"><Fragment set:html={t.navFeatures} /></a>
+        <a href="#how"><Fragment set:html={t.navHow} /></a>
+        <a href="#routes"><Fragment set:html={t.navRoutes} /></a>
+        <a href="#guides"><Fragment set:html={t.navGuides} /></a>
+        <a href="#faq">FAQ</a>
+      </>
+    ) : (
+      <>
+        <a href="/#features"><Fragment set:html={t.navFeatures} /></a>
+        <a href="/#guides"><Fragment set:html={t.navGuides} /></a>
+        <a href="/#faq">FAQ</a>
+      </>
+    )}
+  </nav>
+  <div class="bar-end">
+    <button type="button" class="theme-btn" id="theme-btn" aria-label="Change theme" title="Theme">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+           stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <circle class="t-sun" cx="12" cy="12" r="4.2"/>
+        <g class="t-sun"><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></g>
+        <path class="t-moon" d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/>
+      </svg>
+    </button>
+    {showLangSwitch && (
+      <div class="lang" role="group" aria-label="Language">
+        <a href="/" hreflang="en-IN" aria-current={lang === 'en' ? 'page' : undefined}>EN</a>
+        <a href="/gu" hreflang="gu-IN" lang="gu" aria-current={lang === 'gu' ? 'page' : undefined}>ગુજરાતી</a>
+      </div>
+    )}
+    {/* The span is hidden below 480px: the full label was the single biggest cause of this
+        header overflowing its own viewport on a phone, pushing the CTA off-screen. */}
+    <a class="btn primary sm" href="https://tracker.shivrajsinh.in">{
+      lang === 'gu' ? t.openApp : (<>Open<span class="hdr-cta-rest"> the app</span></>)
+    }</a>
+  </div>
+</header>

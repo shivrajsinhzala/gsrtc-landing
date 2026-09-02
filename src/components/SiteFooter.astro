@@ -1,0 +1,79 @@
+---
+import { useTranslations, type Locale } from '../i18n/ui';
+
+interface Props { lang: Locale }
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const home = lang === 'gu' ? '/gu' : '/';
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <div class="wrap foot-top">
+    <div class="foot-col foot-brand">
+      <a class="brand" href={home} aria-label="ST Tracker home">
+        <img src="/icons/icon.svg" alt="ST Tracker logo" width="36" height="36" decoding="async" />
+        <span><b>ST Tracker</b><small><Fragment set:html={t.brandSub} /></small></span>
+      </a>
+      <p class="foot-desc"><Fragment set:html={t.footDesc} /></p>
+      <div class="foot-status-badge">
+        <span class="live-dot-pulse"></span>
+        <span><Fragment set:html={t.footLiveStatus} /></span>
+      </div>
+    </div>
+
+    <div class="foot-col">
+      <h4 class="foot-title"><Fragment set:html={t.footColApp} /></h4>
+      <ul class="foot-links">
+        <li><a href="https://tracker.shivrajsinh.in"><Fragment set:html={t.footOpenApp} /></a></li>
+        <li><a href="https://tracker.shivrajsinh.in/#s-routes"><Fragment set:html={t.footTimetables} /></a></li>
+        <li><a href="https://tracker.shivrajsinh.in/#s-nearby"><Fragment set:html={t.footNearbyStops} /></a></li>
+        <li><a href="/gsrtc-bus-arrival-alerts"><Fragment set:html={t.footAlerts} /></a></li>
+        <li><a href="/gsrtc-tracking-app"><Fragment set:html={t.footInstall} /></a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4 class="foot-title"><Fragment set:html={t.footColRoutes} /></h4>
+      <ul class="foot-links">
+        <li><a href="/ahmedabad-rajkot-bus">Ahmedabad ↔ Rajkot</a></li>
+        <li><a href="/rajkot-morbi-bus">Rajkot ↔ Morbi</a></li>
+        <li><a href="/ahmedabad-surat-bus">Ahmedabad ↔ Surat</a></li>
+        <li><a href="/rajkot-jamnagar-bus">Rajkot ↔ Jamnagar</a></li>
+        <li><a href="/ahmedabad-bhuj-bus">Ahmedabad ↔ Bhuj</a></li>
+        <li><a href="/rajkot-junagadh-bus">Rajkot ↔ Junagadh</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4 class="foot-title"><Fragment set:html={t.footColGuides} /></h4>
+      <ul class="foot-links">
+        <li><a href="/gsrtc-tracker"><Fragment set:html={t.footG1} /></a></li>
+        <li><a href="/gsrtc-live-bus-tracking"><Fragment set:html={t.footG2} /></a></li>
+        <li><a href="/st-bus-live-location"><Fragment set:html={t.footG4} /></a></li>
+        <li><a href="/gsrtc-bus-number-plate-format"><Fragment set:html={t.footPlateFormat} /></a></li>
+        <li><a href="/privacy"><Fragment set:html={t.footPrivacy} /></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap foot-bottom">
+    <div class="foot-bottom-left">
+      <p class="foot-copy">© {year} ST Tracker · Designed &amp; Developed by <a href="https://shivrajsinh.in" target="_blank" rel="noopener">Shivrajsinh Zala</a></p>
+      <p class="fine"><Fragment set:html={t.footFine} /></p>
+    </div>
+    <div class="foot-bottom-right">
+      <a class="coffee-pill" href="https://buymeacoffee.com/shivrajsinh.sh" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <span><Fragment set:html={t.footCoffee} /></span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Appears once the header has scrolled away, and gets out of the way again when the closing
+     call to action is on screen so it never covers the button it duplicates. -->
+<div class="sticky-cta" id="sticky-cta">
+  <a class="btn primary" href="https://tracker.shivrajsinh.in"><Fragment set:html={t.openApp} /></a>
+</div>

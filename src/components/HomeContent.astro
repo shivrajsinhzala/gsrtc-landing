@@ -1,0 +1,345 @@
+---
+import { useTranslations, type Locale } from '../i18n/ui';
+
+interface Props { lang: Locale }
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Only the homepage exists in Gujarati, so every guide/route/city link resolves to its English
+// URL in both languages. That is deliberate: a /gu/ URL serving English body copy would be
+// worse for both the reader and the ranking than an honest English link. See src/i18n/README.md.
+const home = lang === 'gu' ? '/gu' : '/';
+const href = (slug: string) => `/${slug}`;
+---
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-head reveal">
+      <p class="eyebrow"><Fragment set:html={t.eyebrow} /></p>
+      <h1><Fragment set:html={t.h1} /></h1>
+    </div>
+
+    <div class="hero-rest reveal">
+      <p class="lede"><Fragment set:html={t.lede} /></p>
+
+      <form class="plate" id="plate-form">
+        <label class="sr" for="plate"><Fragment set:html={t.plateLabel} /></label>
+        <svg class="plate-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off"
+               placeholder="GJ-18-ZT-1028" aria-describedby="plate-hint">
+        <button class="btn primary" type="submit"><Fragment set:html={t.track} /></button>
+      </form>
+
+      <div class="plate-samples">
+        <span>Examples:</span>
+        <a href="https://tracker.shivrajsinh.in/?plate=GJ-18-ZT-1028">GJ-18-ZT-1028</a>
+        <a href="https://tracker.shivrajsinh.in/?plate=GJ-01-CZ-4521">GJ-01-CZ-4521</a>
+        <a href="https://tracker.shivrajsinh.in/?from=470&amp;to=462&amp;fromName=Rajkot&amp;toName=Morbi">Rajkot ↔ Morbi</a>
+      </div>
+
+      <p class="cta-alt">
+        <a class="btn ghost lg" href="https://tracker.shivrajsinh.in"><Fragment set:html={t.openApp} /></a>
+        <span><Fragment set:html={t.ctaAltNote} /></span>
+      </p>
+    </div>
+
+    <div class="hero-art reveal" aria-hidden="true">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="mini-bar">
+            <span class="dot live"></span>
+            <b>GJ-18-ZT-1028</b>
+            <span class="mini-live-tag">LIVE GPS</span>
+          </div>
+          <svg class="route" viewBox="0 0 260 300" role="img" aria-label="">
+            <path class="road" d="M40 280 C 60 210, 120 200, 130 150 S 190 70, 220 24"/>
+            <path class="road-done" d="M40 280 C 60 210, 120 200, 130 150 S 190 70, 220 24"/>
+            <circle class="stop" cx="40" cy="280" r="5"/>
+            <circle class="stop" cx="130" cy="150" r="5"/>
+            <circle class="stop" cx="220" cy="24" r="5"/>
+            <g class="bus-marker"><circle r="13"/><text y="4">▮</text></g>
+          </svg>
+          <div class="mini-stats">
+            <div><b>4 min</b><small><Fragment set:html={t.miniNext} /></small></div>
+            <div><b>46 km/h</b><small><Fragment set:html={t.miniSpeed} /></small></div>
+            <div><b>2.1 km</b><small><Fragment set:html={t.miniAway} /></small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap strip-grid">
+    <div class="strip-card reveal"><b data-count="8554">8,554</b><span><Fragment set:html={t.statBuses} /></span></div>
+    <div class="strip-card reveal"><b data-count="19026">19,026</b><span><Fragment set:html={t.statStations} /></span></div>
+    <div class="strip-card reveal"><b><Fragment set:html={t.statLive} /></b><span><Fragment set:html={t.statLiveSub} /></span></div>
+    <div class="strip-card reveal"><b>2</b><span><Fragment set:html={t.statLang} /></span></div>
+  </div>
+</section>
+
+<section id="about" class="wrap section narrow">
+  <h2><Fragment set:html={t.aboutH} /></h2>
+  <p><Fragment set:html={t.aboutP1} /></p>
+  <p><Fragment set:html={t.aboutP2} /></p>
+</section>
+
+<section id="compare" class="wrap section">
+  <h2><Fragment set:html={t.compareH} /></h2>
+  <p class="sub"><Fragment set:html={t.compareSub} /></p>
+  <div class="cards">
+    <article class="card reveal">
+      <h3><Fragment set:html={t.c1H} /></h3>
+      <p><Fragment set:html={t.c1P} /></p>
+    </article>
+    <article class="card reveal">
+      <h3><Fragment set:html={t.c2H} /></h3>
+      <p><Fragment set:html={t.c2P} /></p>
+    </article>
+    <article class="card reveal">
+      <h3><Fragment set:html={t.c3H} /></h3>
+      <p><Fragment set:html={t.c3P} /></p>
+    </article>
+  </div>
+</section>
+
+<section id="features" class="wrap section">
+  <h2><Fragment set:html={t.featuresH} /></h2>
+  <p class="sub"><Fragment set:html={t.featuresSub} /></p>
+
+  <div class="cards">
+    <article class="card reveal">
+      <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10.5" r="2.6"/><path d="M20 10.5c0 5.8-8 11.5-8 11.5s-8-5.7-8-11.5a8 8 0 1 1 16 0z"/></svg></span>
+      <h3><Fragment set:html={t.f1H} /></h3>
+      <p><Fragment set:html={t.f1P} /></p>
+    </article>
+    <article class="card reveal">
+      <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.4"/><circle cx="18" cy="18" r="2.4"/><path d="M8.4 6H14a4 4 0 0 1 0 8h-4a4 4 0 0 0 0 8h5.6"/></svg></span>
+      <h3><Fragment set:html={t.f2H} /></h3>
+      <p><Fragment set:html={t.f2P} /></p>
+    </article>
+    <article class="card reveal">
+      <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.3l3.4 2"/></svg></span>
+      <h3><Fragment set:html={t.f3H} /></h3>
+      <p><Fragment set:html={t.f3P} /></p>
+    </article>
+    <article class="card reveal">
+      <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8.5a6 6 0 1 0-12 0c0 5.2-2 6.5-2 6.5h16s-2-1.3-2-6.5z"/><path d="M13.7 19a2 2 0 0 1-3.4 0"/></svg></span>
+      <h3><Fragment set:html={t.f4H} /></h3>
+      <p><Fragment set:html={t.f4P} /></p>
+    </article>
+    <article class="card reveal">
+      <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.8a3.4 3.4 0 0 0-3.4-3.4H6.4A3.4 3.4 0 0 0 3 18.2V20"/><circle cx="9.5" cy="7.4" r="3.4"/><path d="M21 20v-1.8a3.4 3.4 0 0 0-2.6-3.3M15.6 4.2a3.4 3.4 0 0 1 0 6.4"/></svg></span>
+      <h3><Fragment set:html={t.f5H} /></h3>
+      <p><Fragment set:html={t.f5P} /></p>
+    </article>
+    <article class="card reveal">
+      <span class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.1a12 12 0 0 1 10 3.2M5 8.3a12 12 0 0 1 2.3-1.7M2.5 11.7a9 9 0 0 1 3-2M8.5 15a5 5 0 0 1 6.2-.6"/><path d="M12 19.5h.01"/></svg></span>
+      <h3><Fragment set:html={t.f6H} /></h3>
+      <p><Fragment set:html={t.f6P} /></p>
+    </article>
+  </div>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot"
+       style="display:block"
+       data-ad-client="ca-pub-7164999486301748"
+       data-ad-slot="8460038937"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</section>
+
+<section id="screens" class="wrap section">
+  <h2><Fragment set:html={t.screensH} /></h2>
+  <p class="sub"><Fragment set:html={t.screensSub} /></p>
+
+  <div class="screens">
+    <!-- Screen 1: Live Track -->
+    <figure class="shot reveal">
+      <picture>
+        <source srcset="/screens/track-dark.webp" media="(prefers-color-scheme: dark)">
+        <img class="device" src="/screens/track-light.webp" alt="Live bus tracking screen showing Gujarat ST bus on map with ETA and speed" width="390" height="844" decoding="async" loading="lazy">
+      </picture>
+      <figcaption><Fragment set:html={t.shot1} /></figcaption>
+    </figure>
+
+    <!-- Screen 2: Timetable Departures -->
+    <figure class="shot reveal">
+      <picture>
+        <source srcset="/screens/routes-dark.webp" media="(prefers-color-scheme: dark)">
+        <img class="device" src="/screens/routes-light.webp" alt="Route timetable departures list showing upcoming buses between Ahmedabad and Rajkot" width="390" height="844" decoding="async" loading="lazy">
+      </picture>
+      <figcaption><Fragment set:html={t.shot2} /></figcaption>
+    </figure>
+
+    <!-- Screen 3: Nearby Radar -->
+    <figure class="shot reveal">
+      <picture>
+        <source srcset="/screens/nearby-dark.webp" media="(prefers-color-scheme: dark)">
+        <img class="device" src="/screens/nearby-light.webp" alt="Nearby bus stops screen with distance radar and interactive map" width="390" height="844" decoding="async" loading="lazy">
+      </picture>
+      <figcaption><Fragment set:html={t.shot3} /></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="how" class="band">
+  <div class="wrap section">
+    <h2><Fragment set:html={t.howH} /></h2>
+    <ol class="steps">
+      <li class="reveal"><b><Fragment set:html={t.s1H} /></b><span><Fragment set:html={t.s1P} /></span></li>
+      <li class="reveal"><b><Fragment set:html={t.s2H} /></b><span><Fragment set:html={t.s2P} /></span></li>
+      <li class="reveal"><b><Fragment set:html={t.s3H} /></b><span><Fragment set:html={t.s3P} /></span></li>
+    </ol>
+    <p class="cta-row"><a class="btn primary lg" href="https://tracker.shivrajsinh.in"><Fragment set:html={t.openApp2} /></a></p>
+  </div>
+</section>
+
+<section id="routes" class="wrap section">
+  <h2><Fragment set:html={t.routesH} /></h2>
+  <p class="sub"><Fragment set:html={t.routesSub} /></p>
+  <ul class="chips" id="route-list">
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=15004&amp;fromName=Ahmedabad&amp;toName=Vadodara">Ahmedabad → Vadodara</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=464&amp;fromName=Vadodara&amp;toName=Ahmedabad">Vadodara → Ahmedabad</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=470&amp;fromName=Ahmedabad&amp;toName=Rajkot">Ahmedabad → Rajkot</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=464&amp;fromName=Rajkot&amp;toName=Ahmedabad">Rajkot → Ahmedabad</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=505&amp;fromName=Vadodara&amp;toName=Surat">Vadodara → Surat</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=505&amp;fromName=Ahmedabad&amp;toName=Surat">Ahmedabad → Surat</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=462&amp;fromName=Rajkot&amp;toName=Morbi">Rajkot → Morbi</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=497&amp;fromName=Rajkot&amp;toName=Jamnagar">Rajkot → Jamnagar</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=595&amp;fromName=Ahmedabad&amp;toName=Bhavnagar">Ahmedabad → Bhavnagar</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=438&amp;fromName=Ahmedabad&amp;toName=Gandhinagar">Ahmedabad → Gandhinagar</a></li>
+  </ul>
+  <p class="sub" style="margin:1.2rem 0 0"><Fragment set:html={t.routeGuidesLabel} /></p>
+  <ul class="chips reveal">
+    <li><a href={href('ahmedabad-vadodara-bus')}>Ahmedabad ↔ Vadodara</a></li>
+    <li><a href={href('ahmedabad-rajkot-bus')}>Ahmedabad ↔ Rajkot</a></li>
+    <li><a href={href('vadodara-surat-bus')}>Vadodara ↔ Surat</a></li>
+    <li><a href={href('rajkot-morbi-bus')}>Rajkot ↔ Morbi</a></li>
+    <li><a href={href('ahmedabad-surat-bus')}>Ahmedabad ↔ Surat</a></li>
+    <li><a href={href('ahmedabad-gandhinagar-bus')}>Ahmedabad ↔ Gandhinagar</a></li>
+    <li><a href={href('ahmedabad-bhavnagar-bus')}>Ahmedabad ↔ Bhavnagar</a></li>
+    <li><a href={href('ahmedabad-mehsana-bus')}>Ahmedabad ↔ Mehsana</a></li>
+    <li><a href={href('ahmedabad-anand-bus')}>Ahmedabad ↔ Anand</a></li>
+    <li><a href={href('ahmedabad-somnath-bus')}>Ahmedabad ↔ Somnath</a></li>
+    <li><a href={href('ahmedabad-dwarka-bus')}>Ahmedabad ↔ Dwarka</a></li>
+    <li><a href={href('rajkot-jamnagar-bus')}>Rajkot ↔ Jamnagar</a></li>
+    <li><a href={href('ahmedabad-bhuj-bus')}>Ahmedabad ↔ Bhuj</a></li>
+    <li><a href={href('rajkot-junagadh-bus')}>Rajkot ↔ Junagadh</a></li>
+    <li><a href={href('rajkot-dwarka-bus')}>Rajkot ↔ Dwarka</a></li>
+    <li><a href={href('rajkot-somnath-bus')}>Rajkot ↔ Somnath</a></li>
+  </ul>
+</section>
+
+<section id="guides" class="wrap section">
+  <h2><Fragment set:html={t.guidesH} /></h2>
+  <p class="sub"><Fragment set:html={t.guidesSub} /></p>
+  <div class="cards">
+    <article class="card reveal">
+      <h3><a href={href('gsrtc-tracker')}><Fragment set:html={t.g1H} /></a></h3>
+      <p><Fragment set:html={t.g1P} /></p>
+    </article>
+    <article class="card reveal">
+      <h3><a href={href('gsrtc-live-bus-tracking')}><Fragment set:html={t.g2H} /></a></h3>
+      <p><Fragment set:html={t.g2P} /></p>
+    </article>
+    <article class="card reveal">
+      <h3><a href={href('st-bus-tracking')}><Fragment set:html={t.g3H} /></a></h3>
+      <p><Fragment set:html={t.g3P} /></p>
+    </article>
+    <article class="card reveal">
+      <h3><a href={href('st-bus-live-location')}><Fragment set:html={t.g4H} /></a></h3>
+      <p><Fragment set:html={t.g4P} /></p>
+    </article>
+  </div>
+
+  <p class="sub" style="margin:2.4rem 0 .8rem"><Fragment set:html={t.moreGuidesLabel} /></p>
+  <ul class="chips reveal">
+    <li><a href={href('gsrtc-bus-timetable')}>GSRTC bus timetable</a></li>
+    <li><a href={href('gsrtc-online-booking-pnr-tracking')}>Track by PNR</a></li>
+    <li><a href={href('gsrtc-volvo-sleeper-ac-bus-tracking')}>Volvo &amp; AC buses</a></li>
+    <li><a href={href('gsrtc-bus-arrival-alerts')}>Arrival alerts</a></li>
+    <li><a href={href('gsrtc-bus-delay-status')}>Is my bus late?</a></li>
+    <li><a href={href('st-bus-crowd-status')}>How full is my bus?</a></li>
+    <li><a href={href('nearby-st-bus-stops')}>Stops near me</a></li>
+    <li><a href={href('gsrtc-bus-number-plate-format')}>Number plate format</a></li>
+    <li><a href={href('gsrtc-bus-stand-helpline-numbers')}>Depot helpline numbers</a></li>
+    <li><a href={href('gsrtc-bus-fleet')}>The GSRTC fleet</a></li>
+    <li><a href={href('gsrtc-tracking-app')}>Is there a GSRTC app?</a></li>
+  </ul>
+
+  <p class="sub" style="margin:2rem 0 .8rem"><Fragment set:html={t.cityGuidesLabel} /></p>
+  <ul class="chips reveal">
+    <li><a href={href('ahmedabad-st-bus-tracker')}>Ahmedabad</a></li>
+    <li><a href={href('surat-st-bus-tracker')}>Surat</a></li>
+    <li><a href={href('vadodara-st-bus-tracker')}>Vadodara</a></li>
+    <li><a href={href('rajkot-st-bus-tracker')}>Rajkot</a></li>
+    <li><a href={href('bhavnagar-st-bus-tracker')}>Bhavnagar</a></li>
+    <li><a href={href('jamnagar-st-bus-tracker')}>Jamnagar</a></li>
+    <li><a href={href('gandhinagar-st-bus-tracker')}>Gandhinagar</a></li>
+    <li><a href={href('junagadh-st-bus-tracker')}>Junagadh</a></li>
+    <li><a href={href('bhuj-st-bus-tracker')}>Bhuj</a></li>
+    <li><a href={href('morbi-st-bus-tracker')}>Morbi</a></li>
+    <li><a href={href('mehsana-st-bus-tracker')}>Mehsana</a></li>
+    <li><a href={href('anand-st-bus-tracker')}>Anand</a></li>
+    <li><a href={href('nadiad-st-bus-tracker')}>Nadiad</a></li>
+    <li><a href={href('bharuch-st-bus-tracker')}>Bharuch</a></li>
+    <li><a href={href('vapi-st-bus-tracker')}>Vapi</a></li>
+    <li><a href={href('valsad-st-bus-tracker')}>Valsad</a></li>
+    <li><a href={href('navsari-st-bus-tracker')}>Navsari</a></li>
+    <li><a href={href('porbandar-st-bus-tracker')}>Porbandar</a></li>
+    <li><a href={href('somnath-st-bus-tracker')}>Somnath</a></li>
+    <li><a href={href('dwarka-st-bus-tracker')}>Dwarka</a></li>
+    <li><a href={href('palanpur-st-bus-tracker')}>Palanpur</a></li>
+    <li><a href={href('surendranagar-st-bus-tracker')}>Surendranagar</a></li>
+    <li><a href={href('amreli-st-bus-tracker')}>Amreli</a></li>
+    <li><a href={href('godhra-st-bus-tracker')}>Godhra</a></li>
+    <li><a href={href('ambaji-st-bus-tracker')}>Ambaji</a></li>
+  </ul>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot"
+       style="display:block"
+       data-ad-client="ca-pub-7164999486301748"
+       data-ad-slot="4425907657"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</section>
+
+<section id="faq" class="band">
+  <div class="wrap section narrow">
+    <h2><Fragment set:html={t.faqH} /></h2>
+    <div class="faq">
+      <details class="reveal" name="faq"><summary><Fragment set:html={t.q1} /></summary>
+        <p><Fragment set:html={t.a1} /></p></details>
+      <details class="reveal" name="faq"><summary><Fragment set:html={t.q2} /></summary>
+        <p><Fragment set:html={t.a2} /></p></details>
+      <details class="reveal" name="faq"><summary><Fragment set:html={t.q3} /></summary>
+        <p><Fragment set:html={t.a3} /></p></details>
+      <details class="reveal" name="faq"><summary><Fragment set:html={t.q4} /></summary>
+        <p><Fragment set:html={t.a4} /></p></details>
+      <details class="reveal" name="faq"><summary><Fragment set:html={t.q5} /></summary>
+        <p><Fragment set:html={t.a5} /></p></details>
+      <details class="reveal" name="faq"><summary><Fragment set:html={t.q6} /></summary>
+        <p><Fragment set:html={t.a6} /></p></details>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section-closer">
+  <div class="closer">
+    <h2><Fragment set:html={t.closerH} /></h2>
+    <p class="sub"><Fragment set:html={t.closerP} /></p>
+    <a class="btn primary lg" href="https://tracker.shivrajsinh.in"><Fragment set:html={t.openApp3} /></a>
+  </div>
+</section>
+
+</main>

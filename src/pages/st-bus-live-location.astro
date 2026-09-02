@@ -1,0 +1,180 @@
+---
+import Base from '../layouts/Base.astro';
+
+/**
+ * Ported verbatim from the pre-Astro st-bus-live-location.html — one of the hand-written pages, each
+ * hitting a distinct high-intent search phrase with its own angle rather than being a reworded
+ * copy of the others. The body copy below is unchanged; only internal links (now extensionless)
+ * and asset paths (now absolute) were rewritten.
+ */
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "ST Tracker",
+        "item": "https://gsrtc.shivrajsinh.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "ST bus live location",
+        "item": "https://gsrtc.shivrajsinh.in/st-bus-live-location"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Find your ST bus's live location",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Get the number plate",
+        "text": "Read the plate written on the bus, e.g. GJ-18-ZT-1028."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Open ST Tracker",
+        "text": "Go to tracker.shivrajsinh.in in any browser."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Search the plate",
+        "text": "Type it into the search box and press Track."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Read the map",
+        "text": "The live map shows the bus's current position, speed, next stop, and distance from you."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why can't I find my ST bus's live location?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Almost always because the bus hasn't started its trip yet or has already finished it — the operator only reports a position while a bus is actually running. Double-check the plate for typos, and try again closer to the scheduled departure time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I see my ST bus's live location without its number plate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Search between the two stations you're travelling from and to instead, and pick the service from the list of departures — live ones show a running countdown."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I get an alert when the bus is close instead of watching the map?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Pick the stop you're waiting at and turn on an arrival alert. Your phone notifies you shortly before the bus reaches that stop, so you don't have to keep the map open."
+        }
+      }
+    ]
+  }
+];
+---
+
+<Base
+  title="ST Bus Live Location — Find Yours in Seconds | ST Tracker"
+  description="Step-by-step: find your ST bus's live location by number plate or route, understand what the map is showing you, and what to do when a bus won't appear."
+  path="st-bus-live-location"
+  lang="en"
+  ogType="article"
+  headerVariant="page"
+  jsonLd={jsonLd}
+>
+  <main id="main">
+
+<section class="wrap section narrow">
+  <p class="eyebrow">Guide</p>
+  <h1>Find your ST bus's live location, step by step</h1>
+  <p class="lede">Takes under a minute the first time, seconds after that. Here's exactly how, and what to check if the bus doesn't show up.</p>
+
+  <form class="plate" id="plate-form" style="margin-top:1.5rem">
+    <label class="sr" for="plate">Bus number plate</label>
+    <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off" placeholder="GJ-18-ZT-1028">
+    <button class="btn primary" type="submit">Track</button>
+  </form>
+</section>
+
+<section class="wrap section narrow">
+  <h2 class="reveal">By number plate</h2>
+  <ol class="reveal">
+    <li>Find the plate written on the bus — for example <code>GJ-18-ZT-1028</code>.</li>
+    <li>Open <a href="https://tracker.shivrajsinh.in">tracker.shivrajsinh.in</a>.</li>
+    <li>Type the plate into the search box and press Track.</li>
+    <li>The live map opens: current position, speed, the stop it just passed, the one it's heading to, and its distance from you.</li>
+  </ol>
+
+  <h2 class="reveal">By route, if you don't know the plate</h2>
+  <ol class="reveal">
+    <li>Open the Routes screen and enter the two stations you're travelling between.</li>
+    <li>You'll see every scheduled and running service on that pair, with live countdowns for buses already on the road.</li>
+    <li>Pick any one to open its live location the same way.</li>
+  </ol>
+
+  <h2 class="reveal">What the map is actually telling you</h2>
+  <ul class="reveal">
+    <li><b>Position</b> — where the bus's GPS says it is right now, refreshed roughly every 20 seconds.</li>
+    <li><b>Speed</b> — smoothed from recent positions, not an instant reading.</li>
+    <li><b>Next stop</b> — the stop the bus is heading to, from the operator's own trip data when available.</li>
+    <li><b>Distance from you</b> — shown once you allow location access. The app also records a position fix under your install's random ID for up to 60 days; see the <a href="https://tracker.shivrajsinh.in/privacy.html">privacy policy</a>.</li>
+  </ul>
+
+  <h2 class="reveal">If the bus doesn't show up</h2>
+  <p class="reveal">This is normal, not a fault, in three common cases:</p>
+  <ul class="reveal">
+    <li><b>Not started yet.</b> The operator only reports a position once a bus actually begins its trip — a bus still at the depot has nothing to show.</li>
+    <li><b>Already finished.</b> Once a trip ends, the bus disappears from live tracking until its next run.</li>
+    <li><b>A typo in the plate.</b> GSRTC plates follow a strict format; small punctuation differences are corrected automatically, but a wrong digit won't match.</li>
+  </ul>
+  <p class="reveal">Curious what's actually happening behind that GPS point? See <a href="/gsrtc-live-bus-tracking">how GSRTC live bus tracking works</a>.</p>
+
+  <h2 class="reveal">Skip the checking — get an alert instead</h2>
+  <p class="reveal">Once the map is open, pick the stop you're waiting at and turn on an arrival alert. Your phone tells you when the bus is close, so you can stay where you are until it's actually worth walking out.</p>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-7164999486301748" data-ad-slot="8460038937" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</section>
+
+<section id="faq" class="band">
+  <div class="wrap section narrow">
+    <h2>Questions people ask</h2>
+    <div class="faq">
+      <details class="reveal" name="faq"><summary>Why can't I find my ST bus's live location?</summary>
+        <p>Almost always because the bus hasn't started its trip yet or has already finished it — the operator only reports a position while a bus is actually running. Double-check the plate for typos, and try again closer to the scheduled departure time.</p></details>
+      <details class="reveal" name="faq"><summary>Can I see my ST bus's live location without its number plate?</summary>
+        <p>Yes. Search between the two stations you're travelling from and to instead, and pick the service from the list of departures — live ones show a running countdown.</p></details>
+      <details class="reveal" name="faq"><summary>Can I get an alert when the bus is close instead of watching the map?</summary>
+        <p>Yes. Pick the stop you're waiting at and turn on an arrival alert. Your phone notifies you shortly before the bus reaches that stop, so you don't have to keep the map open.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-7164999486301748" data-ad-slot="4425907657" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</section>
+
+<section class="wrap section closer">
+  <h2>Find it now</h2>
+  <p class="sub">Type a plate, or search a route. Free, no account.</p>
+  <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open ST Tracker</a>
+</section>
+
+</main>
+</Base>

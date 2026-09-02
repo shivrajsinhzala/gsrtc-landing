@@ -1,0 +1,20 @@
+{
+  "name": "gsrtc-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marketing and SEO site for ST Tracker (gsrtc.shivrajsinh.in). Astro, static output.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "generate": "node scripts/gen-redirects.mjs && node scripts/gen-feed.mjs",
+    "build": "npm run generate && astro build && npm run verify",
+    "preview": "astro preview",
+    "check": "astro check",
+    "verify": "node scripts/verify-build.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.2.10"
+  }
+}

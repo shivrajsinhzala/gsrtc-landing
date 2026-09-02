@@ -1,0 +1,34 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://pagead2.googlesyndication.com https://*.google.com https://*.googlesyndication.com https://*.doubleclick.net https://*.g.doubleclick.net; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://www.google.com https://adservice.google.com 'unsafe-inline'; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com https://pagead2.googlesyndication.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://pagead2.googlesyndication.com https://*.googlesyndication.com https://*.doubleclick.net https://*.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://tracker.shivrajsinh.in
+
+# Astro content-hashes everything under /_astro/, so a filename never means two different
+# things and these can be cached hard and forever.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/analytics.js
+  Cache-Control: public, max-age=604800
+
+/icons/*
+  Cache-Control: public, max-age=2592000
+
+/screens/*
+  Cache-Control: public, max-age=2592000
+
+# The documents themselves stay revalidated so a deploy is visible immediately rather than on
+# whatever schedule a cached copy happens to expire.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=3600

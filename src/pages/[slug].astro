@@ -1,0 +1,38 @@
+---
+import ContentPage from '../layouts/ContentPage.astro';
+import { PAGES } from '../data/pages.data.mjs';
+
+/**
+ * The 53 guide, route and city pages, from the same data file the old generator script read.
+ *
+ * That script wrote 53 HTML files to disk and had to be re-run by hand after any edit; this
+ * builds them from the same source at build time, so the pages and the data cannot fall out of
+ * step. pages.data.mjs itself was ported across unchanged.
+ */
+export function getStaticPaths() {
+  return PAGES.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<ContentPage
+  slug={page.slug}
+  title={page.title}
+  description={page.description}
+  ogTitle={page.ogTitle}
+  ogDescription={page.ogDescription}
+  eyebrow={page.eyebrow}
+  h1={page.h1}
+  lede={page.lede}
+  body={page.body}
+  plateForm={page.plateForm !== false}
+  closerH={page.closerH}
+  related={page.related}
+  faq={page.faq}
+  howTo={page.howTo}
+  crumbLabel={page.crumbLabel}
+/>

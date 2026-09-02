@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path without leading slash, '' for the homepage. Canonical is built from it. */
+  path: string;
+  lang?: Locale;
+  ogType?: 'website' | 'article';
+  /** Rendered as <script type="application/ld+json"> blocks, in order. */
+  jsonLd?: unknown[];
+  headerVariant?: 'home' | 'page';
+  /** Only true where a real translation of this page exists — see src/i18n/README.md. */
+  hasTranslation?: boolean;
+}
+
+const {
+  title, description, path, lang = 'en',
+  ogType = 'website', jsonLd = [], headerVariant = 'page',
+  hasTranslation = false,
+} = Astro.props;
+
+const SITE = 'https://gsrtc.shivrajsinh.in';
+const AD_CLIENT = 'ca-pub-7164999486301748';
+
+// trailingSlash: 'never', so the canonical for the homepage is the bare origin and every other
+// page is /slug with no extension and no trailing slash — one spelling, everywhere, matching
+// what Cloudflare Pages actually serves.
+const canonical = path === '' ? `${SITE}/` : `${SITE}/${path}`;
+const ogImage = `${SITE}/icons/og-image.png`;
+const htmlLang = lang === 'gu' ? 'gu-IN' : 'en-IN';
+---
+
+<!doctype html>
+<html lang={htmlLang} data-theme="auto">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="google-adsense-account" content={AD_CLIENT} />
+{/* Auto ads (the in-text/"in-page" formats that splice an ad into the body copy) cannot be
+    turned off from the page. `enable_page_level_ads: false` is the legacy 2017 API and now
+    throws "Only one 'enable_page_level_ads' allowed per page" against this script tag, which
+    initialises page-level ads itself — verified in the browser, it is an error and a no-op.
+    The only real control is AdSense → Ads → By site → per-format toggles. */}
+<script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${AD_CLIENT}`} crossorigin="anonymous"></script>
+
+<link rel="canonical" href={canonical} />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+
+{/* hreflang is declared only where a translated document genuinely exists. Pointing it at a
+    page whose body is English would tell Google there is a Gujarati edition and then hand it
+    English — which is how a site gets its alternates ignored wholesale. */}
+{hasTranslation && (
+  <>
+    <link rel="alternate" hreflang="en-IN" href={`${SITE}/`} />
+    <link rel="alternate" hreflang="gu-IN" href={`${SITE}/gu`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE}/`} />
+  </>
+)}
+
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content="ST Tracker" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content={lang === 'gu' ? 'gu_IN' : 'en_IN'} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<meta name="theme-color" content="#12203a" media="(prefers-color-scheme: dark)" />
+<meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)" />
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+<link rel="icon" href="/icons/favicon.png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+<link rel="preconnect" href="https://tracker.shivrajsinh.in" />
+<link rel="dns-prefetch" href="https://tracker.shivrajsinh.in" />
+<script src="/analytics.js" async></script>
+
+{jsonLd.map((block) => (
+  <script type="application/ld+json" set:html={JSON.stringify(block, null, 2)} />
+))}
+</head>
+<body>
+
+<SiteHeader lang={lang} variant={headerVariant} />
+
+<slot />
+
+<SiteFooter lang={lang} />
+
+<script>
+  // The page's own behaviour: theme, scroll reveals, counters, the plate form, the sticky CTA
+  // and the ad slots. Language is no longer in here — Astro renders each language as its own
+  // document, so there is nothing left for a script to swap at runtime.
+  import '../scripts/site.js';
+</script>
+</body>
+</html>

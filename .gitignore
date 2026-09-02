@@ -1,0 +1,19 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# generated into public/ by scripts/ on every build — committing them would mean two sources of
+# truth for the redirect table and the feed, and the stale one always wins an argument.
+public/_redirects
+public/rss.xml
+public/feed.xml
+
+# environment
+.env
+.env.production
+
+# macOS
+.DS_Store

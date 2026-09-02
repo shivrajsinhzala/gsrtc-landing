@@ -1,0 +1,147 @@
+---
+import Base from '../layouts/Base.astro';
+
+/**
+ * Ported verbatim from the pre-Astro st-bus-tracking.html — one of the hand-written pages, each
+ * hitting a distinct high-intent search phrase with its own angle rather than being a reworded
+ * copy of the others. The body copy below is unchanged; only internal links (now extensionless)
+ * and asset paths (now absolute) were rewritten.
+ */
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "ST Tracker",
+        "item": "https://gsrtc.shivrajsinh.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "ST bus tracking",
+        "item": "https://gsrtc.shivrajsinh.in/st-bus-tracking"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an ST bus?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ST stands for State Transport — the buses run by GSRTC (Gujarat State Road Transport Corporation) across the state. \"ST bus\" and \"GSRTC bus\" refer to the same fleet; ST is simply the older, more common name among riders."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I track an ST bus without knowing its number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Search by the two stations you're travelling between instead of a plate number, and pick any departure from the list of live and upcoming buses."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does ST bus tracking work for private buses too?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. ST Tracker only covers GSRTC's own ST fleet, since that is the operator whose position data it reads. Private travel operators run separate systems."
+        }
+      }
+    ]
+  }
+];
+---
+
+<Base
+  title="ST Bus Tracking in Gujarat — Every Way to Find Your Bus | ST Tracker"
+  description="Compare every way Gujarat commuters find their ST bus — calling the depot, asking at the stand, official app — and how live ST bus tracking saves time."
+  path="st-bus-tracking"
+  lang="en"
+  ogType="article"
+  headerVariant="page"
+  jsonLd={jsonLd}
+>
+  <main id="main">
+
+<section class="wrap section narrow">
+  <p class="eyebrow">Guide</p>
+  <h1>ST bus tracking in Gujarat, explained</h1>
+  <p class="lede">Most Gujarat commuters still find their ST bus the old way — a phone call, a guess, or standing at the stand and waiting to see. Here's what each of those actually gets you, and where live tracking saves real time.</p>
+
+  <form class="plate" id="plate-form" style="margin-top:1.5rem">
+    <label class="sr" for="plate">Bus number plate</label>
+    <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off" placeholder="GJ-18-ZT-1028">
+    <button class="btn primary" type="submit">Track</button>
+  </form>
+</section>
+
+<section class="wrap section narrow">
+  <h2 class="reveal">How people track an ST bus today</h2>
+
+  <h3 class="reveal">Calling the depot</h3>
+  <p class="reveal">Reliable when someone picks up, but the person answering usually has no better view of the bus than you do — they're reading the same schedule, not a live feed. It also only works during depot hours.</p>
+
+  <h3 class="reveal">Asking at the stand</h3>
+  <p class="reveal">"It usually comes around this time" is a habit, not a position. It works fine on a normal day and tells you nothing on a day the bus is running late, replaced, or cancelled.</p>
+
+  <h3 class="reveal">The printed or app timetable</h3>
+  <p class="reveal">A schedule is a plan, not a report. It's the right starting point for which buses exist on a route, but it can't tell you that today's 6:40 is running 20 minutes behind — only where it's supposed to be.</p>
+
+  <h3 class="reveal">Live GPS tracking</h3>
+  <p class="reveal">This is the one method reading the bus's actual position. It answers the specific question a timetable can't: where is this bus <em>right now</em>, and does that mean I should leave for the stand yet. See <a href="/gsrtc-live-bus-tracking">how the live position itself works</a>.</p>
+
+  <h2 class="reveal">Two ways to search</h2>
+  <p class="reveal">If you already know the bus — you saw it leave, or a driver told you the plate — search by number and go straight to its live map. If you don't, search by the two stations you're travelling between instead: ST Tracker lists every scheduled and running service on that pair, with live countdowns for the ones already on the road.</p>
+  <p class="reveal">Both paths lead to the same live map, the same stop-by-stop route, and the same option to set an alert for the stop you're waiting at.</p>
+
+  <h2 class="reveal">What "tracking" adds beyond a timetable</h2>
+  <ul class="reveal">
+    <li>The bus's current position and speed, not its scheduled one.</li>
+    <li>How far it is from your stop, updated as it moves.</li>
+    <li>Whether it's actually running late, and by how much — not a guess.</li>
+    <li>An alert on your phone shortly before it arrives, so you don't have to keep checking.</li>
+    <li>Whether other riders report it crowded, replaced, or a no-show, before you commit to waiting for it.</li>
+  </ul>
+
+  <p class="reveal">Want the specific steps to find one bus's position right now? See <a href="/st-bus-live-location">finding your ST bus's live location, step by step</a>.</p>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-7164999486301748" data-ad-slot="8460038937" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</section>
+
+<section id="faq" class="band">
+  <div class="wrap section narrow">
+    <h2>Questions people ask</h2>
+    <div class="faq">
+      <details class="reveal" name="faq"><summary>What is an ST bus?</summary>
+        <p>ST stands for State Transport — the buses run by GSRTC (Gujarat State Road Transport Corporation) across the state. "ST bus" and "GSRTC bus" refer to the same fleet; ST is simply the older, more common name among riders.</p></details>
+      <details class="reveal" name="faq"><summary>Can I track an ST bus without knowing its number?</summary>
+        <p>Yes. Search by the two stations you're travelling between instead of a plate number, and pick any departure from the list of live and upcoming buses.</p></details>
+      <details class="reveal" name="faq"><summary>Does ST bus tracking work for private buses too?</summary>
+        <p>No. ST Tracker only covers GSRTC's own ST fleet, since that is the operator whose position data it reads. Private travel operators run separate systems.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-7164999486301748" data-ad-slot="4425907657" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</section>
+
+<section class="wrap section closer">
+  <h2>Stop guessing where the bus is</h2>
+  <p class="sub">Type a plate, or search a route. Free, no account.</p>
+  <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open ST Tracker</a>
+</section>
+
+</main>
+</Base>

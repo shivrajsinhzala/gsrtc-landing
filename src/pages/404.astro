@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+
+/**
+ * Ported from the pre-Astro 404.html. Its links used to carry `.html`, which would have sent
+ * someone who already hit a dead end through a second redirect to get anywhere — so they point
+ * at the new URLs directly.
+ *
+ * Excluded from the sitemap (see astro.config.mjs): a 404 is not a destination.
+ */
+---
+
+<Base
+  title="Page not found | ST Tracker"
+  description="That page does not exist. Track any Gujarat ST (GSRTC) bus live, or pick one of the popular guides."
+  path="404"
+  lang="en"
+  headerVariant="page"
+>
+  <main id="main" class="wrap section narrow">
+    <h1>That page does not exist</h1>
+    <p>
+      The address may have been mistyped, or the page may have moved. Nothing is wrong with the
+      tracker itself — you can carry on from any of these.
+    </p>
+    <p>
+      <a class="btn primary" href="https://tracker.shivrajsinh.in">Track a bus live</a>
+      <a class="btn" href="/">Back to the homepage</a>
+    </p>
+
+    <h2>Popular guides</h2>
+    <nav aria-label="Popular pages">
+      <ul>
+        <li><a href="/gsrtc-live-bus-tracking">GSRTC live bus tracking</a></li>
+        <li><a href="/gsrtc-bus-timetable">GSRTC bus timetable</a></li>
+        <li><a href="/st-bus-live-location">ST bus live location</a></li>
+        <li><a href="/nearby-st-bus-stops">Nearby ST bus stops</a></li>
+        <li><a href="/gsrtc-bus-number-plate-format">GSRTC bus number plate format</a></li>
+      </ul>
+    </nav>
+  </main>
+</Base>

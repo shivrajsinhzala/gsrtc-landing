@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+
+/**
+ * Ported verbatim from the pre-Astro gsrtc-tracker.html — one of the hand-written pages, each
+ * hitting a distinct high-intent search phrase with its own angle rather than being a reworded
+ * copy of the others. The body copy below is unchanged; only internal links (now extensionless)
+ * and asset paths (now absolute) were rewritten.
+ */
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "ST Tracker",
+        "item": "https://gsrtc.shivrajsinh.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "GSRTC Tracker",
+        "item": "https://gsrtc.shivrajsinh.in/gsrtc-tracker"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is a GSRTC tracker an official GSRTC product?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Usually not. \"GSRTC tracker\" describes a category of tools — official and independent — that show where a Gujarat ST bus is right now. ST Tracker is an independent one, built by a rider rather than the operator, and says so plainly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What data does a GSRTC tracker actually use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The same GPS position GSRTC's own systems publish for a bus while it is on a trip. A tracker's job is reading that position and presenting it usefully, not generating it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to download an app to use a GSRTC tracker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, not with ST Tracker. It runs at tracker.shivrajsinh.in in any browser. You can add it to your home screen afterwards for an app-like feel, but nothing requires an app store."
+        }
+      }
+    ]
+  }
+];
+---
+
+<Base
+  title="GSRTC Tracker — Track Any Gujarat ST Bus Live | ST Tracker"
+  description="What a GSRTC tracker actually does, how ST Tracker compares to the official GSRTC app, and how to start tracking a bus by its number plate in seconds."
+  path="gsrtc-tracker"
+  lang="en"
+  ogType="article"
+  headerVariant="page"
+  jsonLd={jsonLd}
+>
+  <main id="main">
+
+<section class="wrap section narrow">
+  <p class="eyebrow">Guide</p>
+  <h1>GSRTC tracker: what it is, and how to actually use one</h1>
+  <p class="lede">"GSRTC tracker" is what most people search for when their bus is late and they want to know where it actually is. Here's what that phrase covers, what a tracker can and can't tell you, and how to try one right now.</p>
+
+  <form class="plate" id="plate-form" style="margin-top:1.5rem">
+    <label class="sr" for="plate">Bus number plate</label>
+    <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off" placeholder="GJ-18-ZT-1028">
+    <button class="btn primary" type="submit">Track</button>
+  </form>
+</section>
+
+<section class="wrap section narrow">
+  <h2 class="reveal">What "GSRTC tracker" means</h2>
+  <p class="reveal">GSRTC — Gujarat State Road Transport Corporation — runs the ST (State Transport) buses that connect almost every town and village in Gujarat. A GSRTC tracker is any tool that shows where one of those buses is right now, usually on a map, by reading the GPS position the operator's own systems already collect from the bus.</p>
+  <p class="reveal">That covers a few different things in practice: the operator's own tracking page, the official GSRTC app, and independent tools like this one that read the same public position data and present it differently. None of them invent the bus's position — they all show the same GPS fix, refreshed every few seconds while the bus is on a trip.</p>
+
+  <h2 class="reveal">GSRTC tracker vs. the official app</h2>
+  <p class="reveal">The official GSRTC app is run by the operator and is the authoritative source for tickets, PNR status and reservations. ST Tracker doesn't compete with that — it exists for the narrower, more frequent job of "where is my bus right now", done as fast as possible with nothing to sign into.</p>
+  <table>
+    <tr><th></th><th>ST Tracker</th><th>Official GSRTC app</th></tr>
+    <tr><td>Live position by plate</td><td>Yes, in seconds</td><td>Yes</td></tr>
+    <tr><td>Whole route, stop by stop</td><td>Yes, with real arrival times</td><td>Limited</td></tr>
+    <tr><td>Timetable search between stations</td><td>Yes, 19,026 stations</td><td>Yes</td></tr>
+    <tr><td>Ticket booking</td><td>No — not the point of this tool</td><td>Yes</td></tr>
+    <tr><td>Account required</td><td>No</td><td>For booking</td></tr>
+    <tr><td>Install required</td><td>No — works in any browser</td><td>Yes, app store</td></tr>
+  </table>
+
+  <h2 class="reveal">How to track a GSRTC bus right now</h2>
+  <ol class="reveal">
+    <li>Find the number plate written on the front or side of the bus — for example <code>GJ-18-ZT-1028</code>.</li>
+    <li>Open <a href="https://tracker.shivrajsinh.in">tracker.shivrajsinh.in</a> and type it into the search box.</li>
+    <li>The live map opens with the bus's current position, its speed, the stop it just passed, and how far it is from you.</li>
+  </ol>
+  <p class="reveal">Don't have the plate? Search by station pair instead on the <a href="/#routes">Routes</a> screen, and pick any departure from the list — no plate needed.</p>
+
+  <p class="reveal">Want the detail on how the live position itself works, or what to do when a bus won't show up? See
+    <a href="/gsrtc-live-bus-tracking">how GSRTC live bus tracking works</a> and
+    <a href="/st-bus-live-location">finding your ST bus's live location step by step</a>.</p>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-7164999486301748" data-ad-slot="8460038937" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</section>
+
+<section id="faq" class="band">
+  <div class="wrap section narrow">
+    <h2>Questions people ask</h2>
+    <div class="faq">
+      <details class="reveal" name="faq"><summary>Is a GSRTC tracker an official GSRTC product?</summary>
+        <p>Usually not. "GSRTC tracker" describes a category of tools — official and independent — that show where a Gujarat ST bus is right now. ST Tracker is an independent one, built by a rider rather than the operator, and says so plainly.</p></details>
+      <details class="reveal" name="faq"><summary>What data does a GSRTC tracker actually use?</summary>
+        <p>The same GPS position GSRTC's own systems publish for a bus while it is on a trip. A tracker's job is reading that position and presenting it usefully, not generating it.</p></details>
+      <details class="reveal" name="faq"><summary>Do I need to download an app to use a GSRTC tracker?</summary>
+        <p>No, not with ST Tracker. It runs at tracker.shivrajsinh.in in any browser. You can add it to your home screen afterwards for an app-like feel, but nothing requires an app store.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-7164999486301748" data-ad-slot="4425907657" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</section>
+
+<section class="wrap section closer">
+  <h2>Track your GSRTC bus now</h2>
+  <p class="sub">Type a plate, or search a route. Free, no account.</p>
+  <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open ST Tracker</a>
+</section>
+
+</main>
+</Base>

@@ -1,0 +1,138 @@
+---
+import Base from '../layouts/Base.astro';
+
+/**
+ * Ported verbatim from the pre-Astro privacy.html — one of the hand-written pages, each
+ * hitting a distinct high-intent search phrase with its own angle rather than being a reworded
+ * copy of the others. The body copy below is unchanged; only internal links (now extensionless)
+ * and asset paths (now absolute) were rewritten.
+ */
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "ST Tracker",
+        "item": "https://gsrtc.shivrajsinh.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://gsrtc.shivrajsinh.in/privacy"
+      }
+    ]
+  }
+];
+---
+
+<Base
+  title="Privacy — gsrtc.shivrajsinh.in | ST Tracker"
+  description="What this website collects, the cookies advertising places here, and how it differs from the ST Tracker app itself — which carries no advertising at all."
+  path="privacy"
+  lang="en"
+  ogType="website"
+  headerVariant="page"
+  jsonLd={jsonLd}
+>
+  <main id="main" class="wrap section narrow">
+
+  <p class="eyebrow">Privacy</p>
+  <h1>What this website collects</h1>
+  <p class="lede">
+    This page is about <b>gsrtc.shivrajsinh.in</b> — the website you are reading now. The ST
+    Tracker app at tracker.shivrajsinh.in is a different thing with a stricter policy of its own,
+    and the difference matters, so it is set out below rather than glossed over.
+  </p>
+
+  <h2>The short version</h2>
+  <ul>
+    <li>This website carries <b>advertising</b>, and advertising uses cookies.</li>
+    <li>This website uses <b>Google Analytics</b> to count visits.</li>
+    <li>The <b>app itself carries no advertising</b>. It records pseudonymous usage and location
+      data under its own privacy policy; nothing on this page changes that.</li>
+    <li>There are no accounts here, and nothing you type on this site is stored by us.</li>
+  </ul>
+
+  <h2>Advertising</h2>
+  <p>
+    Pages on this site show ads served by <b>Google AdSense</b>. Google and its partners use
+    cookies and similar technologies to serve and measure those ads, which may include showing
+    you ads based on your previous visits to this or other websites.
+  </p>
+  <p>
+    We do not receive, store or have access to anything Google collects for this purpose. We see
+    only aggregate earnings and impression counts — never who saw what.
+  </p>
+  <p>
+    You can turn off personalised advertising at
+    <a href="https://myadcenter.google.com/" rel="noopener" target="_blank">Google My Ad Center</a>,
+    and opt out of third-party vendor cookies at
+    <a href="https://www.aboutads.info/choices/" rel="noopener" target="_blank">aboutads.info/choices</a>.
+    Google's own explanation of how it uses data from sites that use its services is at
+    <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">policies.google.com/technologies/partner-sites</a>.
+  </p>
+
+  <h2>Analytics</h2>
+  <p>
+    This site loads Google Analytics 4 to count page views, see which guides people arrive on
+    from search, and measure whether a visitor opens the tracker or submits the landing-page
+    search form. That is how the site is decided about — which pages to write, and which are not
+    worth keeping. It sets cookies in your browser. The number plate, PNR, route, station and
+    location that a visitor may use in the tracker are not sent to Analytics from this site.
+  </p>
+
+  <h2>What this site stores on your device</h2>
+  <p>
+    Two values, in your browser's local storage, both set by you and readable only by this site:
+  </p>
+  <table>
+    <tr><th>Key</th><th>What it is</th></tr>
+    <tr><td><code>st.landing.theme</code></td><td>Whether you chose light or dark</td></tr>
+    <tr><td><code>st.landing.lang</code></td><td>Whether you chose English or Gujarati</td></tr>
+  </table>
+  <p>Clearing your browser's site data removes both. Nothing is lost but the preference.</p>
+
+  <h2>Server logs</h2>
+  <p>
+    Like any web server, this one records the address of each request, the time, the page asked
+    for, and the browser's user-agent string. That is how faults get diagnosed and abuse gets
+    noticed. These logs are not joined to the analytics or advertising data above.
+  </p>
+
+  <h2>How the app is different</h2>
+  <p>
+    <b>tracker.shivrajsinh.in — the app — has no advertising.</b> It has no accounts, but it
+    records pseudonymous usage and location data to improve service coverage. Its own privacy
+    policy, including the exact data and retention period, is published at
+    <a href="https://tracker.shivrajsinh.in/privacy.html" rel="noopener">tracker.shivrajsinh.in/privacy.html</a>
+    and is the one that governs everything you do inside the app.
+  </p>
+  <p>
+    This site exists to help people find the app from a search engine. It is the marketing
+    surface, and it is the only part of the project that carries advertising.
+  </p>
+
+  <h2>Children</h2>
+  <p>
+    This site is not directed at children under 13 and we do not knowingly collect anything from
+    them.
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    If what this site collects changes, this page changes with it. It is the page to check, and
+    it is dated below rather than left vague.
+  </p>
+  <p class="hint">Last updated 28 August 2026.</p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about anything here: <a href="https://shivrajsinh.in" rel="me">shivrajsinh.in</a>.
+  </p>
+
+</main>
+</Base>

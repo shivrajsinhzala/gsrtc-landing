@@ -1,0 +1,27 @@
+---
+/**
+ * Catches the old `?lang=gu` links.
+ *
+ * Before the move to Astro the homepage switched language in place and pushed `?lang=gu` onto
+ * the same URL. That link was never separately indexed — the document was byte-identical to `/`
+ * — but it is shareable, and it is sitting in people's messages and bookmarks. Landing them on
+ * the English page would be a real regression from what that link does today.
+ *
+ * It cannot be handled in `_redirects`: Cloudflare Pages matches those on the path only, so a
+ * query-string rule there never fires. So this is the honest place for it, and it is the only
+ * client-side language logic left on the site.
+ *
+ * Rendered on the English homepage only — the one URL that link can point at.
+ */
+---
+<script is:inline>
+  (function () {
+    try {
+      if (new URLSearchParams(location.search).get('lang') === 'gu') {
+        // replace(), not assign(): the legacy URL should not sit in the back stack, or Back
+        // from the Gujarati page bounces straight forward to it again.
+        location.replace('/gu' + location.hash);
+      }
+    } catch (e) { /* a malformed query string is not worth breaking the page over */ }
+  })();
+</script>

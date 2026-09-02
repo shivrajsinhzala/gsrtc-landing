@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import HomeContent from '../../components/HomeContent.astro';
+import { meta } from '../../i18n/ui';
+import { homeJsonLd } from '../../data/home-jsonld.mjs';
+
+// The Gujarati homepage is the same component as the English one, rendered with the other
+// dictionary — one copy of the markup, so the two editions cannot structurally drift apart.
+// This is the page the old `?lang=gu` query string could never be: a real, crawlable document
+// that is Gujarati before any JavaScript runs.
+const lang = 'gu' as const;
+---
+
+<Base
+  title={meta.gu.title}
+  description={meta.gu.description}
+  path="gu"
+  lang={lang}
+  ogType="website"
+  headerVariant="home"
+  hasTranslation={true}
+  jsonLd={homeJsonLd(lang)}
+>
+  <HomeContent lang={lang} />
+</Base>

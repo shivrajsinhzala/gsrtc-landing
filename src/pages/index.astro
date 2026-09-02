@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import HomeContent from '../components/HomeContent.astro';
+import LegacyLangRedirect from '../components/LegacyLangRedirect.astro';
+import { meta } from '../i18n/ui';
+import { homeJsonLd } from '../data/home-jsonld.mjs';
+
+const lang = 'en' as const;
+---
+
+<LegacyLangRedirect />
+
+<Base
+  title={meta.en.title}
+  description={meta.en.description}
+  path=""
+  lang={lang}
+  ogType="website"
+  headerVariant="home"
+  hasTranslation={true}
+  jsonLd={homeJsonLd(lang)}
+>
+  <HomeContent lang={lang} />
+</Base>

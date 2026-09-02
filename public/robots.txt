@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Astro's sitemap integration emits an index plus one child file, so the index is what gets
+# submitted — it is the document that points at the rest.
+Sitemap: https://gsrtc.shivrajsinh.in/sitemap-index.xml

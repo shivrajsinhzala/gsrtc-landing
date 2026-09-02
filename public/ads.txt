@@ -1,0 +1,4 @@
+# Authorised digital sellers for gsrtc.shivrajsinh.in.
+# The single line AdSense requires; without it AdSense reports the site as
+# "earnings at risk" and some buyers will not bid.
+google.com, pub-7164999486301748, DIRECT, f08c47fec0942fa0

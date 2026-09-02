@@ -1,0 +1,139 @@
+---
+import Base from './Base.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { rewriteInternalLinks, rewriteHref } from '../lib/links.mjs';
+
+/**
+ * The shell every guide, route and city page shares — a direct port of the template that
+ * scripts/build-landing-pages.mjs used to stamp out as 53 separate HTML files.
+ *
+ * These pages are English-only by design: there is no Gujarati translation of their body copy,
+ * and shipping a /gu/ URL whose content is English would tell Google there is a Gujarati
+ * edition and then hand it English. See src/i18n/README.md.
+ */
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  eyebrow?: string;
+  h1: string;
+  lede: string;
+  body: string;
+  plateForm?: boolean;
+  closerH?: string;
+  related?: { href: string; label: string }[];
+  faq?: { q: string; a: string }[];
+  howTo?: unknown;
+  crumbLabel: string;
+}
+
+const {
+  slug, title, description, ogTitle, ogDescription,
+  eyebrow = 'Guide', h1, lede, body, plateForm = true,
+  closerH = 'Track your bus now', related = [], faq = [], howTo, crumbLabel,
+} = Astro.props;
+
+const SITE = 'https://gsrtc.shivrajsinh.in';
+const AD_SLOTS = { inContent: '8460038937', afterFaq: '4425907657' };
+
+const jsonLd: unknown[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'ST Tracker', item: `${SITE}/` },
+      // Points at the new extensionless URL, not the `.html` the old build emitted — a
+      // breadcrumb advertising a URL that only 301s is a needless extra hop for a crawler.
+      { '@type': 'ListItem', position: 2, name: crumbLabel, item: `${SITE}/${slug}` },
+    ],
+  },
+];
+if (howTo) jsonLd.push(howTo);
+if (faq.length) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  });
+}
+
+const bodyHtml = rewriteInternalLinks(body);
+const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
+---
+
+<Base
+  title={title}
+  description={description}
+  path={slug}
+  lang="en"
+  ogType="article"
+  headerVariant="page"
+  jsonLd={jsonLd}
+>
+  <main id="main">
+
+  <section class="wrap section narrow">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{h1}</h1>
+    <p class="lede"><Fragment set:html={lede} /></p>
+    {plateForm && (
+      <form class="plate" id="plate-form" style="margin-top:1.5rem">
+        <label class="sr" for="plate">Bus number plate</label>
+        <svg class="plate-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off" placeholder="GJ-18-ZT-1028" />
+        <button class="btn primary" type="submit">Track</button>
+      </form>
+    )}
+    <p class="cta-alt">
+      <a class="btn ghost lg" href="https://tracker.shivrajsinh.in">Open the app</a>
+      <span>Free, no account. Search by route if you do not have a bus number.</span>
+    </p>
+  </section>
+
+  <section class="wrap section narrow">
+    <Fragment set:html={bodyHtml} />
+    <AdSlot slot={AD_SLOTS.inContent} label="In-content advertisement" />
+    {relatedLinks.length > 0 && (
+      <>
+        <h2 class="reveal">Related</h2>
+        <ul class="reveal">
+          {relatedLinks.map((r) => <li><a href={r.href} set:html={r.label} /></li>)}
+        </ul>
+      </>
+    )}
+  </section>
+
+  {faq.length > 0 && (
+    <section id="faq" class="band">
+      <div class="wrap section narrow">
+        <h2>Questions people ask</h2>
+        <div class="faq">
+          {faq.map(({ q, a }) => (
+            <details class="reveal" name="faq">
+              <summary set:html={q} />
+              <p set:html={a} />
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <AdSlot slot={AD_SLOTS.afterFaq} label="Advertisement after questions" />
+
+  <section class="wrap section-closer">
+    <div class="closer">
+      <h2>{closerH}</h2>
+      <p class="sub">Type a plate, or search a route. Free, no account.</p>
+      <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open ST Tracker</a>
+    </div>
+  </section>
+
+  </main>
+</Base>
