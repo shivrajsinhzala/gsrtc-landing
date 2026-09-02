@@ -70,7 +70,7 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-bus-fleet',
-    title: 'GSRTC Bus Fleet Size — How Many ST Buses Run in Gujarat | ST Tracker',
+    title: 'GSRTC Fleet Size — How Many ST Buses Run in Gujarat',
     description: 'How many buses GSRTC operates, what a fleet this size means for live tracking coverage, and why not every bus is trackable at once.',
     crumbLabel: 'GSRTC bus fleet',
     h1: 'How big is the GSRTC bus fleet?',
@@ -176,7 +176,7 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-bus-arrival-alerts',
-    title: 'GSRTC Bus Arrival Alerts — Get Notified Before It Reaches You | ST Tracker',
+    title: 'GSRTC Bus Arrival Alerts — Get Notified Before It Arrives',
     description: 'How to set an arrival alert for your GSRTC bus so your phone tells you when it is close, instead of watching the map the whole time.',
     crumbLabel: 'GSRTC bus arrival alerts',
     h1: 'Get an alert before your GSRTC bus arrives',
@@ -227,7 +227,7 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-tracking-app',
-    title: 'GSRTC Live Tracking App — Is There One, and Which to Use | ST Tracker',
+    title: 'GSRTC Live Tracking App — Is There One, and Which to Use',
     description: 'Whether GSRTC has a live tracking app, how it differs from the official booking app, and why ST Tracker needs no install to try.',
     crumbLabel: 'GSRTC tracking app',
     h1: 'Is there a GSRTC live tracking app?',
@@ -251,7 +251,7 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-online-booking-pnr-tracking',
-    title: 'GSRTC Bus Tracking by PNR & Online Ticket Number | ST Tracker',
+    title: 'GSRTC Bus Tracking by PNR & Ticket Number',
     description: 'How to look up and track your booked GSRTC ST bus using your ticket PNR or booking reference without knowing the bus registration plate.',
     crumbLabel: 'GSRTC tracking by PNR',
     h1: 'Track your GSRTC bus using PNR / ticket number',
@@ -456,7 +456,15 @@ const ROUTE_PAIRS = [
   },
 ].map(({ slug, a, b, crumbLabel, extra }) => ({
   slug,
-  title: `${a.name} to ${b.name} ST Bus — Live Tracking & Timetable | ST Tracker`,
+  // 60 characters at the longest real pair (Ahmedabad ↔ Gandhinagar), which is the point:
+  // past roughly that, Google truncates the title in the result and the reader never sees the
+  // half that says what the page offers. The brand suffix was what pushed every one of these
+  // over — Google appends the site name itself for long-tail pages anyway.
+  //
+  // "GSRTC" replaces "ST Bus" here deliberately. Every competing result for these city-pair
+  // queries — abhibus, paytm, goibibo, gsrtchelp — leads with GSRTC, and the old title carried
+  // the term nowhere at all. "ST bus" is still in the H1, the lede and the description.
+  title: `${a.name} to ${b.name} GSRTC Bus Timetable & Live Tracking`,
   description: `Live GSRTC bus tracking and timetable between ${a.name} and ${b.name}, both directions. See running buses now, or search the full schedule.`,
   crumbLabel,
   h1: `${a.name} ↔ ${b.name} ST bus, live`,
@@ -512,14 +520,37 @@ const CITY_ROUTES = {
   ambaji: [CITY.ahmedabad],
 };
 
+/** Name back to key, so a CITY object can be turned into the key its route slug is built from. */
+const CITY_KEY = Object.fromEntries(Object.entries(CITY).map(([k, v]) => [v.name, k]));
+const ROUTE_SLUGS = new Set(ROUTE_PAIRS.map((p) => p.slug));
+
+/**
+ * The route page covering this pair, if one exists — checked in both directions, because a
+ * route page deliberately covers a corridor rather than one direction of it.
+ */
+function routePageSlug(a, b) {
+  const ak = CITY_KEY[a.name];
+  const bk = CITY_KEY[b.name];
+  return [`${ak}-${bk}-bus`, `${bk}-${ak}-bus`].find((s) => ROUTE_SLUGS.has(s)) ?? null;
+}
+
 const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
   const city = CITY[key];
-  const routeLinks = destinations.map((d) => (
-    `<li><a href="${routeUrl(city, d)}">${city.name} → ${d.name}</a></li>`
-  )).join('\n      ');
+  // Where a route page exists for the pair, link to it rather than jumping straight out to the
+  // app. Every one of these used to be an outbound link, which left 12 route pages with no
+  // inbound internal link at all — reachable only from the sitemap, which is the weakest way
+  // for a page to be found and gives it nothing to rank on. The route page carries the app
+  // links itself, so nobody loses a step; they gain the corridor's context on the way.
+  const routeLinks = destinations.map((d) => {
+    const slug = routePageSlug(city, d);
+    const href = slug ? `${slug}.html` : routeUrl(city, d);
+    return `<li><a href="${href}">${city.name} → ${d.name}</a></li>`;
+  }).join('\n      ');
   return {
     slug: `${key}-st-bus-tracker`,
-    title: `${city.name} ST Bus Tracker — Live GSRTC Bus Tracking & Timetable | ST Tracker`,
+    // 57 characters at the longest real city name (Surendranagar) — see the note on the route
+    // title above. Keeps both terms people actually search, "ST bus" and "GSRTC".
+    title: `${city.name} ST Bus Tracker — GSRTC Timetable & Live Map`,
     description: `Track any GSRTC ST bus to or from ${city.name} live on a map, or search the timetable to and from ${city.name}'s stations.`,
     crumbLabel: `${city.name} ST bus tracker`,
     h1: `${city.name} ST bus tracker`,

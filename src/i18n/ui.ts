@@ -231,12 +231,12 @@ export const ui = {
 /** What Google shows in the result, per language. */
 export const meta = {
   "en": {
-    "title": "GSRTC Live Bus Tracking — Track Any Gujarat ST Bus on a Map | ST Tracker",
-    "description": "Track any Gujarat ST (GSRTC) bus live on a map by its number plate. See where it is now, when it reaches your stop, full timetables between any two stations, and alerts before it arrives. Free to use, no account required."
+    "title": "GSRTC Live Bus Tracking — Track Any Gujarat ST Bus on a Map",
+    "description": "Track any Gujarat ST (GSRTC) bus live on a map by its number plate. See where it is now, when it reaches your stop, and full timetables. Free, no account."
   },
   "gu": {
-    "title": "GSRTC લાઈવ બસ ટ્રેકિંગ — કોઈપણ ગુજરાત ST બસ નકશા પર જુઓ | ST Tracker",
-    "description": "નંબર પ્લેટથી કોઈપણ ગુજરાત ST (GSRTC) બસનું લાઈવ લોકેશન નકશા પર જુઓ. બસ અત્યારે ક્યાં છે, તમારા સ્ટોપ પર ક્યારે પહોંચશે, બે સ્ટેશન વચ્ચેનું ટાઈમ ટેબલ અને બસ નજીક આવે ત્યારે અલર્ટ. મફત, જાહેરાત વગર, લોગિન વગર."
+    "title": "GSRTC લાઈવ બસ ટ્રેકિંગ — કોઈપણ ગુજરાત ST બસ નકશા પર જુઓ",
+    "description": "નંબર પ્લેટથી કોઈપણ ગુજરાત ST (GSRTC) બસ લાઈવ નકશા પર જુઓ. બસ ક્યાં છે, તમારા સ્ટોપ પર ક્યારે પહોંચશે, અને ટાઈમ ટેબલ. મફત, લોગિન વગર."
   }
 } as const;
 
