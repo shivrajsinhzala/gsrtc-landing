@@ -1,5 +1,6 @@
 ---
 import { useTranslations, type Locale } from '../i18n/ui';
+import { CITY } from '../data/pages.data.mjs';
 
 interface Props { lang: Locale }
 
@@ -7,6 +8,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const home = lang === 'gu' ? '/gu' : '/';
 const year = new Date().getFullYear();
+// Same reasoning as HomeContent.astro's identical helper: the label localizes even though the
+// footer's corridor links (like the homepage's) point at English-only route pages.
+const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CITY[key].name);
 ---
 
 <footer class="foot">
@@ -24,7 +28,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="foot-col">
-      <h4 class="foot-title"><Fragment set:html={t.footColApp} /></h4>
+      <h3 class="foot-title"><Fragment set:html={t.footColApp} /></h3>
       <ul class="foot-links">
         <li><a href="https://tracker.shivrajsinh.in"><Fragment set:html={t.footOpenApp} /></a></li>
         <li><a href="https://tracker.shivrajsinh.in/#s-routes"><Fragment set:html={t.footTimetables} /></a></li>
@@ -35,19 +39,19 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="foot-col">
-      <h4 class="foot-title"><Fragment set:html={t.footColRoutes} /></h4>
+      <h3 class="foot-title"><Fragment set:html={t.footColRoutes} /></h3>
       <ul class="foot-links">
-        <li><a href="/ahmedabad-rajkot-bus">Ahmedabad ↔ Rajkot</a></li>
-        <li><a href="/rajkot-morbi-bus">Rajkot ↔ Morbi</a></li>
-        <li><a href="/ahmedabad-surat-bus">Ahmedabad ↔ Surat</a></li>
-        <li><a href="/rajkot-jamnagar-bus">Rajkot ↔ Jamnagar</a></li>
-        <li><a href="/ahmedabad-bhuj-bus">Ahmedabad ↔ Bhuj</a></li>
-        <li><a href="/rajkot-junagadh-bus">Rajkot ↔ Junagadh</a></li>
+        <li><a href="/ahmedabad-rajkot-bus">{cityName('ahmedabad')} ↔ {cityName('rajkot')}</a></li>
+        <li><a href="/rajkot-morbi-bus">{cityName('rajkot')} ↔ {cityName('morbi')}</a></li>
+        <li><a href="/ahmedabad-surat-bus">{cityName('ahmedabad')} ↔ {cityName('surat')}</a></li>
+        <li><a href="/rajkot-jamnagar-bus">{cityName('rajkot')} ↔ {cityName('jamnagar')}</a></li>
+        <li><a href="/ahmedabad-bhuj-bus">{cityName('ahmedabad')} ↔ {cityName('bhuj')}</a></li>
+        <li><a href="/rajkot-junagadh-bus">{cityName('rajkot')} ↔ {cityName('junagadh')}</a></li>
       </ul>
     </div>
 
     <div class="foot-col">
-      <h4 class="foot-title"><Fragment set:html={t.footColGuides} /></h4>
+      <h3 class="foot-title"><Fragment set:html={t.footColGuides} /></h3>
       <ul class="foot-links">
         <li><a href="/gsrtc-tracker"><Fragment set:html={t.footG1} /></a></li>
         <li><a href="/gsrtc-live-bus-tracking"><Fragment set:html={t.footG2} /></a></li>
@@ -60,7 +64,7 @@ const year = new Date().getFullYear();
 
   <div class="wrap foot-bottom">
     <div class="foot-bottom-left">
-      <p class="foot-copy">© {year} ST Tracker · Designed &amp; Developed by <a href="https://shivrajsinh.in" target="_blank" rel="noopener">Shivrajsinh Zala</a></p>
+      <p class="foot-copy">© {year} <Fragment set:html={t.footCopyPrefix} /> <a href="https://shivrajsinh.in" target="_blank" rel="noopener">Shivrajsinh Zala</a></p>
       <p class="fine"><Fragment set:html={t.footFine} /></p>
     </div>
     <div class="foot-bottom-right">

@@ -1,5 +1,6 @@
 ---
 import { useTranslations, type Locale } from '../i18n/ui';
+import { CITY } from '../data/pages.data.mjs';
 
 interface Props { lang: Locale }
 
@@ -11,6 +12,13 @@ const t = useTranslations(lang);
 // worse for both the reader and the ranking than an honest English link. See src/i18n/README.md.
 const home = lang === 'gu' ? '/gu' : '/';
 const href = (slug: string) => `/${slug}`;
+
+// The link LABEL is localized even where the destination is not — that is a normal pattern
+// (a Gujarati reader still benefits from a Gujarati label pointing at an English page) and is
+// unrelated to the hreflang/doorway-page concern in src/i18n/README.md, which is about claiming
+// a translated *document* exists. pages.data.mjs already carries a Gujarati name for every
+// city; this was the one thing on the Gujarati homepage that ignored it and stayed English.
+const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CITY[key].name);
 ---
 
 <main id="main">
@@ -34,10 +42,10 @@ const href = (slug: string) => `/${slug}`;
       </form>
 
       <div class="plate-samples">
-        <span>Examples:</span>
+        <span><Fragment set:html={t.examplesLabel} /></span>
         <a href="https://tracker.shivrajsinh.in/?plate=GJ-18-ZT-1028">GJ-18-ZT-1028</a>
         <a href="https://tracker.shivrajsinh.in/?plate=GJ-01-CZ-4521">GJ-01-CZ-4521</a>
-        <a href="https://tracker.shivrajsinh.in/?from=470&amp;to=462&amp;fromName=Rajkot&amp;toName=Morbi">Rajkot ↔ Morbi</a>
+        <a href="https://tracker.shivrajsinh.in/?from=470&amp;to=462&amp;fromName=Rajkot&amp;toName=Morbi">{cityName('rajkot')} ↔ {cityName('morbi')}</a>
       </div>
 
       <p class="cta-alt">
@@ -145,8 +153,8 @@ const href = (slug: string) => `/${slug}`;
   </div>
 </section>
 
-<section class="wrap ad-slot-wrap" aria-label="Advertisement">
-  <p class="ad-label">Advertisement</p>
+<section class="wrap ad-slot-wrap" aria-label={t.adLabel}>
+  <p class="ad-label"><Fragment set:html={t.adLabel} /></p>
   <ins class="adsbygoogle ad-slot"
        style="display:block"
        data-ad-client="ca-pub-7164999486301748"
@@ -205,35 +213,35 @@ const href = (slug: string) => `/${slug}`;
   <h2><Fragment set:html={t.routesH} /></h2>
   <p class="sub"><Fragment set:html={t.routesSub} /></p>
   <ul class="chips" id="route-list">
-    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=15004&amp;fromName=Ahmedabad&amp;toName=Vadodara">Ahmedabad → Vadodara</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=464&amp;fromName=Vadodara&amp;toName=Ahmedabad">Vadodara → Ahmedabad</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=470&amp;fromName=Ahmedabad&amp;toName=Rajkot">Ahmedabad → Rajkot</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=464&amp;fromName=Rajkot&amp;toName=Ahmedabad">Rajkot → Ahmedabad</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=505&amp;fromName=Vadodara&amp;toName=Surat">Vadodara → Surat</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=505&amp;fromName=Ahmedabad&amp;toName=Surat">Ahmedabad → Surat</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=462&amp;fromName=Rajkot&amp;toName=Morbi">Rajkot → Morbi</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=497&amp;fromName=Rajkot&amp;toName=Jamnagar">Rajkot → Jamnagar</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=595&amp;fromName=Ahmedabad&amp;toName=Bhavnagar">Ahmedabad → Bhavnagar</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=438&amp;fromName=Ahmedabad&amp;toName=Gandhinagar">Ahmedabad → Gandhinagar</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=15004&amp;fromName=Ahmedabad&amp;toName=Vadodara">{cityName('ahmedabad')} → {cityName('vadodara')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=464&amp;fromName=Vadodara&amp;toName=Ahmedabad">{cityName('vadodara')} → {cityName('ahmedabad')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=470&amp;fromName=Ahmedabad&amp;toName=Rajkot">{cityName('ahmedabad')} → {cityName('rajkot')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=464&amp;fromName=Rajkot&amp;toName=Ahmedabad">{cityName('rajkot')} → {cityName('ahmedabad')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=505&amp;fromName=Vadodara&amp;toName=Surat">{cityName('vadodara')} → {cityName('surat')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=505&amp;fromName=Ahmedabad&amp;toName=Surat">{cityName('ahmedabad')} → {cityName('surat')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=462&amp;fromName=Rajkot&amp;toName=Morbi">{cityName('rajkot')} → {cityName('morbi')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=497&amp;fromName=Rajkot&amp;toName=Jamnagar">{cityName('rajkot')} → {cityName('jamnagar')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=595&amp;fromName=Ahmedabad&amp;toName=Bhavnagar">{cityName('ahmedabad')} → {cityName('bhavnagar')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=438&amp;fromName=Ahmedabad&amp;toName=Gandhinagar">{cityName('ahmedabad')} → {cityName('gandhinagar')}</a></li>
   </ul>
   <p class="sub" style="margin:1.2rem 0 0"><Fragment set:html={t.routeGuidesLabel} /></p>
   <ul class="chips reveal">
-    <li><a href={href('ahmedabad-vadodara-bus')}>Ahmedabad ↔ Vadodara</a></li>
-    <li><a href={href('ahmedabad-rajkot-bus')}>Ahmedabad ↔ Rajkot</a></li>
-    <li><a href={href('vadodara-surat-bus')}>Vadodara ↔ Surat</a></li>
-    <li><a href={href('rajkot-morbi-bus')}>Rajkot ↔ Morbi</a></li>
-    <li><a href={href('ahmedabad-surat-bus')}>Ahmedabad ↔ Surat</a></li>
-    <li><a href={href('ahmedabad-gandhinagar-bus')}>Ahmedabad ↔ Gandhinagar</a></li>
-    <li><a href={href('ahmedabad-bhavnagar-bus')}>Ahmedabad ↔ Bhavnagar</a></li>
-    <li><a href={href('ahmedabad-mehsana-bus')}>Ahmedabad ↔ Mehsana</a></li>
-    <li><a href={href('ahmedabad-anand-bus')}>Ahmedabad ↔ Anand</a></li>
-    <li><a href={href('ahmedabad-somnath-bus')}>Ahmedabad ↔ Somnath</a></li>
-    <li><a href={href('ahmedabad-dwarka-bus')}>Ahmedabad ↔ Dwarka</a></li>
-    <li><a href={href('rajkot-jamnagar-bus')}>Rajkot ↔ Jamnagar</a></li>
-    <li><a href={href('ahmedabad-bhuj-bus')}>Ahmedabad ↔ Bhuj</a></li>
-    <li><a href={href('rajkot-junagadh-bus')}>Rajkot ↔ Junagadh</a></li>
-    <li><a href={href('rajkot-dwarka-bus')}>Rajkot ↔ Dwarka</a></li>
-    <li><a href={href('rajkot-somnath-bus')}>Rajkot ↔ Somnath</a></li>
+    <li><a href={href('ahmedabad-vadodara-bus')}>{cityName('ahmedabad')} ↔ {cityName('vadodara')}</a></li>
+    <li><a href={href('ahmedabad-rajkot-bus')}>{cityName('ahmedabad')} ↔ {cityName('rajkot')}</a></li>
+    <li><a href={href('vadodara-surat-bus')}>{cityName('vadodara')} ↔ {cityName('surat')}</a></li>
+    <li><a href={href('rajkot-morbi-bus')}>{cityName('rajkot')} ↔ {cityName('morbi')}</a></li>
+    <li><a href={href('ahmedabad-surat-bus')}>{cityName('ahmedabad')} ↔ {cityName('surat')}</a></li>
+    <li><a href={href('ahmedabad-gandhinagar-bus')}>{cityName('ahmedabad')} ↔ {cityName('gandhinagar')}</a></li>
+    <li><a href={href('ahmedabad-bhavnagar-bus')}>{cityName('ahmedabad')} ↔ {cityName('bhavnagar')}</a></li>
+    <li><a href={href('ahmedabad-mehsana-bus')}>{cityName('ahmedabad')} ↔ {cityName('mehsana')}</a></li>
+    <li><a href={href('ahmedabad-anand-bus')}>{cityName('ahmedabad')} ↔ {cityName('anand')}</a></li>
+    <li><a href={href('ahmedabad-somnath-bus')}>{cityName('ahmedabad')} ↔ {cityName('somnath')}</a></li>
+    <li><a href={href('ahmedabad-dwarka-bus')}>{cityName('ahmedabad')} ↔ {cityName('dwarka')}</a></li>
+    <li><a href={href('rajkot-jamnagar-bus')}>{cityName('rajkot')} ↔ {cityName('jamnagar')}</a></li>
+    <li><a href={href('ahmedabad-bhuj-bus')}>{cityName('ahmedabad')} ↔ {cityName('bhuj')}</a></li>
+    <li><a href={href('rajkot-junagadh-bus')}>{cityName('rajkot')} ↔ {cityName('junagadh')}</a></li>
+    <li><a href={href('rajkot-dwarka-bus')}>{cityName('rajkot')} ↔ {cityName('dwarka')}</a></li>
+    <li><a href={href('rajkot-somnath-bus')}>{cityName('rajkot')} ↔ {cityName('somnath')}</a></li>
   </ul>
 </section>
 
@@ -261,51 +269,51 @@ const href = (slug: string) => `/${slug}`;
 
   <p class="sub" style="margin:2.4rem 0 .8rem"><Fragment set:html={t.moreGuidesLabel} /></p>
   <ul class="chips reveal">
-    <li><a href={href('gsrtc-bus-timetable')}>GSRTC bus timetable</a></li>
-    <li><a href={href('gsrtc-online-booking-pnr-tracking')}>Track by PNR</a></li>
-    <li><a href={href('gsrtc-volvo-sleeper-ac-bus-tracking')}>Volvo &amp; AC buses</a></li>
-    <li><a href={href('gsrtc-bus-arrival-alerts')}>Arrival alerts</a></li>
-    <li><a href={href('gsrtc-bus-delay-status')}>Is my bus late?</a></li>
-    <li><a href={href('st-bus-crowd-status')}>How full is my bus?</a></li>
-    <li><a href={href('nearby-st-bus-stops')}>Stops near me</a></li>
-    <li><a href={href('gsrtc-bus-number-plate-format')}>Number plate format</a></li>
-    <li><a href={href('gsrtc-bus-stand-helpline-numbers')}>Depot helpline numbers</a></li>
-    <li><a href={href('gsrtc-bus-fleet')}>The GSRTC fleet</a></li>
-    <li><a href={href('gsrtc-tracking-app')}>Is there a GSRTC app?</a></li>
+    <li><a href={href('gsrtc-bus-timetable')}><Fragment set:html={t.guideChipTimetable} /></a></li>
+    <li><a href={href('gsrtc-online-booking-pnr-tracking')}><Fragment set:html={t.guideChipPnr} /></a></li>
+    <li><a href={href('gsrtc-volvo-sleeper-ac-bus-tracking')}><Fragment set:html={t.guideChipVolvo} /></a></li>
+    <li><a href={href('gsrtc-bus-arrival-alerts')}><Fragment set:html={t.guideChipAlerts} /></a></li>
+    <li><a href={href('gsrtc-bus-delay-status')}><Fragment set:html={t.guideChipDelay} /></a></li>
+    <li><a href={href('st-bus-crowd-status')}><Fragment set:html={t.guideChipCrowd} /></a></li>
+    <li><a href={href('nearby-st-bus-stops')}><Fragment set:html={t.guideChipNearby} /></a></li>
+    <li><a href={href('gsrtc-bus-number-plate-format')}><Fragment set:html={t.guideChipPlateFormat} /></a></li>
+    <li><a href={href('gsrtc-bus-stand-helpline-numbers')}><Fragment set:html={t.guideChipHelpline} /></a></li>
+    <li><a href={href('gsrtc-bus-fleet')}><Fragment set:html={t.guideChipFleet} /></a></li>
+    <li><a href={href('gsrtc-tracking-app')}><Fragment set:html={t.guideChipApp} /></a></li>
   </ul>
 
   <p class="sub" style="margin:2rem 0 .8rem"><Fragment set:html={t.cityGuidesLabel} /></p>
   <ul class="chips reveal">
-    <li><a href={href('ahmedabad-st-bus-tracker')}>Ahmedabad</a></li>
-    <li><a href={href('surat-st-bus-tracker')}>Surat</a></li>
-    <li><a href={href('vadodara-st-bus-tracker')}>Vadodara</a></li>
-    <li><a href={href('rajkot-st-bus-tracker')}>Rajkot</a></li>
-    <li><a href={href('bhavnagar-st-bus-tracker')}>Bhavnagar</a></li>
-    <li><a href={href('jamnagar-st-bus-tracker')}>Jamnagar</a></li>
-    <li><a href={href('gandhinagar-st-bus-tracker')}>Gandhinagar</a></li>
-    <li><a href={href('junagadh-st-bus-tracker')}>Junagadh</a></li>
-    <li><a href={href('bhuj-st-bus-tracker')}>Bhuj</a></li>
-    <li><a href={href('morbi-st-bus-tracker')}>Morbi</a></li>
-    <li><a href={href('mehsana-st-bus-tracker')}>Mehsana</a></li>
-    <li><a href={href('anand-st-bus-tracker')}>Anand</a></li>
-    <li><a href={href('nadiad-st-bus-tracker')}>Nadiad</a></li>
-    <li><a href={href('bharuch-st-bus-tracker')}>Bharuch</a></li>
-    <li><a href={href('vapi-st-bus-tracker')}>Vapi</a></li>
-    <li><a href={href('valsad-st-bus-tracker')}>Valsad</a></li>
-    <li><a href={href('navsari-st-bus-tracker')}>Navsari</a></li>
-    <li><a href={href('porbandar-st-bus-tracker')}>Porbandar</a></li>
-    <li><a href={href('somnath-st-bus-tracker')}>Somnath</a></li>
-    <li><a href={href('dwarka-st-bus-tracker')}>Dwarka</a></li>
-    <li><a href={href('palanpur-st-bus-tracker')}>Palanpur</a></li>
-    <li><a href={href('surendranagar-st-bus-tracker')}>Surendranagar</a></li>
-    <li><a href={href('amreli-st-bus-tracker')}>Amreli</a></li>
-    <li><a href={href('godhra-st-bus-tracker')}>Godhra</a></li>
-    <li><a href={href('ambaji-st-bus-tracker')}>Ambaji</a></li>
+    <li><a href={href('ahmedabad-st-bus-tracker')}>{cityName('ahmedabad')}</a></li>
+    <li><a href={href('surat-st-bus-tracker')}>{cityName('surat')}</a></li>
+    <li><a href={href('vadodara-st-bus-tracker')}>{cityName('vadodara')}</a></li>
+    <li><a href={href('rajkot-st-bus-tracker')}>{cityName('rajkot')}</a></li>
+    <li><a href={href('bhavnagar-st-bus-tracker')}>{cityName('bhavnagar')}</a></li>
+    <li><a href={href('jamnagar-st-bus-tracker')}>{cityName('jamnagar')}</a></li>
+    <li><a href={href('gandhinagar-st-bus-tracker')}>{cityName('gandhinagar')}</a></li>
+    <li><a href={href('junagadh-st-bus-tracker')}>{cityName('junagadh')}</a></li>
+    <li><a href={href('bhuj-st-bus-tracker')}>{cityName('bhuj')}</a></li>
+    <li><a href={href('morbi-st-bus-tracker')}>{cityName('morbi')}</a></li>
+    <li><a href={href('mehsana-st-bus-tracker')}>{cityName('mehsana')}</a></li>
+    <li><a href={href('anand-st-bus-tracker')}>{cityName('anand')}</a></li>
+    <li><a href={href('nadiad-st-bus-tracker')}>{cityName('nadiad')}</a></li>
+    <li><a href={href('bharuch-st-bus-tracker')}>{cityName('bharuch')}</a></li>
+    <li><a href={href('vapi-st-bus-tracker')}>{cityName('vapi')}</a></li>
+    <li><a href={href('valsad-st-bus-tracker')}>{cityName('valsad')}</a></li>
+    <li><a href={href('navsari-st-bus-tracker')}>{cityName('navsari')}</a></li>
+    <li><a href={href('porbandar-st-bus-tracker')}>{cityName('porbandar')}</a></li>
+    <li><a href={href('somnath-st-bus-tracker')}>{cityName('somnath')}</a></li>
+    <li><a href={href('dwarka-st-bus-tracker')}>{cityName('dwarka')}</a></li>
+    <li><a href={href('palanpur-st-bus-tracker')}>{cityName('palanpur')}</a></li>
+    <li><a href={href('surendranagar-st-bus-tracker')}>{cityName('surendranagar')}</a></li>
+    <li><a href={href('amreli-st-bus-tracker')}>{cityName('amreli')}</a></li>
+    <li><a href={href('godhra-st-bus-tracker')}>{cityName('godhra')}</a></li>
+    <li><a href={href('ambaji-st-bus-tracker')}>{cityName('ambaji')}</a></li>
   </ul>
 </section>
 
-<section class="wrap ad-slot-wrap" aria-label="Advertisement">
-  <p class="ad-label">Advertisement</p>
+<section class="wrap ad-slot-wrap" aria-label={t.adLabel}>
+  <p class="ad-label"><Fragment set:html={t.adLabel} /></p>
   <ins class="adsbygoogle ad-slot"
        style="display:block"
        data-ad-client="ca-pub-7164999486301748"

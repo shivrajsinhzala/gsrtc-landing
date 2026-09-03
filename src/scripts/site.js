@@ -49,6 +49,14 @@ function applyTheme(mode) {
   document.head.appendChild(meta);
 
   try { localStorage.setItem('st.landing.theme', mode); } catch { /* private mode */ }
+
+  // The icon alone cannot say which of the three states is active, and screen readers get
+  // nothing at all from it. Kept in English rather than pulled from the page dictionary: this
+  // script is the one thing shared byte-for-byte between the English and Gujarati documents,
+  // and it has no access to either page's translation table at runtime.
+  const label = mode === 'auto' ? 'Theme: automatic (follows your device)'
+    : mode === 'dark' ? 'Theme: dark' : 'Theme: light';
+  document.getElementById('theme-btn')?.setAttribute('aria-label', label);
 }
 
 function initTheme() {
@@ -60,11 +68,18 @@ function initTheme() {
   document.getElementById('theme-btn')?.addEventListener('click', () => {
     let current = 'auto';
     try { current = localStorage.getItem('st.landing.theme') || 'auto'; } catch { /* ignore */ }
-    // From "auto", the first press should visibly change something — so it jumps to the
-    // opposite of what is on screen, not to the next name in the list.
-    const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-    const next = current === 'auto' ? (dark ? 'light' : 'dark')
-      : current === 'dark' ? 'light' : 'dark';
+    // A full 3-state cycle, not light<->dark with auto as a one-time-only first stop. That was
+    // the previous behaviour — verified by clicking through it, "auto" became unreachable after
+    // a single press and stayed that way until localStorage was cleared, which defeats the
+    // entire reason this is three states rather than two (see the comment above THEMES).
+    //
+    // The one thing worth keeping from the old logic: leaving "auto" should visibly change
+    // something, so the first step away from it goes to whichever theme is NOT what the system
+    // is currently showing, not to a fixed name. matchMedia is re-read on every click rather
+    // than cached, so the order self-corrects if the OS theme changes mid-session.
+    const systemDark = matchMedia('(prefers-color-scheme: dark)').matches;
+    const cycle = systemDark ? ['auto', 'light', 'dark'] : ['auto', 'dark', 'light'];
+    const next = cycle[(cycle.indexOf(current) + 1) % cycle.length];
     applyTheme(next);
   });
 }

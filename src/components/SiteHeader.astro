@@ -20,7 +20,7 @@ const home = lang === 'gu' ? '/gu' : '/';
 const showLangSwitch = variant === 'home';
 ---
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main"><Fragment set:html={t.skipToContent} /></a>
 
 <header class="bar">
   <a class="brand" href={home} aria-label="ST Tracker home">

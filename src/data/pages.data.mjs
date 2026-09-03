@@ -7,7 +7,9 @@
 
 const APP = 'https://tracker.shivrajsinh.in';
 
-const CITY = {
+// Exported so the homepage's city and route link labels (HomeContent.astro) can show a city's
+// Gujarati name on /gu without duplicating this list — every city here already carries one.
+export const CITY = {
   ahmedabad: { name: 'Ahmedabad', id: 464, guj: 'અમદાવાદ' },
   surat: { name: 'Surat', id: 505, guj: 'સુરત' },
   vadodara: { name: 'Vadodara', id: 15004, guj: 'વડોદરા' },

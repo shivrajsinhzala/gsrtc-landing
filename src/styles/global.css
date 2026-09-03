@@ -17,6 +17,12 @@
   --brand-ink: #ffffff;
   --brand-soft: #eff6ff;
   --brand-soft-ink: #1e40af;
+  /* Same as --brand in light mode. Exists because dark mode needs a *different* blue for the
+     two jobs --brand does: lighter as link text on a dark page (reads well), but the same
+     lightened blue as a filled button's background drops white text to 3.68:1 against the 4.5
+     minimum — measured, not estimated. Buttons pin to this pair in both themes instead. */
+  --brand-btn: var(--brand);
+  --brand-btn-hover: var(--brand-2);
 
   --accent: #d97706;
   --live: #059669;
@@ -62,6 +68,10 @@
     --brand-ink: #ffffff;
     --brand-soft: rgba(59, 130, 246, 0.14);
     --brand-soft-ink: #93c5fd;
+    /* Pinned to the light-mode blue rather than the lightened --brand above: white text on
+       #3b82f6 measures 3.68:1, on #2563eb it measures 5.17:1. */
+    --brand-btn: #2563eb;
+    --brand-btn-hover: #1d4ed8;
     --accent: #f59e0b;
     --live: #10b981;
     --live-dot: #10b981;
@@ -89,6 +99,8 @@
   --brand-ink: #ffffff;
   --brand-soft: rgba(59, 130, 246, 0.14);
   --brand-soft-ink: #93c5fd;
+  --brand-btn: #2563eb;
+  --brand-btn-hover: #1d4ed8;
   --accent: #f59e0b;
   --live: #10b981;
   --live-dot: #10b981;
@@ -102,6 +114,18 @@
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* The only focus styling that existed before this was the skip link and the search field's own
+   :focus-within ring — everything else (nav, theme button, language switch, every CTA, FAQ
+   summaries, footer links) fell back to the browser default. Chrome's own default ring does
+   render there (verified with real Tab presses, not just a programmatic .focus() call, which
+   does not reliably trigger :focus-visible the same way), so this was polish rather than a
+   failure — but it means focus looked different per browser on a site whose every other state
+   is tokenised. Mirrors the tracker app's own identical rule. */
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -143,7 +167,7 @@ a { color: inherit; }
 .skip:focus {
   position: fixed; z-index: 99; top: 12px; left: 12px; width: auto; height: auto;
   clip: auto; clip-path: none; padding: .6rem 1rem; border-radius: var(--r-sm);
-  background: var(--brand); color: var(--brand-ink);
+  background: var(--brand-btn); color: var(--brand-ink);
 }
 
 /* ------------------------------------------------------------------ buttons */
@@ -157,8 +181,8 @@ a { color: inherit; }
               background var(--fast) var(--ease), border-color var(--fast) var(--ease);
   min-height: var(--tap);
 }
-.btn.primary { background: var(--brand); color: var(--brand-ink); box-shadow: var(--shadow-2); }
-.btn.primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-3); background: var(--brand-2); }
+.btn.primary { background: var(--brand-btn); color: var(--brand-ink); box-shadow: var(--shadow-2); }
+.btn.primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-3); background: var(--brand-btn-hover); }
 .btn.primary:active { transform: translateY(0); }
 .btn.sm { --pad: .5rem 1.1rem; min-height: 38px; font-size: .88rem; }
 .btn.ghost {
@@ -196,23 +220,47 @@ a { color: inherit; }
   .bar { gap: .35rem; }
   .brand { font-size: .88rem; gap: .35rem; }
   .brand img, .brand svg { width: 28px; height: 28px; }
-  .lang button, .lang a { padding: .25rem .45rem; font-size: .76rem; }
+  /* min-height only, not min-width: taller is free (the header only ever risked overflowing
+     sideways, never vertically), so this is a same-width comfort gain — 33px measured before,
+     still short of the 44px target. */
+  .lang button, .lang a { padding: .25rem .45rem; font-size: .76rem; min-height: 36px; }
   .bar-end .btn { padding: .45rem .7rem; font-size: .8rem; }
   /* "Open the app" -> "Open": at this width the full label was the single biggest cause of the
      header overflowing its own viewport (measured 401px of content in a 375px window), pushing
      the CTA itself off-screen. "Open" still reads clearly as the button next to the app's own
      logo. Gujarati's translation of this string is already short enough not to need this. */
   .hdr-cta-rest { display: none; }
-  .theme-btn { width: 32px; height: 32px; }
+  .theme-btn { width: 36px; height: 36px; }
 }
 @media (max-width: 360px) {
   .bar { padding-inline: .5rem; gap: .25rem; }
   .bar-end { gap: .25rem; }
   .bar-end .btn { padding: .4rem .55rem; font-size: .74rem; }
-  .theme-btn { width: 32px; height: 32px; }
-  .lang button, .lang a { padding: .2rem .35rem; font-size: .72rem; }
+  /* Narrower than the 480px tier above, so a smaller height gain — width here is genuinely
+     tight down to 320px, and this stays a same-width, height-only change either way. */
+  .theme-btn { width: 34px; height: 34px; }
+  .lang button, .lang a { padding: .2rem .35rem; font-size: .72rem; min-height: 34px; }
 }
 @media (min-width: 900px) { .bar-nav { display: flex; } .bar-end { margin-left: 0; } }
+
+/* Below 900px the section nav (Features / How it works / Routes / Guides / FAQ) used to just
+   disappear — `.bar-nav{display:none}` above with nothing standing in for it — so on a page
+   this long, a phone or tablet visitor had no way to reach any section except scrolling past
+   everything ahead of it. This puts the same links back as a second, horizontally-scrollable
+   row under the header rather than building a separate drawer/hamburger pattern: it is the
+   smaller change, and it keeps every link one tap away instead of two. */
+@media (max-width: 899px) {
+  .bar { flex-wrap: wrap; row-gap: 0; }
+  .bar-end { order: 2; }
+  .bar-nav {
+    display: flex; order: 3; flex: 1 1 100%;
+    gap: 1.35rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    margin-top: .6rem; padding: .6rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .bar-nav::-webkit-scrollbar { display: none; }
+  .bar-nav a { flex: none; white-space: nowrap; }
+}
 
 .lang { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; border: 1px solid var(--line); }
 /* Anchors as well as buttons: the switch is two real links now that each language is its own
@@ -317,6 +365,10 @@ a { color: inherit; }
   color: var(--brand); background: var(--surface-2);
   border: 1px solid var(--line); padding: .2rem .6rem; border-radius: 999px;
   text-decoration: none; font-weight: 650;
+  /* min-height rather than more padding: these are meant to read as light inline suggestions,
+     not full buttons, so the visual size stays put and only the tappable area grows — measured
+     at 30px before this, under the 44px comfort target (still cleared WCAG's 24px minimum). */
+  display: inline-flex; align-items: center; min-height: 36px; box-sizing: border-box;
   transition: background var(--fast) var(--ease), border-color var(--fast) var(--ease);
 }
 .plate-samples a:hover { background: var(--brand-soft); border-color: var(--brand); }
@@ -438,7 +490,7 @@ a { color: inherit; }
   transform: translateY(-5px); box-shadow: var(--shadow-3);
   border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
 }
-.card:hover .card-icon { background: var(--brand); color: var(--brand-ink); transform: scale(1.05); }
+.card:hover .card-icon { background: var(--brand-btn); color: var(--brand-ink); transform: scale(1.05); }
 .card h3 { color: var(--ink); font-size: 1.15rem; font-weight: 750; margin-bottom: .6rem; }
 .card p { margin: 0; font-size: .95rem; color: var(--ink-2); line-height: 1.6; }
 .card h3 a { text-decoration: none; color: inherit; }
@@ -457,7 +509,7 @@ a { color: inherit; }
 .steps li::before {
   content: counter(s); position: absolute; left: 1.3rem; top: 1.5rem;
   width: 2.2rem; height: 2.2rem; display: grid; place-items: center;
-  background: var(--brand); color: var(--brand-ink);
+  background: var(--brand-btn); color: var(--brand-ink);
   border-radius: 50%; font-weight: 850; font-size: 1rem;
 }
 .steps b { display: block; margin-bottom: .35rem; font-size: 1.08rem; color: var(--ink); }
@@ -678,16 +730,32 @@ ins.adsbygoogle {
 }
 
 /* ------------------------------------------------------------------ motion */
+/* Visible by default: a page whose script fails to run must still show all of its content
+   rather than a column of elements a dead IntersectionObserver never uncovers.
+   `.js` is added to <html> before anything else in site.js runs, so it is only *inside* that
+   scope that a .reveal starts hidden — the fade-in is something a working script opts into,
+   never a default the markup imposes on itself.
+   (Restored: this pair of rules was hollowed out to `opacity:1;transform:none` with no `.in`
+   counterpart at some point before the Astro migration — carried across unchanged in the port,
+   confirmed by diff against the pre-migration file — leaving initReveals() toggle a class every
+   scroll for a stylesheet that did nothing with it.) */
 .reveal { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: no-preference) {
-  .reveal {
-    transition: transform var(--mid) var(--ease), box-shadow var(--mid) var(--ease);
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity var(--mid) var(--ease), transform var(--mid) var(--ease), box-shadow var(--mid) var(--ease);
   }
+  .js .reveal.in { opacity: 1; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .phone, .route .road-done, .bus-marker, .dot.live { animation: none; }
+  /* .live-dot-pulse joins the four already here: the "Free · Real-Time GPS" pill and the
+     footer's "Live GPS Network Active" badge were the one infinite animation on the page this
+     query did not reach, so a reduced-motion visitor got everything else settled and one dot
+     still pulsing forever. */
+  .phone, .route .road-done, .bus-marker, .dot.live, .live-dot-pulse { animation: none; }
   .route .road-done { stroke-dashoffset: 150; }
   .bus-marker { offset-distance: 68%; }
   .btn.primary:hover, .card:hover, .chips a:hover { transform: none; }
