@@ -1,6 +1,7 @@
 # gsrtc.shivrajsinh.in — ST Tracker's marketing and SEO site
 
-Astro, static output, deployed to Cloudflare Pages. This domain never runs the tracker itself, on
+Astro, static output, deployed over SSH to nginx on the tracker's own Oracle Cloud VM (Cloudflare
+is DNS + CDN only, not Pages — see Deploy below). This domain never runs the tracker itself, on
 purpose: every CTA links out to **tracker.shivrajsinh.in**. If a page here ever starts to feel
 like the app rather than an advertisement for it, that is the bug to fix — nothing here should
 try to show a live bus.
@@ -67,16 +68,17 @@ no `hreflang` and no `/gu/` route. The reasoning, and what to do when a page doe
 translated, is in [`src/i18n/README.md`](src/i18n/README.md). Read it before adding a Gujarati
 URL for anything — the wrong move there actively hurts the pages this site exists to rank.
 
-## Deploy (Cloudflare Pages)
+## Deploy (self-hosted nginx, NOT Cloudflare Pages)
 
-| Setting | Value |
-|---|---|
-| Build command | `npm run build` |
-| Output directory | `dist` |
-| Node version | 20 or newer |
+This site is built locally and shipped over SSH to `/var/www/gsrtc-astro` on the same Oracle
+Cloud VM that runs the tracker app. Cloudflare sits in front as DNS + CDN only — there is no
+Cloudflare Pages project, no CI, no git push that triggers a deploy. See
+[`deploy/README.md`](deploy/README.md) for the actual commands, the live nginx config
+(`deploy/nginx-gsrtc.conf`), and the rollback procedure.
 
-`public/_headers` (security headers + CSP + caching) and `public/_redirects` are copied into
-`dist/` by Astro and read by Cloudflare Pages directly.
+`public/_headers` and `public/_redirects` are Cloudflare Pages/Netlify convention and are
+excluded from what actually ships — nginx's own config carries the equivalent headers, and
+`nginx-gsrtc.conf`'s `try_files` handles routing instead of `_redirects`.
 
 After the first deploy, submit `https://gsrtc.shivrajsinh.in/sitemap-index.xml` in Search
 Console. Note the filename changed — the old site served `sitemap.xml`, Astro's integration
