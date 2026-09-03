@@ -81,6 +81,9 @@ const htmlLang = lang === 'gu' ? 'gu-IN' : 'en-IN';
 <meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)" />
 <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
 <link rel="icon" href="/icons/favicon.png" sizes="32x32" />
+{/* Google's favicon crawler doesn't read SVG and recommends 48x48+ for the PNG it falls back
+    to — the 32x32 above is for browser tabs/bookmarks, this is the one Search actually wants. */}
+<link rel="icon" href="/icons/icon-192.png" sizes="192x192" type="image/png" />
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
 <link rel="preconnect" href="https://tracker.shivrajsinh.in" />
 <link rel="dns-prefetch" href="https://tracker.shivrajsinh.in" />
