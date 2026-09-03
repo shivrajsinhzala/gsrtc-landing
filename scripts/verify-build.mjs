@@ -34,14 +34,20 @@ const redirectFrom = new Set(
     .map((l) => l.trim().split(/\s+/)[0]),
 );
 
+// build.format: 'file' (astro.config.mjs) — `/foo` is the flat file `foo.html`, not
+// `foo/index.html`. Only the true root keeps the `index.html` name, since a file can't be
+// named "" before its extension.
 const builtPaths = new Set();
 (function walk(dir, prefix = '') {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(full, `${prefix}/${entry.name}`);
     else if (entry.name === 'index.html') builtPaths.add(prefix || '/');
+    else if (entry.name.endsWith('.html')) builtPaths.add(`${prefix}/${entry.name.slice(0, -'.html'.length)}`);
   }
 })(DIST);
+
+const fileFor = (p) => path.join(DIST, p === '/' ? 'index.html' : `${p}.html`);
 
 if (fs.existsSync(LEGACY_SITEMAP)) {
   const legacyUrls = [...fs.readFileSync(LEGACY_SITEMAP, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)]
@@ -66,7 +72,7 @@ if (fs.existsSync(LEGACY_SITEMAP)) {
 let htmlHrefCount = 0;
 const offenders = new Set();
 for (const p of builtPaths) {
-  const file = path.join(DIST, p === '/' ? '' : p, 'index.html');
+  const file = fileFor(p);
   const html = fs.readFileSync(file, 'utf8');
   for (const m of html.matchAll(/href="(?!https?:|\/\/)([^"]*?\.html)"/g)) {
     htmlHrefCount++;
@@ -80,7 +86,7 @@ if (htmlHrefCount) {
 // --- 3. Canonicals are absolute, extensionless, and self-referential --------------------
 let canonicalIssues = 0;
 for (const p of builtPaths) {
-  const file = path.join(DIST, p === '/' ? '' : p, 'index.html');
+  const file = fileFor(p);
   const html = fs.readFileSync(file, 'utf8');
   const m = html.match(/<link rel="canonical" href="([^"]+)"/);
   if (!m) { fail(`no canonical on ${p}`); canonicalIssues++; continue; }
@@ -93,7 +99,7 @@ if (!canonicalIssues) pass(`every page carries a correct self-referential canoni
 const translated = new Set(['/', '/gu']);
 let hreflangIssues = 0;
 for (const p of builtPaths) {
-  const file = path.join(DIST, p === '/' ? '' : p, 'index.html');
+  const file = fileFor(p);
   const html = fs.readFileSync(file, 'utf8');
   const has = html.includes('hreflang="gu-IN"');
   if (has && !translated.has(p)) { fail(`${p} declares a Gujarati alternate but has no translation`); hreflangIssues++; }
@@ -102,7 +108,7 @@ for (const p of builtPaths) {
 if (!hreflangIssues) pass('hreflang is declared on exactly the pages that are translated');
 
 // --- 5. The Gujarati homepage is actually Gujarati before any JS ------------------------
-const gu = fs.readFileSync(path.join(DIST, 'gu', 'index.html'), 'utf8');
+const gu = fs.readFileSync(fileFor('/gu'), 'utf8');
 if (!/[઀-૿]/.test(gu)) fail('/gu contains no Gujarati characters in its served HTML');
 else if (!/<html[^>]+lang="gu-IN"/.test(gu)) fail('/gu does not declare lang="gu-IN"');
 else pass('/gu is served as Gujarati HTML with lang="gu-IN" (no JS required)');
