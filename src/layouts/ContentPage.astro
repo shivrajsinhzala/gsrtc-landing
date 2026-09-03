@@ -36,7 +36,22 @@ const {
 } = Astro.props;
 
 const SITE = 'https://gsrtc.shivrajsinh.in';
-const AD_SLOTS = { inContent: '8460038937', afterFaq: '4425907657' };
+/*
+ * One unit per page, deliberately.
+ *
+ * These pages are short — the median body is 921 characters and 65 of the 66 are under 1,500,
+ * so about 150 words. Two manual units plus Auto Ads on a page that length is more advertisement
+ * than article, and the numbers said so: between 2 and 3 September impressions went 603 -> 2,233
+ * while impression RPM fell $0.49 -> $0.17 and Active View viewability fell 69% -> 46%. Earnings
+ * only rose because traffic rose; each impression was worth a third as much and over half were
+ * never seen.
+ *
+ * The unit that went was the one after the FAQ: it sat below a `<details>` accordion that is
+ * collapsed by default, near the bottom of an already short page, which is exactly the placement
+ * that produces an impression nobody looks at. Slot 4425907657 is retired rather than moved —
+ * this page does not have the length to carry a second one anywhere.
+ */
+const AD_SLOTS = { inContent: '8460038937' };
 
 const jsonLd: unknown[] = [
   {
@@ -125,7 +140,6 @@ const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
     </section>
   )}
 
-  <AdSlot slot={AD_SLOTS.afterFaq} label="Advertisement after questions" />
 
   <section class="wrap section-closer">
     <div class="closer">
