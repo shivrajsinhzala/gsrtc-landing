@@ -36,6 +36,10 @@ export const CITY = {
   surendranagar: { name: 'Surendranagar', id: 705, guj: 'સુરેન્દ્રનગર' },
   amreli: { name: 'Amreli', id: 931, guj: 'અમરેલી' },
   ambaji: { name: 'Ambaji', id: 603, guj: 'અંબાજી' },
+  // Station id verified against scripts/seed-stations.json: "Diu", id 1193, hub city "Una".
+  // Only paired with Rajkot below — see the note by ROUTE_PAIRS for why Ahmedabad/Vadodara/Surat
+  // pairings (and Kevadia entirely) were tried and dropped.
+  diu: { name: 'Diu', id: 1193, guj: 'દીવ' },
 };
 
 /** `&amp;` because this is dropped straight into an href="…" attribute. */
@@ -456,6 +460,19 @@ const ROUTE_PAIRS = [
     slug: 'bhavnagar-amreli-bus', a: CITY.bhavnagar, b: CITY.amreli,
     crumbLabel: 'Bhavnagar ↔ Amreli ST bus',
   },
+  // Diu: coastal Union Territory, reached by GSRTC via Una. Kevadia (the Statue of Unity) was
+  // tried here too — real tourist search volume, and a verified station id (2515, "Statue of
+  // Unity (Navagam)") — but every from/to combination the operator's own live search offers
+  // (both station-name variants it returns, from Ahmedabad, Vadodara and Surat, today and
+  // tomorrow) came back "No buses found". Kevadia's ST service, if it runs at all, is not
+  // registered in GetSourceDestinationWiseBusList_V1 the way every other page's is, so shipping
+  // it here would put a page's whole reason to exist — the "track this route" button — in front
+  // of a rider with nothing behind it. Don't re-add it without first confirming a real trip
+  // resolves in the app itself, the way the Diu pair below was checked before being kept.
+  {
+    slug: 'rajkot-diu-bus', a: CITY.rajkot, b: CITY.diu,
+    crumbLabel: 'Rajkot ↔ Diu ST bus',
+  },
 ].map(({ slug, a, b, crumbLabel, extra }) => ({
   slug,
   // 60 characters at the longest real pair (Ahmedabad ↔ Gandhinagar), which is the point:
@@ -498,7 +515,7 @@ const CITY_ROUTES = {
   ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji],
   surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar],
   vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra],
-  rajkot: [CITY.ahmedabad, CITY.morbi, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar],
+  rajkot: [CITY.ahmedabad, CITY.morbi, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu],
   bhavnagar: [CITY.ahmedabad, CITY.surat, CITY.rajkot, CITY.amreli],
   jamnagar: [CITY.rajkot, CITY.dwarka],
   gandhinagar: [CITY.ahmedabad, CITY.mehsana],
@@ -520,6 +537,7 @@ const CITY_ROUTES = {
   surendranagar: [CITY.ahmedabad, CITY.rajkot],
   amreli: [CITY.bhavnagar, CITY.rajkot],
   ambaji: [CITY.ahmedabad],
+  diu: [CITY.rajkot],
 };
 
 /** Name back to key, so a CITY object can be turned into the key its route slug is built from. */
