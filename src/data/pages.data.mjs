@@ -23,6 +23,13 @@ export const CITY = {
   mehsana: { name: 'Mehsana', id: 711, guj: 'મહેસાણા' },
   vapi: { name: 'Vapi', id: 585, guj: 'વાપી' },
   valsad: { name: 'Valsad', id: 543, guj: 'વલસાડ' },
+  // Endpoints added for route pages only — they are deliberately absent from CITY_ROUTES, so no
+  // city page is generated for them. Each was picked from the tracker's own search log and then
+  // checked against its own timetable data before being added, per the Kevadia note below:
+  // Khergam (41 buses on the Valsad pair), Mandvi (44 to Bhuj), Tankara (80 to Rajkot).
+  khergam: { name: 'Khergam', id: 1807, guj: 'ખેરગામ' },
+  mandvi: { name: 'Mandvi', id: 1083, guj: 'માંડવી(ભુજ)' },
+  tankara: { name: 'Tankara', id: 1702, guj: 'ટંકારા' },
   navsari: { name: 'Navsari', id: 510, guj: 'નવસારી' },
   anand: { name: 'Anand', id: 676, guj: 'આણંદ' },
   nadiad: { name: 'Nadiad', id: 525, guj: 'નડિયાદ' },
@@ -472,6 +479,44 @@ const ROUTE_PAIRS = [
   {
     slug: 'rajkot-diu-bus', a: CITY.rajkot, b: CITY.diu,
     crumbLabel: 'Rajkot ↔ Diu ST bus',
+  },
+  /*
+   * Added from demand the app itself measured, not from a keyword tool.
+   *
+   * `timetable_searches` records every route a rider actually asked for and how many buses came
+   * back, so a gap here is a query people are already making that this site had no page for —
+   * and the same row proves the operator has services on it, which is the check the Kevadia note
+   * above exists to enforce. Searches / most buses seen, over the eleven days to 3 September:
+   *
+   *   Valsad ↔ Vapi        92 searches, up to 74 buses   — the largest uncovered corridor
+   *   Valsad ↔ Khergam     44 searches, up to 41 buses
+   *   Ahmedabad ↔ Morbi    24 searches, up to 23 buses   — Morbi is the 3rd most searched city
+   *   Bhuj ↔ Mandvi        20 searches, up to 44 buses
+   *   Rajkot ↔ Tankara     15 searches, up to 80 buses
+   *
+   * Two others cleared the search threshold and were deliberately left out: Ahmedabad → Mendarda
+   * (2 buses at best) and Chitrod → Mehsana (1). A corridor with one bus on it does not deserve
+   * a page promising a timetable.
+   */
+  {
+    slug: 'valsad-vapi-bus', a: CITY.valsad, b: CITY.vapi,
+    crumbLabel: 'Valsad ↔ Vapi ST bus',
+  },
+  {
+    slug: 'valsad-khergam-bus', a: CITY.valsad, b: CITY.khergam,
+    crumbLabel: 'Valsad ↔ Khergam ST bus',
+  },
+  {
+    slug: 'ahmedabad-morbi-bus', a: CITY.ahmedabad, b: CITY.morbi,
+    crumbLabel: 'Ahmedabad ↔ Morbi ST bus',
+  },
+  {
+    slug: 'bhuj-mandvi-bus', a: CITY.bhuj, b: CITY.mandvi,
+    crumbLabel: 'Bhuj ↔ Mandvi ST bus',
+  },
+  {
+    slug: 'rajkot-tankara-bus', a: CITY.rajkot, b: CITY.tankara,
+    crumbLabel: 'Rajkot ↔ Tankara ST bus',
   },
 ].map(({ slug, a, b, crumbLabel, extra }) => ({
   slug,
