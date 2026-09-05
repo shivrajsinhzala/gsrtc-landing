@@ -23,9 +23,11 @@ export const CITY = {
   mehsana: { name: 'Mehsana', id: 711, guj: 'મહેસાણા' },
   vapi: { name: 'Vapi', id: 585, guj: 'વાપી' },
   valsad: { name: 'Valsad', id: 543, guj: 'વલસાડ' },
-  // Endpoints added for route pages only — they are deliberately absent from CITY_ROUTES, so no
-  // city page is generated for them. Each was picked from the tracker's own search log and then
-  // checked against its own timetable data before being added, per the Kevadia note below:
+  // Endpoints added for route pages only — they are deliberately absent from CITY_ROUTES's
+  // *keys*, so no city page is generated for them. They do appear as destinations of the hub
+  // they pair with, which is what gives their route page an inbound link. Each was picked from
+  // the tracker's own search log and then checked against its own timetable data before being
+  // added, per the Kevadia note below:
   // Khergam (41 buses on the Valsad pair), Mandvi (44 to Bhuj), Tankara (80 to Rajkot).
   khergam: { name: 'Khergam', id: 1807, guj: 'ખેરગામ' },
   mandvi: { name: 'Mandvi', id: 1083, guj: 'માંડવી(ભુજ)' },
@@ -348,6 +350,45 @@ const FEATURE_PAGES = [
   },
 ];
 
+/**
+ * City hub pages — maps verified destinations per regional hub.
+ *
+ * Declared above ROUTE_PAIRS because a route page has to know whether its endpoints have a
+ * hub page before it can link to one: only the keys here become /<city>-st-bus-tracker, and
+ * a route page that linked to one of the others shipped a hard 404.
+ */
+const CITY_ROUTES = {
+  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji],
+  surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar],
+  vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra],
+  rajkot: [CITY.ahmedabad, CITY.morbi, CITY.tankara, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu],
+  bhavnagar: [CITY.ahmedabad, CITY.surat, CITY.rajkot, CITY.amreli],
+  jamnagar: [CITY.rajkot, CITY.dwarka],
+  gandhinagar: [CITY.ahmedabad, CITY.mehsana],
+  junagadh: [CITY.rajkot, CITY.somnath],
+  bhuj: [CITY.ahmedabad, CITY.rajkot, CITY.mandvi],
+  morbi: [CITY.rajkot, CITY.ahmedabad],
+  mehsana: [CITY.ahmedabad, CITY.palanpur],
+  vapi: [CITY.surat, CITY.valsad],
+  valsad: [CITY.vapi, CITY.surat, CITY.khergam],
+  navsari: [CITY.surat],
+  anand: [CITY.ahmedabad, CITY.vadodara],
+  nadiad: [CITY.ahmedabad, CITY.anand],
+  bharuch: [CITY.vadodara, CITY.surat],
+  porbandar: [CITY.rajkot],
+  somnath: [CITY.rajkot, CITY.ahmedabad],
+  dwarka: [CITY.rajkot, CITY.ahmedabad],
+  palanpur: [CITY.ahmedabad, CITY.mehsana],
+  godhra: [CITY.vadodara],
+  surendranagar: [CITY.ahmedabad, CITY.rajkot],
+  amreli: [CITY.bhavnagar, CITY.rajkot],
+  ambaji: [CITY.ahmedabad],
+  diu: [CITY.rajkot],
+};
+
+/** The cities that actually get a hub page — a link to any other one is a 404. */
+const CITY_HUBS = new Set(Object.keys(CITY_ROUTES).map((k) => CITY[k].name));
+
 /** Route pairs — every link uses a verified station ID from GSRTC seed data */
 const ROUTE_PAIRS = [
   // High Traffic Golden Corridors
@@ -544,9 +585,16 @@ const ROUTE_PAIRS = [
   ${extra || ''}
   <h2 class="reveal">Don't have a plate number yet</h2>
   <p class="reveal">You don't need one — the links above search by station, and you pick the actual bus from the list once you can see which ones are running. See <a href="gsrtc-bus-timetable.html">the full timetable guide</a> for how filtering and sorting the list works.</p>`,
+  // Only the endpoints that have a hub page. This used to link both unconditionally, which sent
+  // three route pages at a /<city>-st-bus-tracker that is never generated — the small endpoints
+  // are deliberately absent from CITY_ROUTES (see the note by CITY), so those were hard 404s.
   related: [
-    { href: `${a.name.toLowerCase()}-st-bus-tracker.html`, label: `${a.name} ST bus tracker` },
-    { href: `${b.name.toLowerCase()}-st-bus-tracker.html`, label: `${b.name} ST bus tracker` },
+    ...[a, b]
+      .filter((c) => CITY_HUBS.has(c.name))
+      .map((c) => ({
+        href: `${c.name.toLowerCase()}-st-bus-tracker.html`,
+        label: `${c.name} ST bus tracker`,
+      })),
     { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
   ],
   faq: [
@@ -554,36 +602,6 @@ const ROUTE_PAIRS = [
     { q: 'Can I track a bus on this route without knowing its plate?', a: 'Yes. The links on this page search by station, and you pick the bus you want from the list of departures — no plate needed.' },
   ],
 }));
-
-/** City hub pages — maps verified destinations per regional hub */
-const CITY_ROUTES = {
-  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji],
-  surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar],
-  vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra],
-  rajkot: [CITY.ahmedabad, CITY.morbi, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu],
-  bhavnagar: [CITY.ahmedabad, CITY.surat, CITY.rajkot, CITY.amreli],
-  jamnagar: [CITY.rajkot, CITY.dwarka],
-  gandhinagar: [CITY.ahmedabad, CITY.mehsana],
-  junagadh: [CITY.rajkot, CITY.somnath],
-  bhuj: [CITY.ahmedabad, CITY.rajkot],
-  morbi: [CITY.rajkot, CITY.ahmedabad],
-  mehsana: [CITY.ahmedabad, CITY.palanpur],
-  vapi: [CITY.surat, CITY.valsad],
-  valsad: [CITY.vapi, CITY.surat],
-  navsari: [CITY.surat],
-  anand: [CITY.ahmedabad, CITY.vadodara],
-  nadiad: [CITY.ahmedabad, CITY.anand],
-  bharuch: [CITY.vadodara, CITY.surat],
-  porbandar: [CITY.rajkot],
-  somnath: [CITY.rajkot, CITY.ahmedabad],
-  dwarka: [CITY.rajkot, CITY.ahmedabad],
-  palanpur: [CITY.ahmedabad, CITY.mehsana],
-  godhra: [CITY.vadodara],
-  surendranagar: [CITY.ahmedabad, CITY.rajkot],
-  amreli: [CITY.bhavnagar, CITY.rajkot],
-  ambaji: [CITY.ahmedabad],
-  diu: [CITY.rajkot],
-};
 
 /** Name back to key, so a CITY object can be turned into the key its route slug is built from. */
 const CITY_KEY = Object.fromEntries(Object.entries(CITY).map(([k, v]) => [v.name, k]));
