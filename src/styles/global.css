@@ -637,41 +637,58 @@ a { color: inherit; }
 
 /* ------------------------------------------------------------------ AdSense Resilience */
 .ad-slot-wrap {
-  margin: clamp(2rem, 4vw, 3.5rem) auto;
+  margin: clamp(1.6rem, 3vw, 2.5rem) auto;
   max-width: var(--wrap);
   overflow: hidden;
-  /* Reserves roughly the height a responsive auto ad unit settles at, so the page does not jump
-     once AdSense's own script populates it a moment after paint — that jump is Cumulative Layout
-     Shift, a real Core Web Vitals ranking signal, not just a visual annoyance. Approximate by
-     necessity (the real height depends on what AdSense decides to serve), but an approximate
-     reservation is strictly better than none. */
-  min-height: 118px;
+  text-align: center;
+  transition: opacity .2s ease;
 }
-@media (min-width: 600px) { .ad-slot-wrap { min-height: 175px; } }
+
+/* Guarantee ZERO empty white space / voids when ads are unfilled, blocked, or missing */
+.ad-slot-wrap[hidden],
+.ad-slot-wrap.ad-unfilled,
+.ad-slot-wrap:has(ins.adsbygoogle[data-ad-status="unfilled"]),
+ins.adsbygoogle[data-ad-status="unfilled"],
+.google-auto-placed[style*="display: none"],
+.ad-slot-wrap:empty {
+  display: none !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .ad-label {
   color: var(--ink-3);
-  font-size: .72rem;
+  font-size: .70rem;
   letter-spacing: .08em;
   margin: 0 0 .45rem;
   text-align: center;
   text-transform: uppercase;
+  user-select: none;
 }
 .google-auto-placed,
 ins.adsbygoogle {
   display: block !important;
   width: 100% !important;
   max-width: var(--wrap) !important;
-  margin: 1.5rem auto !important;
+  margin: 0.5rem auto !important;
   overflow: hidden !important;
   grid-column: 1 / -1 !important;
   text-align: center !important;
   border-radius: var(--r-sm) !important;
 }
+
+/* UX Protection: prevent Auto-Ads from breaking interactive controls and navigation */
 .bar .google-auto-placed,
 .bar-nav .google-auto-placed,
 .chips .google-auto-placed,
 .stat-strip .google-auto-placed,
-.steps .google-auto-placed {
+.strip .google-auto-placed,
+.steps .google-auto-placed,
+.plate .google-auto-placed,
+.hero .google-auto-placed,
+.plate-samples .google-auto-placed {
   display: none !important;
 }
 @media (max-width: 768px) {

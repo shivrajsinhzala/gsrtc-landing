@@ -187,27 +187,40 @@ function initPlateForm() {
 
 function initAds() {
   document.querySelectorAll('ins.adsbygoogle[data-ad-slot]').forEach((slot) => {
+    const wrap = slot.closest('.ad-slot-wrap');
+
+    // 1. Instantly collapse container if AdSense reports unfilled
+    const observer = new MutationObserver(() => {
+      const status = slot.getAttribute('data-ad-status');
+      if (status === 'unfilled') {
+        if (wrap) {
+          wrap.hidden = true;
+          wrap.classList.add('ad-unfilled');
+          wrap.style.display = 'none';
+        }
+        observer.disconnect();
+      } else if (status === 'filled') {
+        if (wrap) wrap.classList.add('ad-filled');
+        observer.disconnect();
+      }
+    });
+    observer.observe(slot, { attributes: true, attributeFilter: ['data-ad-status'] });
+
+    // 2. Fallback check: if adblocker or no iframe loads within 3.5s, clean up wrapper
+    setTimeout(() => {
+      if (!slot.querySelector('iframe') && slot.getAttribute('data-ad-status') !== 'filled') {
+        if (wrap) {
+          wrap.hidden = true;
+          wrap.classList.add('ad-unfilled');
+          wrap.style.display = 'none';
+        }
+      }
+      observer.disconnect();
+    }, 3500);
+
     if (slot.dataset.adsenseRequested === '1') return;
     slot.dataset.adsenseRequested = '1';
 
-    // AdSense sets data-ad-status async once it decides fill — but it is inconsistent in
-    // practice (seen both "unfilled" and never-set for the same empty slot across loads), and
-    // AdSense always inserts an empty wrapper <div> as scaffolding regardless of whether an ad
-    // actually filled, so checking for *any* child proves nothing. When nothing fills, the
-    // script still force-reserves a large box (482x482px observed live) and leaves it empty, so
-    // "Advertisement" ends up floating over a huge dead void instead of the section just not
-    // existing. The one reliable signal an ad is actually there: a real ad renders as an
-    // <iframe> inside the slot — nothing else does. A single delayed check, not a live observer:
-    // AdSense inserts scaffolding in stages, so reacting to the first DOM mutation risks hiding
-    // the slot a moment before its iframe would have landed.
-    const wrap = slot.closest('.ad-slot-wrap');
-    if (wrap) setTimeout(() => { if (!slot.querySelector('iframe')) wrap.hidden = true; }, 4000);
-
-    // A responsive auto-format slot pushed before the browser has given its container a
-    // measured width throws AdSense's own "No slot size for availableWidth=0" TagError — seen
-    // live on every load. Two animation frames are enough to land after layout in practice;
-    // if the slot is still 0 after that (e.g. genuinely hidden), skip the push rather than
-    // force an error that was never going to render anything anyway.
     const pushWhenSized = (attemptsLeft) => {
       if (slot.getBoundingClientRect().width > 0) {
         try {

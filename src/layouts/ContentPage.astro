@@ -110,6 +110,16 @@ if (faq.length) {
 
 const bodyHtml = rewriteInternalLinks(body);
 const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
+
+// Place in-content ad between initial action/intro and secondary guide details
+const h2Matches = [...bodyHtml.matchAll(/<h2[\s>]/gi)];
+let bodyPart1 = bodyHtml;
+let bodyPart2 = '';
+if (h2Matches.length >= 2) {
+  const splitIndex = h2Matches[1].index;
+  bodyPart1 = bodyHtml.slice(0, splitIndex);
+  bodyPart2 = bodyHtml.slice(splitIndex);
+}
 ---
 
 <Base
@@ -142,8 +152,9 @@ const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
   </section>
 
   <section class="wrap section narrow">
-    <Fragment set:html={bodyHtml} />
+    <Fragment set:html={bodyPart1} />
     <AdSlot slot={AD_SLOTS.inContent} label="In-content advertisement" />
+    {bodyPart2 && <Fragment set:html={bodyPart2} />}
     {relatedLinks.length > 0 && (
       <>
         <h2 class="reveal">Related</h2>
