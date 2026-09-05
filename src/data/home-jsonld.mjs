@@ -100,10 +100,10 @@ export function homeJsonLd(lang) {
       },
       {
         "@type": "Question",
-        "name": "Is it free?",
+        "name": "Is ST Tracker free to use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, 100% free. There are zero subscription charges, zero platform fees, and zero advertisements on the tracker application. It is maintained as a public service utility for Gujarat commuters."
+          "text": "Yes, 100% free. There are zero subscription charges, zero platform fees, and no account or login required. It is maintained as a public service utility for Gujarat commuters."
         }
       },
       {
