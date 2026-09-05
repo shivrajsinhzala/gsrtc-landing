@@ -7,6 +7,7 @@ import type { Locale } from '../i18n/ui';
 interface Props {
   title: string;
   description: string;
+  keywords?: string;
   /** Path without leading slash, '' for the homepage. Canonical is built from it. */
   path: string;
   lang?: Locale;
@@ -19,7 +20,9 @@ interface Props {
 }
 
 const {
-  title, description, path, lang = 'en',
+  title, description,
+  keywords = 'GSRTC, Gujarat ST bus tracking, ST bus live location, GSRTC bus timetable, track GSRTC bus by number plate, GSRTC bus schedule',
+  path, lang = 'en',
   ogType = 'website', jsonLd = [], headerVariant = 'page',
   hasTranslation = false,
 } = Astro.props;
@@ -43,6 +46,7 @@ const htmlLang = lang === 'gu' ? 'gu-IN' : 'en-IN';
 
 <title>{title}</title>
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
 <meta name="google-adsense-account" content={AD_CLIENT} />
 {/* Auto ads (the in-text/"in-page" formats that splice an ad into the body copy) cannot be
     turned off from the page. `enable_page_level_ads: false` is the legacy 2017 API and now
@@ -53,6 +57,9 @@ const htmlLang = lang === 'gu' ? 'gu-IN' : 'en-IN';
 
 <link rel="canonical" href={canonical} />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="author" content="Shivrajsinh Zala" />
 
 {/* hreflang is declared only where a translated document genuinely exists. Pointing it at a
     page whose body is English would tell Google there is a Gujarati edition and then hand it

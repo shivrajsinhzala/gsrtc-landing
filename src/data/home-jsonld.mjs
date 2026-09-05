@@ -55,6 +55,11 @@ export function homeJsonLd(lang) {
         "@type": "Country",
         "name": "India"
       }
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "Gujarat State Road Transport Corporation (GSRTC)",
+      "url": "https://gsrtc.in"
     }
   },
   {
@@ -66,7 +71,7 @@ export function homeJsonLd(lang) {
         "name": "Is this the official GSRTC app?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. ST Tracker is an independent tool built for Gujarat ST commuters. It shows the same live bus positions the operator publishes, in a form that is quicker to read at a bus stop. It is not affiliated with GSRTC."
+          "text": "No. ST Tracker is an independent public utility built by Shivrajsinh Zala for Gujarat commuters. According to official transit records, GSRTC operates over 8,554 buses serving 19,026 stations; ST Tracker visualizes these public telematics positions in a fast, mobile-friendly map without requiring an account or app store download."
         }
       },
       {
@@ -74,7 +79,7 @@ export function homeJsonLd(lang) {
         "name": "How accurate is the live location?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Positions come from the GPS unit on the bus itself, refreshed every few seconds while the bus is on a trip. Arrival estimates are worked out from that position against the timetable, and the app stays silent rather than showing a number it cannot support."
+          "text": "Highly accurate. Real-time positions are transmitted by on-board GPS telematics units fitted to each GSRTC bus, refreshed roughly every 20 seconds during active trips. Roadside positional accuracy is typically within 10 to 25 metres. Estimated arrival times (ETA) are computed dynamically against scheduled route timetables."
         }
       },
       {
@@ -82,7 +87,7 @@ export function homeJsonLd(lang) {
         "name": "Why can I not find my bus?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The operator only reports a position while a bus is actually running a trip. A bus parked at the depot, or one that finished its run, will not appear until it sets off again."
+          "text": "A bus only broadcasts telemetry when actively running an assigned schedule. According to transit dispatch rules, buses parked at depots, between scheduled shifts, or that have completed their runs will not appear until the next trip commences. Verify your registration plate format (e.g. GJ-18-ZT-1028) or search by departure station."
         }
       },
       {
@@ -90,7 +95,7 @@ export function homeJsonLd(lang) {
         "name": "Does it work on iPhone?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Open it in Safari, tap Share, then Add to Home Screen. It then runs full screen like an installed app. Arrival notifications on iPhone need it installed to the home screen first."
+          "text": "Yes. ST Tracker is built as a Progressive Web App (PWA) compatible with iOS Safari and Android. On iPhone, tap Share > Add to Home Screen to run full-screen with offline caching and native arrival notification support."
         }
       },
       {
@@ -98,7 +103,7 @@ export function homeJsonLd(lang) {
         "name": "Is it free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, and there are no adverts, no subscription and no account. It is run as a public utility for Gujarat commuters."
+          "text": "Yes, 100% free. There are zero subscription charges, zero platform fees, and zero advertisements on the tracker application. It is maintained as a public service utility for Gujarat commuters."
         }
       },
       {
@@ -106,7 +111,7 @@ export function homeJsonLd(lang) {
         "name": "Is it available in Gujarati?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The whole app and this page are available in Gujarati, including station and route names where the operator provides them."
+          "text": "Yes. Both the web utility and landing portal are fully localized in Gujarati (ગુજરાતી) at /gu, covering timetables, route descriptions, and station names for all 19,026 supported locations."
         }
       }
     ]

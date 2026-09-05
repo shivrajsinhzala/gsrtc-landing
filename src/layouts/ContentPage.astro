@@ -56,6 +56,36 @@ const AD_SLOTS = { inContent: '8460038937' };
 const jsonLd: unknown[] = [
   {
     '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description: description,
+    url: `${SITE}/${slug}`,
+    inLanguage: 'en-IN',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'ST Tracker',
+      url: SITE,
+    },
+    about: {
+      '@type': 'Thing',
+      name: 'Gujarat State Road Transport Corporation (GSRTC) Bus Tracking',
+      description: 'Live bus tracking, timetables, and transit information for Gujarat ST buses.',
+    },
+    mainEntity: {
+      '@type': 'WebApplication',
+      name: 'ST Tracker',
+      url: 'https://tracker.shivrajsinh.in',
+      applicationCategory: 'TravelApplication',
+      operatingSystem: 'Android, iOS, Windows, macOS — any modern browser',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'INR',
+      },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'ST Tracker', item: `${SITE}/` },

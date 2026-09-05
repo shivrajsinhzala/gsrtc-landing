@@ -1,6 +1,28 @@
 User-agent: *
 Allow: /
 
-# Astro's sitemap integration emits an index plus one child file, so the index is what gets
-# submitted — it is the document that points at the rest.
+# Explicit permissions for AI search engines & crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Astro's sitemap integration emits an index plus child file; both index and legacy alias declared
 Sitemap: https://gsrtc.shivrajsinh.in/sitemap-index.xml
+Sitemap: https://gsrtc.shivrajsinh.in/sitemap.xml

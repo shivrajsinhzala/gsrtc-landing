@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": {
+    "archive": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/archive/SKILL.md",
+      "computedHash": "969c5046d685a502d36de22eb428735fef14944e43e90a4f477a3a551ace900a"
+    },
+    "banner-creator": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/banner-creator/SKILL.md",
+      "computedHash": "3317d6f406a63324d5913ba2241e88367df1304e7697476ce4c067f51adb96ca"
+    },
+    "domain-hunter": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/domain-hunter/SKILL.md",
+      "computedHash": "534f4202e34bd59e98bc736bec608605bbc2c1f00fae9d46a7548713b03781aa"
+    },
+    "logo-creator": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/logo-creator/SKILL.md",
+      "computedHash": "baac641dd2fb8b6e1aa658e8372c5e83672479e35553247d5ece4dd7917fa48c"
+    },
+    "nanobanana": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nanobanana/SKILL.md",
+      "computedHash": "b3ef6022c2d2b1be94fa2d52ae0da749495eef1fe4ea2becd413f052c03a13e6"
+    },
+    "producthunt": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/producthunt/SKILL.md",
+      "computedHash": "408e0d6324195edf641c23f3fc79f370d7dd2f754c2fcd89e6e60914e6927e5d"
+    },
+    "reddit": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/reddit/SKILL.md",
+      "computedHash": "cb78c8355aba2e3334289c99e7ed06fb2d38a1defb17a649f5082611939a162d"
+    },
+    "requesthunt": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/requesthunt/SKILL.md",
+      "computedHash": "9e63774c70deb93e1427764c81db27f8e9827f28251316220d5d2db886ff6a4e"
+    },
+    "seo-geo": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo-geo/SKILL.md",
+      "computedHash": "56f90ba46b36563bb5461feb8462aed9283e74dfc4cdac2a98c42c4bc86a95be"
+    },
+    "twitter": {
+      "source": "ReScienceLab/opc-skills",
+      "sourceType": "github",
+      "skillPath": "skills/twitter/SKILL.md",
+      "computedHash": "edaa1a556aef9952026507a7f4889e7cd03b04db60add6c1997c505b75a6ef12"
+    }
+  }
+}

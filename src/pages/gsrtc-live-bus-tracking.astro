@@ -10,6 +10,36 @@ import Base from '../layouts/Base.astro';
 const jsonLd = [
   {
     "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "How GSRTC Live Bus Tracking Works | ST Tracker",
+    "description": "How GSRTC live bus tracking works: where the GPS position comes from, how often it updates, and why a bus sometimes cannot be found.",
+    "url": "https://gsrtc.shivrajsinh.in/gsrtc-live-bus-tracking",
+    "inLanguage": "en-IN",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "ST Tracker",
+      "url": "https://gsrtc.shivrajsinh.in"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Gujarat State Road Transport Corporation (GSRTC) Bus Tracking",
+      "description": "Live bus tracking, timetables, and transit information for Gujarat ST buses."
+    },
+    "mainEntity": {
+      "@type": "WebApplication",
+      "name": "ST Tracker",
+      "url": "https://tracker.shivrajsinh.in",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       {
