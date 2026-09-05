@@ -348,6 +348,163 @@ const FEATURE_PAGES = [
       { href: 'nearby-st-bus-stops.html', label: 'Find ST bus stops near you' },
     ],
   },
+  {
+    slug: 'gsrtc-bus-pass-online',
+    title: 'GSRTC Bus Pass Online Apply & E-Pass Status Check | ST Tracker',
+    description: 'How to apply for a GSRTC student, monthly, or employee bus pass online. Check e-Pass status, document checklist, concessions, and track your daily bus.',
+    crumbLabel: 'GSRTC bus pass online',
+    h1: 'GSRTC bus pass online: apply, renew & check status',
+    lede: 'Daily student or office commuter? Apply for or renew your Gujarat ST bus pass online, and track your daily bus so you never wait at the stand.',
+    body: `
+  <h2 class="reveal">GSRTC e-Pass online portal</h2>
+  <p class="reveal">GSRTC operates the Electronic State Transport Concession Pass System (ESCPS) online at <b>pass.gsrtc.in</b>. Students, daily commuters, and employees can submit digital pass applications, upload documents, and track approval status without standing in depot queues.</p>
+
+  <h2 class="reveal">Concessions and pass types</h2>
+  <ul class="reveal">
+    <li><b>Student Concession Pass:</b> Up to 80% fare discount for recognized school, ITI, and college students traveling between their residence and institution.</li>
+    <li><b>Monthly Commuter Pass:</b> Economical daily transit pass for office workers, traders, and regular travelers between any two stations.</li>
+    <li><b>Pass for Divyangjan:</b> 100% free travel allowance for eligible citizens with permanent physical disability along with an escort concession.</li>
+  </ul>
+
+  <h2 class="reveal">Documents required for online application</h2>
+  <p class="reveal">Before applying on the portal, keep scanned copies ready: valid college/school bonafide certificate for the current academic year, residential address proof (Aadhaar or Ration card), recent passport-size photograph, and previous pass number if renewing.</p>
+
+  <h2 class="reveal">Pairing your pass with live tracking</h2>
+  <p class="reveal">Once your pass is approved and collected from the local depot, use <a href="\${APP}">ST Tracker</a> to monitor your daily bus live by its number plate or route. See the bus’s actual location in real time rather than guessing whether it has passed your stop.</p>`,
+    faq: [
+      { q: 'Where do I apply for a GSRTC student bus pass online?', a: 'Apply online on the official GSRTC ESCPS portal at pass.gsrtc.in by creating a student profile and uploading your institution bonafide.' },
+      { q: 'How long does GSRTC e-pass approval take?', a: 'Online verification typically takes 2 to 4 working days, after which you can collect the smart card from your selected home depot.' },
+      { q: 'Can I track the daily bus on my pass route?', a: 'Yes! Open ST Tracker, search the route between your home stop and college, and see all active buses running in real time.' },
+    ],
+    related: [
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+      { href: 'gsrtc-concession-pass-rules.html', label: 'GSRTC concession pass rules and eligibility' },
+      { href: 'nearby-st-bus-stops.html', label: 'Find ST bus stops near you' },
+    ],
+  },
+  {
+    slug: 'gsrtc-ticket-cancellation-refund',
+    title: 'GSRTC Ticket Cancellation Charges & Refund Rules | ST Tracker',
+    description: 'Official GSRTC bus ticket cancellation fee timetable, refund percentages by cancellation window, and how to cancel tickets booked online.',
+    crumbLabel: 'GSRTC cancellation & refund',
+    h1: 'GSRTC ticket cancellation charges and refund rules',
+    lede: 'Plans changed? Here is the exact cancellation charge schedule, how refund windows work, and how to track alternative buses.',
+    body: `
+  <h2 class="reveal">Official cancellation charges and deduction slabs</h2>
+  <p class="reveal">GSRTC follows a tiered cancellation fee structure based on how many hours before scheduled bus departure you cancel your ticket:</p>
+  <table class="reveal">
+    <tr><th>Time Before Departure</th><th>Deduction Percentage</th><th>Refund Amount</th></tr>
+    <tr><td>More than 24 hours</td><td>10% of basic fare</td><td>90% refund</td></tr>
+    <tr><td>Between 24 and 2 hours</td><td>20% of basic fare</td><td>80% refund</td></tr>
+    <tr><td>Between 2 hours and departure</td><td>50% of basic fare</td><td>50% refund</td></tr>
+    <tr><td>After bus departure / No-show</td><td>100% deduction</td><td>No refund</td></tr>
+  </table>
+
+  <h2 class="reveal">How to cancel online</h2>
+  <p class="reveal">For tickets booked via the GSRTC portal, official app, or travel aggregators like redBus, locate the <b>Cancel Ticket</b> link on the respective platform and enter your PNR and registered mobile number. Refunds are credited to your original payment method within 5 to 7 banking days.</p>
+
+  <h2 class="reveal">Rescheduling or finding an alternative departure</h2>
+  <p class="reveal">If you cancelled due to a delay or schedule conflict, you can instantly find alternative buses running today on <a href="\${APP}">ST Tracker</a> without booking in advance. Check departures between any two cities and view countdowns for running buses.</p>`,
+    faq: [
+      { q: 'What is the minimum cancellation charge for a GSRTC bus ticket?', a: 'The minimum cancellation fee is 10% of the basic ticket fare when cancelled more than 24 hours prior to scheduled departure.' },
+      { q: 'Can I cancel a GSRTC ticket after the bus has departed?', a: 'No. Tickets cannot be cancelled once the scheduled departure time has passed, and no refund is payable for missed buses.' },
+      { q: 'How long does it take to receive a GSRTC ticket refund?', a: 'Refunds for online transactions are typically processed and credited back to your bank account or card within 5 to 7 business days.' },
+    ],
+    related: [
+      { href: 'gsrtc-online-booking-pnr-tracking.html', label: 'Track your GSRTC bus using PNR / ticket number' },
+      { href: 'gsrtc-bus-delay-status.html', label: 'Is my GSRTC bus running late?' },
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+    ],
+  },
+  {
+    slug: 'gsrtc-luggage-rules-rates',
+    title: 'GSRTC Luggage Charges, Weight Limit & Parcel Rules | ST Tracker',
+    description: 'How much luggage you can carry on GSRTC Gujarat ST buses, free weight allowance limits, excess baggage rates per 20kg slab, and parcel tracking.',
+    crumbLabel: 'GSRTC luggage rules & rates',
+    h1: 'GSRTC luggage rules, weight limits and charges',
+    lede: 'Carrying bags, parcels, or equipment on a Gujarat ST bus? Here are the official free baggage limits and excess luggage rates.',
+    body: `
+  <h2 class="reveal">Free baggage allowance per passenger</h2>
+  <p class="reveal">Every fare-paying adult passenger on a GSRTC bus is entitled to carry personal luggage free of charge up to specified limits:</p>
+  <ul class="reveal">
+    <li><b>Express and Local Services:</b> Up to <b>25 kg</b> of personal luggage per adult passenger (15 kg for half-fare child tickets).</li>
+    <li><b>Gurjarnagri 2x2 Services:</b> Up to <b>30 kg</b> of personal luggage per passenger.</li>
+    <li><b>Volvo &amp; AC Sleeper Coaches:</b> Up to <b>35 kg</b> of baggage stored in underfloor luggage boots.</li>
+  </ul>
+
+  <h2 class="reveal">Excess luggage charges and rates</h2>
+  <p class="reveal">Luggage exceeding the free allowance is charged in slabs of 20 kg (or part thereof) based on the distance travelled. Charges are collected directly by the conductor against an official printed baggage receipt.</p>
+
+  <h2 class="reveal">Prohibited items and commercial parcels</h2>
+  <p class="reveal">Inflammable goods, explosives, gas cylinders, and hazardous chemicals are strictly prohibited on all passenger buses. For shipping unattended commercial consignments, GSRTC provides an official counter-to-counter courier &amp; parcel service between major depots.</p>`,
+    faq: [
+      { q: 'How much luggage is free in a GSRTC bus?', a: 'Adult passengers can carry up to 25 kg of personal luggage free of charge on Express services, and up to 35 kg on premium Volvo coaches.' },
+      { q: 'Can I carry a bicycle or TV in an ST bus?', a: 'Yes, provided space is available in the luggage boot or roof rack. Conductor collects an extra luggage charge according to standard parcel tariff slabs.' },
+      { q: 'Does GSRTC offer courier and parcel booking?', a: 'Yes, GSRTC operates an official counter-to-counter parcel delivery service connecting major Gujarat bus stations.' },
+    ],
+    related: [
+      { href: 'gsrtc-bus-fleet.html', label: 'How big is the GSRTC bus fleet?' },
+      { href: 'gsrtc-volvo-sleeper-ac-bus-tracking.html', label: 'GSRTC Volvo, AC & Sleeper bus live tracking' },
+      { href: 'gsrtc-bus-stand-helpline-numbers.html', label: 'GSRTC bus stand enquiry & helpline directory' },
+    ],
+  },
+  {
+    slug: 'gsrtc-night-bus-tracking',
+    title: 'GSRTC Night Bus Timetable & Overnight Bus Tracking | ST Tracker',
+    description: 'Track GSRTC overnight sleeper and express night buses live on a map. See late-night departure times, midnight GPS updates, and set arrival alerts.',
+    crumbLabel: 'GSRTC night bus tracking',
+    h1: 'GSRTC night bus services and live overnight tracking',
+    lede: 'Catching an overnight bus between Gujarat cities? Track midnight departures live, monitor highway delays, and set arrival alerts before your stop.',
+    body: `
+  <h2 class="reveal">Overnight long-distance network in Gujarat</h2>
+  <p class="reveal">GSRTC runs extensive night service networks connecting South Gujarat (Surat, Vapi), Central Gujarat (Ahmedabad, Vadodara), and Saurashtra / Kutch (Rajkot, Bhuj, Jamnagar, Somnath). Departures operate continuously from 9:00 PM until 4:00 AM.</p>
+
+  <h2 class="reveal">Live GPS tracking through the night</h2>
+  <p class="reveal">On-board GPS transponders remain active and broadcast positional fixes roughly every 20 seconds throughout the night. Whether your bus is navigating National Highway 48 or state expressways, <a href="\${APP}">ST Tracker</a> updates its exact location continuously on the map.</p>
+
+  <h2 class="reveal">Wake up on time with arrival alerts</h2>
+  <p class="reveal">Sleeping on an overnight bus? You don’t have to stay awake checking the map. Open ST Tracker on your phone, pick your destination stop, and activate an arrival alert. Your phone will notify you shortly before the bus pulls into your station.</p>`,
+    faq: [
+      { q: 'Do GSRTC night buses have live GPS tracking?', a: 'Yes. All GSRTC overnight sleeper, luxury, and express night buses feature continuous GPS tracking active 24 hours a day.' },
+      { q: 'Can I set an alarm for when my night bus reaches my stop?', a: 'Yes! On ST Tracker, select your destination stop along the route and enable arrival alerts to get notified before arrival.' },
+      { q: 'Which routes have the most frequent night buses?', a: 'Major overnight corridors include Ahmedabad ↔ Surat, Surat ↔ Rajkot, Ahmedabad ↔ Bhuj, and Vadodara ↔ Bhavnagar.' },
+    ],
+    related: [
+      { href: 'gsrtc-volvo-sleeper-ac-bus-tracking.html', label: 'GSRTC Volvo, AC & Sleeper bus live tracking' },
+      { href: 'gsrtc-bus-arrival-alerts.html', label: 'Get an alert before your GSRTC bus arrives' },
+      { href: 'gsrtc-bus-delay-status.html', label: 'Is my GSRTC bus running late?' },
+    ],
+  },
+  {
+    slug: 'gsrtc-concession-pass-rules',
+    title: 'GSRTC Concession Rules — Senior Citizen & Divyang Pass | ST Tracker',
+    description: 'Eligibility, discount percentages, and documentation for GSRTC travel concessions including Senior Citizens, Divyangjan (PwD), and Cancer patients.',
+    crumbLabel: 'GSRTC concession rules',
+    h1: 'GSRTC travel concessions and discounted fare rules',
+    lede: 'GSRTC provides subsidized and free travel for eligible citizens across Gujarat. Here is who qualifies and what proof is required.',
+    body: `
+  <h2 class="reveal">Key concession categories and discounts</h2>
+  <p class="reveal">Under Gujarat state welfare guidelines, GSRTC extends generous fare concessions across various passenger segments:</p>
+  <ul class="reveal">
+    <li><b>Senior Citizens (Age 60+):</b> Concessional bus travel on ordinary and express services across the state upon presenting a valid Senior Citizen ID or Aadhaar card.</li>
+    <li><b>Divyangjan (Persons with Disabilities):</b> 100% free travel across ordinary, express, and Gurjarnagri services for passengers with 40%+ permanent disability, with concession for an accompanying escort.</li>
+    <li><b>Cancer Patients &amp; Attendants:</b> 100% free travel between home residence and specialized cancer treatment hospitals (e.g. GCRI Ahmedabad).</li>
+    <li><b>Freedom Fighters:</b> Lifetime free travel in all GSRTC bus classes for registered freedom fighters and their spouses.</li>
+  </ul>
+
+  <h2 class="reveal">How to obtain a concession pass</h2>
+  <p class="reveal">Eligible beneficiaries can register through the <a href="gsrtc-bus-pass-online.html">GSRTC e-Pass system</a> or submit documentation at their nearest divisional depot control office.</p>`,
+    faq: [
+      { q: 'Do senior citizens get free travel in GSRTC buses?', a: 'Senior citizens aged 60 and above receive special fare concessions upon displaying a valid government ID or smart concession pass.' },
+      { q: 'What disability percentage is required for GSRTC Divyang pass?', a: 'A permanent disability certificate of 40% or higher issued by an authorized civil surgeon is required for free travel concessions.' },
+      { q: 'Can concession card holders track their buses live?', a: 'Yes! Concession card holders can use ST Tracker to track any ST bus on a map by plate or route for free with no account needed.' },
+    ],
+    related: [
+      { href: 'gsrtc-bus-pass-online.html', label: 'GSRTC bus pass online: apply, renew & check status' },
+      { href: 'gsrtc-bus-stand-helpline-numbers.html', label: 'GSRTC bus stand enquiry & helpline directory' },
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+    ],
+  },
 ];
 
 /**
@@ -358,14 +515,14 @@ const FEATURE_PAGES = [
  * a route page that linked to one of the others shipped a hard 404.
  */
 const CITY_ROUTES = {
-  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji],
-  surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar],
+  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji, CITY.junagadh, CITY.jamnagar],
+  surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar, CITY.rajkot, CITY.amreli],
   vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra],
-  rajkot: [CITY.ahmedabad, CITY.morbi, CITY.tankara, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu],
+  rajkot: [CITY.ahmedabad, CITY.surat, CITY.morbi, CITY.tankara, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu],
   bhavnagar: [CITY.ahmedabad, CITY.surat, CITY.rajkot, CITY.amreli],
-  jamnagar: [CITY.rajkot, CITY.dwarka],
+  jamnagar: [CITY.rajkot, CITY.dwarka, CITY.ahmedabad],
   gandhinagar: [CITY.ahmedabad, CITY.mehsana],
-  junagadh: [CITY.rajkot, CITY.somnath],
+  junagadh: [CITY.rajkot, CITY.somnath, CITY.ahmedabad],
   bhuj: [CITY.ahmedabad, CITY.rajkot, CITY.mandvi],
   morbi: [CITY.rajkot, CITY.ahmedabad],
   mehsana: [CITY.ahmedabad, CITY.palanpur],
@@ -381,7 +538,7 @@ const CITY_ROUTES = {
   palanpur: [CITY.ahmedabad, CITY.mehsana],
   godhra: [CITY.vadodara],
   surendranagar: [CITY.ahmedabad, CITY.rajkot],
-  amreli: [CITY.bhavnagar, CITY.rajkot],
+  amreli: [CITY.bhavnagar, CITY.rajkot, CITY.surat],
   ambaji: [CITY.ahmedabad],
   diu: [CITY.rajkot],
 };
@@ -392,6 +549,26 @@ const CITY_HUBS = new Set(Object.keys(CITY_ROUTES).map((k) => CITY[k].name));
 /** Route pairs — every link uses a verified station ID from GSRTC seed data */
 const ROUTE_PAIRS = [
   // High Traffic Golden Corridors
+  {
+    slug: 'surat-rajkot-bus', a: CITY.surat, b: CITY.rajkot,
+    crumbLabel: 'Surat ↔ Rajkot ST bus',
+    extra: `<p class="reveal">The vital Saurashtra–South Gujarat passenger corridor: frequent overnight AC Sleepers, Gurjarnagri 2x2, and day express services connecting Surat Central and Rajkot Central Bus Port.</p>`,
+  },
+  {
+    slug: 'ahmedabad-junagadh-bus', a: CITY.ahmedabad, b: CITY.junagadh,
+    crumbLabel: 'Ahmedabad ↔ Junagadh ST bus',
+    extra: `<p class="reveal">High-frequency pilgrimage and transit link connecting Ahmedabad Geeta Mandir with Junagadh at the base of Mount Girnar.</p>`,
+  },
+  {
+    slug: 'ahmedabad-jamnagar-bus', a: CITY.ahmedabad, b: CITY.jamnagar,
+    crumbLabel: 'Ahmedabad ↔ Jamnagar ST bus',
+    extra: `<p class="reveal">Connecting Gujarat’s commercial capital with the Brass City and Reliance refinery hub of Jamnagar via Rajkot bypass.</p>`,
+  },
+  {
+    slug: 'surat-amreli-bus', a: CITY.surat, b: CITY.amreli,
+    crumbLabel: 'Surat ↔ Amreli ST bus',
+    extra: `<p class="reveal">Direct high-demand Saurashtra corridor with daily night sleeper and express buses linking Amreli district directly with Surat textile and diamond hubs.</p>`,
+  },
   {
     slug: 'ahmedabad-vadodara-bus', a: CITY.ahmedabad, b: CITY.vadodara,
     crumbLabel: 'Ahmedabad ↔ Vadodara ST bus',
