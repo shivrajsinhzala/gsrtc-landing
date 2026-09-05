@@ -505,6 +505,183 @@ const FEATURE_PAGES = [
       { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
     ],
   },
+  {
+    slug: 'gsrtc-bus-fare-ticket-price',
+    title: 'GSRTC Bus Fare Calculator & Ticket Price Chart | ST Tracker',
+    description: 'Official GSRTC bus ticket price chart and fare calculator. See per km fare rates across Ordinary, Express, Gurjarnagri, Sleeper, and Volvo buses in Gujarat.',
+    crumbLabel: 'GSRTC bus fare & ticket price',
+    h1: 'GSRTC bus fare calculator and ticket price chart',
+    lede: 'Planning an ST bus trip in Gujarat? Here is how GSRTC calculates bus fares per kilometer across all service types, with minimum fares and child concession rules.',
+    body: `
+  <h2 class="reveal">How GSRTC calculates bus fares</h2>
+  <p class="reveal">GSRTC fares are regulated by the Gujarat State Transport Authority and calculated per passenger kilometer (based on a stage system where 1 stage equals 6 km). The final ticket fare includes the basic distance tariff, passenger tax, toll surcharge, and a nominal passenger amenities cess.</p>
+
+  <h2 class="reveal">Bus fare rate per kilometer by service type</h2>
+  <table class="reveal">
+    <tr><th>Bus Service Class</th><th>Rate Per Km (Approx)</th><th>Minimum Fare</th><th>Best For</th></tr>
+    <tr><td>Ordinary / Local (Silver/Blue)</td><td>₹0.95 – ₹1.05 / km</td><td>₹10 (1 stage)</td><td>Short rural trips &amp; village halts</td></tr>
+    <tr><td>Express (Green/Cream)</td><td>₹1.15 – ₹1.25 / km</td><td>₹15</td><td>Taluka &amp; intercity travel</td></tr>
+    <tr><td>Gurjarnagri 2x2 (Saffron)</td><td>₹1.35 – ₹1.45 / km</td><td>₹20</td><td>Medium-to-long distance 2x2 comfort</td></tr>
+    <tr><td>Non-AC Sleeper (2x1)</td><td>₹1.70 – ₹1.85 / km</td><td>₹50</td><td>Overnight journeys across regions</td></tr>
+    <tr><td>AC Sleeper (2x1)</td><td>₹2.10 – ₹2.30 / km</td><td>₹80</td><td>Long-haul overnight comfort with AC</td></tr>
+    <tr><td>Volvo / Scania Multi-Axle</td><td>₹2.40 – ₹2.70 / km</td><td>₹100</td><td>Expressway executive intercity travel</td></tr>
+  </table>
+
+  <h2 class="reveal">Child fare and concession rules</h2>
+  <ul class="reveal">
+    <li><b>Children under 5 years:</b> Travel completely free without a separate seat booking.</li>
+    <li><b>Children aged 5 to 12 years:</b> Charged half (50%) of the basic adult fare, rounded up to the nearest rupee, with full seat entitlement.</li>
+    <li><b>Senior Citizens (60+) &amp; Divyangjan:</b> Eligible for welfare fare concessions or free travel under Gujarat government schemes upon displaying valid documentation.</li>
+  </ul>
+
+  <h2 class="reveal">Check running buses before you book</h2>
+  <p class="reveal">Rather than guessing which bus category gives the best schedule, use <a href="${APP}">ST Tracker</a> to see every scheduled and running bus between your origin and destination, check delay status, and pick the best departure.</p>`,
+    faq: [
+      { q: 'How is GSRTC bus fare calculated?', a: 'GSRTC fares are calculated by multiplying the travel distance in kilometers by the per-km tariff for the bus class (Ordinary, Express, Gurjarnagri, Sleeper, Volvo), plus passenger tax and toll cess.' },
+      { q: 'Are children free on GSRTC buses?', a: 'Children below 5 years of age travel free without a seat reservation. Children between 5 and 12 years pay half of the adult basic fare with a reserved seat.' },
+      { q: 'Which GSRTC bus type is the most economical?', a: 'Ordinary (Local) and Express buses offer the lowest per-kilometer fare, while Gurjarnagri 2x2 provides the most balanced combination of affordable fare and cushioned seating comfort.' },
+    ],
+    related: [
+      { href: 'gsrtc-volvo-sleeper-ac-bus-tracking.html', label: 'GSRTC Volvo, AC & Sleeper bus live tracking' },
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+      { href: 'gsrtc-ticket-cancellation-refund.html', label: 'GSRTC ticket cancellation charges and refund rules' },
+    ],
+  },
+  {
+    slug: 'gsrtc-electric-bus-timetable',
+    title: 'GSRTC Electric Bus (e-Bus) Routes & Live Tracking | ST Tracker',
+    description: 'Track GSRTC zero-emission electric buses (e-Buses) live on a map. View daily EV bus routes, timetable schedules, charging stops, and amenities across Gujarat.',
+    crumbLabel: 'GSRTC electric bus tracking',
+    h1: 'GSRTC electric bus (e-Bus) routes and live tracking',
+    lede: 'Gujarat ST is deploying zero-emission electric buses on major intercity routes. Here is how to find e-Bus departures, route corridors, and track them live.',
+    body: `
+  <h2 class="reveal">Green mobility across Gujarat ST routes</h2>
+  <p class="reveal">Under Gujarat’s clean transportation initiatives, GSRTC has inducted modern electric buses (JBM Ecolife and Tata Motors EV fleets) across high-frequency corridors. Featuring whisper-quiet electric motors, regenerative braking, and zero tailpipe emissions, these e-buses offer an eco-friendly alternative to diesel coaches.</p>
+
+  <h2 class="reveal">High-frequency electric bus corridors</h2>
+  <ul class="reveal">
+    <li><b>Ahmedabad ↔ Gandhinagar:</b> High-frequency executive e-bus shuttle connecting Ranip, Nehrunagar, and Gandhinagar Sector 11/21 bus stands.</li>
+    <li><b>Ahmedabad ↔ Vadodara:</b> Fast electric bus departures running via National Expressway 1.</li>
+    <li><b>Rajkot ↔ Morbi:</b> Clean commuter services connecting Saurashtra’s major ceramic and industrial cluster.</li>
+    <li><b>Vadodara ↔ Ekta Nagar:</b> Eco-friendly tourist shuttles connecting Baroda Central with the Statue of Unity.</li>
+  </ul>
+
+  <h2 class="reveal">Passenger amenities on GSRTC e-buses</h2>
+  <p class="reveal">Every GSRTC electric coach is equipped with air conditioning, USB charging ports at every row, CCTV surveillance, emergency SOS buttons, and digital Passenger Information System (PIS) display screens announcing upcoming stops.</p>
+
+  <h2 class="reveal">Track electric buses in real time</h2>
+  <p class="reveal">Every electric bus is integrated with live GPS telemetry. Search your route on <a href="${APP}">ST Tracker</a> to view active electric services, see countdowns to arrival, and watch the bus move along the route live on the map.</p>`,
+    faq: [
+      { q: 'Does GSRTC operate electric buses between cities in Gujarat?', a: 'Yes, GSRTC operates air-conditioned zero-emission electric buses on high-density intercity routes including Ahmedabad–Gandhinagar, Ahmedabad–Vadodara, and Rajkot–Morbi.' },
+      { q: 'How do I know if an upcoming bus is an electric bus?', a: 'On ST Tracker, search between your origin and destination stations; electric departures are flagged with AC / Electric service markers.' },
+      { q: 'Are ticket prices higher for GSRTC electric buses?', a: 'GSRTC electric bus fares are priced similarly to standard AC Express bus services, providing clean luxury travel at affordable state transport tariffs.' },
+    ],
+    related: [
+      { href: 'gsrtc-volvo-sleeper-ac-bus-tracking.html', label: 'GSRTC Volvo, AC & Sleeper bus live tracking' },
+      { href: 'ahmedabad-gandhinagar-bus.html', label: 'Ahmedabad ↔ Gandhinagar ST bus live tracking' },
+      { href: 'gsrtc-bus-delay-status.html', label: 'Is my GSRTC bus running late?' },
+    ],
+  },
+  {
+    slug: 'gsrtc-courier-parcel-service',
+    title: 'GSRTC Courier & Parcel Service Rates, Tracking & Counters | ST Tracker',
+    description: 'Official guide to GSRTC same-day bus courier and parcel service in Gujarat. See parcel booking counter locations, weight tariff rates, and cargo delivery rules.',
+    crumbLabel: 'GSRTC courier & parcel service',
+    h1: 'GSRTC parcel & courier service: rates, counters and tracking',
+    lede: 'Need to send an urgent document, parcel, or commercial carton across Gujarat? GSRTC’s official depot courier service delivers same-day on scheduled ST buses.',
+    body: `
+  <h2 class="reveal">Same-day intercity cargo on Gujarat ST buses</h2>
+  <p class="reveal">GSRTC operates an extensive counter-to-counter courier and logistics service across more than 125 bus depots in Gujarat. Because packages travel aboard scheduled passenger buses departing round the clock, shipments typically arrive at destination bus stands within 3 to 8 hours — far faster than conventional overnight private courier networks.</p>
+
+  <h2 class="reveal">How to book a parcel at the bus stand</h2>
+  <ol class="reveal">
+    <li>Bring your securely packaged parcel to the designated <b>GSRTC Courier &amp; Parcel Counter</b> at your nearest ST depot.</li>
+    <li>The counter clerk weighs the parcel, verifies declared contents, and generates a computerised Consignment Note (CN) receipt.</li>
+    <li>An SMS notification with consignment details and OTP is transmitted to both the sender and recipient mobile numbers.</li>
+    <li>The recipient visits the parcel counter at the destination depot, presents the CN receipt or SMS OTP with valid photo ID, and collects the parcel upon bus arrival.</li>
+  </ol>
+
+  <h2 class="reveal">Weight slabs and pricing guidelines</h2>
+  <p class="reveal">GSRTC parcel charges are structured in weight slabs (starting from documents under 250 grams up to heavy commercial cartons in 10 kg increments) and distance tiers. Tariffs are heavily subsidized compared to air or private surface couriers.</p>
+
+  <h2 class="reveal">Tracking buses carrying your consignment</h2>
+  <p class="reveal">Once your parcel is assigned to a specific scheduled departure, you can monitor that bus’s real-time journey on <a href="${APP}">ST Tracker</a>. View GPS coordinates and arrival countdowns to time your depot pickup perfectly.</p>`,
+    faq: [
+      { q: 'How fast does GSRTC bus courier deliver parcels?', a: 'GSRTC courier provides same-day delivery between Gujarat cities. Parcels are loaded onto the next scheduled bus departing toward the destination depot.' },
+      { q: 'Where are GSRTC parcel counters located?', a: 'Parcel booking counters operate at all major GSRTC central bus stations and divisional depots, typically adjacent to the main parcel gates or depot control rooms.' },
+      { q: 'Can I track a bus carrying my parcel online?', a: 'Yes! If you know the scheduled route or registration plate of the bus carrying your shipment, you can monitor its live location on ST Tracker.' },
+    ],
+    related: [
+      { href: 'gsrtc-luggage-rules-rates.html', label: 'GSRTC luggage rules, weight limits and charges' },
+      { href: 'gsrtc-bus-stand-helpline-numbers.html', label: 'GSRTC bus stand enquiry & helpline directory' },
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+    ],
+  },
+  {
+    slug: 'gsrtc-advance-booking-rules',
+    title: 'GSRTC Advance Booking Rules, Reservation Window & Quotas | ST Tracker',
+    description: 'How many days in advance you can book a GSRTC bus ticket, daily booking opening times, ladies seat quotas, Tatkal rules, and conductor ticket booking.',
+    crumbLabel: 'GSRTC advance booking rules',
+    h1: 'GSRTC advance booking rules and seat reservation guide',
+    lede: 'Planning travel during Diwali, Holi, or summer holidays? Here is how the GSRTC advance booking window works, seat quotas, and how to find buses when reserved seats are full.',
+    body: `
+  <h2 class="reveal">The 60-day advance reservation window</h2>
+  <p class="reveal">GSRTC allows passengers to book bus tickets up to <b>60 days in advance</b> for all Express, Gurjarnagri, Sleeper, and Volvo long-distance services. Advance reservations for the 60th day open every morning at <b>00:01 AM</b> on the official GSRTC web portal and mobile app.</p>
+
+  <h2 class="reveal">Reserved seat quotas and priorities</h2>
+  <ul class="reveal">
+    <li><b>Ladies Quota (Seats 1–12):</b> Reserved specifically for female passengers in standard and express buses until 30 minutes prior to departure.</li>
+    <li><b>Divyangjan &amp; Senior Citizens:</b> Designated seats near the front boarding door are prioritized for elderly and disabled commuters.</li>
+    <li><b>Conductor Walk-in Quota:</b> On ordinary and short-distance express routes, up to 40% of seat inventory is reserved for walk-in passengers purchasing conductor tickets directly at the platform.</li>
+  </ul>
+
+  <h2 class="reveal">What to do when advance seats are sold out</h2>
+  <p class="reveal">During festival rushes (Diwali, Raksha Bandhan, Uttarayan), online seats often sell out quickly. However, GSRTC schedules dozens of unscheduled "Extra / Mela" buses that do not appear in advance booking systems. Use <a href="${APP}">ST Tracker</a> to see all active buses running on your corridor in real time, check seat availability reports, and catch an unreserved departure.</p>`,
+    faq: [
+      { q: 'How many days before travel does GSRTC booking open?', a: 'GSRTC opens advance ticket booking 60 days before the journey date at 00:01 AM online.' },
+      { q: 'Can I travel on a GSRTC bus without an advance reservation?', a: 'Yes! Most GSRTC buses allocate seats for walk-in passengers, who can buy tickets directly from the conductor aboard the bus or at the depot counter.' },
+      { q: 'What happens if advance tickets are fully booked online?', a: 'GSRTC operates unreserved extra buses during peak demand. Use ST Tracker to find active buses currently running on your route.' },
+    ],
+    related: [
+      { href: 'gsrtc-online-booking-pnr-tracking.html', label: 'Track your GSRTC bus using PNR / ticket number' },
+      { href: 'gsrtc-ticket-cancellation-refund.html', label: 'GSRTC ticket cancellation charges and refund rules' },
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+    ],
+  },
+  {
+    slug: 'gsrtc-bus-types-classes',
+    title: 'GSRTC Bus Types & Fleet Classes Explained | ST Tracker',
+    description: 'Complete guide to GSRTC bus categories: Local, Express, Gurjarnagri 2x2, Sleeper, AC Volvo, and Metro Link. Compare seat layouts, comfort, and ticket fares.',
+    crumbLabel: 'GSRTC bus types & classes',
+    h1: 'GSRTC bus types and fleet classes, explained',
+    lede: 'Confused between Express, Gurjarnagri, and Sleeper? Here is a complete comparison of every GSRTC bus type, seat configuration, and which to choose for your journey.',
+    body: `
+  <h2 class="reveal">The Gujarat ST fleet hierarchy</h2>
+  <p class="reveal">With a fleet of over 8,500 active buses, GSRTC operates multiple specialized vehicle categories tailored to varying travel distances, terrain, and passenger budgets across Gujarat.</p>
+
+  <h2 class="reveal">Comparison of major GSRTC bus categories</h2>
+  <ul class="reveal">
+    <li><b>Local / Ordinary (Silver &amp; Blue):</b> 3x2 standard seating. Halts at all intermediate rural stops and villages. Best for economical short-distance commutes under 50 km.</li>
+    <li><b>Express (Green &amp; Cream):</b> 3x2 standard seating. Stops only at major taluka bus stands and district junctions. Fast, economical transit between neighboring cities.</li>
+    <li><b>Gurjarnagri (Saffron &amp; White):</b> 2x2 wide cushioned pushback seats with ample legroom. The premier express backbone of Gujarat connecting district headquarters with minimal halts.</li>
+    <li><b>Non-AC Sleeper (2x1):</b> Upper and lower sleeping berths for overnight journeys connecting Saurashtra, Kutch, and South Gujarat.</li>
+    <li><b>AC Sleeper &amp; Volvo / Scania:</b> Air-conditioned executive coaches featuring smooth air suspension, reading lights, charging ports, and quiet cabins for long-distance highway travel.</li>
+    <li><b>Metro Link / Electric e-Bus:</b> Rapid city-to-city air-conditioned shuttles designed for point-to-point urban corridors.</li>
+  </ul>
+
+  <h2 class="reveal">Track any bus category live</h2>
+  <p class="reveal">Regardless of bus class, 100% of operational GSRTC vehicles report real-time GPS telemetry. Use <a href="${APP}">ST Tracker</a> to filter departures by category and follow your bus live on the interactive map.</p>`,
+    faq: [
+      { q: 'What is the difference between Express and Gurjarnagri buses in GSRTC?', a: 'Express buses feature standard 3x2 seating with more intermediate halts, whereas Gurjarnagri buses offer superior 2x2 pushback cushioned seating, more legroom, and faster point-to-point travel.' },
+      { q: 'Are all GSRTC bus categories tracked on ST Tracker?', a: 'Yes! ST Tracker supports live tracking for all operational GSRTC categories including Local, Express, Gurjarnagri, Sleeper, and Volvo buses.' },
+      { q: 'Does Gurjarnagri bus have air conditioning?', a: 'Standard Gurjarnagri buses are non-AC 2x2 express coaches. For air-conditioned travel, look for AC Sleeper, Volvo, or Electric e-Bus services.' },
+    ],
+    related: [
+      { href: 'gsrtc-volvo-sleeper-ac-bus-tracking.html', label: 'GSRTC Volvo, AC & Sleeper bus live tracking' },
+      { href: 'gsrtc-bus-fare-ticket-price.html', label: 'GSRTC bus fare calculator and ticket price chart' },
+      { href: 'gsrtc-bus-fleet.html', label: 'How big is the GSRTC bus fleet?' },
+    ],
+  },
 ];
 
 /**
@@ -515,7 +692,7 @@ const FEATURE_PAGES = [
  * a route page that linked to one of the others shipped a hard 404.
  */
 const CITY_ROUTES = {
-  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji, CITY.junagadh, CITY.jamnagar],
+  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji, CITY.junagadh, CITY.jamnagar, CITY.surendranagar, CITY.nadiad],
   surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar, CITY.rajkot, CITY.amreli],
   vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra],
   rajkot: [CITY.ahmedabad, CITY.surat, CITY.morbi, CITY.tankara, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu],
@@ -533,13 +710,13 @@ const CITY_ROUTES = {
   nadiad: [CITY.ahmedabad, CITY.anand],
   bharuch: [CITY.vadodara, CITY.surat],
   porbandar: [CITY.rajkot],
-  somnath: [CITY.rajkot, CITY.ahmedabad],
-  dwarka: [CITY.rajkot, CITY.ahmedabad],
-  palanpur: [CITY.ahmedabad, CITY.mehsana],
+  somnath: [CITY.rajkot, CITY.ahmedabad, CITY.dwarka, CITY.junagadh],
+  dwarka: [CITY.rajkot, CITY.ahmedabad, CITY.somnath, CITY.jamnagar],
+  palanpur: [CITY.ahmedabad, CITY.mehsana, CITY.ambaji],
   godhra: [CITY.vadodara],
   surendranagar: [CITY.ahmedabad, CITY.rajkot],
   amreli: [CITY.bhavnagar, CITY.rajkot, CITY.surat],
-  ambaji: [CITY.ahmedabad],
+  ambaji: [CITY.ahmedabad, CITY.palanpur],
   diu: [CITY.rajkot],
 };
 
@@ -548,7 +725,37 @@ const CITY_HUBS = new Set(Object.keys(CITY_ROUTES).map((k) => CITY[k].name));
 
 /** Route pairs — every link uses a verified station ID from GSRTC seed data */
 const ROUTE_PAIRS = [
-  // High Traffic Golden Corridors
+  // High Traffic Golden Corridors & Pilgrimage Circuits
+  {
+    slug: 'somnath-dwarka-bus', a: CITY.somnath, b: CITY.dwarka,
+    crumbLabel: 'Somnath ↔ Dwarka ST bus',
+    extra: `<p class="reveal">Gujarat’s premier Saurashtra pilgrimage coastal corridor connecting the First Jyotirlinga (Somnath Mandir) with Lord Krishna’s Kingdom (Dwarka Jagat Mandir) along National Highway 51 via Porbandar.</p>`,
+  },
+  {
+    slug: 'jamnagar-dwarka-bus', a: CITY.jamnagar, b: CITY.dwarka,
+    crumbLabel: 'Jamnagar ↔ Dwarka ST bus',
+    extra: `<p class="reveal">High-frequency 130 km feeder corridor linking Jamnagar railway junction with Dwarka, Okha port, and Beyt Dwarka, with buses running every 30 to 45 minutes.</p>`,
+  },
+  {
+    slug: 'junagadh-somnath-bus', a: CITY.junagadh, b: CITY.somnath,
+    crumbLabel: 'Junagadh ↔ Somnath ST bus',
+    extra: `<p class="reveal">Vital 85 km tourist and local corridor connecting the historic foot of Mount Girnar and Gir Forest gateway with Veraval port and Somnath temple.</p>`,
+  },
+  {
+    slug: 'palanpur-ambaji-bus', a: CITY.palanpur, b: CITY.ambaji,
+    crumbLabel: 'Palanpur ↔ Ambaji ST bus',
+    extra: `<p class="reveal">North Gujarat’s major Shaktipeeth pilgrim route connecting the Banaskantha railhead at Palanpur with the holy shrine of Goddess Amba in the Aravalli hills.</p>`,
+  },
+  {
+    slug: 'ahmedabad-surendranagar-bus', a: CITY.ahmedabad, b: CITY.surendranagar,
+    crumbLabel: 'Ahmedabad ↔ Surendranagar ST bus',
+    extra: `<p class="reveal">Industrial and trade artery linking Gujarat’s commercial capital with the ceramic, salt, and cotton hub of Surendranagar and Wadhwan via Viramgam highway.</p>`,
+  },
+  {
+    slug: 'ahmedabad-nadiad-bus', a: CITY.ahmedabad, b: CITY.nadiad,
+    crumbLabel: 'Ahmedabad ↔ Nadiad ST bus',
+    extra: `<p class="reveal">Bustling Central Gujarat commuter link on NH 48 with nonstop Point-to-Point and Express ST services running continuously between Geeta Mandir and Nadiad bus stand.</p>`,
+  },
   {
     slug: 'surat-rajkot-bus', a: CITY.surat, b: CITY.rajkot,
     crumbLabel: 'Surat ↔ Rajkot ST bus',
