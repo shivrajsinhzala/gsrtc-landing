@@ -12,7 +12,12 @@ const APP = 'https://tracker.shivrajsinh.in';
 export const CITY = {
   ahmedabad: { name: 'Ahmedabad', id: 464, guj: 'અમદાવાદ' },
   surat: { name: 'Surat', id: 505, guj: 'સુરત' },
-  vadodara: { name: 'Vadodara', id: 15004, guj: 'વડોદરા' },
+  // 502 is Vadodara Central. It was 15004 — "Vadodara (Dehgam)", a village stop near
+  // Gandhinagar that shares the name — so every Vadodara route page and the homepage link
+  // resolved to a station with no services at all: 0 buses in both directions on all four
+  // pairs, against 15-80 on the real one. Verified before changing (502->529 Godhra 65,
+  // 502->505 Surat 80, 502->676 Anand 21, 502->8402 Bharuch 15, 464->502 Ahmedabad 80).
+  vadodara: { name: 'Vadodara', id: 502, guj: 'વડોદરા' },
   rajkot: { name: 'Rajkot', id: 470, guj: 'રાજકોટ' },
   bhavnagar: { name: 'Bhavnagar', id: 595, guj: 'ભાવનગર' },
   jamnagar: { name: 'Jamnagar', id: 497, guj: 'જામનગર' },

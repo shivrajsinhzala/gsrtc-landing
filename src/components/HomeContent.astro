@@ -213,11 +213,11 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
   <h2><Fragment set:html={t.routesH} /></h2>
   <p class="sub"><Fragment set:html={t.routesSub} /></p>
   <ul class="chips" id="route-list">
-    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=15004&amp;fromName=Ahmedabad&amp;toName=Vadodara">{cityName('ahmedabad')} → {cityName('vadodara')}</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=464&amp;fromName=Vadodara&amp;toName=Ahmedabad">{cityName('vadodara')} → {cityName('ahmedabad')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=502&amp;fromName=Ahmedabad&amp;toName=Vadodara">{cityName('ahmedabad')} → {cityName('vadodara')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=502&amp;to=464&amp;fromName=Vadodara&amp;toName=Ahmedabad">{cityName('vadodara')} → {cityName('ahmedabad')}</a></li>
     <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=470&amp;fromName=Ahmedabad&amp;toName=Rajkot">{cityName('ahmedabad')} → {cityName('rajkot')}</a></li>
     <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=464&amp;fromName=Rajkot&amp;toName=Ahmedabad">{cityName('rajkot')} → {cityName('ahmedabad')}</a></li>
-    <li><a href="https://tracker.shivrajsinh.in/?from=15004&amp;to=505&amp;fromName=Vadodara&amp;toName=Surat">{cityName('vadodara')} → {cityName('surat')}</a></li>
+    <li><a href="https://tracker.shivrajsinh.in/?from=502&amp;to=505&amp;fromName=Vadodara&amp;toName=Surat">{cityName('vadodara')} → {cityName('surat')}</a></li>
     <li><a href="https://tracker.shivrajsinh.in/?from=464&amp;to=505&amp;fromName=Ahmedabad&amp;toName=Surat">{cityName('ahmedabad')} → {cityName('surat')}</a></li>
     <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=462&amp;fromName=Rajkot&amp;toName=Morbi">{cityName('rajkot')} → {cityName('morbi')}</a></li>
     <li><a href="https://tracker.shivrajsinh.in/?from=470&amp;to=497&amp;fromName=Rajkot&amp;toName=Jamnagar">{cityName('rajkot')} → {cityName('jamnagar')}</a></li>
