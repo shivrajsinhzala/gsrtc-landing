@@ -11,14 +11,14 @@ const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "How GSRTC Live Bus Tracking Works | ST Tracker",
+    "name": "How GSRTC Live Bus Tracking Works | GSRTC Bus Tracker",
     "description": "How GSRTC live bus tracking works: where the GPS position comes from, how often it updates, and why a bus sometimes cannot be found.",
     "url": "https://gsrtc.shivrajsinh.in/gsrtc-live-bus-tracking",
     "inLanguage": "en-IN",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "ST Tracker",
-      "url": "https://gsrtc.shivrajsinh.in"
+      "name": "GSRTC Bus Tracker",
+      "url": "https://gsrtc.shivrajsinh.in/"
     },
     "about": {
       "@type": "Thing",
@@ -27,7 +27,7 @@ const jsonLd = [
     },
     "mainEntity": {
       "@type": "WebApplication",
-      "name": "ST Tracker",
+      "name": "GSRTC Bus Tracker",
       "url": "https://tracker.shivrajsinh.in",
       "applicationCategory": "TravelApplication",
       "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
@@ -45,7 +45,7 @@ const jsonLd = [
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "ST Tracker",
+        "name": "GSRTC Bus Tracker",
         "item": "https://gsrtc.shivrajsinh.in/"
       },
       {
@@ -90,7 +90,7 @@ const jsonLd = [
 ---
 
 <Base
-  title="How GSRTC Live Bus Tracking Works | ST Tracker"
+  title="How GSRTC Live Bus Tracking Works | GSRTC Bus Tracker"
   description="How GSRTC live bus tracking works: where the GPS position comes from, how often it updates, and why a bus sometimes cannot be found."
   path="gsrtc-live-bus-tracking"
   lang="en"
@@ -114,11 +114,11 @@ const jsonLd = [
 
 <section class="wrap section narrow">
   <h2 class="reveal">Where the position comes from</h2>
-  <p class="reveal">Every GSRTC bus running a scheduled trip carries a GPS unit that reports its position back to the operator's systems. That's the same raw data every live-tracking tool works from — GSRTC's own tracking page, the official app, and independent tools like ST Tracker all read the same feed rather than each running their own GPS network.</p>
-  <p class="reveal">ST Tracker asks for a bus's position by its number plate, gets back a latitude and longitude, and places it on the map. It refreshes roughly every 20 seconds — a live position is only useful if it stays live, so the app keeps asking for as long as you're watching that bus.</p>
+  <p class="reveal">Every GSRTC bus running a scheduled trip carries a GPS unit that reports its position back to the operator's systems. That's the same raw data every live-tracking tool works from — GSRTC's own tracking page, the official app, and independent tools like GSRTC Bus Tracker all read the same feed rather than each running their own GPS network.</p>
+  <p class="reveal">GSRTC Bus Tracker asks for a bus's position by its number plate, gets back a latitude and longitude, and places it on the map. It refreshes roughly every 20 seconds — a live position is only useful if it stays live, so the app keeps asking for as long as you're watching that bus.</p>
 
   <h2 class="reveal">How "4 minutes away" gets calculated</h2>
-  <p class="reveal">A raw GPS point on its own doesn't tell you much. ST Tracker combines it with the bus's route and timetable to work out three things: which stop it just left, how fast it's moving, and how long it should take to reach the stop you picked. When the operator's own feed already states the next stop directly, that answer wins over anything worked out locally — it's the more trustworthy number.</p>
+  <p class="reveal">A raw GPS point on its own doesn't tell you much. GSRTC Bus Tracker combines it with the bus's route and timetable to work out three things: which stop it just left, how fast it's moving, and how long it should take to reach the stop you picked. When the operator's own feed already states the next stop directly, that answer wins over anything worked out locally — it's the more trustworthy number.</p>
   <p class="reveal">Not every number is shown. If the data doesn't support a confident estimate — the bus has been stationary a long time, or the delay looks larger than a real bus would ever run — the app stays quiet rather than showing a figure it can't back up. A blank field is more honest than a wrong one.</p>
 
   <h2 class="reveal">Why a bus sometimes can't be found</h2>
@@ -144,7 +144,7 @@ const jsonLd = [
     <h2>Questions people ask</h2>
     <div class="faq">
       <details class="reveal" name="faq"><summary>How often does the live position update?</summary>
-        <p>Every few seconds while the bus is on a trip. ST Tracker polls the position roughly every 20 seconds and animates the marker smoothly between fixes rather than jumping.</p></details>
+        <p>Every few seconds while the bus is on a trip. GSRTC Bus Tracker polls the position roughly every 20 seconds and animates the marker smoothly between fixes rather than jumping.</p></details>
       <details class="reveal" name="faq"><summary>How accurate is a GSRTC bus's GPS position?</summary>
         <p>As accurate as the GPS unit fitted to that bus, typically within a few tens of metres on the road. Arrival time estimates carry more uncertainty because they also depend on traffic and stops.</p></details>
       <details class="reveal" name="faq"><summary>Why does live tracking sometimes say a bus is not available?</summary>
@@ -157,7 +157,7 @@ const jsonLd = [
 <section class="wrap section closer">
   <h2>See it live for yourself</h2>
   <p class="sub">Type a plate, or search a route. Free, no account.</p>
-  <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open ST Tracker</a>
+  <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open GSRTC Bus Tracker</a>
 </section>
 
 </main>

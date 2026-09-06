@@ -18,8 +18,8 @@ export const ui = {
     "navGuides": "Guides",
     "openApp": "Open the app",
     "eyebrow": "<span class=\"live-dot-pulse\"></span> Free · Real-Time GPS · No Account",
-    "h1": "Track any Gujarat ST bus, live on a map",
-    "lede": "Watch your bus move on the map — where it is now, and when it reaches your stop.",
+    "h1": "GSRTC Bus Tracker",
+    "lede": "Live tracking for Gujarat ST buses — watch your bus move on the map, see where it is now, and when it reaches your stop.",
     "plateLabel": "Bus number plate",
     "track": "Track",
     "ctaAltNote": "Free, no account. Search by route if you do not have a bus number.",
@@ -32,10 +32,10 @@ export const ui = {
     "statLiveSub": "positions every few seconds",
     "statLang": "languages, English and Gujarati",
     "aboutH": "Built by one person, for real commuters",
-    "aboutP1": "ST Tracker is not a company product. It is a side project, live since August 2026, built because finding a Gujarat ST bus meant calling the depot, guessing from memory, or standing at a stand hoping. It reads the same live position data GSRTC's own systems publish and shows it in a form built for someone waiting at a stop — not for an operations desk.",
-    "aboutP2": "It is <strong>not the official GSRTC app</strong> and never claims to be — that distinction matters enough to repeat here, not just bury in a footer. What it is: a maintained, actively updated tracker covering all 8,554 registered ST buses and 19,026 stations across Gujarat, run without accounts, without a paywall, and without selling anything to anyone.",
+    "aboutP1": "GSRTC Bus Tracker is not a company product. It is an independent side project, live since August 2026, built because finding a Gujarat ST bus meant calling the depot, guessing from memory, or standing at a stand hoping. It reads the same live position data GSRTC's own systems publish and shows it in a form built for someone waiting at a stop — not for an operations desk.",
+    "aboutP2": "It is <strong>not the official GSRTC app</strong> and never claims to be — that distinction matters enough to repeat here, not just bury in a footer. What it is: an independent, actively updated tracker covering all 8,554 registered ST buses and 19,026 stations across Gujarat, run without accounts, without a paywall, and without selling anything to anyone.",
     "compareH": "Not the operator's app. A better window into it.",
-    "compareSub": "ST Tracker is an independent website that reads the same live GSRTC data and shows it in a form built for someone standing at a stop, not for an operations desk.",
+    "compareSub": "GSRTC Bus Tracker is an independent website that reads the same live GSRTC data and shows it in a form built for someone standing at a stop, not for an operations desk.",
     "c1H": "Instead of calling the depot",
     "c1P": "No hold music, no guessing whether the person on the phone can see the bus either. Type the plate and the position is on the map in seconds.",
     "c2H": "Instead of asking at the stand",
@@ -98,10 +98,10 @@ export const ui = {
     "guideChipFleet": "The GSRTC fleet",
     "guideChipApp": "Is there a GSRTC app?",
     "skipToContent": "Skip to content",
-    "footCopyPrefix": "ST Tracker · Designed &amp; Developed by",
+    "footCopyPrefix": "GSRTC Bus Tracker · Developed by",
     "faqH": "Questions people ask",
     "q1": "Is this the official GSRTC app?",
-    "a1": "No. ST Tracker is an independent tool built for Gujarat ST commuters. It shows the same live bus positions the operator publishes, in a form that is quicker to read at a bus stop. It is not affiliated with GSRTC.",
+    "a1": "No. GSRTC Bus Tracker is an independent tool built for Gujarat ST commuters. It shows the same live bus positions the operator publishes, in a form that is quicker to read at a bus stop. It is not affiliated with GSRTC.",
     "q2": "How accurate is the live location?",
     "a2": "Positions come from the GPS unit on the bus itself, refreshed every few seconds while the bus is on a trip. Arrival estimates are worked out from that position against the timetable, and the app stays silent rather than showing a number it cannot support.",
     "q3": "Why can I not find my bus?",
@@ -114,7 +114,7 @@ export const ui = {
     "a6": "Yes. The whole app and this page are available in Gujarati, including station and route names where the operator provides them.",
     "closerH": "Stop guessing where the bus is",
     "closerP": "It takes one tap and costs nothing.",
-    "openApp3": "Open ST Tracker",
+    "openApp3": "Open GSRTC Bus Tracker",
     "footDesc": "Live GPS bus tracking utility for Gujarat ST (GSRTC) commuters. Track any bus on a map, search timetables across 19,000+ stations, and get arrival alerts.",
     "footLiveStatus": "Live GPS Network Active",
     "footColApp": "Live Tracker",
@@ -130,7 +130,7 @@ export const ui = {
     "footG4": "Find Bus Live Location",
     "footPlateFormat": "Number Plate Guide",
     "footPrivacy": "Privacy Policy",
-    "footFine": "An independent project, not affiliated with or endorsed by GSRTC or the Government of Gujarat.",
+    "footFine": "GSRTC Bus Tracker is an independent project — not affiliated with or endorsed by Gujarat State Road Transport Corporation (GSRTC) or the Government of Gujarat.",
     "footCoffee": "Buy me a coffee"
   },
   "gu": {
@@ -141,10 +141,10 @@ export const ui = {
     "navGuides": "માર્ગદર્શિકા",
     "openApp": "એપ ખોલો",
     "openApp2": "એપ ખોલો",
-    "openApp3": "ST Tracker ખોલો",
+    "openApp3": "GSRTC Bus Tracker ખોલો",
     "eyebrow": "મફત · રીઅલ-ટાઇમ GPS · લોગિન વગર",
-    "h1": "કોઈપણ ગુજરાત ST બસ, નકશા પર લાઈવ",
-    "lede": "તમારી બસ નકશા પર ચાલતી જુઓ — અત્યારે ક્યાં છે, અને તમારા સ્ટોપ પર ક્યારે પહોંચશે.",
+    "h1": "GSRTC Bus Tracker",
+    "lede": "ગુજરાત ST બસો માટે લાઈવ ટ્રેકિંગ — તમારી બસ નકશા પર ચાલતી જુઓ, અત્યારે ક્યાં છે, અને તમારા સ્ટોપ પર ક્યારે પહોંચશે.",
     "plateLabel": "બસ નંબર પ્લેટ",
     "track": "ટ્રેક કરો",
     "ctaAltNote": "મફત, એકાઉન્ટ વગર. બસ નંબર ન હોય તો રૂટથી શોધો.",
@@ -157,10 +157,10 @@ export const ui = {
     "statLiveSub": "દર થોડી સેકંડે લોકેશન",
     "statLang": "ભાષા — અંગ્રેજી અને ગુજરાતી",
     "aboutH": "એક વ્યક્તિ દ્વારા બનાવેલું, ખરેખરા મુસાફરો માટે",
-    "aboutP1": "ST Tracker કોઈ કંપનીનું ઉત્પાદન નથી. તે એક સાઈડ પ્રોજેક્ટ છે, ઓગસ્ટ 2026થી લાઈવ છે, જે એટલા માટે બનાવવામાં આવ્યો કારણ કે ગુજરાત ST બસ શોધવાનો અર્થ હતો ડેપોમાં ફોન કરવો, યાદશક્તિથી અંદાજ લગાવવો, અથવા સ્ટેન્ડ પર ઊભા રહીને આશા રાખવી. તે એ જ લાઈવ પોઝિશન ડેટા વાંચે છે જે GSRTCની પોતાની સિસ્ટમ પ્રકાશિત કરે છે અને તેને સ્ટોપ પર રાહ જોતી વ્યક્તિ માટે બનાવેલા સ્વરૂપમાં બતાવે છે — ઓપરેશન ડેસ્ક માટે નહીં.",
-    "aboutP2": "તે <strong>સત્તાવાર GSRTC એપ નથી</strong> અને ક્યારેય એવો દાવો કરતું નથી — આ તફાવત એટલો મહત્વનો છે કે તેને ફૂટરમાં દબાવવાને બદલે અહીં ફરીથી કહેવો પડે. તે શું છે: ગુજરાતભરની તમામ 8,554 નોંધાયેલી ST બસો અને 19,026 સ્ટેશનોને આવરી લેતું, સતત અપડેટ થતું ટ્રેકર, જે એકાઉન્ટ વગર, પેવોલ વગર, અને કોઈને કંઈ વેચ્યા વગર ચલાવવામાં આવે છે.",
+    "aboutP1": "GSRTC Bus Tracker કોઈ કંપનીનું ઉત્પાદન નથી. તે એક સ્વતંત્ર સાઈડ પ્રોજેક્ટ છે, ઓગસ્ટ 2026થી લાઈવ છે, જે એટલા માટે બનાવવામાં આવ્યો કારણ કે ગુજરાત ST બસ શોધવાનો અર્થ હતો ડેપોમાં ફોન કરવો, યાદશક્તિથી અંદાજ લગાવવો, અથવા સ્ટેન્ડ પર ઊભા રહીને આશા રાખવી. તે એ જ લાઈવ પોઝિશન ડેટા વાંચે છે જે GSRTCની પોતાની સિસ્ટમ પ્રકાશિત કરે છે અને તેને સ્ટોપ પર રાહ જોતી વ્યક્તિ માટે બનાવેલા સ્વરૂપમાં બતાવે છે — ઓપરેશન ડેસ્ક માટે નહીં.",
+    "aboutP2": "તે <strong>સત્તાવાર GSRTC એપ નથી</strong> અને ક્યારેય એવો દાવો કરતું નથી — આ તફાવત એટલો મહત્વનો છે કે તેને ફૂટરમાં દબાવવાને બદલે અહીં ફરીથી કહેવો પડે. તે શું છે: ગુજરાતભરની તમામ 8,554 નોંધાયેલી ST બસો અને 19,026 સ્ટેશનોને આવરી લેતું, સતત અપડેટ થતું સ્વતંત્ર ટ્રેકર, જે એકાઉન્ટ વગર, પેવોલ વગર, અને કોઈને કંઈ વેચ્યા વગર ચલાવવામાં આવે છે.",
     "compareH": "ઓપરેટરની એપ નહીં. તેમાં જોવાની વધુ સારી બારી.",
-    "compareSub": "ST Tracker એક સ્વતંત્ર વેબસાઈટ છે જે એ જ લાઈવ GSRTC ડેટા વાંચે છે અને તેને બસ સ્ટોપ પર ઊભેલી વ્યક્તિ માટે બનાવેલા સ્વરૂપમાં બતાવે છે, ઓપરેશન ડેસ્ક માટે નહીં.",
+    "compareSub": "GSRTC Bus Tracker એક સ્વતંત્ર વેબસાઈટ છે જે એ જ લાઈવ GSRTC ડેટા વાંચે છે અને તેને બસ સ્ટોપ પર ઊભેલી વ્યક્તિ માટે બનાવેલા સ્વરૂપમાં બતાવે છે, ઓપરેશન ડેસ્ક માટે નહીં.",
     "c1H": "ડેપોમાં ફોન કરવાને બદલે",
     "c1P": "હોલ્ડ મ્યુઝિક નહીં, સામેની વ્યક્તિને પણ બસ દેખાય છે કે નહીં તેની અટકળ નહીં. પ્લેટ લખો અને થોડી સેકંડમાં નકશા પર સ્થાન મળે છે.",
     "c2H": "સ્ટેન્ડ પર પૂછવાને બદલે",
@@ -170,7 +170,7 @@ export const ui = {
     "guidesH": "માર્ગદર્શિકા",
     "guidesSub": "GSRTC અને ST બસ ટ્રેકિંગ ખરેખર કેવી રીતે કામ કરે છે તે વિશે વધુ.",
     "g1H": "GSRTC Tracker — શું છે અને કેવી રીતે સરખાવાય છે",
-    "g1P": "GSRTC ટ્રેકર શું કરે છે તેની ટૂંકી સમજ, અને ST Tracker સત્તાવાર એપ અને અન્ય વિકલ્પો સામે કેવી રીતે ટકે છે.",
+    "g1P": "GSRTC ટ્રેકર શું કરે છે તેની ટૂંકી સમજ, અને GSRTC Bus Tracker સત્તાવાર એપ અને અન્ય વિકલ્પો સામે કેવી રીતે ટકે છે.",
     "g2H": "GSRTC લાઈવ બસ ટ્રેકિંગ કેવી રીતે કામ કરે છે",
     "g2P": "GPS સ્થાન ખરેખર ક્યાંથી આવે છે, તે કેટલું તાજું છે, અને બસ ક્યારેક કેમ ન મળે.",
     "g3H": "ગુજરાતમાં ST બસ ટ્રેકિંગ, સમજાવેલું",
@@ -225,10 +225,10 @@ export const ui = {
     "guideChipFleet": "GSRTC નો કાફલો",
     "guideChipApp": "શું GSRTC ની પોતાની એપ છે?",
     "skipToContent": "મુખ્ય સામગ્રી પર જાઓ",
-    "footCopyPrefix": "ST Tracker · ડિઝાઇન અને ડેવલપમેન્ટ:",
+    "footCopyPrefix": "GSRTC Bus Tracker · ડેવલપમેન્ટ:",
     "faqH": "લોકો પૂછે છે તે પ્રશ્નો",
     "q1": "શું આ GSRTC ની સત્તાવાર એપ છે?",
-    "a1": "ના. ST Tracker ગુજરાત ST ના મુસાફરો માટે બનાવેલું સ્વતંત્ર સાધન છે. ઓપરેટર જે લાઈવ લોકેશન આપે છે તે જ બતાવે છે, પણ બસ સ્ટોપ પર ઝડપથી વાંચી શકાય તે રીતે. તે GSRTC સાથે સંકળાયેલું નથી.",
+    "a1": "ના. GSRTC Bus Tracker ગુજરાત ST ના મુસાફરો માટે બનાવેલું સ્વતંત્ર સાધન છે. ઓપરેટર જે લાઈવ લોકેશન આપે છે તે જ બતાવે છે, પણ બસ સ્ટોપ પર ઝડપથી વાંચી શકાય તે રીતે. તે GSRTC સાથે સંકળાયેલું નથી.",
     "q2": "લાઈવ લોકેશન કેટલું સચોટ છે?",
     "a2": "લોકેશન બસ પરના GPS માંથી જ આવે છે અને બસ ટ્રિપ પર હોય ત્યારે દર થોડી સેકંડે અપડેટ થાય છે. પહોંચવાનો સમય તે લોકેશન અને ટાઈમ ટેબલ પરથી ગણાય છે, અને પૂરતી માહિતી ન હોય તો એપ ખોટો આંકડો બતાવવાને બદલે ચૂપ રહે છે.",
     "q3": "મારી બસ કેમ મળતી નથી?",
@@ -254,18 +254,18 @@ export const ui = {
     "footPlateFormat": "નંબર પ્લેટ માર્ગદર્શિકા",
     "footPrivacy": "ગોપનીયતા નીતિ",
     "footCoffee": "મને કોફી પીવડાવો",
-    "footFine": "આ એક સ્વતંત્ર પ્રોજેક્ટ છે, GSRTC કે ગુજરાત સરકાર સાથે સંકળાયેલો કે તેમના દ્વારા માન્ય નથી."
+    "footFine": "GSRTC Bus Tracker એક સ્વતંત્ર પ્રોજેક્ટ છે, જે GSRTC (ગુજરાત રાજ્ય માર્ગ વાહન વ્યવહાર નિગમ) કે ગુજરાત સરકાર સાથે સંકળાયેલો કે તેમના દ્વારા માન્ય નથી."
   }
 } as const;
 
 /** What Google shows in the result, per language. */
 export const meta = {
   "en": {
-    "title": "GSRTC Live Bus Tracking — Track Any Gujarat ST Bus on a Map",
+    "title": "GSRTC Bus Tracker — Live Gujarat ST Bus Tracking",
     "description": "Track any Gujarat ST (GSRTC) bus live on a map by its number plate. See where it is now, when it reaches your stop, and full timetables. Free, no account."
   },
   "gu": {
-    "title": "GSRTC લાઈવ બસ ટ્રેકિંગ — કોઈપણ ગુજરાત ST બસ નકશા પર જુઓ",
+    "title": "GSRTC Bus Tracker — લાઈવ ગુજરાત ST બસ ટ્રેકિંગ",
     "description": "નંબર પ્લેટથી કોઈપણ ગુજરાત ST (GSRTC) બસ લાઈવ નકશા પર જુઓ. બસ ક્યાં છે, તમારા સ્ટોપ પર ક્યારે પહોંચશે, અને ટાઈમ ટેબલ. મફત, લોગિન વગર."
   }
 } as const;

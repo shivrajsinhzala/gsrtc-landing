@@ -11,10 +11,29 @@ export function homeJsonLd(lang) {
   const blocks = [
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "ST Tracker",
+    "@type": "WebSite",
+    "@id": "https://gsrtc.shivrajsinh.in/#website",
+    "url": "https://gsrtc.shivrajsinh.in/",
+    "name": "GSRTC Bus Tracker",
     "alternateName": [
-      "GSRTC Live Tracker",
+      "GSRTC Tracker",
+      "ST Tracker",
+      "gsrtc.shivrajsinh.in"
+    ],
+    "inLanguage": "en-IN",
+    "publisher": {
+      "@type": "Organization",
+      "name": "GSRTC Bus Tracker",
+      "url": "https://gsrtc.shivrajsinh.in/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GSRTC Bus Tracker",
+    "alternateName": [
+      "GSRTC Tracker",
+      "ST Tracker",
       "Gujarat ST Bus Tracker",
       "GSRTC બસ ટ્રેકર"
     ],
@@ -71,7 +90,7 @@ export function homeJsonLd(lang) {
         "name": "Is this the official GSRTC app?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. ST Tracker is an independent public utility built by Shivrajsinh Zala for Gujarat commuters. According to official transit records, GSRTC operates over 8,554 buses serving 19,026 stations; ST Tracker visualizes these public telematics positions in a fast, mobile-friendly map without requiring an account or app store download."
+          "text": "No. GSRTC Bus Tracker is an independent public utility built by Shivrajsinh Zala for Gujarat commuters. According to official transit records, GSRTC operates over 8,554 buses serving 19,026 stations; GSRTC Bus Tracker visualizes these public telematics positions in a fast, mobile-friendly map without requiring an account or app store download."
         }
       },
       {
@@ -95,12 +114,12 @@ export function homeJsonLd(lang) {
         "name": "Does it work on iPhone?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. ST Tracker is built as a Progressive Web App (PWA) compatible with iOS Safari and Android. On iPhone, tap Share > Add to Home Screen to run full-screen with offline caching and native arrival notification support."
+          "text": "Yes. GSRTC Bus Tracker is built as a Progressive Web App (PWA) compatible with iOS Safari and Android. On iPhone, tap Share > Add to Home Screen to run full-screen with offline caching and native arrival notification support."
         }
       },
       {
         "@type": "Question",
-        "name": "Is ST Tracker free to use?",
+        "name": "Is GSRTC Bus Tracker free to use?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes, 100% free. There are zero subscription charges, zero platform fees, and no account or login required. It is maintained as a public service utility for Gujarat commuters."
@@ -118,18 +137,6 @@ export function homeJsonLd(lang) {
   },
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://gsrtc.shivrajsinh.in",
-    "name": "ST Tracker",
-    "inLanguage": "en-IN",
-    "publisher": {
-      "@type": "Organization",
-      "name": "ST Tracker",
-      "url": "https://gsrtc.shivrajsinh.in"
-    }
-  },
-  {
-    "@context": "https://schema.org",
     "@type": "HowTo",
     "name": "How to track a GSRTC bus live on a map",
     "description": "Track any Gujarat ST (GSRTC) bus live on a map by its number plate, free and without an account.",
@@ -142,7 +149,7 @@ export function homeJsonLd(lang) {
     "step": [
       {
         "@type": "HowToStep",
-        "name": "Open ST Tracker",
+        "name": "Open GSRTC Bus Tracker",
         "text": "Go to tracker.shivrajsinh.in in any browser — no app install or account needed.",
         "url": "https://tracker.shivrajsinh.in"
       },

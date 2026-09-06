@@ -90,7 +90,7 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-bus-fleet',
-    title: 'GSRTC Fleet Size — How Many ST Buses Run in Gujarat',
+    title: 'GSRTC Fleet Size — How Many ST Buses Run | ST Tracker',
     description: 'How many buses GSRTC operates, what a fleet this size means for live tracking coverage, and why not every bus is trackable at once.',
     crumbLabel: 'GSRTC bus fleet',
     h1: 'How big is the GSRTC bus fleet?',
@@ -196,7 +196,7 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-bus-arrival-alerts',
-    title: 'GSRTC Bus Arrival Alerts — Get Notified Before It Arrives',
+    title: 'GSRTC Bus Arrival Alerts — Live Tracking | ST Tracker',
     description: 'How to set an arrival alert for your GSRTC bus so your phone tells you when it is close, instead of watching the map the whole time.',
     crumbLabel: 'GSRTC bus arrival alerts',
     h1: 'Get an alert before your GSRTC bus arrives',
@@ -247,7 +247,7 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-tracking-app',
-    title: 'GSRTC Live Tracking App — Is There One, and Which to Use',
+    title: 'GSRTC Live Tracking App — Which to Use | ST Tracker',
     description: 'Whether GSRTC has a live tracking app, how it differs from the official booking app, and why ST Tracker needs no install to try.',
     crumbLabel: 'GSRTC tracking app',
     h1: 'Is there a GSRTC live tracking app?',
@@ -266,12 +266,12 @@ const FEATURE_PAGES = [
     ],
     related: [
       { href: 'gsrtc-tracker.html', label: 'GSRTC tracker — what it is and how it compares' },
-      { href: 'gsrtc-bus-arrival-alerts.html', label: 'Get an alert before your GSRTC bus arrives' },
+      { href: 'gsrtc-live-bus-tracking.html', label: 'How GSRTC live bus tracking works' },
     ],
   },
   {
     slug: 'gsrtc-online-booking-pnr-tracking',
-    title: 'GSRTC Bus Tracking by PNR & Ticket Number',
+    title: 'GSRTC Bus Tracking by PNR & Ticket Number | ST Tracker',
     description: 'How to look up and track your booked GSRTC ST bus using your ticket PNR or booking reference without knowing the bus registration plate.',
     crumbLabel: 'GSRTC tracking by PNR',
     h1: 'Track your GSRTC bus using PNR / ticket number',

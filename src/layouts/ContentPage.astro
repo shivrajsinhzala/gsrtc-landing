@@ -63,8 +63,8 @@ const jsonLd: unknown[] = [
     inLanguage: 'en-IN',
     isPartOf: {
       '@type': 'WebSite',
-      name: 'ST Tracker',
-      url: SITE,
+      name: 'GSRTC Bus Tracker',
+      url: `${SITE}/`,
     },
     about: {
       '@type': 'Thing',
@@ -73,7 +73,7 @@ const jsonLd: unknown[] = [
     },
     mainEntity: {
       '@type': 'WebApplication',
-      name: 'ST Tracker',
+      name: 'GSRTC Bus Tracker',
       url: 'https://tracker.shivrajsinh.in',
       applicationCategory: 'TravelApplication',
       operatingSystem: 'Android, iOS, Windows, macOS — any modern browser',
@@ -88,7 +88,7 @@ const jsonLd: unknown[] = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ST Tracker', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 1, name: 'GSRTC Bus Tracker', item: `${SITE}/` },
       // Points at the new extensionless URL, not the `.html` the old build emitted — a
       // breadcrumb advertising a URL that only 301s is a needless extra hop for a crawler.
       { '@type': 'ListItem', position: 2, name: crumbLabel, item: `${SITE}/${slug}` },
@@ -186,7 +186,7 @@ if (h2Matches.length >= 2) {
     <div class="closer">
       <h2>{closerH}</h2>
       <p class="sub">Type a plate, or search a route. Free, no account.</p>
-      <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open ST Tracker</a>
+      <a class="btn primary lg" href="https://tracker.shivrajsinh.in">Open GSRTC Bus Tracker</a>
     </div>
   </section>
 
