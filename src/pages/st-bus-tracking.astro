@@ -15,6 +15,28 @@ const jsonLd = [
     "description": "What an ST bus actually is, how tracking works by number plate, and why a bus sometimes cannot be tracked right now. Free, no app needed.",
     "url": "https://gsrtc.shivrajsinh.in/st-bus-tracking",
     "inLanguage": "en-IN",
+    "datePublished": "2026-01-15T00:00:00+05:30",
+    "dateModified": "2026-09-06T00:00:00+05:30",
+    "author": {
+      "@type": "Person",
+      "name": "Shivrajsinh Zala",
+      "url": "https://shivrajsinh.in",
+      "jobTitle": "Transit Systems & Web Developer",
+      "sameAs": ["https://shivrajsinh.in", "https://github.com/shivrajsinh"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GSRTC Bus Tracker",
+      "url": "https://gsrtc.shivrajsinh.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gsrtc.shivrajsinh.in/icons/icon-512.png"
+      }
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".lede", ".faq summary", ".faq p"]
+    },
     "isPartOf": {
       "@type": "WebSite",
       "name": "GSRTC Bus Tracker",
@@ -31,6 +53,7 @@ const jsonLd = [
       "url": "https://tracker.shivrajsinh.in",
       "applicationCategory": "TravelApplication",
       "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -65,7 +88,7 @@ const jsonLd = [
         "name": "What is an ST bus?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ST stands for State Transport — the buses run by GSRTC (Gujarat State Road Transport Corporation) across the state. \"ST bus\" and \"GSRTC bus\" refer to the same fleet; ST is simply the older, more common name among riders."
+          "text": "ST stands for State Transport — the buses run by GSRTC (Gujarat State Road Transport Corporation) across Gujarat. \"ST bus\" and \"GSRTC bus\" refer to the same fleet; ST is simply the older, colloquial name among commuters."
         }
       },
       {
@@ -82,6 +105,14 @@ const jsonLd = [
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "No. ST Tracker only covers GSRTC's own ST fleet, since that is the operator whose position data it reads. Private travel operators run separate systems."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many ST buses and stations are active across Gujarat?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GSRTC operates over 8,554 buses serving 19,026 stations and stops across 16 administrative divisions, transporting over 2.5 million passengers daily."
         }
       }
     ]

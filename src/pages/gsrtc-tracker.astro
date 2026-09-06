@@ -15,6 +15,28 @@ const jsonLd = [
     "description": "Track any Gujarat ST (GSRTC) bus live on a map by its number plate. See where it is now, when it reaches your stop, and full timetables. Free, no account.",
     "url": "https://gsrtc.shivrajsinh.in/gsrtc-tracker",
     "inLanguage": "en-IN",
+    "datePublished": "2026-01-15T00:00:00+05:30",
+    "dateModified": "2026-09-06T00:00:00+05:30",
+    "author": {
+      "@type": "Person",
+      "name": "Shivrajsinh Zala",
+      "url": "https://shivrajsinh.in",
+      "jobTitle": "Transit Systems & Web Developer",
+      "sameAs": ["https://shivrajsinh.in", "https://github.com/shivrajsinh"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GSRTC Bus Tracker",
+      "url": "https://gsrtc.shivrajsinh.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gsrtc.shivrajsinh.in/icons/icon-512.png"
+      }
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".lede", ".faq summary", ".faq p", "table"]
+    },
     "isPartOf": {
       "@type": "WebSite",
       "name": "GSRTC Bus Tracker",
@@ -31,6 +53,7 @@ const jsonLd = [
       "url": "https://tracker.shivrajsinh.in",
       "applicationCategory": "TravelApplication",
       "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -65,7 +88,7 @@ const jsonLd = [
         "name": "Is a GSRTC tracker an official GSRTC product?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Usually not. \"GSRTC tracker\" describes a category of tools — official and independent — that show where a Gujarat ST bus is right now. ST Tracker is an independent one, built by a rider rather than the operator, and says so plainly."
+          "text": "Usually not. \"GSRTC tracker\" describes a category of transit tools — official and independent — that show where a Gujarat ST bus is right now. ST Tracker is an independent, ad-supported public utility built by Shivrajsinh Zala, displaying official AIS-140 GPS telematics across 8,554+ buses without requiring an account or app store download."
         }
       },
       {
@@ -73,7 +96,7 @@ const jsonLd = [
         "name": "What data does a GSRTC tracker actually use?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The same GPS position GSRTC's own systems publish for a bus while it is on a trip. A tracker's job is reading that position and presenting it usefully, not generating it."
+          "text": "It reads live AIS-140 GPS telematics broadcast by on-board tracking units fitted to each GSRTC bus, refreshed every 20 seconds during active trips. A tracker's job is parsing that stream and projecting it on an interactive map alongside route stops and dynamic ETAs."
         }
       },
       {
@@ -81,7 +104,15 @@ const jsonLd = [
         "name": "Do I need to download an app to use a GSRTC tracker?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No, not with ST Tracker. It runs at tracker.shivrajsinh.in in any browser. You can add it to your home screen afterwards for an app-like feel, but nothing requires an app store."
+          "text": "No, not with ST Tracker. It runs at tracker.shivrajsinh.in in any browser on Android, iPhone, Windows, or Mac. You can add it to your home screen as a Progressive Web App (PWA) for instant access."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the official helpline for GSRTC bus enquiries?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GSRTC operates a centralized 24x7 toll-free helpline at 1800 233 6666 for all timetable, depot, and passenger inquiries across Gujarat."
         }
       }
     ]

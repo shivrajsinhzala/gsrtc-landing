@@ -20,6 +20,7 @@ const pages = [];
     const full = path.join(dir, e.name);
     if (e.isDirectory()) walk(full, `${prefix}/${e.name}`);
     else if (e.name === 'index.html') pages.push({ url: prefix || '/', file: full });
+    else if (e.name.endsWith('.html')) pages.push({ url: `${prefix}/${e.name.slice(0, -'.html'.length)}`, file: full });
   }
 })(DIST);
 

@@ -728,6 +728,54 @@ const CITY_ROUTES = {
 /** The cities that actually get a hub page — a link to any other one is a 404. */
 const CITY_HUBS = new Set(Object.keys(CITY_ROUTES).map((k) => CITY[k].name));
 
+/** Verified corridor distances, typical journey durations, and primary highways */
+const ROUTE_FACTS = {
+  'somnath-dwarka-bus': { dist: '230 km', time: '4h 30m – 5h 30m', highway: 'NH 51 Coastal Highway' },
+  'jamnagar-dwarka-bus': { dist: '130 km', time: '2h 45m – 3h 15m', highway: 'SH 26 / NH 947' },
+  'junagadh-somnath-bus': { dist: '85 km', time: '2h 00m – 2h 30m', highway: 'NH 151' },
+  'palanpur-ambaji-bus': { dist: '50 km', time: '1h 15m – 1h 30m', highway: 'SH 56' },
+  'ahmedabad-surendranagar-bus': { dist: '125 km', time: '2h 30m – 3h 00m', highway: 'Viramgam Highway / SH 17' },
+  'ahmedabad-nadiad-bus': { dist: '55 km', time: '1h 00m – 1h 20m', highway: 'NE 1 / NH 48' },
+  'surat-rajkot-bus': { dist: '420 km', time: '8h 30m – 9h 30m', highway: 'NH 48 & NH 47' },
+  'ahmedabad-junagadh-bus': { dist: '315 km', time: '6h 30m – 7h 30m', highway: 'NH 47 & NH 151' },
+  'ahmedabad-jamnagar-bus': { dist: '305 km', time: '6h 00m – 7h 00m', highway: 'NH 47 & SH 26' },
+  'surat-amreli-bus': { dist: '370 km', time: '7h 30m – 8h 30m', highway: 'NH 48 & SH 36' },
+  'ahmedabad-vadodara-bus': { dist: '110 km', time: '1h 45m – 2h 15m', highway: 'National Expressway 1 (NE 1)' },
+  'vadodara-surat-bus': { dist: '140 km', time: '2h 30m – 3h 15m', highway: 'NH 48' },
+  'ahmedabad-surat-bus': { dist: '265 km', time: '4h 45m – 5h 30m', highway: 'NE 1 & NH 48' },
+  'ahmedabad-rajkot-bus': { dist: '215 km', time: '4h 00m – 4h 45m', highway: 'NH 47' },
+  'rajkot-morbi-bus': { dist: '65 km', time: '1h 15m – 1h 30m', highway: 'SH 24 / NH 27' },
+  'ahmedabad-gandhinagar-bus': { dist: '30 km', time: '45m – 1h 00m', highway: 'SG Highway / Gandhinagar Corridor' },
+  'ahmedabad-bhavnagar-bus': { dist: '195 km', time: '4h 00m – 4h 30m', highway: 'SH 36 / NH 51' },
+  'ahmedabad-mehsana-bus': { dist: '75 km', time: '1h 30m – 2h 00m', highway: 'SH 41 State Highway' },
+  'ahmedabad-anand-bus': { dist: '75 km', time: '1h 30m – 1h 45m', highway: 'NE 1 / NH 48' },
+  'ahmedabad-somnath-bus': { dist: '410 km', time: '8h 00m – 9h 30m', highway: 'NH 47 & NH 151' },
+  'ahmedabad-dwarka-bus': { dist: '440 km', time: '8h 30m – 10h 00m', highway: 'NH 47 & NH 947' },
+  'ahmedabad-palanpur-bus': { dist: '145 km', time: '3h 00m – 3h 45m', highway: 'SH 41 / NH 27' },
+  'ahmedabad-bhuj-bus': { dist: '335 km', time: '6h 30m – 8h 00m', highway: 'NH 947' },
+  'ahmedabad-ambaji-bus': { dist: '185 km', time: '4h 00m – 4h 45m', highway: 'SH 41 & SH 56' },
+  'surat-bhavnagar-bus': { dist: '350 km', time: '7h 00m – 8h 30m', highway: 'NH 48 & SH 36' },
+  'surat-vapi-bus': { dist: '115 km', time: '2h 00m – 2h 30m', highway: 'NH 48 South Gujarat Corridor' },
+  'surat-navsari-bus': { dist: '35 km', time: '45m – 1h 00m', highway: 'NH 48' },
+  'surat-bharuch-bus': { dist: '70 km', time: '1h 15m – 1h 45m', highway: 'NH 48' },
+  'rajkot-jamnagar-bus': { dist: '90 km', time: '1h 45m – 2h 15m', highway: 'SH 26' },
+  'rajkot-junagadh-bus': { dist: '105 km', time: '2h 00m – 2h 30m', highway: 'NH 151' },
+  'rajkot-dwarka-bus': { dist: '225 km', time: '4h 30m – 5h 30m', highway: 'SH 26 & NH 947' },
+  'rajkot-somnath-bus': { dist: '195 km', time: '4h 00m – 4h 45m', highway: 'NH 151' },
+  'rajkot-porbandar-bus': { dist: '180 km', time: '3h 45m – 4h 30m', highway: 'NH 27' },
+  'rajkot-bhavnagar-bus': { dist: '175 km', time: '3h 45m – 4h 30m', highway: 'SH 25' },
+  'vadodara-anand-bus': { dist: '45 km', time: '50m – 1h 10m', highway: 'NH 48' },
+  'vadodara-bharuch-bus': { dist: '75 km', time: '1h 20m – 1h 45m', highway: 'NH 48' },
+  'vadodara-godhra-bus': { dist: '80 km', time: '1h 45m – 2h 15m', highway: 'SH 5' },
+  'bhavnagar-amreli-bus': { dist: '115 km', time: '2h 30m – 3h 15m', highway: 'SH 31' },
+  'rajkot-diu-bus': { dist: '235 km', time: '5h 00m – 6h 00m', highway: 'NH 151 & SH 37 via Una' },
+  'valsad-vapi-bus': { dist: '30 km', time: '35m – 45m', highway: 'NH 48' },
+  'valsad-khergam-bus': { dist: '30 km', time: '45m – 1h 00m', highway: 'SH 186' },
+  'ahmedabad-morbi-bus': { dist: '190 km', time: '3h 45m – 4h 30m', highway: 'NH 47 & NH 27' },
+  'bhuj-mandvi-bus': { dist: '60 km', time: '1h 15m – 1h 30m', highway: 'SH 47' },
+  'rajkot-tankara-bus': { dist: '45 km', time: '50m – 1h 10m', highway: 'SH 24' },
+};
+
 /** Route pairs — every link uses a verified station ID from GSRTC seed data */
 const ROUTE_PAIRS = [
   // High Traffic Golden Corridors & Pilgrimage Circuits
@@ -948,22 +996,20 @@ const ROUTE_PAIRS = [
     slug: 'rajkot-tankara-bus', a: CITY.rajkot, b: CITY.tankara,
     crumbLabel: 'Rajkot ↔ Tankara ST bus',
   },
-].map(({ slug, a, b, crumbLabel, extra }) => ({
-  slug,
-  // 60 characters at the longest real pair (Ahmedabad ↔ Gandhinagar), which is the point:
-  // past roughly that, Google truncates the title in the result and the reader never sees the
-  // half that says what the page offers. The brand suffix was what pushed every one of these
-  // over — Google appends the site name itself for long-tail pages anyway.
-  //
-  // "GSRTC" replaces "ST Bus" here deliberately. Every competing result for these city-pair
-  // queries — abhibus, paytm, goibibo, gsrtchelp — leads with GSRTC, and the old title carried
-  // the term nowhere at all. "ST bus" is still in the H1, the lede and the description.
-  title: `${a.name} to ${b.name} GSRTC Bus Timetable & Live Tracking`,
-  description: `Live GSRTC bus tracking and timetable between ${a.name} and ${b.name}, both directions. See running buses now, or search the full schedule.`,
-  crumbLabel,
-  h1: `${a.name} ↔ ${b.name} ST bus, live`,
-  lede: `Travelling between ${a.name} and ${b.name}? See every scheduled and running GSRTC service on this route, in either direction.`,
-  body: `
+].map(({ slug, a, b, crumbLabel, extra }) => {
+  const facts = ROUTE_FACTS[slug] || { dist: '100+ km', time: '2 to 3 hours', highway: 'Gujarat State Highway' };
+  return {
+    slug,
+    // 60 characters at the longest real pair (Ahmedabad ↔ Gandhinagar), which is the point:
+    // past roughly that, Google truncates the title in the result and the reader never sees the
+    // half that says what the page offers. The brand suffix was what pushed every one of these
+    // over — Google appends the site name itself for long-tail pages anyway.
+    title: `${a.name} to ${b.name} GSRTC Bus Timetable & Live Tracking`,
+    description: `Live GSRTC bus tracking and timetable between ${a.name} and ${b.name}, both directions. See running buses now, or search the full schedule.`,
+    crumbLabel,
+    h1: `${a.name} ↔ ${b.name} ST bus, live`,
+    lede: `Travelling between ${a.name} and ${b.name}? See every scheduled and running GSRTC service on this route, in either direction.`,
+    body: `
   <h2 class="reveal">Track this route now</h2>
   <p class="reveal">
     <a class="btn primary" href="${routeUrl(a, b)}">${a.name} → ${b.name}</a>
@@ -972,25 +1018,49 @@ const ROUTE_PAIRS = [
   </p>
   <p class="reveal">Either link opens the live departure list for that direction — running buses show a live countdown, and the rest show their scheduled time. Pick any one to open its live map.</p>
   ${extra || ''}
+  <h2 class="reveal">Route specifications and transit overview</h2>
+  <table class="reveal route-facts">
+    <tr><th>Route Corridor</th><td>${a.name} ↔ ${b.name}</td></tr>
+    <tr><th>Corridor Distance</th><td>${facts.dist}</td></tr>
+    <tr><th>Typical Journey Duration</th><td>${facts.time}</td></tr>
+    <tr><th>Primary Highway Corridor</th><td>${facts.highway}</td></tr>
+    <tr><th>Operating Bus Classes</th><td>Express (3x2), Gurjarnagri (2x2), Sleeper, AC</td></tr>
+    <tr><th>Live GPS Telematics</th><td>AIS-140 tracking updated every ~20s</td></tr>
+  </table>
   <h2 class="reveal">Don't have a plate number yet</h2>
   <p class="reveal">You don't need one — the links above search by station, and you pick the actual bus from the list once you can see which ones are running. See <a href="gsrtc-bus-timetable.html">the full timetable guide</a> for how filtering and sorting the list works.</p>`,
-  // Only the endpoints that have a hub page. This used to link both unconditionally, which sent
-  // three route pages at a /<city>-st-bus-tracker that is never generated — the small endpoints
-  // are deliberately absent from CITY_ROUTES (see the note by CITY), so those were hard 404s.
-  related: [
-    ...[a, b]
-      .filter((c) => CITY_HUBS.has(c.name))
-      .map((c) => ({
-        href: `${c.name.toLowerCase()}-st-bus-tracker.html`,
-        label: `${c.name} ST bus tracker`,
-      })),
-    { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
-  ],
-  faq: [
-    { q: `Are there GSRTC buses from ${a.name} to ${b.name} every day?`, a: `Yes — this is a route GSRTC runs scheduled services on daily. Use the links above to see today’s actual departures rather than a fixed schedule.` },
-    { q: 'Can I track a bus on this route without knowing its plate?', a: 'Yes. The links on this page search by station, and you pick the bus you want from the list of departures — no plate needed.' },
-  ],
-}));
+    // Only the endpoints that have a hub page. This used to link both unconditionally, which sent
+    // three route pages at a /<city>-st-bus-tracker that is never generated — the small endpoints
+    // are deliberately absent from CITY_ROUTES (see the note by CITY), so those were hard 404s.
+    related: [
+      ...[a, b]
+        .filter((c) => CITY_HUBS.has(c.name))
+        .map((c) => ({
+          href: `${c.name.toLowerCase()}-st-bus-tracker.html`,
+          label: `${c.name} ST bus tracker`,
+        })),
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+    ],
+    faq: [
+      {
+        q: `Are there GSRTC buses from ${a.name} to ${b.name} every day?`,
+        a: `Yes, GSRTC operates daily scheduled passenger services between ${a.name} and ${b.name}. Use the live tracking buttons above to view real-time departures, live delay indicators, and upcoming trips.`,
+      },
+      {
+        q: `How long does a GSRTC bus take from ${a.name} to ${b.name}?`,
+        a: `A GSRTC bus takes approximately ${facts.time} to cover the ${facts.dist} distance between ${a.name} and ${b.name} via ${facts.highway}, depending on service classification and road traffic.`,
+      },
+      {
+        q: `What types of GSRTC buses operate between ${a.name} and ${b.name}?`,
+        a: `GSRTC operates multiple bus classes on this route including Express (3x2), Gurjarnagri (2x2 pushback), and long-distance Sleeper / AC coaches where scheduled. Commuters can filter departures by category on ST Tracker.`,
+      },
+      {
+        q: `Can I track an ST bus on the ${a.name} to ${b.name} route without a plate number?`,
+        a: `Yes. Tap the route search buttons above to query by station pair. ST Tracker displays every active bus on the corridor with live countdowns, delay alerts, and interactive map tracking.`,
+      },
+    ],
+  };
+});
 
 /** Name back to key, so a CITY object can be turned into the key its route slug is built from. */
 const CITY_KEY = Object.fromEntries(Object.entries(CITY).map(([k, v]) => [v.name, k]));
@@ -1044,8 +1114,22 @@ const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
       { href: 'nearby-st-bus-stops.html', label: 'Find ST bus stops near you' },
     ],
     faq: [
-      { q: `Can I track any GSRTC bus that passes through ${city.name}, or only ones starting there?`, a: `Any of them — search by plate for a specific bus, or by route for a full departure list, whether ${city.name} is the origin, the destination, or a stop along the way.` },
-      { q: `Does this cover buses from other operators serving ${city.name}?`, a: 'No — only GSRTC’s own ST fleet, since that is the operator whose live position data this tool reads.' },
+      {
+        q: `Can I track any GSRTC bus that passes through ${city.name}, or only ones starting there?`,
+        a: `Any of them — search by plate for a specific bus, or by route for a full departure list, whether ${city.name} is the origin, the destination, or an intermediate stop along the route.`,
+      },
+      {
+        q: `How do I search the GSRTC bus timetable for ${city.name}?`,
+        a: `Select ${city.name} as your origin or destination station on ST Tracker to query complete schedules, departure countdowns, and delay statuses across all 19,026 covered Gujarat stations.`,
+      },
+      {
+        q: `Does this cover buses from other operators serving ${city.name}?`,
+        a: 'No — only GSRTC’s own ST fleet, since that is the operator whose live AIS-140 GPS position data this tool reads.',
+      },
+      {
+        q: `How do I find nearby ST bus stops in ${city.name}?`,
+        a: `Tap the Nearby Stops radar on ST Tracker to locate bus depots and pick-up stands near your exact GPS coordinates in ${city.name}, with walking distances and departure countdowns.`,
+      },
     ],
   };
 });

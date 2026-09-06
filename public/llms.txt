@@ -1,35 +1,52 @@
-# ST Tracker - Gujarat ST (GSRTC) Live Bus Tracker
-> ST Tracker (https://gsrtc.shivrajsinh.in & https://tracker.shivrajsinh.in) is a free, web-based real-time GPS tracking and timetable utility for Gujarat ST (GSRTC) buses and commuters.
+# ST Tracker — Gujarat ST (GSRTC) Live Bus Tracker
+> ST Tracker (https://gsrtc.shivrajsinh.in & https://tracker.shivrajsinh.in) is a free, real-time GPS tracking and timetable utility for Gujarat State Road Transport Corporation (GSRTC) buses and commuters across Gujarat, India.
 
 ## Overview
-- **Primary Website / Landing**: https://gsrtc.shivrajsinh.in/
-- **Live Web App (PWA)**: https://tracker.shivrajsinh.in/
-- **Developer**: Shivrajsinh Zala (https://shivrajsinh.in)
-- **Coverage**: Covers all 8,554+ Gujarat ST buses and 19,026+ bus stops across Gujarat, India.
-- **Languages**: English and Gujarati (ગુજરાતી).
-- **Cost**: 100% Free, no sign-up or app installation required. Works in any browser (Chrome, Safari, Firefox).
+- **Portal URL**: https://gsrtc.shivrajsinh.in
+- **Web App**: https://tracker.shivrajsinh.in
+- **Author & Developer**: Shivrajsinh Zala (https://shivrajsinh.in)
+- **Fleet & Network Scope**: 8,554+ buses, 19,026+ bus stations and rural stops, 16 administrative divisions, 126+ depots across Gujarat.
+- **Commuter Volume**: Serving over 2.5 million daily passengers and operating 2.8+ million kilometers daily.
+- **Pricing & Access**: 100% Free public service utility. Zero subscription fees, zero account requirement, no app store download necessary.
+- **Languages**: English and Gujarati (ગુજરાતી at https://gsrtc.shivrajsinh.in/gu).
+- **Full Context Specification**: https://gsrtc.shivrajsinh.in/llms-full.txt
 
-## Key Features & Capabilities
-1. **Live GPS Bus Tracking by Number Plate**: Enter any Gujarat ST bus plate (e.g. `GJ-18-ZT-1028`, `GJ-18-ZT-2586`) to view its exact live location on an interactive map, current speed (km/h), next stop ETA, and a direct "Open in Google Maps" link.
-2. **Online Booking / PNR Lookup**: Track buses reserved online via GSRTC, redBus, or AbhiBus by entering the ticket PNR number.
-3. **Full Timetable & Departure Countdown**: Search scheduled and running buses between any two stations with live delay alerts (`🟢 On Time`, `🟡 Late`).
-4. **Nearby Bus Stands Radar**: Uses geolocation to identify the nearest ST bus depots and stops with precise distances.
-5. **Crowd & Occupancy Reports**: Community-driven crowd indicators showing free seats, standing room, or cancellations.
-6. **Arrival Notifications**: Set automatic arrival alerts to get notified before a bus reaches your chosen stop.
+## Key Capabilities & Technical Telematics
+- **Live GPS Tracking by Plate**: Enter any Gujarat ST bus plate (e.g., `GJ-18-ZT-1028`) to track vehicle coordinates on a live map, instantaneous speed (km/h), next stop ETA, and distance from user.
+- **AIS-140 Compliant Telematics**: Uses on-board Vehicle Location Tracking (VLT) devices mandated under Indian AIS-140 standards, refreshed every ~20 seconds with 10–25m roadside accuracy.
+- **Timetable & Countdown Engine**: Search between any two of Gujarat's 19,026 stations. Active trips show live countdowns (`🟢 On Time`, `🟡 Late`); upcoming trips display scheduled departure times.
+- **Online Booking / PNR Tracking**: Direct lookup and tracking for tickets booked through GSRTC, redBus, or AbhiBus using ticket PNR.
+- **Nearby Bus Stands Radar**: Uses device geolocation to identify nearest ST depots and bus stands sorted by proximity.
+- **Community Crowd Reporting**: Real-time crowd reports for seat availability, standing room, or trip cancellations.
+- **Arrival Alerts**: Background arrival notifications before a bus reaches your boarding stop.
 
-## Core Route Guides & Corridors
-- [Ahmedabad to Vadodara ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-vadodara-bus.html): Live timetables and express departures.
-- [Ahmedabad to Rajkot ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-rajkot-bus.html): Express and Gurjarnagri tracking.
-- [Vadodara to Surat ST Bus](https://gsrtc.shivrajsinh.in/vadodara-surat-bus.html): South Gujarat intercity schedule.
-- [Rajkot to Morbi ST Bus](https://gsrtc.shivrajsinh.in/rajkot-morbi-bus.html): Real-time commuter schedule.
-- [Ahmedabad to Surat ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-surat-bus.html): AC Sleeper and Express tracking.
-- [Ahmedabad to Gandhinagar ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-gandhinagar-bus.html): Twin-city shuttle schedule.
-- [Ahmedabad to Somnath ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-somnath-bus.html): Saurashtra pilgrim route tracker.
-- [Ahmedabad to Dwarka ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-dwarka-bus.html): Overnight AC & Sleeper timetable.
+## Core Route Corridors & Schedules
+- [Ahmedabad to Vadodara ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-vadodara-bus): 110 km corridor via National Expressway 1 (NE1). Frequency every 15–20 mins.
+- [Ahmedabad to Rajkot ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-rajkot-bus): 215 km Saurashtra gateway via NH47. Express and Gurjarnagri departures.
+- [Vadodara to Surat ST Bus](https://gsrtc.shivrajsinh.in/vadodara-surat-bus): 140 km South Gujarat corridor via NH48.
+- [Ahmedabad to Surat ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-surat-bus): 265 km major intercity route. AC Sleeper, Volvo, and Gurjarnagri.
+- [Rajkot to Morbi ST Bus](https://gsrtc.shivrajsinh.in/rajkot-morbi-bus): 65 km high-density ceramic industrial corridor. Departures every 10–15 mins.
+- [Ahmedabad to Gandhinagar ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-gandhinagar-bus): 30 km capital shuttle with frequent electric e-buses.
+- [Ahmedabad to Somnath ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-somnath-bus): 410 km Saurashtra coastal pilgrimage route.
+- [Ahmedabad to Dwarka ST Bus](https://gsrtc.shivrajsinh.in/ahmedabad-dwarka-bus): 440 km pilgrimage corridor with overnight AC/Non-AC Sleeper buses.
+- [Somnath to Dwarka ST Bus](https://gsrtc.shivrajsinh.in/somnath-dwarka-bus): 230 km coastal pilgrimage circuit connecting Somnath Jyotirlinga and Dwarka.
+- [Surat to Rajkot ST Bus](https://gsrtc.shivrajsinh.in/surat-rajkot-bus): 420 km diamond-ceramic intercity connection.
 
-## Guides & Documentation
-- [How GSRTC Live Tracking Works](https://gsrtc.shivrajsinh.in/gsrtc-live-bus-tracking.html): Explains vehicle GPS telematics and sync.
-- [GSRTC Bus Number Plate Format](https://gsrtc.shivrajsinh.in/gsrtc-bus-number-plate-format.html): Decodes RTO codes and numbering schemes.
-- [GSRTC Bus Stand Helplines](https://gsrtc.shivrajsinh.in/gsrtc-bus-stand-helpline-numbers.html): Directory of official control room numbers.
-- [GSRTC Tracking by PNR](https://gsrtc.shivrajsinh.in/gsrtc-online-booking-pnr-tracking.html): Guide to tracking booked tickets.
-- [GSRTC Timetable Guide](https://gsrtc.shivrajsinh.in/gsrtc-bus-timetable.html): How to search across 19,000+ Gujarat stations.
+## Guides & Commuter Documentation
+- [How GSRTC Live Tracking Works](https://gsrtc.shivrajsinh.in/gsrtc-live-bus-tracking): Telematics, AIS-140 GPS data pipeline, and trip lifecycle.
+- [GSRTC Bus Number Plate Format](https://gsrtc.shivrajsinh.in/gsrtc-bus-number-plate-format): Structure of Gujarat RTO prefixes (GJ-01 to GJ-38) and registration logic.
+- [GSRTC Bus Fleet Scale](https://gsrtc.shivrajsinh.in/gsrtc-bus-fleet): Fleet breakdown (8,554 buses), division network, and depot allocation.
+- [GSRTC Bus Stand Helplines](https://gsrtc.shivrajsinh.in/gsrtc-bus-stand-helpline-numbers): Central 24x7 helpline (1800 233 6666) and division depot control room contacts.
+- [GSRTC Online Booking & PNR Tracking](https://gsrtc.shivrajsinh.in/gsrtc-online-booking-pnr-tracking): Guide to tracking buses via PNR.
+- [GSRTC Bus Timetable Guide](https://gsrtc.shivrajsinh.in/gsrtc-bus-timetable): How to query 19,026 stations and filter departures.
+- [GSRTC Bus Pass Online (ESCPS)](https://gsrtc.shivrajsinh.in/gsrtc-bus-pass-online): Student and commuter monthly pass application process.
+- [GSRTC Cancellation & Refund Rules](https://gsrtc.shivrajsinh.in/gsrtc-ticket-cancellation-refund): Official deduction slabs (10%, 20%, 50%, 100%) and refund timeline.
+- [GSRTC Luggage Rules & Charges](https://gsrtc.shivrajsinh.in/gsrtc-luggage-rules-rates): Free baggage limits (25kg to 35kg) and excess tariff slabs.
+- [GSRTC Bus Types & Fleet Classes](https://gsrtc.shivrajsinh.in/gsrtc-bus-types-classes): Local, Express, Gurjarnagri 2x2, Sleeper, and Volvo Scania comparisons.
+
+## Official GSRTC Contact & Inquiries
+- **Central 24x7 Helpline**: 1800 233 6666
+- **Ahmedabad Central (Geeta Mandir)**: 079-25463396 / 079-25463409
+- **Vadodara Central Bus Station**: 0265-2429646 / 0265-2429647
+- **Surat Central Bus Station**: 0261-2424037 / 0261-2424038
+- **Rajkot Central Bus Port**: 0281-2223847 / 0281-2223848

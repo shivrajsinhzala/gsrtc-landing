@@ -189,7 +189,7 @@ function initAds() {
   document.querySelectorAll('ins.adsbygoogle[data-ad-slot]').forEach((slot) => {
     const wrap = slot.closest('.ad-slot-wrap');
 
-    // 1. Instantly collapse container if AdSense reports unfilled
+    // Collapse container when AdSense officially reports unfilled
     const observer = new MutationObserver(() => {
       const status = slot.getAttribute('data-ad-status');
       if (status === 'unfilled') {
@@ -206,17 +206,20 @@ function initAds() {
     });
     observer.observe(slot, { attributes: true, attributeFilter: ['data-ad-status'] });
 
-    // 2. Fallback check: if adblocker or no iframe loads within 3.5s, clean up wrapper
-    setTimeout(() => {
-      if (!slot.querySelector('iframe') && slot.getAttribute('data-ad-status') !== 'filled') {
-        if (wrap) {
-          wrap.hidden = true;
-          wrap.classList.add('ad-unfilled');
-          wrap.style.display = 'none';
+    // If adsbygoogle script was blocked by user's ad blocker, collapse after page finishes loading
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        // Only collapse if the script never initialized at all (e.g. adblocker) and no status was set
+        if (!slot.getAttribute('data-ad-status') && !slot.querySelector('iframe')) {
+          const scriptBlocked = !document.querySelector('script[src*="adsbygoogle.js"]')?.complete;
+          if (scriptBlocked && wrap) {
+            wrap.hidden = true;
+            wrap.classList.add('ad-unfilled');
+            wrap.style.display = 'none';
+          }
         }
-      }
-      observer.disconnect();
-    }, 3500);
+      }, 7000);
+    }, { once: true });
 
     if (slot.dataset.adsenseRequested === '1') return;
     slot.dataset.adsenseRequested = '1';

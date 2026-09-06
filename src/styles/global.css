@@ -644,12 +644,11 @@ a { color: inherit; }
   transition: opacity .2s ease;
 }
 
-/* Guarantee ZERO empty white space / voids when ads are unfilled, blocked, or missing */
+/* Clean collapse when AdSense explicitly reports unfilled or ad container is empty */
 .ad-slot-wrap[hidden],
 .ad-slot-wrap.ad-unfilled,
 .ad-slot-wrap:has(ins.adsbygoogle[data-ad-status="unfilled"]),
 ins.adsbygoogle[data-ad-status="unfilled"],
-.google-auto-placed[style*="display: none"],
 .ad-slot-wrap:empty {
   display: none !important;
   min-height: 0 !important;
@@ -678,25 +677,9 @@ ins.adsbygoogle {
   text-align: center !important;
   border-radius: var(--r-sm) !important;
 }
-
-/* UX Protection: prevent Auto-Ads from breaking interactive controls and navigation */
-.bar .google-auto-placed,
-.bar-nav .google-auto-placed,
-.chips .google-auto-placed,
-.stat-strip .google-auto-placed,
-.strip .google-auto-placed,
-.steps .google-auto-placed,
-.plate .google-auto-placed,
-.hero .google-auto-placed,
-.plate-samples .google-auto-placed {
-  display: none !important;
-}
 @media (max-width: 768px) {
   body {
-    padding-bottom: max(65px, env(safe-area-inset-bottom, 0px));
-  }
-  .sticky-cta {
-    bottom: 60px;
+    padding-bottom: max(75px, env(safe-area-inset-bottom, 0px));
   }
 }
 .foot-status-badge {

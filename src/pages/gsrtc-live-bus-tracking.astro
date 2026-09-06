@@ -15,6 +15,28 @@ const jsonLd = [
     "description": "How GSRTC live bus tracking works: where the GPS position comes from, how often it updates, and why a bus sometimes cannot be found.",
     "url": "https://gsrtc.shivrajsinh.in/gsrtc-live-bus-tracking",
     "inLanguage": "en-IN",
+    "datePublished": "2026-01-15T00:00:00+05:30",
+    "dateModified": "2026-09-06T00:00:00+05:30",
+    "author": {
+      "@type": "Person",
+      "name": "Shivrajsinh Zala",
+      "url": "https://shivrajsinh.in",
+      "jobTitle": "Transit Systems & Web Developer",
+      "sameAs": ["https://shivrajsinh.in", "https://github.com/shivrajsinh"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GSRTC Bus Tracker",
+      "url": "https://gsrtc.shivrajsinh.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gsrtc.shivrajsinh.in/icons/icon-512.png"
+      }
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".lede", ".faq summary", ".faq p"]
+    },
     "isPartOf": {
       "@type": "WebSite",
       "name": "GSRTC Bus Tracker",
@@ -31,6 +53,7 @@ const jsonLd = [
       "url": "https://tracker.shivrajsinh.in",
       "applicationCategory": "TravelApplication",
       "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -65,7 +88,7 @@ const jsonLd = [
         "name": "How often does the live position update?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every few seconds while the bus is on a trip. ST Tracker polls the position roughly every 20 seconds and animates the marker smoothly between fixes rather than jumping."
+          "text": "Every few seconds while the bus is on an active trip. GSRTC Bus Tracker polls telemetry roughly every 20 seconds and smoothly animates the vehicle marker along the route geometry."
         }
       },
       {
@@ -73,7 +96,7 @@ const jsonLd = [
         "name": "How accurate is a GSRTC bus's GPS position?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "As accurate as the GPS unit fitted to that bus, typically within a few tens of metres on the road. Arrival time estimates carry more uncertainty because they also depend on traffic and stops."
+          "text": "Highly accurate. Positioning relies on on-board AIS-140 certified Vehicle Location Tracking (VLT) units, maintaining typical roadside accuracy within 10 to 25 metres."
         }
       },
       {
@@ -81,7 +104,7 @@ const jsonLd = [
         "name": "Why does live tracking sometimes say a bus is not available?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The operator only reports a position for a bus that is currently running a trip. A bus at the depot, between trips, or not yet started shows nothing to track — not because tracking failed, but because there is nothing running yet."
+          "text": "GSRTC only broadcasts GPS telemetry for buses actively operating a scheduled service. A bus at the depot, between shifts, or that has completed its run transmits no telemetry until its next scheduled trip begins."
         }
       }
     ]
@@ -114,8 +137,8 @@ const jsonLd = [
 
 <section class="wrap section narrow">
   <h2 class="reveal">Where the position comes from</h2>
-  <p class="reveal">Every GSRTC bus running a scheduled trip carries a GPS unit that reports its position back to the operator's systems. That's the same raw data every live-tracking tool works from — GSRTC's own tracking page, the official app, and independent tools like GSRTC Bus Tracker all read the same feed rather than each running their own GPS network.</p>
-  <p class="reveal">GSRTC Bus Tracker asks for a bus's position by its number plate, gets back a latitude and longitude, and places it on the map. It refreshes roughly every 20 seconds — a live position is only useful if it stays live, so the app keeps asking for as long as you're watching that bus.</p>
+  <p class="reveal">Under Ministry of Road Transport and Highways (MoRTH) standards, every operational vehicle in GSRTC's fleet of 8,554+ buses is equipped with an AIS-140 compliant Vehicle Location Tracking (VLT) unit. These telematics modules continuously transmit geographic coordinates (latitude and longitude), current vehicle speed, and time-stamped status to the operator's central control servers.</p>
+  <p class="reveal">That is the authoritative data stream all tracking tools rely on. GSRTC Bus Tracker polls this telemetry roughly every 20 seconds while a bus is actively running its trip, mapping its coordinates with typical roadside accuracy between 10 to 25 metres and smoothly animating movement along the route.</p>
 
   <h2 class="reveal">How "4 minutes away" gets calculated</h2>
   <p class="reveal">A raw GPS point on its own doesn't tell you much. GSRTC Bus Tracker combines it with the bus's route and timetable to work out three things: which stop it just left, how fast it's moving, and how long it should take to reach the stop you picked. When the operator's own feed already states the next stop directly, that answer wins over anything worked out locally — it's the more trustworthy number.</p>

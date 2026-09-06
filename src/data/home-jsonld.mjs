@@ -20,11 +20,21 @@ export function homeJsonLd(lang) {
       "ST Tracker",
       "gsrtc.shivrajsinh.in"
     ],
-    "inLanguage": "en-IN",
+    "inLanguage": lang === 'gu' ? 'gu-IN' : 'en-IN',
+    "datePublished": "2026-01-15T00:00:00+05:30",
+    "dateModified": "2026-09-06T00:00:00+05:30",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".lede", ".strip-card", "#about", "#faq details summary", "#faq details p"]
+    },
     "publisher": {
       "@type": "Organization",
       "name": "GSRTC Bus Tracker",
-      "url": "https://gsrtc.shivrajsinh.in/"
+      "url": "https://gsrtc.shivrajsinh.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gsrtc.shivrajsinh.in/icons/icon-512.png"
+      }
     }
   },
   {
@@ -41,6 +51,9 @@ export function homeJsonLd(lang) {
     "installUrl": "https://tracker.shivrajsinh.in",
     "applicationCategory": "TravelApplication",
     "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "datePublished": "2026-01-15T00:00:00+05:30",
+    "dateModified": "2026-09-06T00:00:00+05:30",
     "inLanguage": [
       "en-IN",
       "gu-IN"
@@ -48,12 +61,13 @@ export function homeJsonLd(lang) {
     "description": "Track any Gujarat ST (GSRTC) bus live on a map by its number plate. See where it is now, when it reaches your stop, timetables between any two stations, and alerts before it arrives.",
     "featureList": [
       "Live bus location by number plate",
-      "Stop-by-stop route with real arrival times",
+      "AIS-140 GPS telematics integration refreshed every 20 seconds",
+      "Stop-by-stop route with real arrival times and delay alerts",
       "Timetable search between any two of 19,026 stations",
-      "Nearby bus stations on a map",
+      "Nearby bus stations radar on a map with distances",
       "Arrival alerts before the bus reaches your stop",
       "Crowd reports on how full each bus is",
-      "Works offline once installed",
+      "Works offline once installed as a PWA",
       "English and Gujarati"
     ],
     "offers": {
@@ -65,7 +79,12 @@ export function homeJsonLd(lang) {
     "author": {
       "@type": "Person",
       "name": "Shivrajsinh Zala",
-      "url": "https://shivrajsinh.in"
+      "url": "https://shivrajsinh.in",
+      "jobTitle": "Transit Systems & Web Developer",
+      "sameAs": [
+        "https://shivrajsinh.in",
+        "https://github.com/shivrajsinh"
+      ]
     },
     "areaServed": {
       "@type": "State",

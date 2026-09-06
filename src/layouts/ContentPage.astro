@@ -61,10 +61,32 @@ const jsonLd: unknown[] = [
     description: description,
     url: `${SITE}/${slug}`,
     inLanguage: 'en-IN',
+    datePublished: '2026-01-15T00:00:00+05:30',
+    dateModified: '2026-09-06T00:00:00+05:30',
     isPartOf: {
       '@type': 'WebSite',
       name: 'GSRTC Bus Tracker',
       url: `${SITE}/`,
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Shivrajsinh Zala',
+      url: 'https://shivrajsinh.in',
+      jobTitle: 'Transit Systems & Web Developer',
+      sameAs: ['https://shivrajsinh.in', 'https://github.com/shivrajsinh'],
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'GSRTC Bus Tracker',
+      url: `${SITE}/`,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE}/icons/icon-512.png`,
+      },
+    },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', '.lede', '.faq summary', '.faq p', '.route-facts'],
     },
     about: {
       '@type': 'Thing',
@@ -77,6 +99,14 @@ const jsonLd: unknown[] = [
       url: 'https://tracker.shivrajsinh.in',
       applicationCategory: 'TravelApplication',
       operatingSystem: 'Android, iOS, Windows, macOS — any modern browser',
+      browserRequirements: 'Requires JavaScript. Requires HTML5.',
+      featureList: [
+        'Live bus GPS location by number plate',
+        'Stop-by-stop route schedule and delay alerts',
+        'Timetable search between 19,026 stations',
+        'Nearby bus stops locator with distance',
+        'AIS-140 GPS telematics integration',
+      ],
       offers: {
         '@type': 'Offer',
         price: '0',

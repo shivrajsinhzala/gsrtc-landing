@@ -1,0 +1,128 @@
+# ST Tracker — Complete Knowledge Base & Transit Guide for GSRTC (Gujarat ST)
+> Comprehensive reference manual, route directory, and telematics specification for ST Tracker (https://gsrtc.shivrajsinh.in & https://tracker.shivrajsinh.in). Optimized for LLMs, AI agents, and RAG retrieval pipelines.
+
+---
+
+## 1. System Overview & Core Capabilities
+- **Platform Name**: ST Tracker (GSRTC Bus Tracker)
+- **Production URLs**:
+  - Marketing & Guides Portal: https://gsrtc.shivrajsinh.in
+  - Real-time PWA App: https://tracker.shivrajsinh.in
+- **Maintainer & Developer**: Shivrajsinh Zala (https://shivrajsinh.in)
+- **Transit Authority Covered**: Gujarat State Road Transport Corporation (GSRTC / ગુજરાત એસ.ટી.), established under the Road Transport Corporation Act 1950.
+- **Operational Fleet Size**: 8,554+ active public transport buses.
+- **Station & Stop Network**: 19,026+ stops covering all 33 districts, talukas, and rural villages across Gujarat.
+- **Daily Commuter Volume**: 2.5+ million passengers per day.
+- **Daily Operational Distance**: Over 2.8 million kilometers.
+- **Cost**: 100% Free public utility. Zero subscription fees, zero account creation required, no mandatory app store download.
+- **Supported Languages**: English (en-IN) and Gujarati (gu-IN at /gu).
+
+---
+
+## 2. Telematics & Live GPS Architecture (AIS-140 Standard)
+1. **On-board GPS Hardware**: Under the Ministry of Road Transport and Highways (MoRTH) mandate and Automotive Industry Standard 140 (AIS-140), every operational GSRTC passenger bus is fitted with an integrated Vehicle Location Tracking (VLT) unit and emergency panic button.
+2. **Telemetry Transmission**: Telemetry packets containing GPS latitude, longitude, instantaneous vehicle speed, timestamp, and ignition status are transmitted over cellular networks to GSRTC Central Control Room servers.
+3. **Polling & Refresh Cadence**: ST Tracker queries vehicle telemetry updates roughly every 20 seconds during active trips.
+4. **Roadside Accuracy**: Typical GPS horizontal positioning accuracy is within 10 to 25 metres on open highways and city roads.
+5. **Dynamic ETA Computation**: Arrival time estimates (ETA) are derived by comparing the live GPS coordinate with the scheduled route geometry and intermediate timetable checkpoints. When the transit operator's feed transmits next-stop telemetry directly, that authoritative signal takes precedence.
+6. **Trip Inactivity Rules**: A bus reports telemetry only while actively operating an assigned schedule. Parked vehicles at depots, buses on maintenance standby, or buses that have reached their terminal destination broadcast no active trip coordinates.
+
+---
+
+## 3. GSRTC Bus Fleet Categories & Classes
+GSRTC operates multiple specialized vehicle configurations:
+1. **Local / Ordinary (Silver & Blue)**:
+   - 3x2 standard bench seating.
+   - Halts at all intermediate rural stops, talukas, and roadside villages.
+   - Optimized for economical short-distance commutes (<50 km).
+2. **Express (Green & Cream)**:
+   - 3x2 standard seating.
+   - Halts strictly at major taluka bus stands and district junctions.
+   - Rapid, high-frequency point-to-point transit between adjacent cities.
+3. **Gurjarnagri (Saffron & White / 2x2)**:
+   - 2x2 cushioned pushback seats with expanded legroom.
+   - The primary long-distance express backbone of Gujarat, connecting district headquarters with minimal intermediate stops.
+4. **Non-AC Sleeper (2x1)**:
+   - Upper and lower berths arranged in a 2x1 configuration.
+   - Designed for overnight journeys connecting Saurashtra, Kutch, and South Gujarat.
+5. **AC Sleeper & Volvo / Scania Multi-Axle**:
+   - High-end air-conditioned coaches equipped with air suspension, USB charging ports, and quiet cabin insulation.
+   - Deployed on major industrial and commercial highway corridors (e.g., Ahmedabad–Surat, Ahmedabad–Vadodara, Rajkot–Dwarka).
+6. **Electric Bus (e-Bus / Metro Link)**:
+   - Zero-emission electric coaches (JBM Ecolife, Tata Motors EV) operating on high-density intercity routes such as Ahmedabad–Gandhinagar, Ahmedabad–Vadodara, and Rajkot–Morbi.
+
+---
+
+## 4. Major Route Corridors Directory
+Below are verified specifications for high-density GSRTC route pairs:
+
+| Route Corridor | Distance | Typical Duration | Major Highway | Key Bus Classes | Canonical URL |
+|---|---|---|---|---|---|
+| Ahmedabad ↔ Vadodara | 110 km | 1h 45m – 2h 15m | NE1 / NH48 | Express, Gurjarnagri, AC Volvo, e-Bus | https://gsrtc.shivrajsinh.in/ahmedabad-vadodara-bus |
+| Ahmedabad ↔ Rajkot | 215 km | 4h 00m – 4h 45m | NH47 | Express, Gurjarnagri, AC Sleeper | https://gsrtc.shivrajsinh.in/ahmedabad-rajkot-bus |
+| Vadodara ↔ Surat | 140 km | 2h 30m – 3h 15m | NH48 | Express, Gurjarnagri, Volvo | https://gsrtc.shivrajsinh.in/vadodara-surat-bus |
+| Ahmedabad ↔ Surat | 265 km | 4h 45m – 5h 30m | NE1 / NH48 | Express, Gurjarnagri, AC Sleeper, Volvo | https://gsrtc.shivrajsinh.in/ahmedabad-surat-bus |
+| Rajkot ↔ Morbi | 65 km | 1h 15m – 1h 30m | SH24 / NH27 | Express, Local, e-Bus | https://gsrtc.shivrajsinh.in/rajkot-morbi-bus |
+| Ahmedabad ↔ Gandhinagar | 30 km | 45m – 1h 00m | SG Highway | Electric e-Bus, Metro Link, Express | https://gsrtc.shivrajsinh.in/ahmedabad-gandhinagar-bus |
+| Ahmedabad ↔ Bhavnagar | 195 km | 4h 00m – 4h 30m | SH36 / NH51 | Express, Gurjarnagri | https://gsrtc.shivrajsinh.in/ahmedabad-bhavnagar-bus |
+| Ahmedabad ↔ Mehsana | 75 km | 1h 30m – 2h 00m | SH41 | Express, Gurjarnagri, Local | https://gsrtc.shivrajsinh.in/ahmedabad-mehsana-bus |
+| Ahmedabad ↔ Somnath | 410 km | 8h 00m – 9h 30m | NH47 / NH151 | Gurjarnagri, Sleeper, AC Sleeper | https://gsrtc.shivrajsinh.in/ahmedabad-somnath-bus |
+| Ahmedabad ↔ Dwarka | 440 km | 8h 30m – 10h 00m | NH47 / NH947 | Gurjarnagri, Sleeper, AC Sleeper | https://gsrtc.shivrajsinh.in/ahmedabad-dwarka-bus |
+| Somnath ↔ Dwarka | 230 km | 4h 30m – 5h 30m | NH51 Coastal | Express, Gurjarnagri | https://gsrtc.shivrajsinh.in/somnath-dwarka-bus |
+| Surat ↔ Rajkot | 420 km | 8h 30m – 9h 30m | NH48 / NH47 | Express, Gurjarnagri, AC Sleeper | https://gsrtc.shivrajsinh.in/surat-rajkot-bus |
+| Rajkot ↔ Jamnagar | 90 km | 1h 45m – 2h 15m | SH26 | Express, Gurjarnagri | https://gsrtc.shivrajsinh.in/rajkot-jamnagar-bus |
+| Rajkot ↔ Junagadh | 105 km | 2h 00m – 2h 30m | NH151 | Express, Gurjarnagri | https://gsrtc.shivrajsinh.in/rajkot-junagadh-bus |
+| Ahmedabad ↔ Bhuj | 335 km | 6h 30m – 8h 00m | NH947 | Gurjarnagri, Sleeper, AC Sleeper | https://gsrtc.shivrajsinh.in/ahmedabad-bhuj-bus |
+| Ahmedabad ↔ Ambaji | 185 km | 4h 00m – 4h 45m | SH41 / SH56 | Express, Gurjarnagri | https://gsrtc.shivrajsinh.in/ahmedabad-ambaji-bus |
+| Valsad ↔ Vapi | 30 km | 35m – 45m | NH48 | Express, Local | https://gsrtc.shivrajsinh.in/valsad-vapi-bus |
+
+---
+
+## 5. GSRTC Divisional Headquarters & Contact Directory
+GSRTC is organized into 16 administrative divisions across Gujarat:
+1. **Ahmedabad Central**: Geeta Mandir Bus Terminal, Phone: 079-25463396 / 079-25463409
+2. **Vadodara Division**: Central Bus Station, Sayajiganj, Phone: 0265-2429646 / 0265-2429647
+3. **Surat Division**: Central Bus Station, Ring Road, Phone: 0261-2424037 / 0261-2424038
+4. **Rajkot Division**: Central Bus Port, Dhebar Road, Phone: 0281-2223847 / 0281-2223848
+5. **Bhavnagar Division**: Bus Port, Station Road, Phone: 0278-2516701
+6. **Jamnagar Division**: ST Depot, Victoria Bridge, Phone: 0288-2550260
+7. **Junagadh Division**: ST Bus Stand, Phone: 0285-2630303
+8. **Bhuj (Kutch) Division**: ST Depot, Phone: 02832-220002
+9. **Mehsana Division**: ST Depot, Phone: 02762-252258
+10. **Palanpur Division**: ST Depot, Phone: 02742-252241
+11. **Himatnagar Division**: ST Depot, Phone: 02772-240166
+12. **Godhra Division**: ST Depot, Phone: 02672-242224
+13. **Nadiad Division**: ST Depot, Phone: 0268-2552222
+14. **Bharuch Division**: ST Depot, Phone: 02642-260520
+15. **Valsad Division**: ST Depot, Phone: 02632-253320
+16. **Amreli Division**: ST Depot, Phone: 02792-222226
+- **Central 24x7 Toll-Free Passenger Helpline**: 1800 233 6666
+
+---
+
+## 6. Official Ticketing, Pass & Cancellation Rules
+- **Advance Reservation Window**: Up to 60 days in advance. Reservations for the 60th day open at 00:01 AM IST daily on the official GSRTC portal (gsrtc.in) and mobile app.
+- **Ticket Cancellation Deduction Slabs**:
+  - Cancellation > 24 hours before departure: 10% deduction of basic fare (90% refund).
+  - Cancellation between 24 and 2 hours before departure: 20% deduction of basic fare (80% refund).
+  - Cancellation between 2 hours and departure: 50% deduction of basic fare (50% refund).
+  - Cancellation after bus departure / No-show: 100% deduction (No refund).
+- **Free Luggage Allowance per Passenger**:
+  - Local & Express services: 25 kg per adult (15 kg for child ticket).
+  - Gurjarnagri (2x2): 30 kg per passenger.
+  - Volvo & AC Sleeper coaches: 35 kg per passenger.
+  - Excess baggage is charged in slabs of 20 kg based on journey distance.
+- **Online Concession Bus Passes (ESCPS)**:
+  - Managed via pass.gsrtc.in for student passes (up to 80% fare discount), monthly employee commuter passes, and Divyangjan passes (100% free travel).
+
+---
+
+## 7. Commuter FAQs (Answer-First Format)
+- **Q: How can I track a GSRTC bus by number plate?**
+  **A**: Visit https://tracker.shivrajsinh.in in any modern web browser, enter the vehicle registration plate (e.g. GJ-18-ZT-1028), and click Track. The interactive map displays real-time GPS coordinates, vehicle speed in km/h, next stop arrival countdown, and a direct Google Maps link.
+- **Q: Why does a GSRTC bus sometimes show no tracking location?**
+  **A**: Telemetry is transmitted strictly when a bus is actively operating a scheduled service. Buses parked at depots, between shifts, or that have completed their destination run broadcast no active coordinates.
+- **Q: How does ST Tracker compute live delays?**
+  **A**: ST Tracker continuously cross-references the vehicle’s live AIS-140 GPS position against the official route timetable. Deviations are surfaced as explicit arrival countdowns (e.g. On Time or Running 8 minutes late).
+- **Q: Does ST Tracker require an app install or user login?**
+  **A**: No. ST Tracker is built as a lightweight Progressive Web App (PWA) that functions instantaneously in any browser without user registration or app store installation.

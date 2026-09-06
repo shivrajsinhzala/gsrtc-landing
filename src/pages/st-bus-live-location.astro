@@ -15,6 +15,28 @@ const jsonLd = [
     "description": "How to find any Gujarat ST bus live location: what the number plate tells you, where the live position comes from, and why a bus sometimes shows no tracking.",
     "url": "https://gsrtc.shivrajsinh.in/st-bus-live-location",
     "inLanguage": "en-IN",
+    "datePublished": "2026-01-15T00:00:00+05:30",
+    "dateModified": "2026-09-06T00:00:00+05:30",
+    "author": {
+      "@type": "Person",
+      "name": "Shivrajsinh Zala",
+      "url": "https://shivrajsinh.in",
+      "jobTitle": "Transit Systems & Web Developer",
+      "sameAs": ["https://shivrajsinh.in", "https://github.com/shivrajsinh"]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GSRTC Bus Tracker",
+      "url": "https://gsrtc.shivrajsinh.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://gsrtc.shivrajsinh.in/icons/icon-512.png"
+      }
+    },
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h1", ".lede", ".faq summary", ".faq p"]
+    },
     "isPartOf": {
       "@type": "WebSite",
       "name": "GSRTC Bus Tracker",
@@ -31,6 +53,7 @@ const jsonLd = [
       "url": "https://tracker.shivrajsinh.in",
       "applicationCategory": "TravelApplication",
       "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -111,6 +134,14 @@ const jsonLd = [
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes. Pick the stop you're waiting at and turn on an arrival alert. Your phone notifies you shortly before the bus reaches that stop, so you don't have to keep the map open."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the official GSRTC helpline if my bus is untraceable?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Call the central GSRTC 24x7 toll-free helpline at 1800 233 6666, or query the specific depot control room for your departure station."
         }
       }
     ]
