@@ -310,9 +310,57 @@ a { color: inherit; }
 }
 .lede { font-size: clamp(1.05rem, .98rem + .4vw, 1.25rem); max-width: 56ch; line-height: 1.6; }
 
+.search-tabs {
+  display: inline-flex;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+  margin: 1.5rem 0 .4rem;
+  box-shadow: var(--shadow-1);
+}
+.search-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  background: transparent;
+  border: none;
+  color: var(--ink-2);
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 700;
+  padding: .42rem .95rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--fast) var(--ease);
+}
+.search-tab:hover {
+  color: var(--ink);
+}
+.search-tab.active {
+  background: var(--brand-btn);
+  color: var(--brand-ink);
+  box-shadow: 0 2px 8px -2px var(--brand);
+}
+@media (max-width: 520px) {
+  .search-tabs {
+    display: flex;
+    width: 100%;
+    margin-top: 1.2rem;
+  }
+  .search-tab {
+    flex: 1;
+    justify-content: center;
+    padding: .4rem .3rem;
+    font-size: .78rem;
+    gap: .25rem;
+  }
+}
+
 .plate {
   display: flex; align-items: center; gap: .6rem;
-  margin: 1.8rem 0 .7rem;
+  margin: .4rem 0 .7rem;
   background: var(--surface);
   border: 1.5px solid var(--line);
   border-radius: 999px;

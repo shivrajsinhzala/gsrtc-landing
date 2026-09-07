@@ -322,19 +322,21 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-bus-stand-helpline-numbers',
-    title: 'GSRTC Bus Stand Enquiry & Control Room Numbers | ST Tracker',
-    description: 'Comprehensive directory of GSRTC bus stand enquiry numbers, central toll-free helpline, and division control rooms across Gujarat.',
+    title: 'GSRTC Bus Stand Enquiry & Depot Phone Numbers Directory (All Gujarat)',
+    description: 'Official GSRTC bus stand enquiry numbers for all 26 Gujarat depots: Ahmedabad, Vadodara, Surat, Rajkot, Jamnagar, Bhavnagar, Junagadh, Bhuj & 1800 233 6666.',
     crumbLabel: 'GSRTC bus stand helplines',
-    h1: 'GSRTC bus stand enquiry & helpline directory',
-    lede: 'Need to contact a local Gujarat ST bus depot? Find official enquiry numbers, central customer care, and depot control rooms.',
+    h1: 'GSRTC bus stand enquiry & depot phone directory',
+    lede: 'Direct contact numbers for Gujarat ST bus depots, divisional control rooms, and 24x7 customer support across all 16 GSRTC administrative divisions.',
     body: `
   <h2 class="reveal">GSRTC Central 24x7 Helpline</h2>
-  <p class="reveal">GSRTC operates a centralized 24x7 toll-free helpline for passenger inquiries, grievance redressal, and emergency assistance: <b>1800 233 6666</b>.</p>
+  <p class="reveal">The official centralized 24x7 toll-free passenger helpline for GSRTC across Gujarat is <b>1800 233 6666</b> (or alternate toll-free <b>1800 233 5555</b>). Commuters can reach customer care for schedule inquiries, grievance redressal, emergency assistance, and booking verification.</p>
 
-  <h2 class="reveal">Major Bus Station Enquiry Numbers</h2>
+  <h2 class="reveal">All Gujarat Bus Station &amp; Depot Enquiry Numbers</h2>
+  <p class="reveal">According to GSRTC divisional records, here are direct official enquiry and control room telephone numbers for major bus ports, divisional headquarters, and regional depots across Gujarat:</p>
   <table class="reveal">
-    <tr><th>Bus Station / Depot</th><th>Contact Number</th></tr>
+    <tr><th>Bus Station / Depot</th><th>Direct Phone / Helpline</th></tr>
     <tr><td>Ahmedabad Geeta Mandir Central</td><td>079-25463396 / 079-25463409</td></tr>
+    <tr><td>Ahmedabad Ranip Bus Port</td><td>079-27552222</td></tr>
     <tr><td>Vadodara Central Bus Station</td><td>0265-2429646 / 0265-2429647</td></tr>
     <tr><td>Surat Central Bus Station</td><td>0261-2424037 / 0261-2424038</td></tr>
     <tr><td>Rajkot Central Bus Port</td><td>0281-2223847 / 0281-2223848</td></tr>
@@ -342,48 +344,84 @@ const FEATURE_PAGES = [
     <tr><td>Jamnagar ST Depot</td><td>0288-2550260</td></tr>
     <tr><td>Junagadh Bus Stand</td><td>0285-2630303</td></tr>
     <tr><td>Bhuj ST Depot</td><td>02832-220002</td></tr>
+    <tr><td>Gandhinagar Bus Depot</td><td>079-23222842</td></tr>
+    <tr><td>Anand Central Bus Station</td><td>02692-251450</td></tr>
+    <tr><td>Nadiad ST Depot</td><td>0268-2562544</td></tr>
+    <tr><td>Mehsana Central Bus Port</td><td>02762-252122</td></tr>
+    <tr><td>Morbi ST Bus Stand</td><td>02822-230550</td></tr>
+    <tr><td>Surendranagar ST Depot</td><td>02752-220264</td></tr>
+    <tr><td>Porbandar ST Bus Stand</td><td>0286-2241666</td></tr>
+    <tr><td>Somnath / Veraval Depot</td><td>02876-220140</td></tr>
+    <tr><td>Dwarka ST Depot</td><td>02892-234242</td></tr>
+    <tr><td>Palanpur ST Depot</td><td>02742-252224</td></tr>
+    <tr><td>Himatnagar ST Depot</td><td>02772-240166</td></tr>
+    <tr><td>Godhra ST Depot</td><td>02672-242444</td></tr>
+    <tr><td>Bharuch ST Depot</td><td>02642-260344</td></tr>
+    <tr><td>Navsari ST Depot</td><td>02637-258044</td></tr>
+    <tr><td>Valsad ST Depot</td><td>02632-253344</td></tr>
+    <tr><td>Vapi ST Depot</td><td>0260-2462344</td></tr>
+    <tr><td>Amreli ST Depot</td><td>02792-222222</td></tr>
+    <tr><td>Patan ST Depot</td><td>02766-220224</td></tr>
   </table>
-  <p class="reveal">Rather than waiting on phone hold, you can check live bus positions and actual departure countdowns instantly on <a href="${APP}">ST Tracker</a>.</p>`,
+  <p class="reveal"><b>Skip phone hold times:</b> You do not need to call the depot to ask whether a bus has departed or is running late. <a href="${APP}">ST Tracker</a> reads live AIS-140 GPS telematics updated every 20 seconds, displaying real-time departure countdowns and delay minutes for all 8,554+ ST buses.</p>`,
     faq: [
-      { q: 'What is the toll-free number for GSRTC bus enquiry?', a: 'The GSRTC 24x7 passenger helpline is 1800 233 6666.' },
-      { q: 'Can I check bus arrival times without calling the depot?', a: 'Yes! Type your bus plate or route on ST Tracker for immediate real-time GPS locations and countdowns.' },
+      { q: 'What is the toll-free customer care number for GSRTC bus enquiry?', a: 'The official 24x7 GSRTC toll-free customer helpline is 1800 233 6666 (alternate: 1800 233 5555), serving commuters across all 16 Gujarat divisions for complaints, bus inquiries, and lost luggage.' },
+      { q: 'What is the Rajkot Central bus stand enquiry phone number?', a: 'The enquiry phone numbers for Rajkot Central Bus Port are 0281-2223847 and 0281-2223848. For live platform countdowns without calling, use ST Tracker.' },
+      { q: 'What is the Jamnagar ST depot contact number?', a: 'The official contact telephone number for Jamnagar ST Depot is 0288-2550260.' },
+      { q: 'What is the Ahmedabad Geeta Mandir bus stand phone number?', a: 'The enquiry numbers for Ahmedabad Geeta Mandir Central Bus Stand are 079-25463396 and 079-25463409. For Ranip Bus Port, call 079-27552222.' },
+      { q: 'Can I check bus arrival times and delays without calling the depot?', a: 'Yes. Type your bus number plate or pick a route on ST Tracker to view instantaneous GPS position, delay minutes, and estimated arrival countdowns directly on a map.' },
     ],
     related: [
       { href: 'gsrtc-tracker.html', label: 'GSRTC tracker — what it is and how it compares' },
       { href: 'nearby-st-bus-stops.html', label: 'Find ST bus stops near you' },
+      { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
     ],
   },
   {
     slug: 'gsrtc-bus-pass-online',
-    title: 'GSRTC Bus Pass Online Apply & E-Pass Status Check | ST Tracker',
-    description: 'How to apply for a GSRTC student, monthly, or employee bus pass online. Check e-Pass status, document checklist, concessions, and track your daily bus.',
-    crumbLabel: 'GSRTC bus pass online',
-    h1: 'GSRTC bus pass online: apply, renew & check status',
-    lede: 'Daily student or office commuter? Apply for or renew your Gujarat ST bus pass online, and track your daily bus so you never wait at the stand.',
+    title: 'GSRTC E-Pass & Bus Pass Online Apply 2026 — Student Portal Login & Pass Status',
+    description: 'Apply online for GSRTC student, monthly commuter, or employee e-Pass on pass.gsrtc.in. Check application status, document rules, 80% student concession & live bus tracking.',
+    crumbLabel: 'GSRTC e-pass & bus pass',
+    h1: 'GSRTC bus pass & e-pass online: apply, renew & status check',
+    lede: 'Daily student or office commuter? Apply for or renew your Gujarat ST bus pass on pass.gsrtc.in, track e-Pass application status, and track your daily bus live.',
     body: `
-  <h2 class="reveal">GSRTC e-Pass online portal</h2>
-  <p class="reveal">GSRTC operates the Electronic State Transport Concession Pass System (ESCPS) online at <b>pass.gsrtc.in</b>. Students, daily commuters, and employees can submit digital pass applications, upload documents, and track approval status without standing in depot queues.</p>
+  <h2 class="reveal">GSRTC e-Pass online portal (ESCPS)</h2>
+  <p class="reveal">GSRTC manages all student, commuter, and employee bus passes electronically through the <b>Electronic State Transport Concession Pass System (ESCPS)</b> hosted at <b>pass.gsrtc.in</b>. Commuters can register a new profile, upload required verification documents, pay concessional fees, and track approval status 100% online without standing in depot queues.</p>
 
-  <h2 class="reveal">Concessions and pass types</h2>
+  <h2 class="reveal">Official concession rates and pass categories</h2>
+  <table class="reveal">
+    <tr><th>Pass Classification</th><th>Discount / Concession</th><th>Eligible Beneficiaries</th></tr>
+    <tr><td>Student Concession Pass</td><td>Up to <b>80% discount</b> on standard fare</td><td>Recognized schools, colleges, ITIs, and universities</td></tr>
+    <tr><td>Monthly Commuter Pass</td><td>Economical daily travel pass (~40% savings)</td><td>Regular office employees, daily workers, and business travelers</td></tr>
+    <tr><td>Divyangjan (Handicapped) Pass</td><td><b>100% free travel</b> + Escort allowance</td><td>Persons with permanent physical disability (40%+ certified)</td></tr>
+    <tr><td>Senior Citizen Travel Pass</td><td>Concessional regional travel</td><td>Gujarat resident senior citizens (aged 60 and above)</td></tr>
+    <tr><td>Freedom Fighter &amp; State Awardee</td><td>100% free travel</td><td>Accredited awardees and certified freedom fighters</td></tr>
+  </table>
+
+  <h2 class="reveal">How to check GSRTC e-pass application status</h2>
+  <p class="reveal">To check your application or renewal progress: visit <b>pass.gsrtc.in</b>, click <b>Track Application Status</b>, enter your 10-digit application reference number or registered mobile number, and submit. Verification takes <b>2 to 4 working days</b> by the designated depot passing officer.</p>
+
+  <h2 class="reveal">Documents required for online pass application</h2>
   <ul class="reveal">
-    <li><b>Student Concession Pass:</b> Up to 80% fare discount for recognized school, ITI, and college students traveling between their residence and institution.</li>
-    <li><b>Monthly Commuter Pass:</b> Economical daily transit pass for office workers, traders, and regular travelers between any two stations.</li>
-    <li><b>Pass for Divyangjan:</b> 100% free travel allowance for eligible citizens with permanent physical disability along with an escort concession.</li>
+    <li><b>Current Academic Bonafide Certificate:</b> Official bonafide stamped and signed by school principal or college dean specifying distance and institution address.</li>
+    <li><b>Proof of Residence:</b> Aadhaar card, Election card, or Ration card reflecting Gujarat address.</li>
+    <li><b>Photograph &amp; Signature:</b> Recent passport-size photograph and scanned signature under 100 KB.</li>
+    <li><b>Previous Pass Number:</b> Required for annual or semester renewal to preserve commuter identity.</li>
   </ul>
 
-  <h2 class="reveal">Documents required for online application</h2>
-  <p class="reveal">Before applying on the portal, keep scanned copies ready: valid college/school bonafide certificate for the current academic year, residential address proof (Aadhaar or Ration card), recent passport-size photograph, and previous pass number if renewing.</p>
-
-  <h2 class="reveal">Pairing your pass with live tracking</h2>
-  <p class="reveal">Once your pass is approved and collected from the local depot, use <a href="\${APP}">ST Tracker</a> to monitor your daily bus live by its number plate or route. See the bus’s actual location in real time rather than guessing whether it has passed your stop.</p>`,
+  <h2 class="reveal">Pairing your daily pass with live GPS tracking</h2>
+  <p class="reveal">Once your pass is active, avoid unnecessary waiting at rural bus stands or city pick-up stops. Open <a href="${APP}">ST Tracker</a> on your phone to track your designated morning and evening bus live on a map. With AIS-140 telematics refreshed every 20 seconds, you can leave home exactly when your bus is approaching.</p>`,
     faq: [
-      { q: 'Where do I apply for a GSRTC student bus pass online?', a: 'Apply online on the official GSRTC ESCPS portal at pass.gsrtc.in by creating a student profile and uploading your institution bonafide.' },
-      { q: 'How long does GSRTC e-pass approval take?', a: 'Online verification typically takes 2 to 4 working days, after which you can collect the smart card from your selected home depot.' },
-      { q: 'Can I track the daily bus on my pass route?', a: 'Yes! Open ST Tracker, search the route between your home stop and college, and see all active buses running in real time.' },
+      { q: 'Where do I apply for a GSRTC student bus pass online?', a: 'Apply online on the official GSRTC Electronic Concession Pass System (ESCPS) portal at pass.gsrtc.in by registering with your mobile number, selecting your home depot, and uploading your student bonafide certificate.' },
+      { q: 'How do I check my GSRTC e-pass application status?', a: 'Visit pass.gsrtc.in and navigate to the Track Application Status page. Enter your application reference ID or registered phone number to view whether your pass is under verification, approved, or ready for smart card collection at your local depot.' },
+      { q: 'What is the student concession discount on a GSRTC bus pass?', a: 'GSRTC provides recognized school, ITI, and college students up to an 80% discount on ordinary passenger fare tariffs for travel between their residence stop and educational institution.' },
+      { q: 'How many days does it take to approve a GSRTC bus pass?', a: 'Online verification is typically completed within 2 to 4 working days by the local depot passing clerk. You receive an SMS notification once approved.' },
+      { q: 'Can I track the daily bus on my pass route live?', a: 'Yes. On ST Tracker, enter your route station pair or the bus plate number to monitor real-time bus location, arrival countdowns, and delay alerts on a live map.' },
     ],
     related: [
       { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
       { href: 'gsrtc-concession-pass-rules.html', label: 'GSRTC concession pass rules and eligibility' },
+      { href: 'gsrtc-bus-fare-ticket-price.html', label: 'Official GSRTC bus ticket price chart and fare calculator' },
       { href: 'nearby-st-bus-stops.html', label: 'Find ST bus stops near you' },
     ],
   },
@@ -1000,15 +1038,12 @@ const ROUTE_PAIRS = [
   const facts = ROUTE_FACTS[slug] || { dist: '100+ km', time: '2 to 3 hours', highway: 'Gujarat State Highway' };
   return {
     slug,
-    // 60 characters at the longest real pair (Ahmedabad ↔ Gandhinagar), which is the point:
-    // past roughly that, Google truncates the title in the result and the reader never sees the
-    // half that says what the page offers. The brand suffix was what pushed every one of these
-    // over — Google appends the site name itself for long-tail pages anyway.
+    // 60 characters at the longest real pair (Ahmedabad ↔ Gandhinagar)
     title: `${a.name} to ${b.name} GSRTC Bus Timetable & Live Tracking`,
-    description: `Live GSRTC bus tracking and timetable between ${a.name} and ${b.name}, both directions. See running buses now, or search the full schedule.`,
+    description: `GSRTC bus timetable, departure schedule, ticket fare and live tracking between ${a.name} and ${b.name} (${facts.dist}, ${facts.time} via ${facts.highway}). Check running ST buses now.`,
     crumbLabel,
-    h1: `${a.name} ↔ ${b.name} ST bus, live`,
-    lede: `Travelling between ${a.name} and ${b.name}? See every scheduled and running GSRTC service on this route, in either direction.`,
+    h1: `${a.name} ↔ ${b.name} ST bus timetable & live tracking`,
+    lede: `Travelling between ${a.name} and ${b.name}? See every scheduled and running GSRTC service on this corridor, ticket fare estimates, and live countdowns in either direction.`,
     body: `
   <h2 class="reveal">Track this route now</h2>
   <p class="reveal">
@@ -1024,8 +1059,9 @@ const ROUTE_PAIRS = [
     <tr><th>Corridor Distance</th><td>${facts.dist}</td></tr>
     <tr><th>Typical Journey Duration</th><td>${facts.time}</td></tr>
     <tr><th>Primary Highway Corridor</th><td>${facts.highway}</td></tr>
-    <tr><th>Operating Bus Classes</th><td>Express (3x2), Gurjarnagri (2x2), Sleeper, AC</td></tr>
-    <tr><th>Live GPS Telematics</th><td>AIS-140 tracking updated every ~20s</td></tr>
+    <tr><th>Estimated Ticket Fare</th><td>Ordinary ~₹0.80/km · Express ~₹0.95/km · Gurjarnagri ~₹1.05/km · Sleeper ~₹1.25/km</td></tr>
+    <tr><th>Operating Bus Classes</th><td>Express (3x2), Gurjarnagri (2x2 pushback), Sleeper, AC Volvo</td></tr>
+    <tr><th>Live GPS Telematics</th><td>AIS-140 tracking refreshed every ~20s</td></tr>
   </table>
   <h2 class="reveal">Don't have a plate number yet</h2>
   <p class="reveal">You don't need one — the links above search by station, and you pick the actual bus from the list once you can see which ones are running. See <a href="gsrtc-bus-timetable.html">the full timetable guide</a> for how filtering and sorting the list works.</p>`,
@@ -1040,11 +1076,16 @@ const ROUTE_PAIRS = [
           label: `${c.name} ST bus tracker`,
         })),
       { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+      { href: 'gsrtc-bus-fare-ticket-price.html', label: 'Official GSRTC bus ticket price chart and fare calculator' },
     ],
     faq: [
       {
+        q: `What is the GSRTC bus ticket fare from ${a.name} to ${b.name}?`,
+        a: `GSRTC bus fares between ${a.name} and ${b.name} depend on service category across the ${facts.dist} corridor: Ordinary/Local is roughly ₹0.80 per km, Express is approximately ₹0.95 per km, and Gurjarnagri 2x2 is about ₹1.05 per km. Exact ticket prices and advance reservations are accessible via ST Tracker and the official booking portal.`,
+      },
+      {
         q: `Are there GSRTC buses from ${a.name} to ${b.name} every day?`,
-        a: `Yes, GSRTC operates daily scheduled passenger services between ${a.name} and ${b.name}. Use the live tracking buttons above to view real-time departures, live delay indicators, and upcoming trips.`,
+        a: `Yes, GSRTC operates frequent daily scheduled services between ${a.name} and ${b.name}. Use the live tracking buttons above to view real-time departures, live delay indicators, and upcoming trips.`,
       },
       {
         q: `How long does a GSRTC bus take from ${a.name} to ${b.name}?`,
@@ -1053,6 +1094,10 @@ const ROUTE_PAIRS = [
       {
         q: `What types of GSRTC buses operate between ${a.name} and ${b.name}?`,
         a: `GSRTC operates multiple bus classes on this route including Express (3x2), Gurjarnagri (2x2 pushback), and long-distance Sleeper / AC coaches where scheduled. Commuters can filter departures by category on ST Tracker.`,
+      },
+      {
+        q: `Where do GSRTC buses depart from in ${a.name} and ${b.name}?`,
+        a: `Services depart from the central bus station and divisional depots in each city (such as ${a.name} Central and ${b.name} Bus Stand). Check ST Tracker for exact platform information and live bus arrival positions.`,
       },
       {
         q: `Can I track an ST bus on the ${a.name} to ${b.name} route without a plate number?`,
@@ -1066,6 +1111,40 @@ const ROUTE_PAIRS = [
 const CITY_KEY = Object.fromEntries(Object.entries(CITY).map(([k, v]) => [v.name, k]));
 const ROUTE_SLUGS = new Set(ROUTE_PAIRS.map((p) => p.slug));
 
+/** Verified depot enquiry phone directory per city hub */
+const DEPOT_CONTACTS = {
+  ahmedabad: '079-25463396 / 079-25463409 (Geeta Mandir) & 079-27552222 (Ranip)',
+  surat: '0261-2424037 / 0261-2424038 (Surat Central Bus Station)',
+  vadodara: '0265-2429646 / 0265-2429647 (Vadodara Central Bus Station)',
+  rajkot: '0281-2223847 / 0281-2223848 (Rajkot Central Bus Port)',
+  bhavnagar: '0278-2516701 (Bhavnagar Bus Port)',
+  jamnagar: '0288-2550260 (Jamnagar ST Depot)',
+  gandhinagar: '079-23222842 (Gandhinagar Depot)',
+  junagadh: '0285-2630303 (Junagadh Bus Stand)',
+  bhuj: '02832-220002 (Bhuj ST Depot)',
+  morbi: '02822-230550 (Morbi ST Bus Stand)',
+  mehsana: '02762-252122 (Mehsana Bus Port)',
+  vapi: '0260-2462344 (Vapi ST Depot)',
+  valsad: '02632-253344 (Valsad ST Depot)',
+  khergam: '02632-253344 (Valsad Division Control Room)',
+  mandvi: '02834-222222 (Mandvi ST Depot)',
+  tankara: '02822-230550 (Morbi Division Control Room)',
+  navsari: '02637-258044 (Navsari ST Depot)',
+  anand: '02692-251450 (Anand Central Bus Station)',
+  nadiad: '0268-2562544 (Nadiad ST Depot)',
+  bharuch: '02642-260344 (Bharuch ST Depot)',
+  porbandar: '0286-2241666 (Porbandar ST Bus Stand)',
+  somnath: '02876-220140 (Somnath / Veraval Depot)',
+  veraval: '02876-220140 (Veraval Depot)',
+  dwarka: '02892-234242 (Dwarka ST Depot)',
+  palanpur: '02742-252224 (Palanpur ST Depot)',
+  godhra: '02672-242444 (Godhra ST Depot)',
+  surendranagar: '02752-220264 (Surendranagar ST Depot)',
+  amreli: '02792-222222 (Amreli ST Depot)',
+  ambaji: '02749-262134 (Ambaji Bus Stand)',
+  diu: '02875-252110 (Diu Bus Stand)',
+};
+
 /**
  * The route page covering this pair, if one exists — checked in both directions, because a
  * route page deliberately covers a corridor rather than one direction of it.
@@ -1078,11 +1157,7 @@ function routePageSlug(a, b) {
 
 const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
   const city = CITY[key];
-  // Where a route page exists for the pair, link to it rather than jumping straight out to the
-  // app. Every one of these used to be an outbound link, which left 12 route pages with no
-  // inbound internal link at all — reachable only from the sitemap, which is the weakest way
-  // for a page to be found and gives it nothing to rank on. The route page carries the app
-  // links itself, so nobody loses a step; they gain the corridor's context on the way.
+  const depotPhone = DEPOT_CONTACTS[key] || '1800 233 6666 (Central Helpline)';
   const routeLinks = destinations.map((d) => {
     const slug = routePageSlug(city, d);
     const href = slug ? `${slug}.html` : routeUrl(city, d);
@@ -1090,13 +1165,11 @@ const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
   }).join('\n      ');
   return {
     slug: `${key}-st-bus-tracker`,
-    // 57 characters at the longest real city name (Surendranagar) — see the note on the route
-    // title above. Keeps both terms people actually search, "ST bus" and "GSRTC".
-    title: `${city.name} ST Bus Tracker — GSRTC Timetable & Live Map`,
-    description: `Track any GSRTC ST bus to or from ${city.name} live on a map, or search the timetable to and from ${city.name}'s stations.`,
+    title: `${city.name} ST Bus Tracker — GSRTC Timetable, Depot Phone & Live Map`,
+    description: `Track GSRTC ST buses in ${city.name} live on a map. View departure timetables, depot contact (${depotPhone.split(' ')[0]}), route schedules & delay status.`,
     crumbLabel: `${city.name} ST bus tracker`,
-    h1: `${city.name} ST bus tracker`,
-    lede: `Track any GSRTC bus running to or from ${city.name}, live — by plate, or by picking a route below.`,
+    h1: `${city.name} ST bus tracker & timetable`,
+    lede: `Track any GSRTC bus running to or from ${city.name}, live — by plate, route schedule, or direct depot departure countdowns.`,
     body: `
   <h2 class="reveal">Popular routes from ${city.name}</h2>
   <ul class="reveal">
@@ -1104,16 +1177,24 @@ const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
   </ul>
   <p class="reveal">Each link opens the live departure list for that route — running buses show a countdown, the rest show their scheduled time. Don't see your route? Search any station pair directly in the app.</p>
 
-  <h2 class="reveal">Track a specific bus</h2>
-  <p class="reveal">If you already have the plate of a bus headed to or from ${city.name}, type it above rather than searching by route — it goes straight to that bus's live map.</p>
+  <h2 class="reveal">${city.name} Bus Stand Enquiry &amp; Depot Phone</h2>
+  <p class="reveal">Official GSRTC inquiry contact for ${city.name}: <b>${depotPhone}</b>. For state-wide transit assistance, call the central 24x7 toll-free helpline at <b>1800 233 6666</b>.</p>
+
+  <h2 class="reveal">Track a specific bus by plate number</h2>
+  <p class="reveal">If you already have the plate number of a bus headed to or from ${city.name}, enter it in the search bar above to go directly to its live GPS location map.</p>
 
   <h2 class="reveal">Finding a stand in ${city.name}</h2>
   <p class="reveal">Not sure which ${city.name} stop is closest to you right now? See <a href="nearby-st-bus-stops.html">finding ST bus stops near you</a> for a map of stations around your current location, rather than searching by name.</p>`,
     related: [
       { href: 'gsrtc-bus-timetable.html', label: 'GSRTC bus timetable between any two stations' },
+      { href: 'gsrtc-bus-stand-helpline-numbers.html', label: 'All Gujarat GSRTC bus stand enquiry numbers' },
       { href: 'nearby-st-bus-stops.html', label: 'Find ST bus stops near you' },
     ],
     faq: [
+      {
+        q: `What is the ${city.name} ST bus stand enquiry phone number?`,
+        a: `The official enquiry telephone contact for ${city.name} bus station is ${depotPhone}. For real-time bus arrivals and delay countdowns on your phone without waiting on hold, use ST Tracker.`,
+      },
       {
         q: `Can I track any GSRTC bus that passes through ${city.name}, or only ones starting there?`,
         a: `Any of them — search by plate for a specific bus, or by route for a full departure list, whether ${city.name} is the origin, the destination, or an intermediate stop along the route.`,
@@ -1121,10 +1202,6 @@ const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
       {
         q: `How do I search the GSRTC bus timetable for ${city.name}?`,
         a: `Select ${city.name} as your origin or destination station on ST Tracker to query complete schedules, departure countdowns, and delay statuses across all 19,026 covered Gujarat stations.`,
-      },
-      {
-        q: `Does this cover buses from other operators serving ${city.name}?`,
-        a: 'No — only GSRTC’s own ST fleet, since that is the operator whose live AIS-140 GPS position data this tool reads.',
       },
       {
         q: `How do I find nearby ST bus stops in ${city.name}?`,

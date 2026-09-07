@@ -39,14 +39,23 @@
 - [GSRTC Bus Stand Helplines](https://gsrtc.shivrajsinh.in/gsrtc-bus-stand-helpline-numbers): Central 24x7 helpline (1800 233 6666) and division depot control room contacts.
 - [GSRTC Online Booking & PNR Tracking](https://gsrtc.shivrajsinh.in/gsrtc-online-booking-pnr-tracking): Guide to tracking buses via PNR.
 - [GSRTC Bus Timetable Guide](https://gsrtc.shivrajsinh.in/gsrtc-bus-timetable): How to query 19,026 stations and filter departures.
-- [GSRTC Bus Pass Online (ESCPS)](https://gsrtc.shivrajsinh.in/gsrtc-bus-pass-online): Student and commuter monthly pass application process.
+- [GSRTC Bus Pass Online (ESCPS)](https://gsrtc.shivrajsinh.in/gsrtc-bus-pass-online): Student and commuter monthly pass application process and e-Pass status check.
+- [GSRTC Electric Bus Routes & Timetable](https://gsrtc.shivrajsinh.in/gsrtc-electric-bus-timetable): Zero-emission e-Bus routes, schedules, and live tracking.
+- [GSRTC Courier & Parcel Service](https://gsrtc.shivrajsinh.in/gsrtc-courier-parcel-service): Same-day bus parcel booking counters, tariff rates, and tracking.
+- [GSRTC Bus Ticket Price Chart & Fare Calculator](https://gsrtc.shivrajsinh.in/gsrtc-bus-fare-ticket-price): Official tariff slabs per km across Ordinary, Express, and Gurjarnagri.
+- [GSRTC Night Bus Timetable & Tracking](https://gsrtc.shivrajsinh.in/gsrtc-night-bus-tracking): Overnight sleeper and express services live GPS tracking.
 - [GSRTC Cancellation & Refund Rules](https://gsrtc.shivrajsinh.in/gsrtc-ticket-cancellation-refund): Official deduction slabs (10%, 20%, 50%, 100%) and refund timeline.
 - [GSRTC Luggage Rules & Charges](https://gsrtc.shivrajsinh.in/gsrtc-luggage-rules-rates): Free baggage limits (25kg to 35kg) and excess tariff slabs.
 - [GSRTC Bus Types & Fleet Classes](https://gsrtc.shivrajsinh.in/gsrtc-bus-types-classes): Local, Express, Gurjarnagri 2x2, Sleeper, and Volvo Scania comparisons.
 
 ## Official GSRTC Contact & Inquiries
-- **Central 24x7 Helpline**: 1800 233 6666
+- **Central 24x7 Helpline**: 1800 233 6666 / 1800 233 5555
 - **Ahmedabad Central (Geeta Mandir)**: 079-25463396 / 079-25463409
+- **Ahmedabad (Ranip Bus Port)**: 079-27552222
 - **Vadodara Central Bus Station**: 0265-2429646 / 0265-2429647
 - **Surat Central Bus Station**: 0261-2424037 / 0261-2424038
 - **Rajkot Central Bus Port**: 0281-2223847 / 0281-2223848
+- **Bhavnagar Bus Port**: 0278-2516701
+- **Jamnagar ST Depot**: 0288-2550260
+- **Bhuj ST Depot**: 02832-220002
+- **Junagadh Bus Stand**: 0285-2630303

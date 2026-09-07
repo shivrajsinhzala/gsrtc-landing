@@ -35,6 +35,14 @@ export function homeJsonLd(lang) {
         "@type": "ImageObject",
         "url": "https://gsrtc.shivrajsinh.in/icons/icon-512.png"
       }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://tracker.shivrajsinh.in/?plate={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
     }
   },
   {
@@ -151,6 +159,30 @@ export function homeJsonLd(lang) {
           "@type": "Answer",
           "text": "Yes. Both the web utility and landing portal are fully localized in Gujarati (ગુજરાતી) at /gu, covering timetables, route descriptions, and station names for all 19,026 supported locations."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I check GSRTC bus timetables between two cities?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open GSRTC Bus Tracker and tap the Route / Timetable option. Select your origin and destination stations from 19,026 Gujarat ST stops to view scheduled departure times, operating bus classes (Express, Gurjarnagri, Sleeper), and real-time departure countdowns."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the official GSRTC 24x7 passenger helpline number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The official 24x7 toll-free customer helpline for GSRTC is 1800 233 6666 (or alternate 1800 233 5555) for all passenger queries, complaint redressal, and bus stand inquiries across Gujarat."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I track my GSRTC bus using my ticket PNR number?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. On GSRTC Bus Tracker, switch to the Ticket PNR tab and enter your 10-digit ticket PNR to view your scheduled departure time, assigned vehicle plate, and live map coordinates once the trip begins."
+        }
       }
     ]
   },
@@ -181,6 +213,48 @@ export function homeJsonLd(lang) {
         "@type": "HowToStep",
         "name": "View its live GPS position",
         "text": "The bus appears on the map with its current speed, the stop it just passed, the stop it is heading to, and how far it is from you."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "GSRTC Primary Services Navigation",
+    "itemListElement": [
+      {
+        "@type": "SiteNavigationElement",
+        "position": 1,
+        "name": "GSRTC Bus Timetable",
+        "description": "Timetable and schedule search between any two stations across Gujarat",
+        "url": "https://gsrtc.shivrajsinh.in/gsrtc-bus-timetable"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 2,
+        "name": "GSRTC Bus Tracking by PNR",
+        "description": "Track reserved GSRTC bus live using online ticket booking PNR",
+        "url": "https://gsrtc.shivrajsinh.in/gsrtc-online-booking-pnr-tracking"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 3,
+        "name": "GSRTC Bus Stand Enquiry Numbers",
+        "description": "Directory of official depot enquiry phone numbers and central helpline",
+        "url": "https://gsrtc.shivrajsinh.in/gsrtc-bus-stand-helpline-numbers"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 4,
+        "name": "GSRTC E-Pass & Bus Pass Online",
+        "description": "ESCPS online application portal and student pass concession status",
+        "url": "https://gsrtc.shivrajsinh.in/gsrtc-bus-pass-online"
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "position": 5,
+        "name": "GSRTC Electric Bus Routes",
+        "description": "Zero-emission electric bus routes and departure schedules",
+        "url": "https://gsrtc.shivrajsinh.in/gsrtc-electric-bus-timetable"
       }
     ]
   }

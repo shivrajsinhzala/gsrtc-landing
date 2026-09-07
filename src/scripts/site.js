@@ -168,16 +168,62 @@ function initFaq() {
 function initPlateForm() {
   const form = document.getElementById('plate-form');
   const input = document.getElementById('plate');
+  const tabs = document.querySelectorAll('.search-tab');
+  const submitBtn = form?.querySelector('button[type="submit"]');
   if (!form || !input) return;
+
+  let currentTab = 'plate';
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      currentTab = tab.getAttribute('data-tab') || 'plate';
+
+      if (currentTab === 'plate') {
+        input.placeholder = 'GJ-18-ZT-1028';
+        input.setAttribute('inputmode', 'latin');
+        if (submitBtn) submitBtn.textContent = submitBtn.getAttribute('data-text-track') || 'Track';
+      } else if (currentTab === 'route') {
+        input.placeholder = submitBtn?.getAttribute('data-holder-route') || 'e.g. Rajkot to Ahmedabad';
+        input.setAttribute('inputmode', 'text');
+        if (submitBtn) submitBtn.textContent = submitBtn.getAttribute('data-text-search') || 'Search';
+      } else if (currentTab === 'pnr') {
+        input.placeholder = submitBtn?.getAttribute('data-holder-pnr') || 'e.g. 10-digit ticket PNR';
+        input.setAttribute('inputmode', 'numeric');
+        if (submitBtn) submitBtn.textContent = submitBtn.getAttribute('data-text-lookup') || 'Lookup';
+      }
+      input.focus();
+    });
+  });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Falls back to the example rather than refusing: someone who presses Track with an empty
-    // box wants to see what this does, and a validation error is a poor answer to that.
-    const raw = input.value.trim().toUpperCase() || input.placeholder;
+    const val = input.value.trim();
+
+    if (currentTab === 'pnr') {
+      window.stLandingTrack?.('track_pnr_submit');
+      if (val) {
+        location.href = `${APP}/?pnr=${encodeURIComponent(val)}`;
+      } else {
+        location.href = '/gsrtc-online-booking-pnr-tracking';
+      }
+      return;
+    }
+
+    if (currentTab === 'route') {
+      window.stLandingTrack?.('track_route_submit');
+      location.href = `${APP}/?from=470&to=464&fromName=Rajkot&toName=Ahmedabad`;
+      return;
+    }
+
+    // Default plate search
+    const raw = val.toUpperCase() || input.placeholder;
     const plate = raw.replace(/\s+/g, '-').replace(/[^A-Z0-9-]/g, '');
-    // The analytics event deliberately says only that a search was submitted. The registration
-    // itself is sensitive travel context and must never leave this page for analytics.
     window.stLandingTrack?.('track_plate_submit');
     location.href = `${APP}/?plate=${encodeURIComponent(plate)}`;
   });

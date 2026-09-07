@@ -33,12 +33,33 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
     <div class="hero-rest reveal">
       <p class="lede"><Fragment set:html={t.lede} /></p>
 
+      <div class="search-tabs" role="tablist" aria-label="Search options">
+        <button type="button" class="search-tab active" data-tab="plate" role="tab" aria-selected="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 15h10"/></svg>
+          <span>{lang === 'gu' ? 'બસ નંબર' : 'Bus Plate'}</span>
+        </button>
+        <button type="button" class="search-tab" data-tab="route" role="tab" aria-selected="false">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>{lang === 'gu' ? 'રૂટ / સમયપત્રક' : 'Route / Timetable'}</span>
+        </button>
+        <button type="button" class="search-tab" data-tab="pnr" role="tab" aria-selected="false">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>{lang === 'gu' ? 'PNR ટ્રેકિંગ' : 'Ticket PNR'}</span>
+        </button>
+      </div>
+
       <form class="plate" id="plate-form">
         <label class="sr" for="plate"><Fragment set:html={t.plateLabel} /></label>
         <svg class="plate-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
         <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off"
                placeholder="GJ-18-ZT-1028" aria-describedby="plate-hint">
-        <button class="btn primary" type="submit"><Fragment set:html={t.track} /></button>
+        <button class="btn primary" type="submit"
+                data-text-track={lang === 'gu' ? 'ટ્રેક' : 'Track'}
+                data-text-search={lang === 'gu' ? 'શોધો' : 'Search'}
+                data-text-lookup={lang === 'gu' ? 'તપાસો' : 'Lookup'}
+                data-holder-route={lang === 'gu' ? 'દા.ત. રાજકોટ થી અમદાવાદ' : 'e.g. Rajkot to Ahmedabad'}
+                data-holder-pnr={lang === 'gu' ? 'દા.ત. 10-અંકનો ટિકિટ PNR' : 'e.g. 10-digit ticket PNR'}
+        ><Fragment set:html={t.track} /></button>
       </form>
 
       <div class="plate-samples">
@@ -87,6 +108,60 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
     <div class="strip-card reveal"><b data-count="19026">19,026</b><span><Fragment set:html={t.statStations} /></span></div>
     <div class="strip-card reveal"><b><Fragment set:html={t.statLive} /></b><span><Fragment set:html={t.statLiveSub} /></span></div>
     <div class="strip-card reveal"><b>2</b><span><Fragment set:html={t.statLang} /></span></div>
+  </div>
+</section>
+
+<section id="services" class="wrap section">
+  <h2>{lang === 'gu' ? 'GSRTC મુસાફર સેવાઓ અને સુવિધાઓ' : 'GSRTC Commuter Services & Tools'}</h2>
+  <p class="sub">{lang === 'gu' ? 'તમામ ગુજરાત ST સેવાઓ — લાઈવ બસ નકશો, સમયપત્રક, PNR અને ડેપો હેલ્પલાઇન એક જ જગ્યાએ.' : 'Everything a Gujarat ST passenger needs — live GPS radar, route schedules, PNR tracking & depot contacts.'}</p>
+  <div class="cards">
+    <article class="card reveal">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+      </div>
+      <h3><a href={href('gsrtc-live-bus-tracking')}>{lang === 'gu' ? 'લાઈવ બસ ટ્રેકિંગ' : 'Live Bus GPS Tracking'}</a></h3>
+      <p>{lang === 'gu' ? 'બસ નંબર પ્લેટથી દર 20 સેકન્ડે અપડેટ થતા GPS લોકેશન, સ્પીડ અને આગામી સ્ટોપનું લાઈવ કાઉન્ટડાઉન જુઓ.' : 'Watch any Gujarat ST bus move live on a road map with AIS-140 GPS telematics refreshed every 20 seconds.'}</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3><a href={href('gsrtc-bus-timetable')}>{lang === 'gu' ? 'GSRTC બસ સમયપત્રક' : 'Station Timetable & Schedule'}</a></h3>
+      <p>{lang === 'gu' ? 'ગુજરાતના તમામ 19,026 સ્ટેશનો વચ્ચે ઉપડતી બસો, એક્સપ્રેસ અને ગુર્જરનગરી સમયપત્રક અને ઉપડવાનો સમય શોધો.' : 'Search scheduled departures, operating bus classes (Express, Gurjarnagri, Sleeper), and real-time countdowns between any two stations.'}</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M7 15h3"/></svg>
+      </div>
+      <h3><a href={href('gsrtc-online-booking-pnr-tracking')}>{lang === 'gu' ? 'PNR / ટિકિટથી ટ્રેકિંગ' : 'Track by Ticket PNR'}</a></h3>
+      <p>{lang === 'gu' ? 'ઓનલાઇન GSRTC કે redBus પર બુક કરેલી ટિકિટના PNR નંબરથી નિયુક્ત બસ અને લાઈવ લોકેશન મેળવો.' : 'Look up the physical bus assigned to your advance booking and monitor its highway location on trip day.'}</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <h3><a href={href('gsrtc-bus-stand-helpline-numbers')}>{lang === 'gu' ? 'ડેપો હેલ્પલાઇન ડિરેક્ટરી' : 'Depot Enquiry Directory'}</a></h3>
+      <p>{lang === 'gu' ? 'અમદાવાદ, વડોદરા, સુરત, રાજકોટ સહિત તમામ 26 જિલ્લા ડેપોના સીધા ફોન નંબર અને 24x7 ટોલ-ફ્રી હેલ્પલાઇન.' : 'Official phone numbers for all 26 district depots and central 24x7 customer care (1800 233 6666).'}</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+      </div>
+      <h3><a href={href('gsrtc-bus-pass-online')}>{lang === 'gu' ? 'ઇ-પાસ પોર્ટલ અને સ્ટેટસ' : 'E-Pass Portal & Status'}</a></h3>
+      <p>{lang === 'gu' ? 'વિદ્યાર્થીઓ માટે 80% કન્સેશન પાસ અરજી (pass.gsrtc.in), દસ્તાવેજો અને એપ્લિકેશન સ્ટેટસ ચેક કરવાની રીત.' : 'Official guide to pass.gsrtc.in: apply for student 80% concession, monthly commuter passes, and track status.'}</p>
+    </article>
+
+    <article class="card reveal">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <h3><a href={href('gsrtc-bus-fare-ticket-price')}>{lang === 'gu' ? 'બસ ટિકિટ દર પત્રક' : 'Bus Ticket Fare Calculator'}</a></h3>
+      <p>{lang === 'gu' ? 'લોકલ, એક્સપ્રેસ, ગુર્જરનગરી અને સ્લીપર બસોના કિમી દીઠ સત્તાવાર ભાડા સ્લેબ અને ટિકિટ દરની વિગતો.' : 'Official per-km ticket tariffs across Local, Express, Gurjarnagri, Sleeper, and Volvo classes.'}</p>
+    </article>
   </div>
 </section>
 
@@ -278,6 +353,13 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
     <li><a href={href('nearby-st-bus-stops')}><Fragment set:html={t.guideChipNearby} /></a></li>
     <li><a href={href('gsrtc-bus-number-plate-format')}><Fragment set:html={t.guideChipPlateFormat} /></a></li>
     <li><a href={href('gsrtc-bus-stand-helpline-numbers')}><Fragment set:html={t.guideChipHelpline} /></a></li>
+    <li><a href={href('gsrtc-bus-pass-online')}><Fragment set:html={t.guideChipPass} /></a></li>
+    <li><a href={href('gsrtc-electric-bus-timetable')}><Fragment set:html={t.guideChipElectric} /></a></li>
+    <li><a href={href('gsrtc-courier-parcel-service')}><Fragment set:html={t.guideChipCourier} /></a></li>
+    <li><a href={href('gsrtc-ticket-cancellation-refund')}><Fragment set:html={t.guideChipCancel} /></a></li>
+    <li><a href={href('gsrtc-bus-fare-ticket-price')}><Fragment set:html={t.guideChipFare} /></a></li>
+    <li><a href={href('gsrtc-luggage-rules-rates')}><Fragment set:html={t.guideChipLuggage} /></a></li>
+    <li><a href={href('gsrtc-night-bus-tracking')}><Fragment set:html={t.guideChipNight} /></a></li>
     <li><a href={href('gsrtc-bus-fleet')}><Fragment set:html={t.guideChipFleet} /></a></li>
     <li><a href={href('gsrtc-tracking-app')}><Fragment set:html={t.guideChipApp} /></a></li>
   </ul>

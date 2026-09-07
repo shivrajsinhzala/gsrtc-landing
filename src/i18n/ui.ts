@@ -95,6 +95,13 @@ export const ui = {
     "guideChipNearby": "Stops near me",
     "guideChipPlateFormat": "Number plate format",
     "guideChipHelpline": "Depot helpline numbers",
+    "guideChipPass": "E-Pass & bus passes",
+    "guideChipElectric": "Electric e-bus timetable",
+    "guideChipCourier": "Courier & parcel service",
+    "guideChipCancel": "Ticket cancellation & refund",
+    "guideChipLuggage": "Luggage rules & charges",
+    "guideChipNight": "Night bus tracking",
+    "guideChipFare": "Bus ticket fare chart",
     "guideChipFleet": "The GSRTC fleet",
     "guideChipApp": "Is there a GSRTC app?",
     "skipToContent": "Skip to content",
@@ -222,6 +229,13 @@ export const ui = {
     "guideChipNearby": "નજીકના સ્ટોપ",
     "guideChipPlateFormat": "નંબર પ્લેટ ફોર્મેટ",
     "guideChipHelpline": "ડેપો હેલ્પલાઇન નંબર",
+    "guideChipPass": "ઇ-પાસ અને બસ પાસ",
+    "guideChipElectric": "ઇલેક્ટ્રિક બસ સમયપત્રક",
+    "guideChipCourier": "કુરિયર અને પાર્સલ સેવા",
+    "guideChipCancel": "ટિકિટ કેન્સલેશન અને રિફંડ",
+    "guideChipLuggage": "સામાનના નિયમો અને ચાર્જ",
+    "guideChipNight": "નાઇટ બસ ટ્રેકિંગ",
+    "guideChipFare": "બસ ટિકિટ દર પત્રક",
     "guideChipFleet": "GSRTC નો કાફલો",
     "guideChipApp": "શું GSRTC ની પોતાની એપ છે?",
     "skipToContent": "મુખ્ય સામગ્રી પર જાઓ",
@@ -261,12 +275,12 @@ export const ui = {
 /** What Google shows in the result, per language. */
 export const meta = {
   "en": {
-    "title": "GSRTC Bus Tracker — Live Gujarat ST Bus Tracking",
-    "description": "Track any Gujarat ST (GSRTC) bus live on a map by its number plate. See where it is now, when it reaches your stop, and full timetables. Free, no account."
+    "title": "GSRTC Bus Tracker & Timetable — Live Gujarat ST Bus Status",
+    "description": "Track GSRTC Gujarat ST buses live on a map or search real-time timetables across 19,026 stations. Check running bus GPS location, arrival countdowns & delays."
   },
   "gu": {
-    "title": "GSRTC Bus Tracker — લાઈવ ગુજરાત ST બસ ટ્રેકિંગ",
-    "description": "નંબર પ્લેટથી કોઈપણ ગુજરાત ST (GSRTC) બસ લાઈવ નકશા પર જુઓ. બસ ક્યાં છે, તમારા સ્ટોપ પર ક્યારે પહોંચશે, અને ટાઈમ ટેબલ. મફત, લોગિન વગર."
+    "title": "GSRTC Bus Tracker & ટાઈમટેબલ — લાઈવ ગુજરાત ST બસ ટ્રેકિંગ",
+    "description": "નંબર પ્લેટથી કોઈપણ ગુજરાત ST (GSRTC) બસ લાઈવ નકશા પર જુઓ અથવા 19,026 સ્ટેશનો વચ્ચેનું રીઅલ-ટાઇમ સમયપત્રક શોધો. બસ લોકેશન, વિલંબ અને ટાઈમટેબલ. મફત."
   }
 } as const;
 
