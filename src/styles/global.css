@@ -725,6 +725,110 @@ ins.adsbygoogle {
   text-align: center !important;
   border-radius: var(--r-sm) !important;
 }
+
+/* ------------------------------------------------------------------ Auto-Ads Protection & Layout Resilience */
+/* Strict Auto-Ads containment for sensitive elements and interactive blocks */
+.google-anno-skip .google-auto-placed,
+.no-ads .google-auto-placed {
+  display: none !important;
+}
+
+/* Never allow Auto-Ads to split a heading from its explanatory paragraph */
+h2 + .google-auto-placed,
+h3 + .google-auto-placed {
+  display: none !important;
+}
+
+/* Prevent headings from breaking across pages or blocks */
+h1, h2, h3, h4 {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* Sensitive containers must never be broken apart by ad insertion */
+.table-wrap, .quick-action-card, .utility-action-box, .portal-box, .pass-portal-box, .notice-box, details, .route-facts {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Responsive table wrapper for mobile readability */
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.2rem 0 1.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+.table-wrap table {
+  margin: 0;
+  width: 100%;
+  min-width: 480px;
+}
+.narrow .table-wrap {
+  margin-inline: 0;
+}
+
+/* Dedicated ad break container with consistent vertical rhythm */
+.ad-break-container {
+  margin: clamp(1.8rem, 3.5vw, 2.6rem) auto;
+  text-align: center;
+  max-width: var(--wrap);
+  clear: both;
+}
+
+/* Quick-action utility cards for intent-first pages */
+.utility-action-box {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.35rem 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-1);
+}
+.utility-action-box h3 {
+  margin: 0 0 .5rem;
+  font-size: 1.15rem;
+  font-weight: 750;
+  color: var(--ink);
+}
+.utility-action-box p {
+  margin: 0 0 1.1rem;
+  font-size: .95rem;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+.utility-action-btns {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.utility-action-badges {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin-top: .9rem;
+}
+.utility-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .3rem .75rem;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: .82rem;
+  font-weight: 650;
+  color: var(--ink-2);
+}
+.utility-badge.highlight {
+  background: var(--brand-soft);
+  color: var(--brand);
+  border-color: color-mix(in srgb, var(--brand) 30%, transparent);
+}
+
 @media (max-width: 768px) {
   body {
     padding-bottom: max(75px, env(safe-area-inset-bottom, 0px));

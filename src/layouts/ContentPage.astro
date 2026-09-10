@@ -140,16 +140,6 @@ if (faq.length) {
 
 const bodyHtml = rewriteInternalLinks(body);
 const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
-
-// Place in-content ad between initial action/intro and secondary guide details
-const h2Matches = [...bodyHtml.matchAll(/<h2[\s>]/gi)];
-let bodyPart1 = bodyHtml;
-let bodyPart2 = '';
-if (h2Matches.length >= 2) {
-  const splitIndex = h2Matches[1].index;
-  bodyPart1 = bodyHtml.slice(0, splitIndex);
-  bodyPart2 = bodyHtml.slice(splitIndex);
-}
 ---
 
 <Base
@@ -163,40 +153,42 @@ if (h2Matches.length >= 2) {
 >
   <main id="main">
 
-  <section class="wrap section narrow">
+  <section class="wrap section narrow hero-section google-anno-skip">
     <p class="eyebrow">{eyebrow}</p>
     <h1>{h1}</h1>
     <p class="lede"><Fragment set:html={lede} /></p>
     {plateForm && (
-      <form class="plate" id="plate-form" style="margin-top:1.5rem">
-        <label class="sr" for="plate">Bus number plate</label>
-        <svg class="plate-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off" placeholder="GJ-18-ZT-1028" />
-        <button class="btn primary" type="submit">Track</button>
-      </form>
-    )}
-    <p class="cta-alt">
-      <a class="btn ghost lg" href="https://tracker.shivrajsinh.in">Open the app</a>
-      <span>Free, no account. Search by route if you do not have a bus number.</span>
-    </p>
-  </section>
-
-  <section class="wrap section narrow">
-    <Fragment set:html={bodyPart1} />
-    <AdSlot slot={AD_SLOTS.inContent} label="In-content advertisement" />
-    {bodyPart2 && <Fragment set:html={bodyPart2} />}
-    {relatedLinks.length > 0 && (
       <>
-        <h2 class="reveal">Related</h2>
-        <ul class="reveal">
-          {relatedLinks.map((r) => <li><a href={r.href} set:html={r.label} /></li>)}
-        </ul>
+        <form class="plate" id="plate-form" style="margin-top:1.5rem">
+          <label class="sr" for="plate">Bus number plate</label>
+          <svg class="plate-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input id="plate" name="plate" type="text" inputmode="latin" autocomplete="off" placeholder="GJ-18-ZT-1028" />
+          <button class="btn primary" type="submit">Track</button>
+        </form>
+        <p class="cta-alt">
+          <a class="btn ghost lg" href="https://tracker.shivrajsinh.in">Open the app</a>
+          <span>Free, no account. Search by route if you do not have a bus number.</span>
+        </p>
       </>
     )}
   </section>
 
+  <section class="wrap section narrow guide-content">
+    <Fragment set:html={bodyHtml} />
+    {relatedLinks.length > 0 && (
+      <div class="related-links-block google-anno-skip" style="margin-top:2.2rem">
+        <h2 class="reveal">Related</h2>
+        <ul class="reveal">
+          {relatedLinks.map((r) => <li><a href={r.href} set:html={r.label} /></li>)}
+        </ul>
+      </div>
+    )}
+  </section>
+
+  <AdSlot slot={AD_SLOTS.inContent} label="In-content advertisement" />
+
   {faq.length > 0 && (
-    <section id="faq" class="band">
+    <section id="faq" class="band google-anno-skip">
       <div class="wrap section narrow">
         <h2>Questions people ask</h2>
         <div class="faq">
@@ -211,8 +203,7 @@ if (h2Matches.length >= 2) {
     </section>
   )}
 
-
-  <section class="wrap section-closer">
+  <section class="wrap section-closer google-anno-skip">
     <div class="closer">
       <h2>{closerH}</h2>
       <p class="sub">Type a plate, or search a route. Free, no account.</p>
