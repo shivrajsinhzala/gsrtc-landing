@@ -57,6 +57,7 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
         <li><a href="/gsrtc-live-bus-tracking"><Fragment set:html={t.footG2} /></a></li>
         <li><a href="/st-bus-live-location"><Fragment set:html={t.footG4} /></a></li>
         <li><a href="/gsrtc-bus-number-plate-format"><Fragment set:html={t.footPlateFormat} /></a></li>
+        <li><a href="/gu">{lang === 'gu' ? 'English આવૃત્તિ' : 'ગુજરાતી આવૃત્તિ (Gujarati)'}</a></li>
         <li><a href="/privacy"><Fragment set:html={t.footPrivacy} /></a></li>
       </ul>
     </div>

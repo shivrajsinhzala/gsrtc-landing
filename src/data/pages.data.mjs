@@ -54,6 +54,20 @@ export const CITY = {
   // Only paired with Rajkot below — see the note by ROUTE_PAIRS for why Ahmedabad/Vadodara/Surat
   // pairings (and Kevadia entirely) were tried and dropped.
   diu: { name: 'Diu', id: 1193, guj: 'દીવ' },
+  himatnagar: { name: 'Himatnagar', id: 606, guj: 'હિંમતનગર' },
+  palitana: { name: 'Palitana', id: 1081, guj: 'પાલીતાણા' },
+  dakor: { name: 'Dakor', id: 526, guj: 'ડાકોર' },
+  gandhidham: { name: 'Gandhidham', id: 650, guj: 'ગાંધીધામ' },
+  patan: { name: 'Patan', id: 590, guj: 'પાટણ' },
+  modasa: { name: 'Modasa', id: 642, guj: 'મોડાસા' },
+  ankleshwar: { name: 'Ankleshwar', id: 519, guj: 'અંકલેશ્વર' },
+  sasangir: { name: 'Sasan Gir', id: 1950, guj: 'સાસણ ગીર' },
+  mumbai: { name: 'Mumbai Borivali', id: 1118, guj: 'મુંબઈ બોરીવલી' },
+  udaipur: { name: 'Udaipur', id: 654, guj: 'ઉદયપુર' },
+  shirdi: { name: 'Shirdi', id: 564, guj: 'શિરડી' },
+  vyara: { name: 'Vyara', id: 516, guj: 'વ્યારા' },
+  bardoli: { name: 'Bardoli', id: 509, guj: 'બારડોલી' },
+  chhotaudepur: { name: 'Chhota Udepur', id: 626, guj: 'છોટાઉદેપુર' },
 };
 
 /** `&amp;` because this is dropped straight into an href="…" attribute. */
@@ -227,30 +241,174 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-bus-timetable',
-    title: 'GSRTC Bus Timetable Between Any Two Stations | ST Tracker',
-    description: 'Search the GSRTC timetable between any two of 19,026 stations, filter by service type, sort by departure or journey time, and see buses already on the road.',
-    crumbLabel: 'GSRTC bus timetable',
-    h1: 'GSRTC bus timetable between any two stations',
-    lede: 'Search any pair of stations — a city or a single village stop — and see every scheduled and running service between them.',
+    title: 'GSRTC Bus Time Table 2026: ST Bus Schedule & Live Status',
+    description: 'Search GSRTC bus time table between any two Gujarat stations. Check daily ST bus departure timings, express schedule, ticket fare & live running status online.',
+    crumbLabel: 'GSRTC bus time table',
+    h1: 'GSRTC bus time table & daily schedule: search any two stations',
+    lede: 'Looking for Gujarat ST bus timings? Search timetables across all 19,026 stations, check express and Gurjarnagri departures, first/last bus times, and monitor running buses live.',
     body: `
-  <h2 class="reveal">Searching a route</h2>
-  <p class="reveal">Enter where you're travelling from and to — anywhere across the 19,026 stations the app covers, not just major cities. The result is every GSRTC service on that pair for the day: departure time, journey length, and service classification.</p>
-  <p class="reveal">Because Gujarat ST operates both direct point-to-point buses and regional long-distance routes, searching station pairs reveals intermediate express halts that don't appear on basic terminal display boards.</p>
+  <div class="utility-action-box google-anno-skip">
+    <h3>Instant Gujarat ST Bus Timetable &amp; Schedule Search</h3>
+    <p>Search direct scheduled departures and live running buses between any two stations across Gujarat with real-time AIS-140 GPS countdowns:</p>
+    <div class="utility-action-btns">
+      <a class="btn primary" href="${APP}/?from=464&amp;to=470&amp;fromName=Ahmedabad&amp;toName=Rajkot">Ahmedabad ↔ Rajkot Timetable</a>
+      <a class="btn primary" href="${APP}/?from=464&amp;to=505&amp;fromName=Ahmedabad&amp;toName=Surat">Ahmedabad ↔ Surat Timetable</a>
+      <a class="btn" href="${APP}/?from=464&amp;to=502&amp;fromName=Ahmedabad&amp;toName=Vadodara">Ahmedabad ↔ Vadodara</a>
+      <a class="btn" href="${APP}/?from=505&amp;to=470&amp;fromName=Surat&amp;toName=Rajkot">Surat ↔ Rajkot</a>
+    </div>
+    <div class="utility-action-badges">
+      <span class="utility-badge highlight">All 19,026 Gujarat ST Stops</span>
+      <span class="utility-badge">Live Delay Countdowns</span>
+      <span class="utility-badge">Express, Gurjarnagri &amp; Sleeper</span>
+    </div>
+  </div>
 
-  <h2 class="reveal">Filtering and sorting departures</h2>
-  <p class="reveal">Narrow the list by service type (Express, Gurjarnagri, Sleeper, Volvo), and sort by departure time or journey length. Buses already on the road show a live countdown instead of just a scheduled time, so you can see which one is genuinely next rather than which one is listed first.</p>
+  <h2 class="reveal">Top Gujarat ST bus route timetables and departure schedules</h2>
+  <p class="reveal">Gujarat State Road Transport Corporation (GSRTC) operates over 8,554 daily buses linking major commercial hubs, district capitals, and rural towns. The table below lists daily departure frequency, first/last bus times, and typical travel duration across Gujarat’s busiest transit corridors:</p>
+  <div class="table-wrap google-anno-skip">
+  <table class="reveal route-facts">
+    <thead>
+      <tr>
+        <th>Corridor</th>
+        <th>Daily Frequency</th>
+        <th>First Bus</th>
+        <th>Last Bus</th>
+        <th>Distance / Duration</th>
+        <th>Live Timetable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Ahmedabad ↔ Rajkot</b></td>
+        <td>Every 15–30 mins</td>
+        <td>04:30 AM</td>
+        <td>23:45 PM</td>
+        <td>215 km · ~4h 15m</td>
+        <td><a href="/ahmedabad-rajkot-bus">View Schedule →</a></td>
+      </tr>
+      <tr>
+        <td><b>Ahmedabad ↔ Surat</b></td>
+        <td>Every 20–30 mins</td>
+        <td>05:00 AM</td>
+        <td>23:30 PM</td>
+        <td>265 km · ~5h 00m</td>
+        <td><a href="/ahmedabad-surat-bus">View Schedule →</a></td>
+      </tr>
+      <tr>
+        <td><b>Ahmedabad ↔ Vadodara</b></td>
+        <td>Every 10–20 mins</td>
+        <td>05:00 AM</td>
+        <td>23:59 PM</td>
+        <td>110 km · ~1h 50m</td>
+        <td><a href="/ahmedabad-vadodara-bus">View Schedule →</a></td>
+      </tr>
+      <tr>
+        <td><b>Surat ↔ Rajkot</b></td>
+        <td>Every 30–45 mins</td>
+        <td>05:30 AM</td>
+        <td>22:30 PM</td>
+        <td>420 km · ~8h 45m</td>
+        <td><a href="/surat-rajkot-bus">View Schedule →</a></td>
+      </tr>
+      <tr>
+        <td><b>Vadodara ↔ Surat</b></td>
+        <td>Every 15–25 mins</td>
+        <td>05:15 AM</td>
+        <td>23:15 PM</td>
+        <td>140 km · ~2h 45m</td>
+        <td><a href="/vadodara-surat-bus">View Schedule →</a></td>
+      </tr>
+      <tr>
+        <td><b>Ahmedabad ↔ Bhavnagar</b></td>
+        <td>Every 30–45 mins</td>
+        <td>05:00 AM</td>
+        <td>22:30 PM</td>
+        <td>195 km · ~4h 15m</td>
+        <td><a href="/ahmedabad-bhavnagar-bus">View Schedule →</a></td>
+      </tr>
+      <tr>
+        <td><b>Ahmedabad ↔ Jamnagar</b></td>
+        <td>Every 30–60 mins</td>
+        <td>05:30 AM</td>
+        <td>23:00 PM</td>
+        <td>305 km · ~6h 30m</td>
+        <td><a href="/ahmedabad-jamnagar-bus">View Schedule →</a></td>
+      </tr>
+      <tr>
+        <td><b>Rajkot ↔ Jamnagar</b></td>
+        <td>Every 20–30 mins</td>
+        <td>06:00 AM</td>
+        <td>22:45 PM</td>
+        <td>90 km · ~2h 00m</td>
+        <td><a href="/rajkot-jamnagar-bus">View Schedule →</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 
-  <h2 class="reveal">Offline timetable and low-signal support</h2>
-  <p class="reveal">Once loaded, route schedules cache locally in your browser storage. If your cellular connection drops while traveling through rural stretches, ST Tracker retains the timetable schedule and estimated intermediate stop timings.</p>`,
+  <h2 class="reveal">How to search the GSRTC timetable between any two stations</h2>
+  <p class="reveal">Unlike terminal enquiry boards that only list trips originating from that specific depot, <a href="${APP}">ST Tracker</a> lets you search between any pair of stations — from major bus ports like Ranip, Geeta Mandir, and Central Bus Station Vadodara to intermediate rural village pickups:</p>
+  <ol class="reveal">
+    <li><b>Select Origin and Destination:</b> Open ST Tracker and tap the <i>Route</i> tab. Enter your departure station and destination.</li>
+    <li><b>Inspect Scheduled vs Running Services:</b> Scheduled trips display their official departure time from the depot. Buses currently on the road display a live green countdown badge with real-time AIS-140 GPS telematics.</li>
+    <li><b>Filter by Service Classification:</b> Filter departures by Express (3x2 seating), Gurjarnagri (2x2 comfortable recliner), Sleeper, or AC Volvo/Electric bus.</li>
+    <li><b>Track Arrival on Map:</b> Tap on any operating bus to view its physical highway location, road speed, upcoming station halts, and estimated arrival time (ETA).</li>
+  </ol>
+
+  <h2 class="reveal">GSRTC bus service classes &amp; speed classification</h2>
+  <p class="reveal">Gujarat ST categorizes its fleet into distinct transit classes designed for different travel lengths and budgets:</p>
+  <ul class="reveal">
+    <li><b>Local / Ordinary (Palli):</b> Stops at all designated rural halts and village junctions. Tariff is approximately ₹0.80 per passenger-km.</li>
+    <li><b>Express (3x2 seating):</b> Direct district-to-district service stopping only at taluka headquarters and major junctions. Tariff ~₹0.95/km.</li>
+    <li><b>Gurjarnagri (2x2 seating):</b> Comfortable long-distance pushback seating with fewer intermediate stops. Tariff ~₹1.05/km.</li>
+    <li><b>Non-AC Sleeper &amp; AC Sleeper:</b> Overnight intercity journeys connecting Saurashtra, South Gujarat, North Gujarat, and interstate destinations. Tariff ~₹1.25 to ₹1.60/km.</li>
+  </ul>
+
+  <h2 class="reveal">Direct Gujarat ST route timetable guides</h2>
+  <p class="reveal">Explore detailed departure timetables, platform information, first/last bus schedules, and live tracking for all key Gujarat ST corridors:</p>
+  <ul class="reveal">
+    <li><a href="/ahmedabad-gandhidham-bus">Ahmedabad ↔ Gandhidham ST bus timetable</a></li>
+    <li><a href="/bhuj-gandhidham-bus">Bhuj ↔ Gandhidham ST bus timetable</a></li>
+    <li><a href="/rajkot-gandhidham-bus">Rajkot ↔ Gandhidham ST bus timetable</a></li>
+    <li><a href="/ahmedabad-himatnagar-bus">Ahmedabad ↔ Himatnagar ST bus timetable</a></li>
+    <li><a href="/gandhinagar-himatnagar-bus">Gandhinagar ↔ Himatnagar ST bus timetable</a></li>
+    <li><a href="/gandhinagar-mehsana-bus">Gandhinagar ↔ Mehsana ST bus timetable</a></li>
+    <li><a href="/ahmedabad-patan-bus">Ahmedabad ↔ Patan ST bus timetable</a></li>
+    <li><a href="/mehsana-patan-bus">Mehsana ↔ Patan ST bus timetable</a></li>
+    <li><a href="/ahmedabad-palitana-bus">Ahmedabad ↔ Palitana ST bus timetable</a></li>
+    <li><a href="/bhavnagar-palitana-bus">Bhavnagar ↔ Palitana ST bus timetable</a></li>
+    <li><a href="/ahmedabad-dakor-bus">Ahmedabad ↔ Dakor ST bus timetable</a></li>
+    <li><a href="/anand-dakor-bus">Anand ↔ Dakor ST bus timetable</a></li>
+    <li><a href="/nadiad-dakor-bus">Nadiad ↔ Dakor ST bus timetable</a></li>
+    <li><a href="/ahmedabad-modasa-bus">Ahmedabad ↔ Modasa ST bus timetable</a></li>
+    <li><a href="/surat-valsad-bus">Surat ↔ Valsad ST bus timetable</a></li>
+    <li><a href="/surat-ankleshwar-bus">Surat ↔ Ankleshwar ST bus timetable</a></li>
+    <li><a href="/vadodara-ankleshwar-bus">Vadodara ↔ Ankleshwar ST bus timetable</a></li>
+    <li><a href="/surat-bardoli-bus">Surat ↔ Bardoli ST bus timetable</a></li>
+    <li><a href="/surat-vyara-bus">Surat ↔ Vyara ST bus timetable</a></li>
+    <li><a href="/porbandar-dwarka-bus">Porbandar ↔ Dwarka ST bus timetable</a></li>
+    <li><a href="/junagadh-sasangir-bus">Junagadh ↔ Sasan Gir ST bus timetable</a></li>
+    <li><a href="/surat-mumbai-bus">Surat ↔ Mumbai Borivali ST bus timetable</a></li>
+    <li><a href="/ahmedabad-udaipur-bus">Ahmedabad ↔ Udaipur ST bus timetable</a></li>
+    <li><a href="/ahmedabad-shirdi-bus">Ahmedabad ↔ Shirdi ST bus timetable</a></li>
+    <li><a href="/vadodara-chhotaudepur-bus">Vadodara ↔ Chhota Udepur ST bus timetable</a></li>
+    <li><a href="/rajkot-veraval-bus">Rajkot ↔ Veraval ST bus timetable</a></li>
+    <li><a href="/bhuj-mandvi-bus">Bhuj ↔ Mandvi ST bus timetable</a></li>
+    <li><a href="/rajkot-tankara-bus">Rajkot ↔ Tankara ST bus timetable</a></li>
+    <li><a href="/valsad-khergam-bus">Valsad ↔ Khergam ST bus timetable</a></li>
+  </ul>`,
     faq: [
-      { q: 'Can I search between any two stations, or only major cities?', a: 'Any two of the 19,026 stations the app covers, including single-stop villages, not just major city terminals.' },
-      { q: 'Does the timetable show live delays, or only the schedule?', a: 'Both — scheduled times for services yet to depart, and a live countdown for services already on the road.' },
-      { q: 'Why does the list still show buses that already left?', a: 'In case you’re boarding further along the route than the origin — a bus that left ten minutes ago may still be minutes from your own stop.' },
+      { q: 'How can I check the GSRTC bus time table online?', a: 'You can check the full Gujarat ST bus timetable by selecting your origin and destination stations on ST Tracker. The system displays all scheduled Express, Gurjarnagri, and Sleeper departures along with real-time GPS arrival countdowns.' },
+      { q: 'What is the earliest and latest GSRTC bus timing in Gujarat?', a: 'First intercity GSRTC buses typically depart between 04:30 AM and 05:30 AM. High-density corridors like Ahmedabad–Vadodara, Ahmedabad–Rajkot, and Surat–Vadodara operate continuous round-the-clock and late-night services until 23:45 PM.' },
+      { q: 'Can I search ST bus timetable between rural village stops?', a: 'Yes. ST Tracker indexes all 19,026 official GSRTC station stops and pickup points across Gujarat, allowing commuters to search direct connections as well as intermediate express stops.' },
+      { q: 'Does the timetable show live delays or only fixed schedule?', a: 'ST Tracker displays both: the official scheduled departure timetable and live AIS-140 GPS delay minutes for buses already in transit on the road.' },
+      { q: 'How do I check GSRTC bus ticket price with the timetable?', a: 'Estimated fares for Ordinary (~₹0.80/km), Express (~₹0.95/km), and Gurjarnagri (~₹1.05/km) are displayed in our fare chart guide. Advance reservation tickets can be booked online via GSRTC portal or redBus.' },
     ],
     related: [
-      { href: '/gsrtc-advance-booking-rules', label: 'GSRTC advance booking rules & seat reservation' },
+      { href: '/gsrtc-bus-fare-ticket-price', label: 'GSRTC bus fare chart and ticket price calculator' },
+      { href: '/gsrtc-online-booking-pnr-tracking', label: 'GSRTC PNR tracking & online ticket booking status' },
+      { href: '/gsrtc-bus-stand-helpline-numbers', label: 'All 26 Gujarat ST bus stand enquiry phone numbers' },
       { href: '/gsrtc-tracker', label: 'GSRTC tracker — what it is and how it compares' },
-      { href: '/nearby-st-bus-stops', label: 'Find ST bus stops near you' },
     ],
   },
   {
@@ -982,24 +1140,24 @@ const FEATURE_PAGES = [
  * a route page that linked to one of the others shipped a hard 404.
  */
 const CITY_ROUTES = {
-  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji, CITY.junagadh, CITY.jamnagar, CITY.surendranagar, CITY.nadiad, CITY.morbi],
-  surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar, CITY.rajkot, CITY.amreli],
-  vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra],
-  rajkot: [CITY.ahmedabad, CITY.surat, CITY.morbi, CITY.tankara, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu],
-  bhavnagar: [CITY.ahmedabad, CITY.surat, CITY.rajkot, CITY.amreli],
+  ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji, CITY.junagadh, CITY.jamnagar, CITY.surendranagar, CITY.nadiad, CITY.morbi, CITY.gandhidham, CITY.himatnagar, CITY.patan, CITY.palitana, CITY.dakor, CITY.modasa, CITY.udaipur, CITY.shirdi],
+  surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar, CITY.rajkot, CITY.amreli, CITY.valsad, CITY.ankleshwar, CITY.bardoli, CITY.vyara, CITY.mumbai],
+  vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra, CITY.ankleshwar, CITY.chhotaudepur],
+  rajkot: [CITY.ahmedabad, CITY.surat, CITY.morbi, CITY.tankara, CITY.jamnagar, CITY.junagadh, CITY.dwarka, CITY.somnath, CITY.porbandar, CITY.bhavnagar, CITY.diu, CITY.gandhidham, CITY.veraval],
+  bhavnagar: [CITY.ahmedabad, CITY.surat, CITY.rajkot, CITY.amreli, CITY.palitana],
   jamnagar: [CITY.rajkot, CITY.dwarka, CITY.ahmedabad],
-  gandhinagar: [CITY.ahmedabad, CITY.mehsana],
-  junagadh: [CITY.rajkot, CITY.somnath, CITY.ahmedabad],
-  bhuj: [CITY.ahmedabad, CITY.rajkot, CITY.mandvi],
+  gandhinagar: [CITY.ahmedabad, CITY.mehsana, CITY.himatnagar],
+  junagadh: [CITY.rajkot, CITY.somnath, CITY.ahmedabad, CITY.sasangir],
+  bhuj: [CITY.ahmedabad, CITY.rajkot, CITY.mandvi, CITY.gandhidham],
   morbi: [CITY.rajkot, CITY.ahmedabad],
-  mehsana: [CITY.ahmedabad, CITY.palanpur],
+  mehsana: [CITY.ahmedabad, CITY.palanpur, CITY.gandhinagar, CITY.patan],
   vapi: [CITY.surat, CITY.valsad],
   valsad: [CITY.vapi, CITY.surat, CITY.khergam],
   navsari: [CITY.surat],
-  anand: [CITY.ahmedabad, CITY.vadodara],
-  nadiad: [CITY.ahmedabad, CITY.anand],
+  anand: [CITY.ahmedabad, CITY.vadodara, CITY.dakor],
+  nadiad: [CITY.ahmedabad, CITY.anand, CITY.dakor],
   bharuch: [CITY.vadodara, CITY.surat],
-  porbandar: [CITY.rajkot],
+  porbandar: [CITY.rajkot, CITY.dwarka],
   somnath: [CITY.rajkot, CITY.ahmedabad, CITY.dwarka, CITY.junagadh],
   dwarka: [CITY.rajkot, CITY.ahmedabad, CITY.somnath, CITY.jamnagar],
   palanpur: [CITY.ahmedabad, CITY.mehsana, CITY.ambaji],
@@ -1019,6 +1177,32 @@ const ROUTE_FACTS = {
   'jamnagar-dwarka-bus': { dist: '130 km', time: '2h 45m – 3h 15m', highway: 'SH 26 / NH 947' },
   'junagadh-somnath-bus': { dist: '85 km', time: '2h 00m – 2h 30m', highway: 'NH 151' },
   'palanpur-ambaji-bus': { dist: '50 km', time: '1h 15m – 1h 30m', highway: 'SH 56' },
+  'ahmedabad-gandhidham-bus': { dist: '300 km', time: '5h 30m – 6h 15m', highway: 'NH 947 & NH 27' },
+  'bhuj-gandhidham-bus': { dist: '60 km', time: '1h 15m – 1h 30m', highway: 'NH 341 Kutch Highway' },
+  'rajkot-gandhidham-bus': { dist: '190 km', time: '3h 45m – 4h 30m', highway: 'NH 27' },
+  'ahmedabad-himatnagar-bus': { dist: '80 km', time: '1h 45m – 2h 15m', highway: 'NH 48 & SH 9' },
+  'gandhinagar-himatnagar-bus': { dist: '60 km', time: '1h 15m – 1h 35m', highway: 'NH 48' },
+  'gandhinagar-mehsana-bus': { dist: '65 km', time: '1h 15m – 1h 30m', highway: 'SH 41 State Highway' },
+  'ahmedabad-patan-bus': { dist: '125 km', time: '2h 45m – 3h 15m', highway: 'SH 41 & SH 7' },
+  'mehsana-patan-bus': { dist: '55 km', time: '1h 15m – 1h 30m', highway: 'SH 7' },
+  'ahmedabad-palitana-bus': { dist: '215 km', time: '4h 30m – 5h 00m', highway: 'SH 36 & SH 38 via Dhandhuka' },
+  'bhavnagar-palitana-bus': { dist: '55 km', time: '1h 15m – 1h 30m', highway: 'SH 38 Shatrunjaya Corridor' },
+  'ahmedabad-dakor-bus': { dist: '90 km', time: '1h 45m – 2h 15m', highway: 'NE 1 & SH 59' },
+  'anand-dakor-bus': { dist: '35 km', time: '45m – 1h 00m', highway: 'SH 83' },
+  'nadiad-dakor-bus': { dist: '35 km', time: '45m – 1h 00m', highway: 'SH 59' },
+  'ahmedabad-modasa-bus': { dist: '105 km', time: '2h 15m – 2h 45m', highway: 'NH 48 & SH 5' },
+  'surat-valsad-bus': { dist: '90 km', time: '1h 45m – 2h 15m', highway: 'NH 48 South Gujarat Link' },
+  'surat-ankleshwar-bus': { dist: '65 km', time: '1h 15m – 1h 35m', highway: 'NH 48 Golden Corridor' },
+  'vadodara-ankleshwar-bus': { dist: '85 km', time: '1h 30m – 1h 50m', highway: 'NH 48' },
+  'surat-bardoli-bus': { dist: '35 km', time: '45m – 1h 00m', highway: 'NH 53' },
+  'surat-vyara-bus': { dist: '65 km', time: '1h 20m – 1h 40m', highway: 'NH 53 Tapi Highway' },
+  'porbandar-dwarka-bus': { dist: '105 km', time: '2h 15m – 2h 45m', highway: 'NH 51 Coastal Corridor' },
+  'junagadh-sasangir-bus': { dist: '55 km', time: '1h 30m – 1h 50m', highway: 'SH 26 Gir Forest Highway' },
+  'surat-mumbai-bus': { dist: '265 km', time: '5h 30m – 6h 30m', highway: 'NH 48 Western Interstate Corridor' },
+  'ahmedabad-udaipur-bus': { dist: '260 km', time: '5h 00m – 5h 45m', highway: 'NH 48 North Interstate Corridor' },
+  'ahmedabad-shirdi-bus': { dist: '560 km', time: '11h 00m – 12h 30m', highway: 'NH 48 & NH 160 Interstate Sleeper' },
+  'vadodara-chhotaudepur-bus': { dist: '105 km', time: '2h 30m – 3h 00m', highway: 'SH 11' },
+  'rajkot-veraval-bus': { dist: '190 km', time: '4h 00m – 4h 30m', highway: 'NH 151' },
   'ahmedabad-surendranagar-bus': { dist: '125 km', time: '2h 30m – 3h 00m', highway: 'Viramgam Highway / SH 17' },
   'ahmedabad-nadiad-bus': { dist: '55 km', time: '1h 00m – 1h 20m', highway: 'NE 1 / NH 48' },
   'surat-rajkot-bus': { dist: '420 km', time: '8h 30m – 9h 30m', highway: 'NH 48 & NH 47' },
@@ -1280,6 +1464,136 @@ const ROUTE_PAIRS = [
   {
     slug: 'rajkot-tankara-bus', a: CITY.rajkot, b: CITY.tankara,
     crumbLabel: 'Rajkot ↔ Tankara ST bus',
+  },
+  {
+    slug: 'ahmedabad-gandhidham-bus', a: CITY.ahmedabad, b: CITY.gandhidham,
+    crumbLabel: 'Ahmedabad ↔ Gandhidham ST bus',
+    extra: `<p class="reveal">Vital 300 km commercial artery connecting Gujarat’s mega city with the Kandla port and Gandhidham free trade industrial zone via Viramgam and Maliya.</p>`,
+  },
+  {
+    slug: 'bhuj-gandhidham-bus', a: CITY.bhuj, b: CITY.gandhidham,
+    crumbLabel: 'Bhuj ↔ Gandhidham ST bus',
+    extra: `<p class="reveal">Kutch district’s most frequent transit corridor with non-stop point-to-point buses departing every 15 to 20 minutes between Bhuj and Gandhidham junction.</p>`,
+  },
+  {
+    slug: 'rajkot-gandhidham-bus', a: CITY.rajkot, b: CITY.gandhidham,
+    crumbLabel: 'Rajkot ↔ Gandhidham ST bus',
+    extra: `<p class="reveal">Key Saurashtra-to-Kutch link via Morbi and the Maliya bridge along National Highway 27, serving daily business commuters and port cargo professionals.</p>`,
+  },
+  {
+    slug: 'ahmedabad-himatnagar-bus', a: CITY.ahmedabad, b: CITY.himatnagar,
+    crumbLabel: 'Ahmedabad ↔ Himatnagar ST bus',
+    extra: `<p class="reveal">Sabarkantha district’s primary lifeline connecting Himatnagar central bus stand with Ahmedabad Geeta Mandir and Ranip via Prantij on NH 48.</p>`,
+  },
+  {
+    slug: 'gandhinagar-himatnagar-bus', a: CITY.gandhinagar, b: CITY.himatnagar,
+    crumbLabel: 'Gandhinagar ↔ Himatnagar ST bus',
+    extra: `<p class="reveal">Fast direct capital corridor linking state government secretariats in Gandhinagar with Himatnagar and Sabarkantha administrative headquarters.</p>`,
+  },
+  {
+    slug: 'gandhinagar-mehsana-bus', a: CITY.gandhinagar, b: CITY.mehsana,
+    crumbLabel: 'Gandhinagar ↔ Mehsana ST bus',
+    extra: `<p class="reveal">Rapid North Gujarat link connecting Gandhinagar Sector 11 with the industrial oil city of Mehsana via Kalol along State Highway 41.</p>`,
+  },
+  {
+    slug: 'ahmedabad-patan-bus', a: CITY.ahmedabad, b: CITY.patan,
+    crumbLabel: 'Ahmedabad ↔ Patan ST bus',
+    extra: `<p class="reveal">Historic heritage corridor connecting Ahmedabad with the UNESCO World Heritage Rani ki Vav, Patola silk centers, and North Gujarat University in Patan.</p>`,
+  },
+  {
+    slug: 'mehsana-patan-bus', a: CITY.mehsana, b: CITY.patan,
+    crumbLabel: 'Mehsana ↔ Patan ST bus',
+    extra: `<p class="reveal">High-frequency local feeder route connecting Mehsana junction with Patan bus stand, running shuttles every 20 minutes through Chansma.</p>`,
+  },
+  {
+    slug: 'ahmedabad-palitana-bus', a: CITY.ahmedabad, b: CITY.palitana,
+    crumbLabel: 'Ahmedabad ↔ Palitana ST bus',
+    extra: `<p class="reveal">Sacred pilgrim route connecting Ahmedabad with the holy Shatrunjaya Hills and over 800 Jain temples in Palitana via Dhandhuka and Songadh.</p>`,
+  },
+  {
+    slug: 'bhavnagar-palitana-bus', a: CITY.bhavnagar, b: CITY.palitana,
+    crumbLabel: 'Bhavnagar ↔ Palitana ST bus',
+    extra: `<p class="reveal">Bustling local shuttle corridor connecting Bhavnagar terminus with the pilgrimage foothills of Palitana, with buses operating continuously from 05:00 AM.</p>`,
+  },
+  {
+    slug: 'ahmedabad-dakor-bus', a: CITY.ahmedabad, b: CITY.dakor,
+    crumbLabel: 'Ahmedabad ↔ Dakor ST bus',
+    extra: `<p class="reveal">Revered pilgrimage corridor carrying thousands of devotees daily to the sacred Ranchhodraiji Mandir in Dakor via NE 1 expressway and Mahudha.</p>`,
+  },
+  {
+    slug: 'anand-dakor-bus', a: CITY.anand, b: CITY.dakor,
+    crumbLabel: 'Anand ↔ Dakor ST bus',
+    extra: `<p class="reveal">Charotar feeder route connecting the dairy capital of Anand with Dakor temple, with local and express ST services running every 30 minutes.</p>`,
+  },
+  {
+    slug: 'nadiad-dakor-bus', a: CITY.nadiad, b: CITY.dakor,
+    crumbLabel: 'Nadiad ↔ Dakor ST bus',
+    extra: `<p class="reveal">Direct Kheda district commuter and pilgrim link operating high-frequency point-to-point buses between Nadiad and Dakor bus port.</p>`,
+  },
+  {
+    slug: 'ahmedabad-modasa-bus', a: CITY.ahmedabad, b: CITY.modasa,
+    crumbLabel: 'Ahmedabad ↔ Modasa ST bus',
+    extra: `<p class="reveal">Aravalli district’s primary transit line connecting Modasa with Ahmedabad via Dhansura and Dehgam, serving students, traders, and rural commuters.</p>`,
+  },
+  {
+    slug: 'surat-valsad-bus', a: CITY.surat, b: CITY.valsad,
+    crumbLabel: 'Surat ↔ Valsad ST bus',
+    extra: `<p class="reveal">Dense South Gujarat industrial and trade corridor along NH 48 connecting diamond and textile capital Surat with Valsad mango orchards and chemical zones.</p>`,
+  },
+  {
+    slug: 'surat-ankleshwar-bus', a: CITY.surat, b: CITY.ankleshwar,
+    crumbLabel: 'Surat ↔ Ankleshwar ST bus',
+    extra: `<p class="reveal">Heavy chemical and industrial belt corridor connecting Surat Central with Asia’s largest industrial estate at Ankleshwar GIDC via Kim and Kosamba.</p>`,
+  },
+  {
+    slug: 'vadodara-ankleshwar-bus', a: CITY.vadodara, b: CITY.ankleshwar,
+    crumbLabel: 'Vadodara ↔ Ankleshwar ST bus',
+    extra: `<p class="reveal">Key industrial corridor linking Vadodara with the chemical capital Ankleshwar and the Golden Bridge over the Narmada river along NH 48.</p>`,
+  },
+  {
+    slug: 'surat-bardoli-bus', a: CITY.surat, b: CITY.bardoli,
+    crumbLabel: 'Surat ↔ Bardoli ST bus',
+    extra: `<p class="reveal">Rapid urban and agricultural transit artery on NH 53 connecting Surat city with Sardar Patel’s historic Satyagraha hub and sugar bowl in Bardoli.</p>`,
+  },
+  {
+    slug: 'surat-vyara-bus', a: CITY.surat, b: CITY.vyara,
+    crumbLabel: 'Surat ↔ Vyara ST bus',
+    extra: `<p class="reveal">Tapi district administrative lifeline connecting Surat Central with Vyara, Ukai dam region, and Songadh border areas along National Highway 53.</p>`,
+  },
+  {
+    slug: 'porbandar-dwarka-bus', a: CITY.porbandar, b: CITY.dwarka,
+    crumbLabel: 'Porbandar ↔ Dwarka ST bus',
+    extra: `<p class="reveal">Scenic coastal pilgrimage highway along NH 51 linking Mahatma Gandhi’s birthplace in Porbandar with the holy temple town of Dwarka via Harshad Mataji temple.</p>`,
+  },
+  {
+    slug: 'junagadh-sasangir-bus', a: CITY.junagadh, b: CITY.sasangir,
+    crumbLabel: 'Junagadh ↔ Sasan Gir ST bus',
+    extra: `<p class="reveal">Wildlife tourist and forest village corridor connecting Junagadh railway station with Sasan Gir National Park, the sanctuary of Asiatic Lions.</p>`,
+  },
+  {
+    slug: 'surat-mumbai-bus', a: CITY.surat, b: CITY.mumbai,
+    crumbLabel: 'Surat ↔ Mumbai Borivali ST bus',
+    extra: `<p class="reveal">Flagship interstate high-density route connecting Surat with Mumbai Borivali Nancy stand, operating premium Sleeper, Gurjarnagri, and Express services daily.</p>`,
+  },
+  {
+    slug: 'ahmedabad-udaipur-bus', a: CITY.ahmedabad, b: CITY.udaipur,
+    crumbLabel: 'Ahmedabad ↔ Udaipur ST bus',
+    extra: `<p class="reveal">Historic Rajasthan-Gujarat interstate route linking Ahmedabad with the City of Lakes (Udaipur) via Himatnagar, Shamlaji border, and Ratanpur.</p>`,
+  },
+  {
+    slug: 'ahmedabad-shirdi-bus', a: CITY.ahmedabad, b: CITY.shirdi,
+    crumbLabel: 'Ahmedabad ↔ Shirdi ST bus',
+    extra: `<p class="reveal">Popular interstate overnight pilgrimage sleeper service connecting Gujarat with Sai Baba’s holy shrine in Shirdi, Maharashtra via Surat and Dhule.</p>`,
+  },
+  {
+    slug: 'vadodara-chhotaudepur-bus', a: CITY.vadodara, b: CITY.chhotaudepur,
+    crumbLabel: 'Vadodara ↔ Chhota Udepur ST bus',
+    extra: `<p class="reveal">Eastern Gujarat tribal belt artery connecting Vadodara with the Pithora art and administrative headquarters of Chhota Udepur via Bodeli.</p>`,
+  },
+  {
+    slug: 'rajkot-veraval-bus', a: CITY.rajkot, b: CITY.veraval,
+    crumbLabel: 'Rajkot ↔ Veraval ST bus',
+    extra: `<p class="reveal">Direct Saurashtra trade corridor connecting Rajkot engineering hubs with Veraval fishing port and Somnath coastal belt along NH 151.</p>`,
   },
 ].map(({ slug, a, b, crumbLabel, extra }) => {
   const facts = ROUTE_FACTS[slug] || { dist: '100+ km', time: '2 to 3 hours', highway: 'Gujarat State Highway' };

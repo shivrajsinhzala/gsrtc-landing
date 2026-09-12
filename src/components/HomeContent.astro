@@ -165,6 +165,16 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
   </div>
 </section>
 
+<section class="wrap ad-slot-wrap" aria-label={t.adLabel}>
+  <p class="ad-label"><Fragment set:html={t.adLabel} /></p>
+  <ins class="adsbygoogle ad-slot"
+       style="display:block"
+       data-ad-client="ca-pub-7164999486301748"
+       data-ad-slot="8460038937"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</section>
+
 <section id="about" class="wrap section narrow">
   <h2><Fragment set:html={t.aboutH} /></h2>
   <p><Fragment set:html={t.aboutP1} /></p>
@@ -317,6 +327,12 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
     <li><a href={href('rajkot-junagadh-bus')}>{cityName('rajkot')} ↔ {cityName('junagadh')}</a></li>
     <li><a href={href('rajkot-dwarka-bus')}>{cityName('rajkot')} ↔ {cityName('dwarka')}</a></li>
     <li><a href={href('rajkot-somnath-bus')}>{cityName('rajkot')} ↔ {cityName('somnath')}</a></li>
+    <li><a href={href('ahmedabad-gandhidham-bus')}>{cityName('ahmedabad')} ↔ {cityName('gandhidham')}</a></li>
+    <li><a href={href('bhuj-gandhidham-bus')}>{cityName('bhuj')} ↔ {cityName('gandhidham')}</a></li>
+    <li><a href={href('surat-mumbai-bus')}>{cityName('surat')} ↔ {cityName('mumbai')}</a></li>
+    <li><a href={href('ahmedabad-himatnagar-bus')}>{cityName('ahmedabad')} ↔ {cityName('himatnagar')}</a></li>
+    <li><a href={href('ahmedabad-palitana-bus')}>{cityName('ahmedabad')} ↔ {cityName('palitana')}</a></li>
+    <li><a href={href('ahmedabad-dakor-bus')}>{cityName('ahmedabad')} ↔ {cityName('dakor')}</a></li>
   </ul>
 </section>
 
