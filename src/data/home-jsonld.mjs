@@ -7,6 +7,8 @@
  * inLanguage on the WebSite block is set per render, since the Gujarati edition is a real
  * document now rather than the same document with its text swapped.
  */
+import { DATE_PUBLISHED, DATE_MODIFIED } from './site-dates.mjs';
+
 export function homeJsonLd(lang) {
   const blocks = [
   {
@@ -21,8 +23,8 @@ export function homeJsonLd(lang) {
       "gsrtc.shivrajsinh.in"
     ],
     "inLanguage": lang === 'gu' ? 'gu-IN' : 'en-IN',
-    "datePublished": "2026-01-15T00:00:00+05:30",
-    "dateModified": "2026-09-06T00:00:00+05:30",
+    "datePublished": DATE_PUBLISHED,
+    "dateModified": DATE_MODIFIED,
     "speakable": {
       "@type": "SpeakableSpecification",
       "cssSelector": ["h1", ".lede", ".strip-card", "#about", "#faq details summary", "#faq details p"]
@@ -60,8 +62,8 @@ export function homeJsonLd(lang) {
     "applicationCategory": "TravelApplication",
     "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
-    "datePublished": "2026-01-15T00:00:00+05:30",
-    "dateModified": "2026-09-06T00:00:00+05:30",
+    "datePublished": DATE_PUBLISHED,
+    "dateModified": DATE_MODIFIED,
     "inLanguage": [
       "en-IN",
       "gu-IN"

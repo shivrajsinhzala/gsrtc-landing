@@ -96,8 +96,13 @@ const htmlLang = lang === 'gu' ? 'gu-IN' : 'en-IN';
 <link rel="dns-prefetch" href="https://tracker.shivrajsinh.in" />
 <script src="/analytics.js" async></script>
 
+{/* Serialized compact, not pretty-printed. These blocks are machine-readable only — no
+    human reads them in view-source, and every crawler parses them identically either way —
+    but the indentation was ~100 KB of pure whitespace across the 125 built pages, and site
+    audits count each pretty-printed inline block as an unminified script. The source of
+    truth stays readable: it is the object literals in src/data/, not this string. */}
 {jsonLd.map((block) => (
-  <script type="application/ld+json" set:html={JSON.stringify(block, null, 2)} />
+  <script type="application/ld+json" set:html={JSON.stringify(block)} />
 ))}
 </head>
 <body>

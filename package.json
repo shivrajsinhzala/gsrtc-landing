@@ -8,13 +8,17 @@
     "dev": "astro dev",
     "start": "astro dev",
     "generate": "node scripts/gen-redirects.mjs && node scripts/gen-feed.mjs",
-    "build": "npm run generate && astro build && npm run verify",
+    "build": "npm run generate && astro build && npm run minify && npm run verify",
     "preview": "astro preview",
     "check": "astro check",
-    "verify": "node scripts/verify-build.mjs"
+    "verify": "node scripts/verify-build.mjs",
+    "minify": "node scripts/minify-public.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
     "astro": "^7.2.10"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { DATE_PUBLISHED, DATE_MODIFIED } from '../data/site-dates.mjs';
 
 /**
  * Ported verbatim from the pre-Astro gsrtc-live-bus-tracking.html — one of the hand-written pages, each
@@ -15,8 +16,8 @@ const jsonLd = [
     "description": "How GSRTC live bus tracking works: where the GPS position comes from, how often it updates, and why a bus sometimes cannot be found.",
     "url": "https://gsrtc.shivrajsinh.in/gsrtc-live-bus-tracking",
     "inLanguage": "en-IN",
-    "datePublished": "2026-01-15T00:00:00+05:30",
-    "dateModified": "2026-09-06T00:00:00+05:30",
+    "datePublished": DATE_PUBLISHED,
+    "dateModified": DATE_MODIFIED,
     "author": {
       "@type": "Person",
       "name": "Shivrajsinh Zala",
@@ -47,19 +48,7 @@ const jsonLd = [
       "name": "Gujarat State Road Transport Corporation (GSRTC) Bus Tracking",
       "description": "Live bus tracking, timetables, and transit information for Gujarat ST buses."
     },
-    "mainEntity": {
-      "@type": "WebApplication",
-      "name": "GSRTC Bus Tracker",
-      "url": "https://tracker.shivrajsinh.in",
-      "applicationCategory": "TravelApplication",
-      "operatingSystem": "Android, iOS, Windows, macOS — any modern browser",
-      "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "INR"
-      }
-    }
+    "relatedLink": "https://tracker.shivrajsinh.in"
   },
   {
     "@context": "https://schema.org",

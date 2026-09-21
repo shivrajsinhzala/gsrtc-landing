@@ -58,6 +58,12 @@ for (const p of pages) {
     [...html.matchAll(/href="(\/[^"#?]*)"/g)].map((m) => m[1].replace(/\/$/, '') || '/'),
   );
   const schemaTypes = [...html.matchAll(/"@type":\s*"([^"]+)"/g)].map((m) => m[1]);
+  // The blocks are also parsed, not just regex-scanned for types, so the required-property
+  // check below can see the actual shape of each node rather than a flat list of names.
+  const ld = [];
+  for (const m of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
+    try { ld.push(JSON.parse(m[1])); } catch (e) { ld.push({ __parseError: String(e) }); }
+  }
   const imgs = [...html.matchAll(/<img\b[^>]*>/g)];
   const imgsNoAlt = imgs.filter((m) => !/\salt=/.test(m[0])).length;
 
@@ -70,9 +76,22 @@ for (const p of pages) {
     words,
     internalLinks: internalLinks.size,
     schema: [...new Set(schemaTypes)].filter((t) => !t.startsWith('List') && t !== 'Question' && t !== 'Answer' && t !== 'HowToStep'),
+    ld,
     imgsNoAlt,
   });
 }
+
+/*
+ * /404 is excluded from the checks that judge a page as a search destination — content depth,
+ * heading structure, and whether it carries schema.
+ *
+ * It is not a destination: astro.config.mjs already keeps it out of the sitemap, and a 404
+ * *should* be short, single-purpose and schema-free. Counting it as thin content produced
+ * three permanent warnings that could never be fixed without making the page worse, and three
+ * warnings that can never go away are three warnings nobody reads — which is how a real one
+ * gets missed. It stays in the title/description/canonical checks, which do apply to it.
+ */
+const isDestination = (r) => r.url !== '/404';
 
 // ---------- report ----------
 const issue = (label, list, fmt = (r) => r.url) => {
@@ -103,10 +122,10 @@ issue('duplicated across pages', dupDesc.map(([, u]) => ({ url: u.join(', ') }))
 console.log('\nHEADINGS');
 issue('no H1', rows.filter((r) => r.h1Count === 0));
 issue('more than one H1', rows.filter((r) => r.h1Count > 1), (r) => `${r.h1Count}  ${r.url}`);
-issue('fewer than 2 H2s (thin structure)', rows.filter((r) => r.h2Count < 2), (r) => `${r.h2Count} H2  ${r.url}`);
+issue('fewer than 2 H2s (thin structure)', rows.filter((r) => isDestination(r) && r.h2Count < 2), (r) => `${r.h2Count} H2  ${r.url}`);
 
 console.log('\nCONTENT DEPTH');
-const thin = rows.filter((r) => r.words < 300).sort((a, b) => a.words - b.words);
+const thin = rows.filter((r) => isDestination(r) && r.words < 300).sort((a, b) => a.words - b.words);
 issue('under 300 words in <main>', thin, (r) => `${r.words}w  ${r.url}`);
 console.log(`  info median words: ${rows.map((r) => r.words).sort((a, b) => a - b)[Math.floor(rows.length / 2)]}`);
 
@@ -122,7 +141,68 @@ const orphans = Object.entries(inbound).filter(([u, n]) => n <= 1 && u !== '/404
 issue('linked from 1 page or fewer (near-orphan)', orphans.map(([u, n]) => ({ url: `${n} inbound  ${u}` })));
 
 console.log('\nSTRUCTURED DATA');
-issue('no schema at all', rows.filter((r) => !r.schema.length));
+issue('no schema at all', rows.filter((r) => isDestination(r) && !r.schema.length));
+
+/**
+ * Required properties per Google's rich-result documentation — not schema.org's own vocabulary,
+ * which marks almost nothing as required. A node missing one of these still parses as valid
+ * JSON-LD and still validates on schema.org, but Search Console and third-party audits
+ * (Semrush's "structured data item is invalid") report it as an error, because the page claims
+ * a rich result it cannot be granted.
+ *
+ * `oneOf` entries mean any one of the listed properties satisfies the requirement.
+ */
+const GOOGLE_REQUIRED = {
+  SoftwareApplication: { required: ['name', 'offers'], oneOf: [['aggregateRating', 'review']] },
+  WebApplication: { required: ['name', 'offers'], oneOf: [['aggregateRating', 'review']] },
+  MobileApplication: { required: ['name', 'offers'], oneOf: [['aggregateRating', 'review']] },
+  Offer: { required: ['price', 'priceCurrency'] },
+  AggregateRating: { required: ['ratingValue'], oneOf: [['ratingCount', 'reviewCount']] },
+  Question: { required: ['name', 'acceptedAnswer'] },
+  HowToStep: { required: ['text'] },
+  ListItem: { required: ['position', 'name'] },
+  BreadcrumbList: { required: ['itemListElement'] },
+  FAQPage: { required: ['mainEntity'] },
+  ImageObject: { required: ['url'] },
+};
+
+const schemaErrors = [];
+const visit = (node, url) => {
+  if (Array.isArray(node)) return node.forEach((n) => visit(n, url));
+  if (!node || typeof node !== 'object') return;
+  if (node.__parseError) {
+    schemaErrors.push({ url: `${url} — JSON-LD does not parse: ${node.__parseError}` });
+    return;
+  }
+  const types = [node['@type']].flat().filter((t) => typeof t === 'string');
+  for (const t of types) {
+    const rule = GOOGLE_REQUIRED[t];
+    if (!rule) continue;
+    for (const prop of rule.required ?? []) {
+      if (node[prop] === undefined) schemaErrors.push({ url: `${url} — ${t} missing required "${prop}"` });
+    }
+    for (const group of rule.oneOf ?? []) {
+      if (!group.some((prop) => node[prop] !== undefined)) {
+        schemaErrors.push({ url: `${url} — ${t} missing one of ${group.map((p) => `"${p}"`).join(' / ')}` });
+      }
+    }
+  }
+  for (const v of Object.values(node)) visit(v, url);
+};
+for (const r of rows) visit(r.ld, r.url);
+
+// Collapsed to one line per distinct problem: the same missing property on 123 route pages is
+// one thing to fix in one template, not 123 findings to read past.
+const byKind = schemaErrors.reduce((a, e) => {
+  const kind = e.url.slice(e.url.indexOf(' — '));
+  (a[kind] ??= []).push(e.url.slice(0, e.url.indexOf(' — ')));
+  return a;
+}, {});
+issue(
+  "fails Google's required properties (reported as invalid by Search Console)",
+  Object.entries(byKind).map(([kind, urls]) => ({ url: `${urls.length} page(s)${kind}  e.g. ${urls[0]}` })),
+);
+
 const withFaq = rows.filter((r) => r.schema.includes('FAQPage')).length;
 console.log(`  info FAQPage on ${withFaq}/${rows.length} pages (rich-result eligible)`);
 console.log(`  info schema types in use: ${[...new Set(rows.flatMap((r) => r.schema))].join(', ')}`);

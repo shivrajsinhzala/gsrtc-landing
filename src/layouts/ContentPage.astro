@@ -2,6 +2,7 @@
 import Base from './Base.astro';
 import AdSlot from '../components/AdSlot.astro';
 import { rewriteInternalLinks, rewriteHref } from '../lib/links.mjs';
+import { DATE_PUBLISHED, DATE_MODIFIED } from '../data/site-dates.mjs';
 
 /**
  * The shell every guide, route and city page shares — a direct port of the template that
@@ -61,8 +62,8 @@ const jsonLd: unknown[] = [
     description: description,
     url: `${SITE}/${slug}`,
     inLanguage: 'en-IN',
-    datePublished: '2026-01-15T00:00:00+05:30',
-    dateModified: '2026-09-06T00:00:00+05:30',
+    datePublished: DATE_PUBLISHED,
+    dateModified: DATE_MODIFIED,
     isPartOf: {
       '@type': 'WebSite',
       name: 'GSRTC Bus Tracker',
@@ -93,26 +94,24 @@ const jsonLd: unknown[] = [
       name: 'Gujarat State Road Transport Corporation (GSRTC) Bus Tracking',
       description: 'Live bus tracking, timetables, and transit information for Gujarat ST buses.',
     },
-    mainEntity: {
-      '@type': 'WebApplication',
-      name: 'GSRTC Bus Tracker',
-      url: 'https://tracker.shivrajsinh.in',
-      applicationCategory: 'TravelApplication',
-      operatingSystem: 'Android, iOS, Windows, macOS — any modern browser',
-      browserRequirements: 'Requires JavaScript. Requires HTML5.',
-      featureList: [
-        'Live bus GPS location by number plate',
-        'Stop-by-stop route schedule and delay alerts',
-        'Timetable search between 19,026 stations',
-        'Nearby bus stops locator with distance',
-        'AIS-140 GPS telematics integration',
-      ],
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'INR',
-      },
-    },
+    /*
+     * The app used to be declared here as `mainEntity: { '@type': 'WebApplication', … }`.
+     * Two things were wrong with that, and removing it fixes both.
+     *
+     * Google's Software App report picks up every SoftwareApplication/WebApplication node it
+     * finds and requires `aggregateRating` or `review` on it. This site has no accounts and
+     * therefore no ratings, so all 123 pages carrying the node were reported as "Invalid item"
+     * in Search Console — and the only way to satisfy the requirement would be to invent a
+     * rating, which is fabricated review markup and a manual-action risk. Not a trade worth
+     * making for a rich result this site cannot be eligible for anyway.
+     *
+     * It was also simply inaccurate: the main entity of /ahmedabad-ambaji-bus is the
+     * Ahmedabad–Ambaji route, not the tracker. `relatedLink` states what is actually true —
+     * this page points at that app — and carries no rich-result obligation. The full
+     * WebApplication description still lives on the homepage (src/data/home-jsonld.mjs),
+     * where the app genuinely is the main entity.
+     */
+    relatedLink: 'https://tracker.shivrajsinh.in',
   },
   {
     '@context': 'https://schema.org',
