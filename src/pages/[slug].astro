@@ -1,6 +1,7 @@
 ---
 import ContentPage from '../layouts/ContentPage.astro';
 import { PAGES } from '../data/pages.data.mjs';
+import { DEPOT_PAGES } from '../data/depots.data.mjs';
 
 /**
  * The 53 guide, route and city pages, from the same data file the old generator script read.
@@ -8,9 +9,15 @@ import { PAGES } from '../data/pages.data.mjs';
  * That script wrote 53 HTML files to disk and had to be re-run by hand after any edit; this
  * builds them from the same source at build time, so the pages and the data cannot fall out of
  * step. pages.data.mjs itself was ported across unchanged.
+ *
+ * The per-depot pages are joined in here rather than appended to PAGES inside pages.data.mjs,
+ * for one concrete reason: scripts/gen-redirects.mjs maps every slug in PAGES to a legacy
+ * `<slug>.html` -> `/<slug>` redirect. The depot pages are new and have never had a `.html`
+ * address, so folding them into PAGES would emit 26 redirects from URLs that never existed.
+ * They do belong in the feed, which is why gen-feed.mjs reads both.
  */
 export function getStaticPaths() {
-  return PAGES.map((page) => ({
+  return [...PAGES, ...DEPOT_PAGES].map((page) => ({
     params: { slug: page.slug },
     props: { page },
   }));

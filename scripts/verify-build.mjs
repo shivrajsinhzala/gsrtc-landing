@@ -113,5 +113,36 @@ if (!/[઀-૿]/.test(gu)) fail('/gu contains no Gujarati characters in its serv
 else if (!/<html[^>]+lang="gu-IN"/.test(gu)) fail('/gu does not declare lang="gu-IN"');
 else pass('/gu is served as Gujarati HTML with lang="gu-IN" (no JS required)');
 
+// --- 6. Depot numbers agree between the directory page and the per-depot pages ----------
+/*
+ * The enquiry numbers exist in two places: src/data/depots.data.mjs, which generates the 26
+ * per-depot pages, and the hand-written table in the /gsrtc-bus-stand-helpline-numbers body.
+ * Keeping the directory's hand-authored copy was deliberate — rewriting a page that holds
+ * 13,050 impressions to satisfy a refactor is not a trade worth making — but two copies of a
+ * phone number is exactly the kind of thing that silently diverges on the next edit.
+ *
+ * A wrong number is the worst failure this site can ship: the reader dials it, it is dead, and
+ * nothing about the page tells them why. So it is a build gate, not a lint warning.
+ */
+const { DEPOTS, depotSlug } = await import('../src/data/depots.data.mjs');
+const digits = (s) => s.replace(/[^0-9]/g, '');
+const directory = fs.readFileSync(fileFor('/gsrtc-bus-stand-helpline-numbers'), 'utf8');
+let depotIssues = 0;
+for (const depot of DEPOTS) {
+  const page = fs.readFileSync(fileFor(`/${depotSlug(depot.city)}`), 'utf8');
+  for (const n of depot.stands.flatMap((s) => s.numbers)) {
+    if (!page.includes(`tel:${digits(n)}`)) {
+      fail(`${depotSlug(depot.city)} does not carry its own number ${n}`); depotIssues++;
+    }
+    if (!directory.includes(`tel:${digits(n)}`)) {
+      fail(`${n} (${depot.city}) is on the depot page but missing from the directory table`); depotIssues++;
+    }
+  }
+  if (!directory.includes(`/${depotSlug(depot.city)}`)) {
+    fail(`directory table does not link to /${depotSlug(depot.city)}`); depotIssues++;
+  }
+}
+if (!depotIssues) pass(`all ${DEPOTS.length} depot pages carry their numbers and are linked from the directory`);
+
 console.log(failures ? `\n${failures} check(s) failed.` : '\nAll checks passed.');
 process.exit(failures ? 1 : 0);

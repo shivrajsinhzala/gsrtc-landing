@@ -10,6 +10,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from '../src/data/pages.data.mjs';
+// Depot pages are a separate set (see src/pages/[slug].astro for why they are not in PAGES),
+// but they are real published pages and belong in the feed like any other.
+import { DEPOT_PAGES } from '../src/data/depots.data.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://gsrtc.shivrajsinh.in';
@@ -31,7 +34,7 @@ const items = [
     description: 'Track any Gujarat ST (GSRTC) bus live on a map by its number plate, with timetables between any two stations and alerts before it arrives.',
   },
   ...HAND_WRITTEN,
-  ...PAGES.map((p) => ({ slug: p.slug, title: p.title, description: p.description })),
+  ...[...PAGES, ...DEPOT_PAGES].map((p) => ({ slug: p.slug, title: p.title, description: p.description })),
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

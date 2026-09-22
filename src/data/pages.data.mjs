@@ -563,33 +563,33 @@ const FEATURE_PAGES = [
   <div class="table-wrap google-anno-skip">
   <table class="reveal">
     <tr><th>Bus Station / Depot</th><th>Direct Phone / Helpline</th></tr>
-    <tr><td>Ahmedabad Geeta Mandir Central</td><td><a href="tel:07925463396">079-25463396</a> / <a href="tel:07925463409">079-25463409</a></td></tr>
-    <tr><td>Ahmedabad Ranip Bus Port</td><td><a href="tel:07927552222">079-27552222</a></td></tr>
-    <tr><td>Vadodara Central Bus Station</td><td><a href="tel:02652429646">0265-2429646</a> / <a href="tel:02652429647">0265-2429647</a></td></tr>
-    <tr><td>Surat Central Bus Station</td><td><a href="tel:02612424037">0261-2424037</a> / <a href="tel:02612424038">0261-2424038</a></td></tr>
-    <tr><td>Rajkot Central Bus Port</td><td><a href="tel:02812223847">0281-2223847</a> / <a href="tel:02812223848">0281-2223848</a></td></tr>
-    <tr><td>Bhavnagar Bus Port</td><td><a href="tel:02782516701">0278-2516701</a></td></tr>
-    <tr><td>Jamnagar ST Depot</td><td><a href="tel:02882550260">0288-2550260</a></td></tr>
-    <tr><td>Junagadh Bus Stand</td><td><a href="tel:02852630303">0285-2630303</a></td></tr>
-    <tr><td>Bhuj ST Depot</td><td><a href="tel:02832220002">02832-220002</a></td></tr>
-    <tr><td>Gandhinagar Bus Depot</td><td><a href="tel:07923222842">079-23222842</a></td></tr>
-    <tr><td>Anand Central Bus Station</td><td><a href="tel:02692251450">02692-251450</a></td></tr>
-    <tr><td>Nadiad ST Depot</td><td><a href="tel:02682562544">0268-2562544</a></td></tr>
-    <tr><td>Mehsana Central Bus Port</td><td><a href="tel:02762252122">02762-252122</a></td></tr>
-    <tr><td>Morbi ST Bus Stand</td><td><a href="tel:02822230550">02822-230550</a></td></tr>
-    <tr><td>Surendranagar ST Depot</td><td><a href="tel:02752220264">02752-220264</a></td></tr>
-    <tr><td>Porbandar ST Bus Stand</td><td><a href="tel:02862241666">0286-2241666</a></td></tr>
-    <tr><td>Somnath / Veraval Depot</td><td><a href="tel:02876220140">02876-220140</a></td></tr>
-    <tr><td>Dwarka ST Depot</td><td><a href="tel:02892234242">02892-234242</a></td></tr>
-    <tr><td>Palanpur ST Depot</td><td><a href="tel:02742252224">02742-252224</a></td></tr>
-    <tr><td>Himatnagar ST Depot</td><td><a href="tel:02772240166">02772-240166</a></td></tr>
-    <tr><td>Godhra ST Depot</td><td><a href="tel:02672242444">02672-242444</a></td></tr>
-    <tr><td>Bharuch ST Depot</td><td><a href="tel:02642260344">02642-260344</a></td></tr>
-    <tr><td>Navsari ST Depot</td><td><a href="tel:02637258044">02637-258044</a></td></tr>
-    <tr><td>Valsad ST Depot</td><td><a href="tel:02632253344">02632-253344</a></td></tr>
-    <tr><td>Vapi ST Depot</td><td><a href="tel:02602462344">0260-2462344</a></td></tr>
-    <tr><td>Amreli ST Depot</td><td><a href="tel:02792222222">02792-222222</a></td></tr>
-    <tr><td>Patan ST Depot</td><td><a href="tel:02766220224">02766-220224</a></td></tr>
+    <tr><td><a href="/ahmedabad-bus-stand-contact-number">Ahmedabad Geeta Mandir Central</a></td><td><a href="tel:07925463396">079-25463396</a> / <a href="tel:07925463409">079-25463409</a></td></tr>
+    <tr><td><a href="/ahmedabad-bus-stand-contact-number">Ahmedabad Ranip Bus Port</a></td><td><a href="tel:07927552222">079-27552222</a></td></tr>
+    <tr><td><a href="/vadodara-bus-stand-contact-number">Vadodara Central Bus Station</a></td><td><a href="tel:02652429646">0265-2429646</a> / <a href="tel:02652429647">0265-2429647</a></td></tr>
+    <tr><td><a href="/surat-bus-stand-contact-number">Surat Central Bus Station</a></td><td><a href="tel:02612424037">0261-2424037</a> / <a href="tel:02612424038">0261-2424038</a></td></tr>
+    <tr><td><a href="/rajkot-bus-stand-contact-number">Rajkot Central Bus Port</a></td><td><a href="tel:02812223847">0281-2223847</a> / <a href="tel:02812223848">0281-2223848</a></td></tr>
+    <tr><td><a href="/bhavnagar-bus-stand-contact-number">Bhavnagar Bus Port</a></td><td><a href="tel:02782516701">0278-2516701</a></td></tr>
+    <tr><td><a href="/jamnagar-bus-stand-contact-number">Jamnagar ST Depot</a></td><td><a href="tel:02882550260">0288-2550260</a></td></tr>
+    <tr><td><a href="/junagadh-bus-stand-contact-number">Junagadh Bus Stand</a></td><td><a href="tel:02852630303">0285-2630303</a></td></tr>
+    <tr><td><a href="/bhuj-bus-stand-contact-number">Bhuj ST Depot</a></td><td><a href="tel:02832220002">02832-220002</a></td></tr>
+    <tr><td><a href="/gandhinagar-bus-stand-contact-number">Gandhinagar Bus Depot</a></td><td><a href="tel:07923222842">079-23222842</a></td></tr>
+    <tr><td><a href="/anand-bus-stand-contact-number">Anand Central Bus Station</a></td><td><a href="tel:02692251450">02692-251450</a></td></tr>
+    <tr><td><a href="/nadiad-bus-stand-contact-number">Nadiad ST Depot</a></td><td><a href="tel:02682562544">0268-2562544</a></td></tr>
+    <tr><td><a href="/mehsana-bus-stand-contact-number">Mehsana Central Bus Port</a></td><td><a href="tel:02762252122">02762-252122</a></td></tr>
+    <tr><td><a href="/morbi-bus-stand-contact-number">Morbi ST Bus Stand</a></td><td><a href="tel:02822230550">02822-230550</a></td></tr>
+    <tr><td><a href="/surendranagar-bus-stand-contact-number">Surendranagar ST Depot</a></td><td><a href="tel:02752220264">02752-220264</a></td></tr>
+    <tr><td><a href="/porbandar-bus-stand-contact-number">Porbandar ST Bus Stand</a></td><td><a href="tel:02862241666">0286-2241666</a></td></tr>
+    <tr><td><a href="/veraval-bus-stand-contact-number">Somnath / Veraval Depot</a></td><td><a href="tel:02876220140">02876-220140</a></td></tr>
+    <tr><td><a href="/dwarka-bus-stand-contact-number">Dwarka ST Depot</a></td><td><a href="tel:02892234242">02892-234242</a></td></tr>
+    <tr><td><a href="/palanpur-bus-stand-contact-number">Palanpur ST Depot</a></td><td><a href="tel:02742252224">02742-252224</a></td></tr>
+    <tr><td><a href="/himatnagar-bus-stand-contact-number">Himatnagar ST Depot</a></td><td><a href="tel:02772240166">02772-240166</a></td></tr>
+    <tr><td><a href="/godhra-bus-stand-contact-number">Godhra ST Depot</a></td><td><a href="tel:02672242444">02672-242444</a></td></tr>
+    <tr><td><a href="/bharuch-bus-stand-contact-number">Bharuch ST Depot</a></td><td><a href="tel:02642260344">02642-260344</a></td></tr>
+    <tr><td><a href="/navsari-bus-stand-contact-number">Navsari ST Depot</a></td><td><a href="tel:02637258044">02637-258044</a></td></tr>
+    <tr><td><a href="/valsad-bus-stand-contact-number">Valsad ST Depot</a></td><td><a href="tel:02632253344">02632-253344</a></td></tr>
+    <tr><td><a href="/vapi-bus-stand-contact-number">Vapi ST Depot</a></td><td><a href="tel:02602462344">0260-2462344</a></td></tr>
+    <tr><td><a href="/amreli-bus-stand-contact-number">Amreli ST Depot</a></td><td><a href="tel:02792222222">02792-222222</a></td></tr>
+    <tr><td><a href="/patan-bus-stand-contact-number">Patan ST Depot</a></td><td><a href="tel:02766220224">02766-220224</a></td></tr>
   </table>
   </div>
   <p class="reveal"><b>Skip phone hold times:</b> You do not need to call the depot to ask whether a bus has departed or is running late. <a href="${APP}">ST Tracker</a> reads live AIS-140 GPS telematics updated every 20 seconds, displaying real-time departure countdowns and delay minutes for all 8,554+ ST buses.</p>`,
