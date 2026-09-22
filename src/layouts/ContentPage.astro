@@ -152,7 +152,7 @@ const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
 >
   <main id="main">
 
-  <section class="wrap section narrow hero-section google-anno-skip">
+  <section class="wrap section narrow hero-section">
     <p class="eyebrow">{eyebrow}</p>
     <h1>{h1}</h1>
     <p class="lede"><Fragment set:html={lede} /></p>
@@ -172,10 +172,12 @@ const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
     )}
   </section>
 
+  <AdSlot slot={AD_SLOTS.inContent} label="Sponsored advertisement" />
+
   <section class="wrap section narrow guide-content">
     <Fragment set:html={bodyHtml} />
     {relatedLinks.length > 0 && (
-      <div class="related-links-block google-anno-skip" style="margin-top:2.2rem">
+      <div class="related-links-block" style="margin-top:2.2rem">
         <h2 class="reveal">Related</h2>
         <ul class="reveal">
           {relatedLinks.map((r) => <li><a href={r.href} set:html={r.label} /></li>)}
@@ -187,7 +189,7 @@ const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
   <AdSlot slot={AD_SLOTS.inContent} label="In-content advertisement" />
 
   {faq.length > 0 && (
-    <section id="faq" class="band google-anno-skip">
+    <section id="faq" class="band">
       <div class="wrap section narrow">
         <h2>Questions people ask</h2>
         <div class="faq">
@@ -202,7 +204,9 @@ const relatedLinks = related.map((r) => ({ ...r, href: rewriteHref(r.href) }));
     </section>
   )}
 
-  <section class="wrap section-closer google-anno-skip">
+  <AdSlot slot={AD_SLOTS.inContent} label="Advertisement" />
+
+  <section class="wrap section-closer">
     <div class="closer">
       <h2>{closerH}</h2>
       <p class="sub">Type a plate, or search a route. Free, no account.</p>

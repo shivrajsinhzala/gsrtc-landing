@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "gsrtc-landing", "runtimeExecutable": "npm", "runtimeArgs": ["run", "preview"], "port": 4321 }
+    { "name": "gsrtc-landing", "runtimeExecutable": "npm", "runtimeArgs": ["run", "preview"], "port": 4321 },
+    { "name": "rtc-landing", "runtimeExecutable": "npm", "runtimeArgs": ["run", "preview", "--prefix", "/Users/shivrajsinh/rtc-landing", "--", "--port", "4322"], "port": 4322 }
   ]
 }

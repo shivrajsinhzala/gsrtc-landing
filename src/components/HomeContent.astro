@@ -111,6 +111,16 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
   </div>
 </section>
 
+<section class="wrap ad-slot-wrap" aria-label={t.adLabel}>
+  <p class="ad-label"><Fragment set:html={t.adLabel} /></p>
+  <ins class="adsbygoogle ad-slot"
+       style="display:block"
+       data-ad-client="ca-pub-7164999486301748"
+       data-ad-slot="8460038937"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+</section>
+
 <section id="services" class="wrap section">
   <h2>{lang === 'gu' ? 'GSRTC મુસાફર સેવાઓ અને સુવિધાઓ' : 'GSRTC Commuter Services & Tools'}</h2>
   <p class="sub">{lang === 'gu' ? 'તમામ ગુજરાત ST સેવાઓ — લાઈવ બસ નકશો, સમયપત્રક, PNR અને ડેપો હેલ્પલાઇન એક જ જગ્યાએ.' : 'Everything a Gujarat ST passenger needs — live GPS radar, route schedules, PNR tracking & depot contacts.'}</p>
@@ -334,6 +344,16 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
     <li><a href={href('ahmedabad-palitana-bus')}>{cityName('ahmedabad')} ↔ {cityName('palitana')}</a></li>
     <li><a href={href('ahmedabad-dakor-bus')}>{cityName('ahmedabad')} ↔ {cityName('dakor')}</a></li>
   </ul>
+</section>
+
+<section class="wrap ad-slot-wrap" aria-label={t.adLabel}>
+  <p class="ad-label"><Fragment set:html={t.adLabel} /></p>
+  <ins class="adsbygoogle ad-slot"
+       style="display:block"
+       data-ad-client="ca-pub-7164999486301748"
+       data-ad-slot="8460038937"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
 </section>
 
 <section id="guides" class="wrap section">

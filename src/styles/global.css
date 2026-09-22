@@ -726,16 +726,8 @@ ins.adsbygoogle {
   border-radius: var(--r-sm) !important;
 }
 
-/* ------------------------------------------------------------------ Auto-Ads Protection & Layout Resilience */
-/* Strict Auto-Ads containment for sensitive elements and interactive blocks */
-.google-anno-skip .google-auto-placed,
+/* ------------------------------------------------------------------ Auto-Ads Layout Resilience */
 .no-ads .google-auto-placed {
-  display: none !important;
-}
-
-/* Never allow Auto-Ads to split a heading from its explanatory paragraph */
-h2 + .google-auto-placed,
-h3 + .google-auto-placed {
   display: none !important;
 }
 
