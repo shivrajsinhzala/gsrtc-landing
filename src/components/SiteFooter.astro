@@ -63,6 +63,44 @@ const cityName = (key: keyof typeof CITY) => (lang === 'gu' ? CITY[key].guj : CI
     </div>
   </div>
 
+  <div class="wrap foot-interstate">
+    <div class="foot-interstate-card">
+      <div class="foot-interstate-head">
+        <span class="foot-interstate-badge">Interstate Roadways Network</span>
+        <h4 class="foot-interstate-title">
+          {lang === 'gu' ? 'અન્ય રાજ્યોના એસટી બસ ટાઈમ ટેબલ અને પૂછપરછ નંબર' : 'All-India State Road Transport Helplines & Timetables'}
+        </h4>
+        <p class="foot-interstate-desc">
+          {lang === 'gu' 
+            ? 'ઉત્તર પ્રદેશ, મહારાષ્ટ્ર, રાજસ્થાન અને હરિયાણા રોડવેઝ બસ સ્ટેન્ડ પૂછપરછ અને સમયપત્રક માટે અમારી નેશનલ ડિરેક્ટરીની મુલાકાત લો.'
+            : 'Access official bus stand phone numbers, intercity bus timetables, ticket fares, and 24x7 control room helplines across major state transit corporations.'}
+        </p>
+      </div>
+      <div class="foot-interstate-links">
+        <a class="foot-state-pill" href="https://rtc.shivrajsinh.in" target="_blank" rel="noopener">
+          <strong>National RTC Portal</strong>
+          <span>All States Directory</span>
+        </a>
+        <a class="foot-state-pill" href="https://rtc.shivrajsinh.in/uttar-pradesh" target="_blank" rel="noopener">
+          <strong>UPSRTC</strong>
+          <span>UP Roadways Timetable</span>
+        </a>
+        <a class="foot-state-pill" href="https://rtc.shivrajsinh.in/maharashtra" target="_blank" rel="noopener">
+          <strong>MSRTC</strong>
+          <span>Maharashtra ST Bus</span>
+        </a>
+        <a class="foot-state-pill" href="https://rtc.shivrajsinh.in/rajasthan" target="_blank" rel="noopener">
+          <strong>RSRTC</strong>
+          <span>Rajasthan Roadways</span>
+        </a>
+        <a class="foot-state-pill" href="https://rtc.shivrajsinh.in/haryana" target="_blank" rel="noopener">
+          <strong>Haryana Roadways</strong>
+          <span>HR Bus Time Table</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div class="wrap foot-bottom">
     <div class="foot-bottom-left">
       <p class="foot-copy">© {year} <Fragment set:html={t.footCopyPrefix} /> <a href="https://shivrajsinh.in" target="_blank" rel="noopener noreferrer">Shivrajsinh Zala</a></p>
