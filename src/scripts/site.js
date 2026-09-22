@@ -257,7 +257,19 @@ function initAds() {
       setTimeout(() => {
         // Only collapse if the script never initialized at all (e.g. adblocker) and no status was set
         if (!slot.getAttribute('data-ad-status') && !slot.querySelector('iframe')) {
-          const scriptBlocked = !document.querySelector('script[src*="adsbygoogle.js"]')?.complete;
+          /*
+           * `.complete` is an HTMLImageElement property; a `<script>` does not have one, so this
+           * test read `!undefined` and was unconditionally true. The branch it guards therefore
+           * collapsed every slot that had no status by this point — including ones that were
+           * simply still waiting their turn — which is the wrong outcome for the one case the
+           * timer exists to handle.
+           *
+           * AdSense replaces `window.adsbygoogle` with its own object and sets `loaded` on it
+           * once the library is running. Absent or falsy after this long means the script never
+           * executed: blocked, or the request failed. That is the only situation in which
+           * collapsing reserved space is right.
+           */
+          const scriptBlocked = !window.adsbygoogle?.loaded;
           if (scriptBlocked && wrap) {
             wrap.hidden = true;
             wrap.classList.add('ad-unfilled');
@@ -270,16 +282,59 @@ function initAds() {
     if (slot.dataset.adsenseRequested === '1') return;
     slot.dataset.adsenseRequested = '1';
 
-    const pushWhenSized = (attemptsLeft) => {
-      if (slot.getBoundingClientRect().width > 0) {
-        try {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch {}
-      } else if (attemptsLeft > 0) {
-        requestAnimationFrame(() => pushWhenSized(attemptsLeft - 1));
+    /*
+     * `adsbygoogle.push({})` is ANONYMOUS. It does not fill the slot you are standing next to —
+     * it fills the next `ins.adsbygoogle` in DOCUMENT ORDER that has no `data-adsbygoogle-status`.
+     *
+     * That is why the previous version of this served nothing. It pushed as soon as the slot had
+     * width, without checking whose turn it was. Auto Ads — which cannot be disabled from the
+     * page, see the note in Base.astro — injects its own `<ins>` elements into this document,
+     * and on the homepage it places about eighteen of them. Every one of those sits ahead of our
+     * two manual slots in document order, so both of our pushes were answered by an auto slot
+     * and our own `<ins>` elements were never bound at all.
+     *
+     * Measured on the live site before this fix: 20 `ins.adsbygoogle` on the homepage, 18 of them
+     * auto, and both manual slots ending with `data-adsbygoogle-status` still null, zero width,
+     * no iframe, and their wrappers collapsed by the fallback below. Two dead units on the page
+     * that carries 81% of the site's search traffic.
+     *
+     * So: wait until this slot genuinely is the next unprocessed `<ins>` before pushing. Waiting
+     * is always correct — whatever is ahead resolves within a frame or two, or it is removed, and
+     * either way this retries. This is the same rule the app's own web/js/ads.js arrived at after
+     * hitting the identical fault; see the long comment at the top of that file.
+     */
+    const SIZE_ATTEMPTS = 120;
+
+    const pushInOrder = (attemptsLeft) => {
+      // Every unprocessed `<ins>` counts, not only ours — binding is by document order and does
+      // not care who created the element.
+      const all = [...document.querySelectorAll('ins.adsbygoogle')];
+      const next = all.find((n) => !n.getAttribute('data-adsbygoogle-status'));
+
+      if (next !== slot) {
+        // Not our turn yet. Never evict the blocker here the way the app does: these are static
+        // pages with no screen navigation, so anything ahead of us is an auto slot Google is
+        // about to fill, and removing it would delete the very revenue this exists to protect.
+        if (attemptsLeft > 0) requestAnimationFrame(() => pushInOrder(attemptsLeft - 1));
+        return;
       }
+
+      // AdSense measures a zero-width slot as unfillable and burns the request, so a slot that
+      // has not been laid out yet is worth waiting for too.
+      if (slot.getBoundingClientRect().width <= 0) {
+        if (attemptsLeft > 0) requestAnimationFrame(() => pushInOrder(attemptsLeft - 1));
+        return;
+      }
+
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch {}
     };
-    requestAnimationFrame(() => requestAnimationFrame(() => pushWhenSized(5)));
+
+    // Two frames for first layout, then up to ~2s of retries at 60fps. The old version allowed
+    // five attempts (~7 frames), which is not close to enough to outlast Google placing and
+    // processing eighteen auto slots ahead of us.
+    requestAnimationFrame(() => requestAnimationFrame(() => pushInOrder(SIZE_ATTEMPTS)));
   });
 }
 
