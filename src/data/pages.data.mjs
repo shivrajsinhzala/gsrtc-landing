@@ -242,7 +242,7 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-bus-timetable',
     title: 'GSRTC Bus Time Table 2026: ST Bus Schedule & Live Status',
-    description: 'Search GSRTC bus time table between any two Gujarat stations. Check daily ST bus departure timings, express schedule, ticket fare & live running status online.',
+    description: 'GSRTC bus time table 2026: Search ST bus departure timings by route between any two Gujarat cities. Real-time schedule for Ordinary, Express, Volvo & Gurjarnagri buses with live delay status.',
     crumbLabel: 'GSRTC bus time table',
     h1: 'GSRTC bus time table & daily schedule: search any two stations',
     lede: 'Looking for Gujarat ST bus timings? Search timetables across all 19,026 stations, check express and Gurjarnagri departures, first/last bus times, and monitor running buses live.',
@@ -535,8 +535,8 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-bus-stand-helpline-numbers',
     plateForm: false,
-    title: 'GSRTC Bus Stand Enquiry & Depot Phone Directory (Gujarat)',
-    description: 'Official GSRTC bus stand enquiry numbers for all 26 Gujarat depots. Tap-to-call directory: Ahmedabad, Vadodara, Surat, Rajkot, Jamnagar & 1800 233 6666.',
+    title: 'GSRTC Bus Stand Phone Numbers — All 26 Gujarat Depots (2026 Tap-to-Call)',
+    description: 'GSRTC helpline numbers for all 26 Gujarat bus stand depots — Ahmedabad (079-25505352), Vadodara (0265-2363000), Surat, Rajkot, Jamnagar & more. Toll-free: 1800 233 6666. Tap to call instantly.',
     crumbLabel: 'GSRTC bus stand helplines',
     h1: 'GSRTC bus stand enquiry & depot phone directory',
     lede: 'Direct contact numbers for Gujarat ST bus depots, divisional control rooms, and 24x7 customer support across all 16 GSRTC administrative divisions.',
@@ -602,6 +602,8 @@ const FEATURE_PAGES = [
       { q: 'What is the Bhuj ST depot contact number?', a: 'The official inquiry telephone number for Bhuj ST Depot (Kutch Division) is 02832-220002.' },
       { q: 'What is the Surat Central bus station phone number?', a: 'The inquiry numbers for Surat Central Bus Station are 0261-2424037 and 0261-2424038.' },
       { q: 'Can I check bus arrival times and delays without calling the depot?', a: 'Yes. Type your bus number plate or pick a route on ST Tracker to view instantaneous GPS position, delay minutes, and estimated arrival countdowns directly on a map.' },
+      { q: 'What is the GSRTC toll-free helpline number?', a: 'The GSRTC 24x7 toll-free passenger helpline is 1800 233 6666. You can also reach the central control room at 079-25505352 (Ahmedabad) during business hours.' },
+      { q: 'How do I find the phone number of my nearest GSRTC bus stand?', a: 'Use this page to find tap-to-call numbers for all 26 GSRTC depots across Gujarat including Ahmedabad, Surat, Vadodara, Rajkot, Jamnagar, Bhavnagar, Gandhinagar and more.' },
     ],
     related: [
       { href: '/gsrtc-tracker', label: 'GSRTC tracker — what it is and how it compares' },
@@ -612,10 +614,10 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-bus-pass-online',
     plateForm: false,
-    title: 'GSRTC e-Pass Portal (pass.gsrtc.in) – Online Student Pass Apply & Status Check',
-    description: 'Official GSRTC e-Pass (ESCPS) portal guide: Direct login to pass.gsrtc.in, student & ITI 80% concession pass application, track pass status & required documents.',
-    ogTitle: 'GSRTC e-Pass Online Portal (pass.gsrtc.in) | Student Pass & Status',
-    ogDescription: 'Direct access to Gujarat ST ESCPS e-Pass portal. Apply for student concession bus pass, track application status, and check approval rules online.',
+    title: 'GSRTC Bus Pass Online 2026: Apply, Status & Rules — Student, Senior & Monthly Pass',
+    description: 'How to apply for GSRTC bus pass online at pass.gsrtc.in in 2026. Student pass (80% concession), senior citizen, Divyang, commuter & monthly pass — eligibility, documents, renewal & status.',
+    ogTitle: 'GSRTC Bus Pass Online Apply 2026 — Student, Senior & Commuter Pass',
+    ogDescription: 'Apply for GSRTC student bus pass (80% concession), track status, and check renewal rules at pass.gsrtc.in. Step-by-step guide for all pass types 2026.',
     crumbLabel: 'GSRTC e-pass & bus pass',
     h1: 'GSRTC e-Pass Online: Student Bus Pass Apply, Login & Status Check',
     lede: 'Direct guide to Gujarat ST Electronic Concession Pass System (ESCPS) on pass.gsrtc.in: Apply for student & commuter passes, log in to the portal, and track approval status.',
@@ -707,6 +709,8 @@ const FEATURE_PAGES = [
       { q: 'What is the student concession discount on a GSRTC bus pass?', a: 'GSRTC provides recognized school, ITI, and college students up to an 80% discount on ordinary passenger fare tariffs for travel between their residence stop and educational institution.' },
       { q: 'How many days does it take to approve a GSRTC bus pass?', a: 'Online verification is typically completed within 2 to 4 working days by the local depot passing clerk. You receive an SMS notification once approved.' },
       { q: 'Can I track the daily bus on my pass route live?', a: 'Yes. On ST Tracker, enter your route station pair or the bus plate number to monitor real-time bus location, arrival countdowns, and delay alerts on a live map.' },
+      { q: 'How much concession do students get on GSRTC bus pass?', a: 'GSRTC students enrolled in recognized schools, colleges, or ITI institutions get up to 80% concession on ordinary bus fares through the ESCPS e-Pass system at pass.gsrtc.in.' },
+      { q: 'How long is GSRTC bus pass valid?', a: 'GSRTC student bus passes are issued for one academic year and must be renewed at the start of each new academic year with fresh enrollment proof.' },
     ],
     related: [
       { href: '/gsrtc-concession-pass-rules', label: 'GSRTC concession pass rules and eligibility' },
@@ -718,8 +722,8 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-ticket-cancellation-refund',
     plateForm: false,
-    title: 'GSRTC Ticket Cancellation Charges & Refund Rules 2026',
-    description: 'Official GSRTC ticket cancellation charges & refund rules: 10% to 50% deduction slabs by hours before departure, online cancel steps, refund timeline & policy.',
+    title: 'GSRTC Ticket Cancellation 2026: Charges, Refund Rules & How to Cancel Online',
+    description: 'GSRTC ticket cancellation charges: 0% (4+ hrs before), 10% (2–4 hrs), 25% (1–2 hrs), 50% (under 1 hr). Cancel online via redbus/abhibus. Refund in 3–7 days to original payment.',
     crumbLabel: 'GSRTC cancellation & refund',
     h1: 'GSRTC ticket cancellation charges and refund rules',
     lede: 'Plans changed? Here is the exact cancellation charge schedule, how refund windows work, and how to track alternative buses.',
