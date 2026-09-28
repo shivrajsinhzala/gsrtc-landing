@@ -612,11 +612,13 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-bus-pass-online',
     plateForm: false,
-    title: 'GSRTC e-Pass Online Apply 2026: Student Pass & Portal Login',
-    description: 'Official GSRTC e-Pass guide: Direct pass.gsrtc.in portal login, student & ITI concession pass apply form, required documents, fees & live pass status.',
+    title: 'GSRTC e-Pass Portal (pass.gsrtc.in) – Online Student Pass Apply & Status Check',
+    description: 'Official GSRTC e-Pass (ESCPS) portal guide: Direct login to pass.gsrtc.in, student & ITI 80% concession pass application, track pass status & required documents.',
+    ogTitle: 'GSRTC e-Pass Online Portal (pass.gsrtc.in) | Student Pass & Status',
+    ogDescription: 'Direct access to Gujarat ST ESCPS e-Pass portal. Apply for student concession bus pass, track application status, and check approval rules online.',
     crumbLabel: 'GSRTC e-pass & bus pass',
-    h1: 'GSRTC bus pass & e-pass online: apply, renew & status check',
-    lede: 'Daily student, ITI, or office commuter? Apply for or renew your Gujarat ST bus pass on pass.gsrtc.in, track e-Pass application status, and track your daily bus live.',
+    h1: 'GSRTC e-Pass Online: Student Bus Pass Apply, Login & Status Check',
+    lede: 'Direct guide to Gujarat ST Electronic Concession Pass System (ESCPS) on pass.gsrtc.in: Apply for student & commuter passes, log in to the portal, and track approval status.',
     body: `
   <div class="utility-action-box google-anno-skip">
     <h3>Official GSRTC e-Pass Online Portals (pass.gsrtc.in)</h3>
