@@ -535,8 +535,8 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-bus-stand-helpline-numbers',
     plateForm: false,
-    title: 'GSRTC Bus Stand Phone Numbers — All 26 Gujarat Depots (2026 Tap-to-Call)',
-    description: 'GSRTC helpline numbers for all 26 Gujarat bus stand depots — Ahmedabad (079-25505352), Vadodara (0265-2363000), Surat, Rajkot, Jamnagar & more. Toll-free: 1800 233 6666. Tap to call instantly.',
+    title: 'GSRTC Bus Stand Phone Numbers: 26 Gujarat Depots (2026)',
+    description: 'GSRTC bus stand and depot enquiry numbers for all 26 Gujarat depots: Ahmedabad, Vadodara, Surat, Rajkot, Jamnagar and more. Toll-free 1800 233 6666. Tap to call.',
     crumbLabel: 'GSRTC bus stand helplines',
     h1: 'GSRTC bus stand enquiry & depot phone directory',
     lede: 'Direct contact numbers for Gujarat ST bus depots, divisional control rooms, and 24x7 customer support across all 16 GSRTC administrative divisions.',
@@ -614,8 +614,8 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-bus-pass-online',
     plateForm: false,
-    title: 'GSRTC Bus Pass Online 2026: Apply, Status & Rules — Student, Senior & Monthly Pass',
-    description: 'How to apply for GSRTC bus pass online at pass.gsrtc.in in 2026. Student pass (80% concession), senior citizen, Divyang, commuter & monthly pass — eligibility, documents, renewal & status.',
+    title: 'GSRTC e-Pass Online 2026: Apply, Student Pass & Status',
+    description: 'GSRTC e-Pass system (pass.gsrtc.in): apply for student, senior citizen, Divyang & monthly bus passes, log in, check approval status and renew. Steps and documents, 2026.',
     ogTitle: 'GSRTC Bus Pass Online Apply 2026 — Student, Senior & Commuter Pass',
     ogDescription: 'Apply for GSRTC student bus pass (80% concession), track status, and check renewal rules at pass.gsrtc.in. Step-by-step guide for all pass types 2026.',
     crumbLabel: 'GSRTC e-pass & bus pass',
@@ -722,8 +722,8 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-ticket-cancellation-refund',
     plateForm: false,
-    title: 'GSRTC Ticket Cancellation 2026: Charges, Refund Rules & How to Cancel Online',
-    description: 'GSRTC ticket cancellation charges: 0% (4+ hrs before), 10% (2–4 hrs), 25% (1–2 hrs), 50% (under 1 hr). Cancel online via redbus/abhibus. Refund in 3–7 days to original payment.',
+    title: 'GSRTC Ticket Cancellation 2026: Charges & Refund Rules',
+    description: 'GSRTC ticket cancellation charges: 0% (4+ hrs), 10% (2–4 hrs), 25% (1–2 hrs), 50% (under 1 hr). How to cancel online and get your refund in 3–7 days.',
     crumbLabel: 'GSRTC cancellation & refund',
     h1: 'GSRTC ticket cancellation charges and refund rules',
     lede: 'Plans changed? Here is the exact cancellation charge schedule, how refund windows work, and how to track alternative buses.',
