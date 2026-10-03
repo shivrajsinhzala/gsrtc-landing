@@ -1,7 +1,6 @@
 # gsrtc.shivrajsinh.in — ST Tracker's marketing and SEO site
 
-Astro, static output, deployed over SSH to nginx on the tracker's own Oracle Cloud VM (Cloudflare
-is DNS + CDN only, not Pages — see Deploy below). This domain never runs the tracker itself, on
+Astro, static output, deployed by Cloudflare Pages from `main` (see Deploy below). This domain never runs the tracker itself, on
 purpose: every CTA links out to **tracker.shivrajsinh.in**. If a page here ever starts to feel
 like the app rather than an advertisement for it, that is the bug to fix — nothing here should
 try to show a live bus.
@@ -68,21 +67,38 @@ no `hreflang` and no `/gu/` route. The reasoning, and what to do when a page doe
 translated, is in [`src/i18n/README.md`](src/i18n/README.md). Read it before adding a Gujarati
 URL for anything — the wrong move there actively hurts the pages this site exists to rank.
 
-## Deploy (self-hosted nginx, NOT Cloudflare Pages)
+## Deploy (Cloudflare Pages, from `main`)
 
-This site is built locally and shipped over SSH to `/var/www/gsrtc-astro` on the same Oracle
-Cloud VM that runs the tracker app. Cloudflare sits in front as DNS + CDN only — there is no
-Cloudflare Pages project, no CI, no git push that triggers a deploy. See
-[`deploy/README.md`](deploy/README.md) for the actual commands, the live nginx config
-(`deploy/nginx-gsrtc.conf`), and the rollback procedure.
+The `gsrtc-landing` Pages project is connected to this repository and owns the
+`gsrtc.shivrajsinh.in` custom domain: **every push to `main` is a production deploy**, and a push
+to any other branch gets its own preview URL (`<branch>.gsrtc-landing.pages.dev`). `functions/`
+is deployed with it as Pages Functions. `wrangler pages deployment list --project-name
+gsrtc-landing` shows what is live and which commit it came from.
 
-`public/_headers` and `public/_redirects` are Cloudflare Pages/Netlify convention and are
-excluded from what actually ships — nginx's own config carries the equivalent headers, and
-`nginx-gsrtc.conf`'s `try_files` handles routing instead of `_redirects`.
+`deploy/` documents the older nginx-on-the-VM setup this site used before it moved to Pages; it
+is kept for the nginx config and the rollback notes, not because it is how the site ships today.
 
 After the first deploy, submit `https://gsrtc.shivrajsinh.in/sitemap-index.xml` in Search
 Console. Note the filename changed — the old site served `sitemap.xml`, Astro's integration
 emits an index plus a child file, and `robots.txt` points at the index.
+
+## Route timetables
+
+65 of the 70 route pages (`/<a>-<b>-bus`) carry GSRTC's real departure list for each direction,
+taken from the tracker's log of what GSRTC returned to rider searches — never invented, and a
+direction with too little data keeps the old generic copy. The rules (what is filtered out, what
+a title may claim) are at the top of `src/data/timetables.mjs`.
+
+The data is a generated, committed file, refreshed by hand because the build cannot reach the VM:
+
+```bash
+TRACKER_SSH=ubuntu@<tracker vm> npm run timetables   # rewrites src/data/timetables.gen.mjs
+npm run build                                        # check the pages, then commit both
+```
+
+The export only reads the tracker database (indexed lookups, under `nice`) and never calls
+GSRTC. Coverage grows by itself: every "track this route" click on a route page is a rider search
+the next refresh can use, so the five corridors without data yet will fill in.
 
 ## It shares the app's design tokens
 
