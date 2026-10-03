@@ -5,6 +5,10 @@
  * (scripts/seed-stations.json). Every route page links using real valid station IDs.
  */
 
+import {
+  directionTimetable, timetableHtml, sourceNote, summaryLine, typeList, clock12, duration, latestOf,
+} from './timetables.mjs';
+
 const APP = 'https://tracker.shivrajsinh.in';
 
 // Exported so the homepage's city and route link labels (HomeContent.astro) can show a city's
@@ -69,6 +73,34 @@ export const CITY = {
   bardoli: { name: 'Bardoli', id: 509, guj: 'બારડોલી' },
   chhotaudepur: { name: 'Chhota Udepur', id: 626, guj: 'છોટાઉદેપુર' },
 };
+
+/** Name back to key, so a CITY object can be turned into the key its route slug is built from. */
+const CITY_KEY = Object.fromEntries(Object.entries(CITY).map(([k, v]) => [v.name, k]));
+
+/**
+ * The /gsrtc-bus-timetable corridor table. Its rows used to be typed in by hand ("every 15-30
+ * mins, first 04:30 AM, last 23:45 PM") and disagreed with the route pages once those carried
+ * GSRTC's real timings, so they are now built from the same data (src/data/timetables.mjs).
+ * A corridor without data gets dashes rather than a guess.
+ */
+const TOP_CORRIDORS = [
+  ['ahmedabad', 'rajkot'], ['ahmedabad', 'surat'], ['ahmedabad', 'vadodara'], ['surat', 'rajkot'],
+  ['vadodara', 'surat'], ['ahmedabad', 'bhavnagar'], ['ahmedabad', 'jamnagar'], ['rajkot', 'jamnagar'],
+];
+
+function topCorridorRow(a, b) {
+  const tt = directionTimetable(a.id, b.id);
+  const slug = `${CITY_KEY[a.name]}-${CITY_KEY[b.name]}-bus`;
+  const cells = tt
+    ? [
+      `${tt.services.length} (${a.name} → ${b.name})`,
+      clock12(tt.first.time),
+      clock12(tt.last.time),
+      [tt.km ? `${Math.round(tt.km)} km` : '', tt.typicalMins ? `~${duration(tt.typicalMins)}` : ''].filter(Boolean).join(' · ') || '—',
+    ]
+    : ['—', '—', '—', '—'];
+  return `<tr><td><b>${a.name} ↔ ${b.name}</b></td>${cells.map((c) => `<td>${c}</td>`).join('')}<td><a href="/${slug}">View Schedule →</a></td></tr>`;
+}
 
 /** `&amp;` because this is dropped straight into an href="…" attribute. */
 function routeUrl(a, b) {
@@ -270,7 +302,7 @@ const FEATURE_PAGES = [
     <thead>
       <tr>
         <th>Corridor</th>
-        <th>Daily Frequency</th>
+        <th>Departures listed</th>
         <th>First Bus</th>
         <th>Last Bus</th>
         <th>Distance / Duration</th>
@@ -278,70 +310,7 @@ const FEATURE_PAGES = [
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><b>Ahmedabad ↔ Rajkot</b></td>
-        <td>Every 15–30 mins</td>
-        <td>04:30 AM</td>
-        <td>23:45 PM</td>
-        <td>215 km · ~4h 15m</td>
-        <td><a href="/ahmedabad-rajkot-bus">View Schedule →</a></td>
-      </tr>
-      <tr>
-        <td><b>Ahmedabad ↔ Surat</b></td>
-        <td>Every 20–30 mins</td>
-        <td>05:00 AM</td>
-        <td>23:30 PM</td>
-        <td>265 km · ~5h 00m</td>
-        <td><a href="/ahmedabad-surat-bus">View Schedule →</a></td>
-      </tr>
-      <tr>
-        <td><b>Ahmedabad ↔ Vadodara</b></td>
-        <td>Every 10–20 mins</td>
-        <td>05:00 AM</td>
-        <td>23:59 PM</td>
-        <td>110 km · ~1h 50m</td>
-        <td><a href="/ahmedabad-vadodara-bus">View Schedule →</a></td>
-      </tr>
-      <tr>
-        <td><b>Surat ↔ Rajkot</b></td>
-        <td>Every 30–45 mins</td>
-        <td>05:30 AM</td>
-        <td>22:30 PM</td>
-        <td>420 km · ~8h 45m</td>
-        <td><a href="/surat-rajkot-bus">View Schedule →</a></td>
-      </tr>
-      <tr>
-        <td><b>Vadodara ↔ Surat</b></td>
-        <td>Every 15–25 mins</td>
-        <td>05:15 AM</td>
-        <td>23:15 PM</td>
-        <td>140 km · ~2h 45m</td>
-        <td><a href="/vadodara-surat-bus">View Schedule →</a></td>
-      </tr>
-      <tr>
-        <td><b>Ahmedabad ↔ Bhavnagar</b></td>
-        <td>Every 30–45 mins</td>
-        <td>05:00 AM</td>
-        <td>22:30 PM</td>
-        <td>195 km · ~4h 15m</td>
-        <td><a href="/ahmedabad-bhavnagar-bus">View Schedule →</a></td>
-      </tr>
-      <tr>
-        <td><b>Ahmedabad ↔ Jamnagar</b></td>
-        <td>Every 30–60 mins</td>
-        <td>05:30 AM</td>
-        <td>23:00 PM</td>
-        <td>305 km · ~6h 30m</td>
-        <td><a href="/ahmedabad-jamnagar-bus">View Schedule →</a></td>
-      </tr>
-      <tr>
-        <td><b>Rajkot ↔ Jamnagar</b></td>
-        <td>Every 20–30 mins</td>
-        <td>06:00 AM</td>
-        <td>22:45 PM</td>
-        <td>90 km · ~2h 00m</td>
-        <td><a href="/rajkot-jamnagar-bus">View Schedule →</a></td>
-      </tr>
+      ${TOP_CORRIDORS.map(([a, b]) => topCorridorRow(CITY[a], CITY[b])).join('\n      ')}
     </tbody>
   </table>
   </div>
@@ -1252,7 +1221,7 @@ const ROUTE_FACTS = {
 };
 
 /** Route pairs — every link uses a verified station ID from GSRTC seed data */
-const ROUTE_PAIRS = [
+const ROUTE_DEFS = [
   // High Traffic Golden Corridors & Pilgrimage Circuits
   {
     slug: 'somnath-dwarka-bus', a: CITY.somnath, b: CITY.dwarka,
@@ -1601,7 +1570,17 @@ const ROUTE_PAIRS = [
     crumbLabel: 'Rajkot ↔ Veraval ST bus',
     extra: `<p class="reveal">Direct Saurashtra trade corridor connecting Rajkot engineering hubs with Veraval fishing port and Somnath coastal belt along NH 151.</p>`,
   },
-].map(({ slug, a, b, crumbLabel, extra }) => {
+];
+
+/**
+ * Both directions of every route page, as station ids — the list scripts/timetables/pull.mjs
+ * asks the tracker's timetable log about.
+ */
+export const TIMETABLE_PAIRS = ROUTE_DEFS.flatMap(({ a, b }) => [[a.id, b.id], [b.id, a.id]]);
+
+
+/** The route page as it was before timetables — still what a corridor with no data gets. */
+function genericRoutePage({ slug, a, b, crumbLabel, extra }) {
   const facts = ROUTE_FACTS[slug] || { dist: '100+ km', time: '2 to 3 hours', highway: 'Gujarat State Highway' };
   return {
     slug,
@@ -1679,10 +1658,138 @@ const ROUTE_PAIRS = [
       },
     ],
   };
+}
+
+/** Below this many departures a count is not put in a page title (see timetableRoutePage). */
+const TITLE_COUNT_MIN = 20;
+
+/** First of the candidates that fits in `max` characters, else the last one. */
+function fit(max, ...candidates) {
+  return candidates.find((c) => c.length <= max) ?? candidates.at(-1);
+}
+
+/**
+ * A route page rebuilt around the corridor's real departures (src/data/timetables.mjs). Keeps
+ * the generic page's slug, crumb, related links, fare answer and closing copy, so a corridor
+ * gains a timetable without losing anything it already ranked for.
+ */
+function timetableRoutePage(def, ab, ba) {
+  const { slug, a, b, extra } = def;
+  const page = genericRoutePage(def);
+  const facts = ROUTE_FACTS[slug];
+  // Lead with the direction the slug names; a corridor with data only the other way leads with that.
+  const [p, from, to] = ab ? [ab, a, b] : [ba, b, a];
+  const back = ab ? ba : null;
+  const n = p.services.length;
+  const AC = new Set(['Volvo 2x2', 'AC 2x2', 'AC Sleeper', 'Electric AC']);
+  const acCount = p.services.filter((s) => AC.has(s.type)).length;
+  const sleeperCount = p.services.filter((s) => /sleeper/i.test(s.type)).length;
+  const topTypes = p.types.slice(0, 3).map(([t]) => t).join(', ');
+  const km = p.km ? Math.round(p.km) : null;
+
+  // The title always names the corridor the way the slug (and the searches it ranks for) does.
+  // It carries a count only when that direction is the one with data and the count is large
+  // enough to be the whole corridor: a small one is usually one Ahmedabad stop's share of it.
+  const countable = ab && n >= TITLE_COUNT_MIN;
+  const title = countable
+    ? fit(60,
+      `${a.name} to ${b.name} Bus Time Table: ${n} GSRTC Buses`,
+      `${a.name} to ${b.name} Bus Timings: ${n} GSRTC Buses`,
+      `${a.name} to ${b.name} Bus Time Table`)
+    : fit(60,
+      `${a.name} to ${b.name} Bus Time Table & Timings (GSRTC)`,
+      `${a.name} to ${b.name} Bus Time Table`);
+  const lead = countable
+    ? `All ${n} GSRTC bus timings from ${from.name} to ${to.name}`
+    : `GSRTC bus timings from ${from.name} to ${to.name}`;
+  const description = fit(160,
+    `${lead}: first ${clock12(p.first.time)}, last ${clock12(p.last.time)}. ${topTypes}${km ? `, about ${km} km` : ''}.${back ? ` Return timings too.` : ''}`,
+    `${lead}: first ${clock12(p.first.time)}, last ${clock12(p.last.time)}.${back ? ` Return timings too.` : ''}`);
+
+  const directions = [[p, from, to, `${CITY_KEY[from.name]}-to-${CITY_KEY[to.name]}`]];
+  if (back) directions.push([back, to, from, `${CITY_KEY[to.name]}-to-${CITY_KEY[from.name]}`]);
+
+  const factRows = [
+    ...directions.map(([t, f, d]) => `<tr><th>${f.name} → ${d.name}</th><td>${summaryLine(t)}</td></tr>`),
+    km ? `<tr><th>Distance by bus</th><td>About ${km} km (GSRTC scheduled distance)</td></tr>` : '',
+    p.typicalMins ? `<tr><th>Journey time</th><td>Usually ${duration(p.typicalMins)}${p.quickMins ? ` · quickest about ${duration(p.quickMins)}` : ''}</td></tr>` : '',
+    `<tr><th>Bus types</th><td>${typeList(p.types)}</td></tr>`,
+    facts ? `<tr><th>Primary Highway Corridor</th><td>${facts.highway}</td></tr>` : '',
+    `<tr><th>Estimated Ticket Fare</th><td>Ordinary ~₹0.80/km · Express ~₹0.95/km · Gurjarnagri ~₹1.05/km · Sleeper ~₹1.25/km</td></tr>`,
+  ].filter(Boolean).join('\n    ');
+
+  const faq = [
+    {
+      q: `What time is the first bus from ${from.name} to ${to.name}?`,
+      a: `The first GSRTC bus from ${from.name} to ${to.name} is due at ${clock12(p.first.time)} (${p.first.type}, ${p.first.route}).${p.firstDaytime && p.firstDaytime !== p.first ? ` The first one after 5 AM is at ${clock12(p.firstDaytime.time)} (${p.firstDaytime.type}).` : ''}`,
+    },
+    {
+      q: `What time is the last bus from ${from.name} to ${to.name}?`,
+      a: `The last GSRTC bus from ${from.name} to ${to.name} is due at ${clock12(p.last.time)} (${p.last.type}, ${p.last.route}).`,
+    },
+    {
+      q: `How many GSRTC buses run from ${from.name} to ${to.name}?`,
+      a: `GSRTC's timetable lists ${n} departures from ${from.name} to ${to.name} for this station pair: ${typeList(p.types)}. They are all in the table above, by time of day.${n < TITLE_COUNT_MIN ? ` Buses that board at another ${from.name} stop may not be counted — search your own stop in the app to see them.` : ''}`,
+    },
+    ...(km || p.typicalMins ? [{
+      q: `How far is ${to.name} from ${from.name} by bus, and how long does it take?`,
+      a: `${km ? `About ${km} km by GSRTC's scheduled distance. ` : ''}${p.typicalMins ? `Most buses take ${duration(p.typicalMins)}${p.quickMins ? `; the quicker ones are timetabled at about ${duration(p.quickMins)}` : ''}.` : ''}`.trim(),
+    }] : []),
+    {
+      q: `Is there an AC or sleeper bus from ${from.name} to ${to.name}?`,
+      a: [
+        acCount ? `Yes — ${acCount} of the ${n} departures are AC (Volvo 2x2 or AC 2x2).` : `None of the ${n} departures GSRTC lists here is an AC (Volvo or AC 2x2) bus.`,
+        sleeperCount ? `${sleeperCount} ${sleeperCount === 1 ? 'is a sleeper' : 'are sleepers'}.` : 'There is no sleeper on the list.',
+      ].join(' '),
+    },
+    ...(back ? [{
+      q: `What are the bus timings from ${to.name} back to ${from.name}?`,
+      a: `${back.services.length} GSRTC departures from ${to.name} to ${from.name}: the first at ${clock12(back.first.time)}, the last at ${clock12(back.last.time)}. The full list is in the second table above.`,
+    }] : []),
+    // The timetable data has no fares, so this keeps the generic per-km estimate — over GSRTC's
+    // own distance where there is one, instead of the hand-written ROUTE_FACTS figure.
+    {
+      q: page.faq[0].q,
+      a: km ? page.faq[0].a.replace(/across the .*? corridor/, `across the roughly ${km} km corridor`) : page.faq[0].a,
+    },
+    page.faq[page.faq.length - 1],
+  ];
+
+  return {
+    ...page,
+    title,
+    description,
+    h1: ab ? `${a.name} to ${b.name} bus time table` : `${a.name} ↔ ${b.name} bus time table`,
+    lede: `${n} GSRTC departures from ${from.name} to ${to.name}${back ? ` and ${back.services.length} back` : ''}, with GSRTC’s own timings as of ${latestOf(...directions.map(([t]) => t))}.${ab ? '' : ` The ${a.name} → ${b.name} direction has not been recorded yet.`} Open a direction below to see which buses are running right now.`,
+    body: `
+  <h2 class="reveal">See which buses are running now</h2>
+  <p class="reveal">
+    <a class="btn primary" href="${routeUrl(from, to)}">${from.name} → ${to.name}</a>
+    &nbsp;
+    <a class="btn" href="${routeUrl(to, from)}">${to.name} → ${from.name}</a>
+  </p>
+  <p class="reveal">The table below is the timetable. These links open today’s live list — running buses show a countdown and their position on the map.</p>
+  ${extra || ''}
+  <h2 class="reveal">Route at a glance</h2>
+  <div class="table-wrap tt google-anno-skip">
+  <table class="reveal route-facts">
+    ${factRows}
+  </table>
+  </div>
+  ${directions.map(([t, f, d, anchor]) => timetableHtml(t, f.name, d.name, anchor)).join('\n')}
+  ${sourceNote(directions.map(([t]) => t), [from.name, to.name])}
+  <h2 class="reveal">Don't have a plate number yet</h2>
+  <p class="reveal">You don't need one — the links above search by station, and you pick the actual bus from the list once you can see which ones are running. See <a href="/gsrtc-bus-timetable">the full timetable guide</a> for how filtering and sorting the list works.</p>`,
+    faq,
+  };
+}
+
+const ROUTE_PAIRS = ROUTE_DEFS.map((def) => {
+  const ab = directionTimetable(def.a.id, def.b.id);
+  const ba = directionTimetable(def.b.id, def.a.id);
+  return ab || ba ? timetableRoutePage(def, ab, ba) : genericRoutePage(def);
 });
 
-/** Name back to key, so a CITY object can be turned into the key its route slug is built from. */
-const CITY_KEY = Object.fromEntries(Object.entries(CITY).map(([k, v]) => [v.name, k]));
 const ROUTE_SLUGS = new Set(ROUTE_PAIRS.map((p) => p.slug));
 
 /** Verified depot enquiry phone directory per city hub */

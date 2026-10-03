@@ -828,6 +828,18 @@ h1, h2, h3, h4 {
   margin-inline: 0;
 }
 
+/* Route timetables (src/data/timetables.mjs). Three columns that fit a 320px phone, so unlike
+   the other tables this one opts out of the 480px minimum and never scrolls sideways. */
+.table-wrap.tt { margin-top: .5rem; }
+.tt table { min-width: 0; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.narrow .tt th, .narrow .tt td { padding: .5em .65em; line-height: 1.4; }
+.tt-time { white-space: nowrap; font-weight: 700; color: var(--ink); }
+.tt-dur { display: block; margin-top: .15em; font-size: .85em; color: var(--ink-3); }
+.tt-group { margin: 1.7rem 0 .2rem; font-size: 1.02rem; }
+.tt-group span { color: var(--ink-3); font-weight: 600; }
+.tt-summary { margin-bottom: .3rem; }
+.tt-note { padding-left: .9rem; border-left: 3px solid var(--line); font-size: .9rem; color: var(--ink-3); }
+
 /* Dedicated ad break container with consistent vertical rhythm */
 .ad-break-container {
   margin: clamp(1.8rem, 3.5vw, 2.6rem) auto;
