@@ -1,6 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { TIMETABLE_SLUGS } from './src/data/pages.data.mjs';
+import { TIMETABLES_GENERATED_AT } from './src/data/timetables.mjs';
 
 const SITE = 'https://gsrtc.shivrajsinh.in';
 
@@ -49,6 +51,12 @@ export default defineConfig({
       },
       serialize(item) {
         const path = new URL(item.url).pathname.replace(/\/$/, '') || '/';
+        // Only pages with a date that is actually true get a <lastmod>: the timetable pages
+        // change when their data is re-pulled, so that is their date. Stamping every page with
+        // the build time would be a date Google learns to ignore — for these pages too.
+        if (TIMETABLES_GENERATED_AT && TIMETABLE_SLUGS.has(path.slice(1))) {
+          item.lastmod = TIMETABLES_GENERATED_AT;
+        }
         if (path === '/' || path === '/gu') {
           item.priority = 1.0;
           item.changefreq = 'daily';

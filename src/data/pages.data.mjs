@@ -1790,6 +1790,18 @@ const ROUTE_PAIRS = ROUTE_DEFS.map((def) => {
   return ab || ba ? timetableRoutePage(def, ab, ba) : genericRoutePage(def);
 });
 
+/**
+ * Pages whose content is the timetable data, so whose real "last modified" is when that data
+ * was last pulled — astro.config.mjs gives them that sitemap <lastmod>. Includes the
+ * /gsrtc-bus-timetable corridor table, which is built from the same data.
+ */
+export const TIMETABLE_SLUGS = new Set([
+  ...ROUTE_DEFS
+    .filter(({ a, b }) => directionTimetable(a.id, b.id) || directionTimetable(b.id, a.id))
+    .map(({ slug }) => slug),
+  'gsrtc-bus-timetable',
+]);
+
 const ROUTE_SLUGS = new Set(ROUTE_PAIRS.map((p) => p.slug));
 
 /** Verified depot enquiry phone directory per city hub */
