@@ -31,12 +31,17 @@ this repo to the server yet.
 
 ## Redeploying
 
+`<tracker-vm>` below is the VM's address. It is deliberately not written in this repo: the repo
+is public and the VM sits behind Cloudflare, so its origin IP would let anyone bypass
+Cloudflare's proxy, WAF and rate limiting. It is in the private tracker repo's deploy notes
+(`CLAUDE.md`, "SSH access").
+
 ```bash
 npm run build
 tar --exclude='_headers' --exclude='_redirects' -czf - -C dist . \
-  | ssh -i ~/.ssh/st-tracker-deploy ubuntu@130.210.21.111 \
+  | ssh -i ~/.ssh/st-tracker-deploy ubuntu@<tracker-vm> \
     'rm -rf /tmp/gsrtc-astro-new && mkdir -p /tmp/gsrtc-astro-new && tar -xzf - -C /tmp/gsrtc-astro-new'
-ssh -i ~/.ssh/st-tracker-deploy ubuntu@130.210.21.111 '
+ssh -i ~/.ssh/st-tracker-deploy ubuntu@<tracker-vm> '
   sudo rm -rf /var/www/gsrtc-astro.prev
   sudo mv /var/www/gsrtc-astro /var/www/gsrtc-astro.prev
   sudo mv /tmp/gsrtc-astro-new /var/www/gsrtc-astro
