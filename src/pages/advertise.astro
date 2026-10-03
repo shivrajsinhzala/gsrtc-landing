@@ -1,0 +1,110 @@
+---
+import Base from '../layouts/Base.astro';
+
+/**
+ * The page the tracker's "Advertise here" house banner points at (sponsor_contact_url in the
+ * tracker admin), selling the direct-sold sponsor slot in web/js/sponsor.js of the tracker repo.
+ *
+ * Every number is a measured one, rounded down, with its source and window beside it. These are
+ * the figures an advertiser will repeat to someone else, so none of them is a projection. Refresh
+ * them by hand from AdSense (page views by domain, by platform), Search Console (clicks) and the
+ * tracker's push `subscriptions` count.
+ */
+const AUDIENCE = {
+  asOf: '3 October 2026',
+  appScreens: '60,000',     // AdSense page views, tracker.shivrajsinh.in, 3 Sep – 2 Oct 2026: 59,938
+  searchVisits: '30,000',   // Search Console clicks, gsrtc.shivrajsinh.in, 5 Sep – 2 Oct 2026: 30,898
+  phoneShare: '9 in 10',    // AdSense page views by platform, same window: 95,308 of 105,358 on mobile
+  alertRiders: '480',       // tracker push subscriptions on 3 Oct 2026: 482
+};
+
+/*
+ * TODO before this page ships — both are the owner's decision, not something to guess:
+ *   CONTACT: where an advertiser gets in touch (a WhatsApp link or an email address).
+ *   RATE:    the monthly price, or leave null to say "ask for rates".
+ * While CONTACT is empty the page shows a visible notice instead of a button, and it is not
+ * linked from any page, so it cannot go out half-finished by accident.
+ */
+const CONTACT: { href: string; label: string } | null = null;
+const RATE: string | null = null;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'GSRTC Bus Tracker', item: 'https://gsrtc.shivrajsinh.in/' },
+      { '@type': 'ListItem', position: 2, name: 'Advertise', item: 'https://gsrtc.shivrajsinh.in/advertise' },
+    ],
+  },
+];
+---
+
+<Base
+  title="Advertise to Gujarat ST Bus Riders — GSRTC Bus Tracker"
+  description="Put your business in front of people checking where their Gujarat ST bus is. One clearly labelled banner in the GSRTC Bus Tracker app, with real view and click counts."
+  path="advertise"
+  lang="en"
+  ogType="website"
+  headerVariant="page"
+  jsonLd={jsonLd}
+>
+<main id="main">
+  <section class="wrap section narrow hero-section">
+    <p class="eyebrow">Advertise</p>
+    <h1>Reach the people waiting for an ST bus</h1>
+    <p class="lede">
+      GSRTC Bus Tracker is where Gujarat’s bus riders check where their bus is and when it will
+      reach their stop. A local business can put one banner in front of them — at the moment
+      they are standing at a bus stand, or about to leave for one.
+    </p>
+  </section>
+
+  <section class="wrap section narrow guide-content">
+    <h2>Who sees it</h2>
+    <div class="table-wrap audience google-anno-skip">
+    <table class="route-facts">
+      <tr><th>About {AUDIENCE.appScreens}</th><td>app screens viewed a month — the screens the banner appears on (Google AdSense, 3 Sep – 2 Oct 2026)</td></tr>
+      <tr><th>About {AUDIENCE.searchVisits}</th><td>visits a month from Google search to this site, from people looking up GSRTC buses, timetables and depots (Google Search Console)</td></tr>
+      <tr><th>{AUDIENCE.phoneShare}</th><td>views are on a phone</td></tr>
+      <tr><th>{AUDIENCE.alertRiders}+</th><td>riders have turned on arrival alerts for their regular bus</td></tr>
+    </table>
+    </div>
+    <p class="hint">Measured figures as of {AUDIENCE.asOf}, rounded down. Riders are people travelling on Gujarat State Road Transport Corporation buses; the app is independent and not run by GSRTC.</p>
+
+    <h2>What you get</h2>
+    <ul>
+      <li><b>One banner at the top of the app’s screens</b> — your image and a link to your website, WhatsApp or Google Maps listing. On every screen, or only the one you choose, such as live tracking.</li>
+      <li><b>Clearly labelled “Sponsored”</b> in English and Gujarati, so riders know it is an advertisement and trust it as one.</li>
+      <li><b>Real numbers, not estimates.</b> Views are counted only when the banner is actually shown on a rider’s screen, and clicks when they tap it. You get the daily counts.</li>
+      <li><b>Riders’ privacy is kept.</b> Your banner is served from our own server, so riders are not tracked by anyone else for seeing it.</li>
+      <li><b>Start and stop dates you choose</b> — a month, a festival season, an admissions window.</li>
+    </ul>
+
+    <h2>Who it suits</h2>
+    <p>
+      Businesses whose customers travel by ST bus: coaching classes and colleges, hotels,
+      restaurants and shops near bus stands, travel agents and tour operators, mobile and
+      electronics stores, clinics, and anyone with an offer for daily commuters in Gujarat.
+    </p>
+
+    <h2>Price</h2>
+    <p>{RATE ? RATE : 'Ask for the current monthly rate — it depends on which screens you choose and for how long.'}</p>
+
+    <h2>Get in touch</h2>
+    {CONTACT ? (
+      <p><a class="btn primary lg" href={CONTACT.href} rel="noopener">{CONTACT.label}</a></p>
+    ) : (
+      <p class="todo"><b>TODO before launch:</b> set <code>CONTACT</code> (and optionally <code>RATE</code>) at the top of <code>src/pages/advertise.astro</code>.</p>
+    )}
+  </section>
+</main>
+</Base>
+
+<style>
+  /* Two short columns: no need for the 480px minimum the wider site tables carry. */
+  .audience table { min-width: 0; }
+  .audience th { white-space: nowrap; }
+  .hint { padding-left: .9rem; border-left: 3px solid var(--line); font-size: .9rem; color: var(--ink-3); }
+  .todo { padding: .8rem 1rem; border: 2px dashed var(--accent); border-radius: var(--r-sm); }
+</style>
