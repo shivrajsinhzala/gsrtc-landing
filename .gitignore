@@ -11,6 +11,9 @@ public/_redirects
 public/rss.xml
 public/feed.xml
 
+# wrangler's local scratch (pages dev/deploy) — never source
+.wrangler/
+
 # environment
 .env
 .env.production
