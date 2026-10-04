@@ -572,7 +572,7 @@ const FEATURE_PAGES = [
       { q: 'What is the Bhuj ST depot contact number?', a: 'The official inquiry telephone number for Bhuj ST Depot (Kutch Division) is 02832-220002.' },
       { q: 'What is the Surat Central bus station phone number?', a: 'The inquiry numbers for Surat Central Bus Station are 0261-2424037 and 0261-2424038.' },
       { q: 'Can I check bus arrival times and delays without calling the depot?', a: 'Yes. Type your bus number plate or pick a route on ST Tracker to view instantaneous GPS position, delay minutes, and estimated arrival countdowns directly on a map.' },
-      { q: 'What is the GSRTC toll-free helpline number?', a: 'The GSRTC 24x7 toll-free passenger helpline is 1800 233 6666. Each depot's own enquiry number is in the directory on this page.' },
+      { q: 'What is the GSRTC toll-free helpline number?', a: 'The GSRTC 24x7 toll-free passenger helpline is 1800 233 6666. Each depot’s own enquiry number is in the directory on this page.' },
       { q: 'How do I find the phone number of my nearest GSRTC bus stand?', a: 'Use this page to find tap-to-call numbers for all 26 GSRTC depots across Gujarat including Ahmedabad, Surat, Vadodara, Rajkot, Jamnagar, Bhavnagar, Gandhinagar and more.' },
     ],
     related: [
