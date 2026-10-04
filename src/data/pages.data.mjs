@@ -7,6 +7,7 @@
 
 import {
   directionTimetable, timetableHtml, sourceNote, summaryLine, typeList, clock12, duration, latestOf,
+  hubTimetable, hubHtml,
 } from './timetables.mjs';
 
 const APP = 'https://tracker.shivrajsinh.in';
@@ -1114,7 +1115,7 @@ const FEATURE_PAGES = [
  * hub page before it can link to one: only the keys here become /<city>-st-bus-tracker, and
  * a route page that linked to one of the others shipped a hard 404.
  */
-const CITY_ROUTES = {
+export const CITY_ROUTES = {
   ahmedabad: [CITY.vadodara, CITY.surat, CITY.rajkot, CITY.gandhinagar, CITY.bhavnagar, CITY.mehsana, CITY.bhuj, CITY.anand, CITY.somnath, CITY.dwarka, CITY.palanpur, CITY.ambaji, CITY.junagadh, CITY.jamnagar, CITY.surendranagar, CITY.nadiad, CITY.morbi, CITY.gandhidham, CITY.himatnagar, CITY.patan, CITY.palitana, CITY.dakor, CITY.modasa, CITY.udaipur, CITY.shirdi],
   surat: [CITY.ahmedabad, CITY.vadodara, CITY.vapi, CITY.navsari, CITY.bharuch, CITY.bhavnagar, CITY.rajkot, CITY.amreli, CITY.valsad, CITY.ankleshwar, CITY.bardoli, CITY.vyara, CITY.mumbai],
   vadodara: [CITY.ahmedabad, CITY.surat, CITY.anand, CITY.bharuch, CITY.godhra, CITY.ankleshwar, CITY.chhotaudepur],
@@ -1848,9 +1849,57 @@ function routePageSlug(a, b) {
   return [`${ak}-${bk}-bus`, `${bk}-${ak}-bus`].find((s) => ROUTE_SLUGS.has(s)) ?? null;
 }
 
+/** Title, copy, timetable section and FAQ for a city page that has bus-stand departures. */
+function hubPageParts(city, hub, depotPhone) {
+  const d = hub.destinations;
+  const firsts = d.map((x) => (x.tt.firstDaytime || x.tt.first).time).sort();
+  // Never a total across destinations: a Junagadh-Ahmedabad bus via Rajkot is in both lists.
+  const busiest = [...d].sort((a, b) => b.tt.services.length - a.tt.services.length);
+  const topText = busiest.slice(0, 3).map((x) => `${x.name} (${x.tt.services.length})`).join(', ');
+  const phone = depotPhone.split(' (')[0];
+  const routeHref = (toId) => {
+    const to = CITY_BY_ID.get(toId);
+    const slug = to && routePageSlug(city, to);
+    return slug ? `/${slug}` : null;
+  };
+  const tts = d.map((x) => x.tt);
+  return {
+    title: fitLen(60, `${city.name} Bus Stand Time Table, Enquiry No. & ST Bus Tracker`, `${city.name} Bus Stand Time Table & ST Bus Tracker`, `${city.name} Bus Stand Time Table`),
+    description: fitLen(160,
+      `${city.name} bus stand time table: GSRTC buses to ${topText} and ${d.length - 3} more places, from ${clock12(firsts[0])}. Enquiry ${phone}. Live ST tracker.`,
+      `${city.name} bus stand time table: GSRTC buses to ${topText} and more. Enquiry ${phone}. Live ST tracker.`,
+      `${city.name} bus stand time table: GSRTC buses to ${topText} and more.`),
+    h1: `${city.name} bus stand time table & ST bus tracker`,
+    lede: `GSRTC departures from ${city.name} to the ${d.length} places riders search for most, ${busiest[0].tt.services.length} of them to ${busiest[0].name} alone. Updated ${latestOf(...tts)}, with live tracking for any bus on the way.`,
+    body: `${hubHtml(hub, city.name, routeHref)}
+  ${sourceNote(tts, [city.name])}`,
+    faq: [
+      {
+        q: `Which places have the most buses from ${city.name} bus stand?`,
+        a: `Of the destinations riders search for most, ${busiest.slice(0, 3).map((x) => `${x.name} (${x.tt.services.length} departures listed)`).join(', ')} have the most GSRTC buses from ${city.name}.`,
+      },
+      ...d.slice(0, 2).map((x) => ({
+        q: `What time is the first bus from ${city.name} to ${x.name}?`,
+        a: `The first daytime GSRTC bus from ${city.name} to ${x.name} is at ${clock12((x.tt.firstDaytime || x.tt.first).time)} and the last at ${clock12(x.tt.last.time)}, with ${x.tt.services.length} departures listed${x.tt.typicalMins ? `; the journey usually takes ${duration(x.tt.typicalMins)}` : ''}.`,
+      })),
+    ],
+  };
+}
+
+const CITY_BY_ID = new Map(Object.values(CITY).map((c) => [c.id, c]));
+const fitLen = (max, ...c) => c.find((x) => x.length <= max) ?? c.at(-1);
+
+/*
+ * These pages rank around position 5-8 for "<city> bus stand time table" (5,400 impressions a
+ * month, Sep 2026) while promising a timetable they did not have. Where the tracker's log has
+ * departures to at least three destinations, the page now leads with them; elsewhere it keeps
+ * the tracker copy below unchanged.
+ */
 const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
   const city = CITY[key];
   const depotPhone = DEPOT_CONTACTS[key] || '1800 233 6666 (Central Helpline)';
+  const hub = hubTimetable(city.id);
+  const hubPage = hub && hubPageParts(city, hub, depotPhone);
   const routeLinks = destinations.map((d) => {
     const slug = routePageSlug(city, d);
     const href = slug ? `/${slug}` : routeUrl(city, d);
@@ -1858,12 +1907,12 @@ const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
   }).join('\n      ');
   return {
     slug: `${key}-st-bus-tracker`,
-    title: `${city.name} ST Bus Tracker — Timetable, Depot Phone & Map`,
-    description: `Track GSRTC ST buses in ${city.name} live on a map. View departure timetables, depot contact (${depotPhone.split(' ')[0]}), route schedules & delay status.`,
-    crumbLabel: `${city.name} ST bus tracker`,
-    h1: `${city.name} ST bus tracker & timetable`,
-    lede: `Track any GSRTC bus running to or from ${city.name}, live — by plate, route schedule, or direct depot departure countdowns.`,
-    body: `
+    title: hubPage?.title || `${city.name} ST Bus Tracker — Timetable, Depot Phone & Map`,
+    description: hubPage?.description || `Track GSRTC ST buses in ${city.name} live on a map. View departure timetables, depot contact (${depotPhone.split(' ')[0]}), route schedules & delay status.`,
+    crumbLabel: hubPage ? `${city.name} bus stand time table` : `${city.name} ST bus tracker`,
+    h1: hubPage?.h1 || `${city.name} ST bus tracker & timetable`,
+    lede: hubPage?.lede || `Track any GSRTC bus running to or from ${city.name}, live — by plate, route schedule, or direct depot departure countdowns.`,
+    body: `${hubPage?.body || ''}
   <h2 class="reveal">Popular routes from ${city.name}</h2>
   <ul class="reveal">
       ${routeLinks}
@@ -1884,6 +1933,7 @@ const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
       { href: '/nearby-st-bus-stops', label: 'Find ST bus stops near you' },
     ],
     faq: [
+      ...(hubPage?.faq || []),
       {
         q: `What is the ${city.name} ST bus stand enquiry phone number?`,
         a: `The official enquiry telephone contact for ${city.name} bus station is ${depotPhone}. For real-time bus arrivals and delay countdowns on your phone without waiting on hold, use ST Tracker.`,
@@ -1905,3 +1955,21 @@ const CITY_PAGES = Object.entries(CITY_ROUTES).map(([key, destinations]) => {
 });
 
 export const PAGES = [...FEATURE_PAGES, ...ROUTE_PAIRS, ...CITY_PAGES];
+
+/** City pages that carry a bus-stand timetable: their sitemap date is the hub data's. */
+export const HUB_SLUGS = new Set(Object.keys(CITY_ROUTES).filter((k) => hubTimetable(CITY[k].id)).map((k) => `${k}-st-bus-tracker`));
+
+// The timetable guide ranks for "gsrtc bus time table" (7,700 impressions a month): it links
+// every bus stand that now has one, so riders and Google can get from the guide to the times.
+{
+  const guide = FEATURE_PAGES.find((p) => p.slug === 'gsrtc-bus-timetable');
+  const stands = Object.keys(CITY_ROUTES).filter((k) => HUB_SLUGS.has(`${k}-st-bus-tracker`));
+  if (guide && stands.length) {
+    guide.body += `
+  <h2 class="reveal">Bus stand time tables</h2>
+  <p class="reveal">Every listed GSRTC departure from these bus stands, by destination, with the first and last bus:</p>
+  <ul class="reveal city-links">
+      ${stands.map((k) => `<li><a href="/${k}-st-bus-tracker#timetable">${CITY[k].name} bus stand time table</a></li>`).join('\n      ')}
+  </ul>`;
+  }
+}

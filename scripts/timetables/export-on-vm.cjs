@@ -18,7 +18,7 @@ const fs = require('node:fs');
 const { DatabaseSync } = require('node:sqlite');
 
 const DB_FILE = process.env.DB_FILE || `${process.env.HOME}/st-tracker/.data/st-tracker.db`;
-const MAX_SNAPSHOTS = 40;
+const MAX_SNAPSHOTS = Number(process.env.MAX_SNAPSHOTS) || 40;
 // Older than this and a timing may well have been changed or withdrawn by GSRTC.
 const MAX_AGE_DAYS = 21;
 // The tracker asks GSRTC for one page of 80 (proxy.mjs, `pageSize: 80`). A snapshot that came

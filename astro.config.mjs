@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { TIMETABLE_SLUGS } from './src/data/pages.data.mjs';
-import { TIMETABLES_GENERATED_AT } from './src/data/timetables.mjs';
+import { TIMETABLE_SLUGS, HUB_SLUGS } from './src/data/pages.data.mjs';
+import { TIMETABLES_GENERATED_AT, HUBS_GENERATED_AT } from './src/data/timetables.mjs';
 
 const SITE = 'https://gsrtc.shivrajsinh.in';
 
@@ -56,6 +56,9 @@ export default defineConfig({
         // the build time would be a date Google learns to ignore — for these pages too.
         if (TIMETABLES_GENERATED_AT && TIMETABLE_SLUGS.has(path.slice(1))) {
           item.lastmod = TIMETABLES_GENERATED_AT;
+        }
+        if (HUBS_GENERATED_AT && HUB_SLUGS.has(path.slice(1))) {
+          item.lastmod = HUBS_GENERATED_AT;
         }
         if (path === '/' || path === '/gu') {
           item.priority = 1.0;

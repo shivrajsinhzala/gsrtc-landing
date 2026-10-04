@@ -16,6 +16,7 @@
  * - ArrivalTimeAtBoarding (timetabled) is the only time used — never the live ETA fields.
  */
 import RAW from './timetables.gen.mjs';
+import HUBS from './hubs.gen.mjs';
 
 /** Fewer listed departures than this and the direction keeps the generic copy. */
 export const MIN_SERVICES = 4;
@@ -92,7 +93,9 @@ function esc(s) {
  * }}
  */
 export function directionTimetable(fromId, toId) {
-  const pair = RAW.pairs[`${fromId}>${toId}`];
+  // The route pages' export reads up to 40 searches per direction, the bus-stand export 15:
+  // the deeper one wins where both have a direction.
+  const pair = RAW.pairs[`${fromId}>${toId}`] || HUBS.pairs[`${fromId}>${toId}`];
   if (!pair) return null;
   const latest = pair.days.length - 1;
   const kept = pair.services
@@ -186,3 +189,50 @@ export function sourceNote(tts, cityNames) {
 }
 
 export const TIMETABLES_GENERATED_AT = RAW.generatedAt;
+export const HUBS_GENERATED_AT = HUBS.generatedAt;
+
+/**
+ * A bus stand's departures to the places riders search for most from it, or null when fewer
+ * than three of them have enough data to publish.
+ * @returns {null | { destinations: { id: number, name: string, guj: string, searches: number, tt: object }[] }}
+ */
+export function hubTimetable(originId) {
+  const list = (HUBS.hubs[String(originId)] || [])
+    .map(([id, searches, name, guj]) => ({ id, name, guj, searches, tt: directionTimetable(originId, id) }))
+    .filter((d) => d.tt);
+  return list.length >= 3 ? { destinations: list } : null;
+}
+
+/**
+ * A bus stand's departures section: a summary table (one row per destination, the shape Google
+ * lifts into a table snippet) and then every listed departure time per destination, compact,
+ * with the route page linked for bus types and journey times.
+ * @param {(toId: number) => string|null} routeHref the route page for a destination, if any
+ */
+export function hubHtml(hub, cityName, routeHref) {
+  const rows = hub.destinations.map((d) => {
+    const href = routeHref(d.id);
+    const name = esc(d.name);
+    return `      <tr><td>${href ? `<a href="${href}">${name}</a>` : name}</td><td>${d.tt.services.length}</td><td class="tt-time">${clock12((d.tt.firstDaytime || d.tt.first).time)}</td><td class="tt-time">${clock12(d.tt.last.time)}</td><td>${d.tt.typicalMins ? duration(d.tt.typicalMins) : ''}</td></tr>`;
+  }).join('\n');
+  const lists = hub.destinations.map((d) => {
+    const href = routeHref(d.id);
+    const slug = d.name.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return `
+  <h3 class="tt-group" id="to-${slug}">${esc(cityName)} to ${esc(d.name)} <span>· ${d.tt.services.length} departures</span></h3>
+  <p class="tt-times google-anno-skip">${d.tt.services.map((s) => `<span>${clock12(s.time)}</span>`).join(' ')}</p>
+  <p class="tt-more">${[d.tt.types.length ? `Mostly ${esc(typeList(d.tt.types, 3))}` : '', d.tt.typicalMins ? `usually ${duration(d.tt.typicalMins)}` : '', href ? `<a href="${href}">Full ${esc(cityName)} to ${esc(d.name)} timetable with bus types</a>` : ''].filter(Boolean).join(' · ')}</p>`;
+  }).join('');
+  return `
+  <h2 class="reveal" id="timetable">${esc(cityName)} bus stand time table</h2>
+  <p class="reveal">GSRTC departures from ${esc(cityName)} to the ${hub.destinations.length} places riders search for most from here, with the first daytime and last bus of the day. Tap a destination for every listed time.</p>
+  <div class="table-wrap tt google-anno-skip">
+  <table>
+    <thead><tr><th scope="col">To</th><th scope="col">Buses listed</th><th scope="col">First</th><th scope="col">Last</th><th scope="col">Journey</th></tr></thead>
+    <tbody>
+${rows}
+    </tbody>
+  </table>
+  </div>
+${lists}`;
+}

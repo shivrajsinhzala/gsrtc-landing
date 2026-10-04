@@ -1024,3 +1024,8 @@ h1, h2, h3, h4 {
 .sticky-cta .btn { width: 100%; max-width: 420px; box-shadow: var(--shadow-2); }
 @media (min-width: 900px) { .sticky-cta { display: none; } }
 @media (prefers-reduced-motion: reduce) { .sticky-cta { transition: none; } }
+
+/* Bus stand pages: every listed departure to one destination, as a wrapped list of times */
+.tt-times { display: flex; flex-wrap: wrap; gap: .35rem; margin: .5rem 0 .3rem; }
+.tt-times span { padding: .2rem .5rem; border-radius: 6px; background: var(--surface-2, rgba(127,127,127,.12)); font-variant-numeric: tabular-nums; font-size: .92rem; font-weight: 600; white-space: nowrap; }
+.tt-more { margin: 0 0 1rem; font-size: .9rem; color: var(--ink-3); }
