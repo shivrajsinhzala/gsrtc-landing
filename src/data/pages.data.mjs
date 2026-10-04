@@ -572,7 +572,7 @@ const FEATURE_PAGES = [
       { q: 'What is the Bhuj ST depot contact number?', a: 'The official inquiry telephone number for Bhuj ST Depot (Kutch Division) is 02832-220002.' },
       { q: 'What is the Surat Central bus station phone number?', a: 'The inquiry numbers for Surat Central Bus Station are 0261-2424037 and 0261-2424038.' },
       { q: 'Can I check bus arrival times and delays without calling the depot?', a: 'Yes. Type your bus number plate or pick a route on ST Tracker to view instantaneous GPS position, delay minutes, and estimated arrival countdowns directly on a map.' },
-      { q: 'What is the GSRTC toll-free helpline number?', a: 'The GSRTC 24x7 toll-free passenger helpline is 1800 233 6666. You can also reach the central control room at 079-25505352 (Ahmedabad) during business hours.' },
+      { q: 'What is the GSRTC toll-free helpline number?', a: 'The GSRTC 24x7 toll-free passenger helpline is 1800 233 6666. Each depot's own enquiry number is in the directory on this page.' },
       { q: 'How do I find the phone number of my nearest GSRTC bus stand?', a: 'Use this page to find tap-to-call numbers for all 26 GSRTC depots across Gujarat including Ahmedabad, Surat, Vadodara, Rajkot, Jamnagar, Bhavnagar, Gandhinagar and more.' },
     ],
     related: [
@@ -584,13 +584,15 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-bus-pass-online',
     plateForm: false,
-    title: 'GSRTC e-Pass Online 2026: Apply, Student Pass & Status',
-    description: 'GSRTC e-Pass system (pass.gsrtc.in): apply for student, senior citizen, Divyang & monthly bus passes, log in, check approval status and renew. Steps and documents, 2026.',
-    ogTitle: 'GSRTC Bus Pass Online Apply 2026 — Student, Senior & Commuter Pass',
-    ogDescription: 'Apply for GSRTC student bus pass (80% concession), track status, and check renewal rules at pass.gsrtc.in. Step-by-step guide for all pass types 2026.',
+    // Restored on 2026-10-05 to the wording this page ranked with. It sat around position 4
+    // (1,000-5,000 impressions a day, Sep 5-29) until three rewrites on Sep 28-29 dropped
+    // "Portal Login"; from Oct 1 it fell to ~350 a day at position 6-7 while the rest of the site
+    // held steady. "gsrtc e pass" is a portal-login search, and the title should say so.
+    title: 'GSRTC e-Pass Online Apply 2026: Student Pass & Portal Login',
+    description: 'Official GSRTC e-Pass guide: Direct pass.gsrtc.in portal login, student & ITI concession pass apply form, required documents, fees & live pass status.',
     crumbLabel: 'GSRTC e-pass & bus pass',
-    h1: 'GSRTC e-Pass Online: Student Bus Pass Apply, Login & Status Check',
-    lede: 'Direct guide to Gujarat ST Electronic Concession Pass System (ESCPS) on pass.gsrtc.in: Apply for student & commuter passes, log in to the portal, and track approval status.',
+    h1: 'GSRTC bus pass & e-pass online: apply, renew & status check',
+    lede: 'Daily student, ITI, or office commuter? Apply for or renew your Gujarat ST bus pass on pass.gsrtc.in, track e-Pass application status, and track your daily bus live.',
     body: `
   <div class="utility-action-box google-anno-skip">
     <h3>Official GSRTC e-Pass Online Portals (pass.gsrtc.in)</h3>
