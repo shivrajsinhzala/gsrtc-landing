@@ -274,8 +274,8 @@ const FEATURE_PAGES = [
   },
   {
     slug: 'gsrtc-bus-timetable',
-    title: 'GSRTC Bus Time Table 2026: ST Bus Schedule & Live Status',
-    description: 'GSRTC bus time table 2026: Search ST bus departure timings by route between any two Gujarat cities. Real-time schedule for Ordinary, Express, Volvo & Gurjarnagri buses with live delay status.',
+    title: 'GSRTC Bus Time Table 2026: Gujarat ST Bus Schedule & Timings',
+    description: 'GSRTC bus time table 2026: Check Gujarat ST bus departure timings, first & last bus schedules, Express, Gurjarnagri, Sleeper & Volvo routes across all 19,026 stations.',
     crumbLabel: 'GSRTC bus time table',
     h1: 'GSRTC bus time table & daily schedule: search any two stations',
     lede: 'Looking for Gujarat ST bus timings? Search timetables across all 19,026 stations, check express and Gurjarnagri departures, first/last bus times, and monitor running buses live.',
@@ -694,11 +694,11 @@ const FEATURE_PAGES = [
   {
     slug: 'gsrtc-ticket-cancellation-refund',
     plateForm: false,
-    title: 'GSRTC Ticket Cancellation 2026: Charges & Refund Rules',
-    description: 'GSRTC ticket cancellation charges: 0% (4+ hrs), 10% (2–4 hrs), 25% (1–2 hrs), 50% (under 1 hr). How to cancel online and get your refund in 3–7 days.',
+    title: 'GSRTC Ticket Cancellation Charges 2026: Refund Rules & Slabs',
+    description: 'Official GSRTC ticket cancellation charges: 10% (>24 hrs), 20% (2–24 hrs), 50% (<2 hrs). Instant refund calculator, refund timeline & online cancellation steps.',
     crumbLabel: 'GSRTC cancellation & refund',
     h1: 'GSRTC ticket cancellation charges and refund rules',
-    lede: 'Plans changed? Here is the exact cancellation charge schedule, how refund windows work, and how to track alternative buses.',
+    lede: 'Plans changed? Here is the official GSRTC cancellation charge schedule, deduction slabs, refund calculator, and how to track alternative buses.',
     body: `
   <div class="utility-action-box google-anno-skip">
     <h3>Official GSRTC Ticket Cancellation &amp; Refund Portal</h3>
@@ -708,21 +708,81 @@ const FEATURE_PAGES = [
     </div>
     <div class="utility-action-badges">
       <span class="utility-badge highlight">&gt; 24 Hrs: 10% Fee (90% Refund)</span>
-      <span class="utility-badge">2 to 24 Hrs: 25% Fee (75% Refund)</span>
-      <span class="utility-badge">&lt; 2 Hrs: No Refund</span>
+      <span class="utility-badge">2 to 24 Hrs: 20% Fee (80% Refund)</span>
+      <span class="utility-badge">&lt; 2 Hrs: 50% Fee (50% Refund)</span>
     </div>
   </div>
 
-  <h2 class="reveal">Official cancellation charges and deduction slabs</h2>
-  <p class="reveal">GSRTC follows a tiered cancellation fee structure based on how many hours before scheduled bus departure you cancel your ticket:</p>
+  <h2 class="reveal">Official cancellation charges and deduction slabs (2026)</h2>
+  <p class="reveal">GSRTC follows a clear tiered cancellation fee structure based on how many hours before scheduled bus departure you cancel your ticket:</p>
   <div class="table-wrap google-anno-skip">
   <table class="reveal">
-    <tr><th>Time Before Departure</th><th>Deduction Percentage</th><th>Refund Amount</th></tr>
-    <tr><td>More than 24 hours</td><td>10% of basic fare</td><td>90% refund</td></tr>
-    <tr><td>Between 24 and 2 hours</td><td>20% of basic fare</td><td>80% refund</td></tr>
-    <tr><td>Between 2 hours and departure</td><td>50% of basic fare</td><td>50% refund</td></tr>
-    <tr><td>After bus departure / No-show</td><td>100% deduction</td><td>No refund</td></tr>
+    <thead>
+      <tr><th>Time Before Scheduled Departure</th><th>Deduction Percentage</th><th>Refund to Passenger</th><th>Deduction on ₹500 Ticket</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>More than 24 hours</b></td><td>10% of basic fare</td><td><b>90% refund</b></td><td>₹50 fee (₹450 refund)</td></tr>
+      <tr><td><b>Between 24 hours and 2 hours</b></td><td>20% of basic fare</td><td><b>80% refund</b></td><td>₹100 fee (₹400 refund)</td></tr>
+      <tr><td><b>Between 2 hours and bus departure</b></td><td>50% of basic fare</td><td><b>50% refund</b></td><td>₹250 fee (₹250 refund)</td></tr>
+      <tr><td><b>After departure / Missed bus (No-show)</b></td><td>100% deduction</td><td><b>No refund (0%)</b></td><td>₹500 fee (₹0 refund)</td></tr>
+    </tbody>
   </table>
+  </div>
+
+  <h2 class="reveal">Instant GSRTC Ticket Refund Calculator</h2>
+  <p class="reveal">Select your ticket fare and time remaining before departure to estimate your exact refund amount in rupees:</p>
+  <div class="utility-action-box google-anno-skip" style="background:#f8fafc;border:1px solid #cbd5e1;padding:1.5rem;border-radius:12px;margin:1.5rem 0;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.25rem;">
+      <div>
+        <label for="calc-fare" style="display:block;font-weight:600;margin-bottom:0.4rem;font-size:0.95rem;">Ticket Amount (₹):</label>
+        <input id="calc-fare" type="number" min="10" max="5000" value="350" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #94a3b8;border-radius:8px;font-size:1.1rem;font-weight:700;" />
+      </div>
+      <div>
+        <label for="calc-time" style="display:block;font-weight:600;margin-bottom:0.4rem;font-size:0.95rem;">When Are You Cancelling?</label>
+        <select id="calc-time" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #94a3b8;border-radius:8px;font-size:0.95rem;font-weight:600;background:white;">
+          <option value="10">More than 24 hours prior (&gt;24h) — 10% fee</option>
+          <option value="20" selected>Between 2 and 24 hours prior — 20% fee</option>
+          <option value="50">Between 2 hours and departure — 50% fee</option>
+          <option value="100">After departure / Missed — 100% fee</option>
+        </select>
+      </div>
+    </div>
+    <div id="calc-result" style="background:white;border:1px solid #e2e8f0;border-radius:8px;padding:1rem;display:flex;justify-content:space-around;text-align:center;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div style="font-size:0.85rem;color:#64748b;text-transform:uppercase;font-weight:700;">Cancellation Fee</div>
+        <div id="res-fee" style="font-size:1.5rem;font-weight:800;color:#dc2626;">₹70</div>
+      </div>
+      <div style="border-left:1px solid #e2e8f0;padding-left:1rem;">
+        <div style="font-size:0.85rem;color:#64748b;text-transform:uppercase;font-weight:700;">Refund Credited</div>
+        <div id="res-refund" style="font-size:1.75rem;font-weight:800;color:#16a34a;">₹280</div>
+      </div>
+      <div style="border-left:1px solid #e2e8f0;padding-left:1rem;">
+        <div style="font-size:0.85rem;color:#64748b;text-transform:uppercase;font-weight:700;">Refund Status</div>
+        <div id="res-pct" style="font-size:1.1rem;font-weight:700;color:#0284c7;">80% Refund</div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem;color:#64748b;margin:0.75rem 0 0;line-height:1.4;"><i>*Reservation charge, payment gateway fee and GST on reservation fee are non-refundable as per official GSRTC e-booking policy.</i></p>
+    <script>
+      (function() {
+        function updateRefund() {
+          var fare = parseFloat(document.getElementById('calc-fare').value) || 0;
+          var rate = parseFloat(document.getElementById('calc-time').value) || 0;
+          var fee = Math.round(fare * (rate / 100));
+          var refund = Math.max(0, fare - fee);
+          var pct = (100 - rate) + '% Refund';
+          if (rate === 100) pct = 'No Refund';
+          document.getElementById('res-fee').textContent = '₹' + fee;
+          document.getElementById('res-refund').textContent = '₹' + refund;
+          document.getElementById('res-pct').textContent = pct;
+        }
+        var fareInput = document.getElementById('calc-fare');
+        var timeSelect = document.getElementById('calc-time');
+        if (fareInput && timeSelect) {
+          fareInput.addEventListener('input', updateRefund);
+          timeSelect.addEventListener('change', updateRefund);
+        }
+      })();
+    </script>
   </div>
 
   <h2 class="reveal">How to cancel online step by step</h2>
